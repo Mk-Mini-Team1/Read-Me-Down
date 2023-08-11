@@ -1,0 +1,77 @@
+@font-face {
+    font-family: 'SUIT-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+  --dark: #161A20;
+  --main: #222831;
+  --sub: #393E46;
+  --point: #00FEA3;
+  --text: #EEEEEE;
+  --neon1:#FEF100;
+  --neon2:#8EFE00;
+  --neon3:#00FEA3;
+  --neon4:#00FEEF;
+  --neon4:#FF65F0;
+  --gray1: #333333;
+  --gray2: #4f4f4f;
+  --gray3: #828282;
+  --gray4: #bdbdbd;
+  --gray5: #e0e0e0;
+  --white: #ffffff;
+  --heading34: normal bold 34px 'SUIT-Regular';
+  --heading24: normal bold 24px 'SUIT-Regular';
+  --heading18: normal bold 18px 'SUIT-Regular';
+  --body16: normal normal 16px 'SUIT-Regular';
+  --body14: normal normal 14px 'SUIT-Regular';
+  --button16: normal bold 16px 'SUIT-Regular';
+  --button14: normal bold 14px 'SUIT-Regular';
+  --button12: normal bold 12px 'SUIT-Regular';
+  --caption14: normal normal 14px 'SUIT-Regular';
+  --caption12: normal normal 12px 'SUIT-Regular';
+  --highlight16: normal bold 16px 'SUIT-Regular';
+  --highlight14: normal bold 14px 'SUIT-Regular';
+  --shadow100: 0px 4px 4px 0px rgba(167, 176, 192, 0.16);
+  --shadow200: 3px 5px 8px 0px rgba(167, 176, 192, 0.32);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: 'SUIT-Regular', sans-serif;
+  color: var(--light-text);
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ol,
+li,
+ul {
+  list-style: none;
+}
+textarea {
+  resize: none;
+  outline: none;
+}
+input,
+select,
+button {
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  background: none;
+}
+button {
+  background: none;
+  cursor: pointer;
+}
