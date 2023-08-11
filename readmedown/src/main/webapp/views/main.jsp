@@ -20,9 +20,13 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-	Read Me▼ 메인입니다. 수정
-	Read Me▼ 메인입니다.
-	안녕
+	<jsp:include page="header.jsp"/>
+	
+	<div id="main_box">
+		<div id="main_contents">
+		<h1>각자 이부분에 min-width 사이즈 주고 사용하세요</h1>
+		</div>
+	</div>
 
 </body>
 </html>
