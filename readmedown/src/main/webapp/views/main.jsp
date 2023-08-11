@@ -20,5 +20,6 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
+	Read Me▼ 메인입니다.
 </body>
 </html>
