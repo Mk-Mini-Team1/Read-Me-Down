@@ -20,6 +20,6 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-	Read Me▼ 메인입니다.
+	Read Me▼ 메인입니다. 수정
 </body>
 </html>
