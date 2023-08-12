@@ -22,7 +22,7 @@
 	<header id="header">
 		<div id='header_up'>
 			<div id="header_logo">
-				<img id="logo" src="/images/ReadMeD_M.svg">
+				<img id="logo" src="/images/ReadMeD_Mint.svg">
 			</div>
 			<div class="header_item">
 				<img id="logo" src="/images/header/home-icon.svg">
@@ -34,16 +34,8 @@
 			</div>
 			<c:if test="${user_id ne null}">
 				<div class="header_item">
-					<img id="logo" src="/images/header/folder-icon.svg">
-					<span>MyPage</span>
-				</div>
-				<div class="header_item">
-					<img id="logo" src="/images/header/bookmark-icon.svg">
-					<span>Bookmark</span>
-				</div>
-				<div class="header_item">
 					<img id="logo" src="/images/header/profile-icon.svg">
-					<span>Profile</span>
+					<span>MyPage</span>
 				</div>
 			</c:if>
 		</div>
@@ -55,7 +47,7 @@
 					<button id="SignUpbtn">Sign Up</button>
 				</c:when>
 				<c:otherwise>
-					<img id="logo" src="/images/defalt-profile.svg">
+					<img id="logo" src="/images/default_profile.svg">
 					<button id="logoutbtn">LogOut</button>
 				</c:otherwise>
 			</c:choose>

@@ -94,6 +94,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	min-width:1500px;
 }
 
 #main_contents{
