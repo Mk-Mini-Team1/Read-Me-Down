@@ -10,4 +10,8 @@ public class MainController {
 	public String main() {
 		return "main";
 	}
+	@GetMapping("/signup")
+	public String test() {
+		return "sign/signUp";
+	}
 }
