@@ -15,9 +15,4 @@ public class MainController {
 	public String test() {
 		return "masonryTest";
 	}
-
-	@GetMapping("/signup")
-	public String signUp() {
-		return "sign/signUp";
-	}
 }

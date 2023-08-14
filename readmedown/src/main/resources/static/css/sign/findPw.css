@@ -5,21 +5,22 @@
   justify-content: flex-start;
   background-color: var(--main);
   width: 600px;
-  height: 800px;
+  height: 450px;
   border: solid 2px var(--text);
   border-radius: 5px;
 }
 
 .container > a img {
   width: 120px;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .container > p {
   color: var(--text);
-  font: var(--heading20);
-  margin-top: 20px;
+  font: var(--heading24);
+  margin-top: 5px;
 }
+
 
 .close a img {
   width: 35px;
@@ -28,20 +29,20 @@
   margin-top: 15px; 
 }
 
-.signupForm {
+.signinForm {
   width: 400px;
   padding: 20px;  
 }
 
-.signupForm > div {
-  margin-bottom: 20px;
+.signinForm > div {
+  margin-bottom: 10px;
 }
-.signupForm > div > p {
+.signinForm > div > p {
   font: var(--button16);
   color: var(--text);
   margin-bottom: 5px;
 }
-.signupForm > div input {
+.signinForm > div input {
   width: 100%;
   height: 45px;
   border: 1px solid var(--gray4);
@@ -50,21 +51,19 @@
    font: var(--button14);
    color: var(--text);
 }
-.signupForm > div input:focus {
+.signinForm > div input:focus {
   border: 2px solid #00FEEF;
   caret-color: var(--neon3); 
 }
 
-.signupForm > div button {
+.signinForm > div button {
   height: 45px; 
   border-radius: 4px;
-  border : solid 1px var(--neon3);
-  color: var(--text);
+  background-color: var(--neon3);
   transition: background-color 0.2s;
 }
-.signupForm > div button:hover {
-  color: var(--main);
-  background-color: var(--neon3);
+.signinForm > div button:hover {
+  background-color: var(--neon2);
 }
 
 .email > div {
@@ -72,37 +71,28 @@
   align-items: center;
  
 }
-.email .checkEmail {
+.email {
   margin-bottom: 5px;
 }
-.email .checkEmail button {
-  font: var(--button16);
-  width: 125px;
-  margin-left: 5px;
-}
-
-.required {
-	position: relative;	
-	color: #FC3131;
-	font: var(--caption12);	
-}
-
 
 .password p{
-  margin-top: 20px;
+  margin-top: 15px;
   margin-bottom: 5px;
 }
 
 button.submit {
   width: 100%;
   height: 50px;
-  background-color: var(--neon3);
+  border: solid 2px var(--neon3);
   font: var(--heading18);
+  color: var(--text);
   border-radius: 4px;
   margin-top: 10px;
-  transition: background-color 0.2s;
+  transition: background-color 0.3s;  
 }
 
 button.submit:hover {
-  background-color: var(--neon2);
+  color: var(--main);
+  background-color: var(--neon3);
 }
+

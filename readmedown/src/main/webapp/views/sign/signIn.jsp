@@ -11,7 +11,7 @@
 <link rel="icon" href="/images/logo-pencil.png" />
 <link rel="apple-touch-icon" href="/images/logo-pencil.png" />
 <link rel="stylesheet" href="/css/style.css" />
-<link rel="stylesheet" href="/css/sign/signUp.css" />
+<link rel="stylesheet" href="/css/sign/signIn.css" />
 <script src="/js/jquery-3.6.4.min.js"></script>
 <title>Read Me▼</title>
 </head>
@@ -22,38 +22,33 @@
 		</div>
 		<a href="/"> <img src="images/ReadMeD_Mint.svg" alt="로고아이콘" />
 		</a>
-		<p>ReadMe▼에 오신것을 환영합니다!</p>
-		<form method="post" action="signup" class="signupForm"
-			name="signupForm">
+		<p>Log in</p>
+		<form method="post" action="signup" class="signinForm"
+			name="signinForm">
 			<div class="email">
 				<p>E-mail</p>
 				<div class="checkEmail">
-					<input type="email" id="email" name="email" oninput="regEmail()"
-						placeholder="이메일 입력" />
-					<button>중복확인</button>
-				</div>				
-				<span id="emailRequired"></span>
+					<input type="email" id="email" name="email" placeholder="이메일 입력" />					
+				</div>							
 			</div>
 			<div class="password">
 				<p>Password</p>
 				<input type="password" id="password" name="password" maxlength="20"
-					oninput="regPw()" placeholder="비밀번호 입력" />			
-				<span id="pwRequired"></span>
-				<p>Password Check</p>
-				<input type="password" id="checkPassword" maxlength="20"
-					oninput="checkPw()" placeholder="비밀번호 확인" /> 
-					<span id="checkPwRequired"></span>
+				placeholder="비밀번호 입력" />	
+							
+			</div>			
+			<button class="submit">로그인하기</button>
+			<div class="findIdPassword">
+			<a href="#">아이디찾기</a> / <a href="#">비밀번호 찾기</a>
 			</div>
-			<div class="nameWrapper">
-				<p>Name</p>
-				<input type="text" placeholder="닉네임 입력" id="name" name="name"
-					oninput="regName()" /> 
-					<span id="nameRequired"></span>
+			<div class="signIn">
+			Read Me▼ 회원이 아니신가요?
+			<button>회원가입</button>
 			</div>
-			<button class="submit">Sign-up</button>
-		</form>
+		</form>		
+		
 	</main>
 	
-	<script src="/js/sign/signInputCheck.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,102 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 세로 중앙 정렬 */
+  align-items: center; /* 가로 중앙 정렬 */  
+}
+
+
+.contentWrap .userInfo .user {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+}
+
+
+.contentWrap .userInfo .user > p:first-of-type {
+  font: var(--heading34);
+  margin-bottom: 12px;
+  margin-left: 10px;
+}
+
+.user > p:first-of-type span {
+  display: inline-block;
+  margin-left: 5px;
+  font: var(--heading24);
+}
+
+.user >button{
+  width: 100px;
+  height: 30px;
+  font: var(--button12);
+  color: var(--text);
+  border: solid 1px var(--neon3);
+  border-radius: 5px;
+  background-color: var(--sub);
+  margin-left: 5px;
+}
+
+.user >button:hover{
+	color: var(--main);
+  background-color: var(--neon3);
+}
+
+.contentWrap .userInfo .user {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-top: 12px;
+}
+
+.user img {
+  width: 150px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.categoryWrap {
+  display: flex;
+  justify-content: center; /* 가로 가운데 정렬 */
+  align-items: center; /* 세로 가운데 정렬 */
+  border-bottom: 3px solid var(--neon3);
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.category {
+	width: 80%;
+    min-width: 200px;
+    height: 40px;
+    position: relative;
+     
+}
+
+.category a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    font: var(--heading18);
+    justify-content: center;
+    align-items: center;    
+    cursor: pointer;  
+}
+
+
+.infoWrap { 
+  display: flex; 
+  justify-content: center; 
+  width: 70%;
+  min-height: 700px;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 80px;
+  background-color: var(--main);
+  padding-top: 50px;
+ }
+ 
+ .category-selected {        
+        width: 50%;
+        border-bottom: 7px solid var(--neon3);
+    }
