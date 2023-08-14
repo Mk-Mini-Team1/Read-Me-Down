@@ -8,36 +8,26 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 <link rel="icon" href="/images/logo-pencil.png" />
 <link rel="apple-touch-icon" href="/images/logo-pencil.png" />
 <link rel="stylesheet" href="/css/style.css" />
 <link rel="stylesheet" href="/css/main.css" />
 <script src="/js/jquery-3.6.4.min.js"></script>
-<!-- <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script> -->
-<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 <title>Read Me▼</title>
 <script>
 $(document).ready(function() {
-	function resizeGridItems(){
-	    const items = document.querySelectorAll('.grid-item')
-	    items.forEach(item=>{
-	        imagesLoaded(item,(instance)=>{
-	            const item = instance.elements[0];
-	            const grid = document.querySelector('.grid-container')
-	            const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'))
-	            const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'))
-	            const rowSpan =  Math.floor((item.querySelector('.content').offsetHeight+rowGap)/(rowHeight+rowGap))
-	            item.style.gridRowEnd = "span "+ rowSpan;
-	        })
-	    })
-	    const gallery = document.querySelector('.grid-container')
-	    imagesLoaded(gallery,()=>{
-	        document.querySelectorAll('.grid-item').forEach(item=> item.style.visibility = 'visible')
-	    })
-	}
-
-	window.addEventListener('load',resizeGridItems)
-	window.addEventListener('resize',resizeGridItems)
+	var msnry = new Masonry( '.grid', {
+		  itemSelector: '.grid-item',
+		  // columnWidth: 200
+		  columnWidth: '.grid-sizer',
+		  percentPosition: true,
+		  gutter : 20,
+		});
+	imagesLoaded( '.grid' ).on( 'progress', function() {
+	  msnry.layout();
+	});
 	
 }); //ready
 </script>
@@ -47,14 +37,35 @@ $(document).ready(function() {
 	
 <div id="main_box">
 <div id="main_contents">
-	<div id="gallery">
-		<div class="grid-container">
+	<div id="main_top">
+		<div id="search_box">
+			<div id="search_icon_box"><img id="search_icon_img" src="/images/main/search_icon.svg"></div>
+			<div id="search_word_box"><input type="text" id="search_word_input"></div>
+		</div>
+	</div>
+	<div id="main_gallery">
+		<div class="grid">
+		  <div class="grid-sizer"></div>
 			<c:forEach begin="1" end="12" varStatus="vs">
-	            <div class="grid-item"> 
-	                <img class="content" src='/images/main/img_ex${vs.count}.jpg' alt="template">
-	            </div>			
-			</c:forEach>
-	    </div>
+		           <div class="grid-item"> 
+		               <img src='/images/main/img_ex${vs.count}.jpg' alt="template">
+		               <div class="darkness"></div>
+		               <div class="btn-plus">
+		               		<input type=button class="main_bookmark_btn" value="북마크">
+		               </div>
+		           </div>	
+		       </c:forEach>
+			<c:forEach begin="1" end="12" varStatus="vs">
+		           <div class="grid-item"> 
+		               <img src='/images/main/img_ex${vs.count}.jpg' alt="template">
+		               <div class="darkness"></div>
+		               <div class="btn-plus">
+		               		<input type=button class="main_bookmark_btn" value="북마크">
+		               </div>
+		           </div>	
+		       </c:forEach>
+
+		</div>
 	</div>
 </div>
 </div>

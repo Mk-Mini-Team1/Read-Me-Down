@@ -1,9 +1,11 @@
 @font-face {
-	font-family: 'SUIT-Regular';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2')
-		format('woff2');
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
+
+* {font-family : 'GmarketSansMedium';}
 
 :root {
 	--dark: #161A20;
@@ -22,19 +24,19 @@
 	--gray4: #bdbdbd;
 	--gray5: #e0e0e0;
 	--white: #ffffff;
-	--heading34: normal bold 34px 'SUIT-Regular';
-	--heading24: normal bold 24px 'SUIT-Regular';
-	--heading20: normal bold 20px 'SUIT-Regular';
-	--heading18: normal bold 18px 'SUIT-Regular';
-	--body16: normal normal 16px 'SUIT-Regular';
-	--body14: normal normal 14px 'SUIT-Regular';
-	--button16: normal bold 16px 'SUIT-Regular';
-	--button14: normal bold 14px 'SUIT-Regular';
-	--button12: normal bold 12px 'SUIT-Regular';
-	--caption14: normal normal 14px 'SUIT-Regular';
-	--caption12: normal normal 12px 'SUIT-Regular';
-	--highlight16: normal bold 16px 'SUIT-Regular';
-	--highlight14: normal bold 14px 'SUIT-Regular';
+	--heading34: normal bold 34px 'GmarketSansMedium';
+	--heading24: normal bold 24px 'GmarketSansMedium';
+	--heading20: normal bold 20px 'GmarketSansMedium';
+	--heading18: normal bold 18px 'GmarketSansMedium';
+	--body16: normal normal 16px 'GmarketSansMedium';
+	--body14: normal normal 14px 'GmarketSansMedium';
+	--button16: normal bold 16px 'GmarketSansMedium';
+	--button14: normal bold 14px 'GmarketSansMedium';
+	--button12: normal bold 12px 'GmarketSansMedium';
+	--caption14: normal normal 14px 'GmarketSansMedium';
+	--caption12: normal normal 12px 'GmarketSansMedium';
+	--highlight16: normal bold 16px 'GmarketSansMedium';
+	--highlight14: normal bold 14px 'GmarketSansMedium';
 	--shadow100: 0px 4px 4px 0px rgba(167, 176, 192, 0.16);
 	--shadow200: 3px 5px 8px 0px rgba(167, 176, 192, 0.32);
 }
@@ -53,7 +55,7 @@ html {
 body {
 	width: 100%;
 	height: auto;
-	font-family: 'SUIT-Regular', sans-serif;
+	font-family: 'GmarketSansMedium', sans-serif;
 	color: var(--text);
 	display: flex;
 }
