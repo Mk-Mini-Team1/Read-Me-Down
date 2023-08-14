@@ -13,20 +13,51 @@
 <link rel="stylesheet" href="/css/style.css" />
 <link rel="stylesheet" href="/css/main.css" />
 <script src="/js/jquery-3.6.4.min.js"></script>
+<!-- <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script> -->
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 <title>Read Me▼</title>
 <script>
 $(document).ready(function() {
+	function resizeGridItems(){
+	    const items = document.querySelectorAll('.grid-item')
+	    items.forEach(item=>{
+	        imagesLoaded(item,(instance)=>{
+	            const item = instance.elements[0];
+	            const grid = document.querySelector('.grid-container')
+	            const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'))
+	            const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'))
+	            const rowSpan =  Math.floor((item.querySelector('.content').offsetHeight+rowGap)/(rowHeight+rowGap))
+	            item.style.gridRowEnd = "span "+ rowSpan;
+	        })
+	    })
+	    const gallery = document.querySelector('.grid-container')
+	    imagesLoaded(gallery,()=>{
+	        document.querySelectorAll('.grid-item').forEach(item=> item.style.visibility = 'visible')
+	    })
+	}
+
+	window.addEventListener('load',resizeGridItems)
+	window.addEventListener('resize',resizeGridItems)
+	
 }); //ready
 </script>
 </head>
 <body>
-	<jsp:include page="header.jsp"/>
+<jsp:include page="header.jsp"/>
 	
-	<div id="main_box">
-		<div id="main_contents">
-		<h1>각자 이부분에 min-width 사이즈 주고 사용하세요</h1>
-		</div>
+<div id="main_box">
+<div id="main_contents">
+	<div id="gallery">
+		<div class="grid-container">
+			<c:forEach begin="1" end="12" varStatus="vs">
+	            <div class="grid-item"> 
+	                <img class="content" src='/images/main/img_ex${vs.count}.jpg' alt="template">
+	            </div>			
+			</c:forEach>
+	    </div>
 	</div>
+</div>
+</div>
 
 </body>
 </html>
