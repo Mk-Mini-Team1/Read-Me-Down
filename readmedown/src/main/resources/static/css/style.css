@@ -15,7 +15,7 @@
 	--neon2: #8EFE00;
 	--neon3: #00FEA3;
 	--neon4: #00FEEF;
-	--neon4: #FF65F0;
+	--neon5: #FF65F0;
 	--gray1: #333333;
 	--gray2: #4f4f4f;
 	--gray3: #828282;
@@ -24,6 +24,7 @@
 	--white: #ffffff;
 	--heading34: normal bold 34px 'SUIT-Regular';
 	--heading24: normal bold 24px 'SUIT-Regular';
+	--heading20: normal bold 20px 'SUIT-Regular';
 	--heading18: normal bold 18px 'SUIT-Regular';
 	--body16: normal normal 16px 'SUIT-Regular';
 	--body14: normal normal 14px 'SUIT-Regular';

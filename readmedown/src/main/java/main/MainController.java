@@ -14,9 +14,10 @@ public class MainController {
 	@GetMapping("/test")
 	public String test() {
 		return "masonryTest";
+	}
 
 	@GetMapping("/signup")
-	public String test() {
+	public String signUp() {
 		return "sign/signUp";
 	}
 }
