@@ -1,0 +1,136 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--main);
+  width: 600px;
+  height: 700px;
+  border: solid 2px var(--text);
+  border-radius: 5px;
+}
+
+.container > a img {
+  width: 120px;
+  margin-top: 15px;
+}
+
+.container > p {
+  color: var(--text);
+  font: var(--heading24);
+  margin-top: 10px;
+}
+
+.container .findIdPassword {
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: dashed 2px var(--text);
+ 
+	  > a {
+	  		padding-right: 5px;
+  			padding-left: 5px;
+  			font: var(--button12);
+  			margin-top: 3px; 
+  			padding-bottom: 25px;
+			}
+}
+
+.close a img {
+  width: 35px;
+  height: 35px;
+  margin-left: 520px;
+  margin-top: 15px; 
+}
+
+.signinForm {
+  width: 400px;
+  padding: 20px;  
+}
+
+.signinForm > div {
+  margin-bottom: 10px;
+}
+.signinForm > div > p {
+  font: var(--button16);
+  color: var(--text);
+  margin-bottom: 5px;
+}
+.signinForm > div input {
+  width: 100%;
+  height: 45px;
+  border: 1px solid var(--gray4);
+  border-radius: 2px;
+  padding: 0 15px;
+   font: var(--button14);
+   color: var(--text);
+}
+.signinForm > div input:focus {
+  border: 2px solid #00FEEF;
+  caret-color: var(--neon3); 
+}
+
+.signinForm > div button {
+  height: 45px; 
+  border-radius: 4px;
+  background-color: var(--neon3);
+  transition: background-color 0.2s;
+}
+.signinForm > div button:hover {
+  background-color: var(--neon2);
+}
+
+.email > div {
+  display: flex;
+  align-items: center;
+ 
+}
+.email {
+  margin-bottom: 5px;
+}
+
+.required {
+	position: relative;	
+	color: #FC3131;
+	font: var(--caption12);	
+}
+
+
+.password p{
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+button.submit {
+  width: 100%;
+  height: 50px;
+  border: solid 2px var(--neon3);
+  font: var(--heading18);
+  color: var(--text);
+  border-radius: 4px;
+  margin-top: 10px;
+  transition: background-color 0.2s;  
+}
+
+button.submit:hover {
+  color: var(--main);
+  background-color: var(--neon3);
+}
+
+.signIn {
+	padding-top: 15px;
+	font: var(--caption12);
+}
+
+.signIn > button {
+  width: 100%; 
+  height: 50px !important;
+  background-color: var(--neon2) !important;
+  font: var(--heading18) !important;
+  border-radius: 2px;
+  margin-top: 10px;
+  transition: background-color 0.2s;  
+}
+
+.signIn > button:hover {
+  background-color: var(--neon4) !important;
+}
