@@ -12,12 +12,17 @@ public class UserController {
 	}
 	
 	@GetMapping("/signin")
-	public String signin() {
+	public String signIn() {
 		return "sign/signIn";
 	}
 	
 	@GetMapping("/findpw")
-	public String findpassword() {
+	public String findPassword() {
 		return "sign/findPw";
+	}
+	
+	@GetMapping("/usermain")
+	public String userMain() {
+		return "/userMain";
 	}
 }

@@ -6,30 +6,47 @@
    height:130px;
    border-radius: 10px;
    background-color: var(--sub);  
+   margin-bottom: 10px;
  }
  
- .following_user img {
- 	width:80px;
- 	height: 80px;
- 	margin-left: 20px;
- }
  
+ .following_user .user_image {
+	width: 90px;
+	height: 90px;
+	border-radius: 80px;
+	background-color: var(--sub);
+	margin-left: 20px;
+    background-size: cover;	
+    background-image: url('/images/mypage/profile-picture1.svg');
+    margin-left: 50px; 
+}
+ 
+.following_user .user_name {
+  flex: 1;
+  text-align: center;
+}
+
  .following_user button {
  	width: 100px;
  	height: 30px;
  	background-color: var(--neon3);
- 	font: var(--button14);
+ 	font: var(--button12);
  	border-radius: 5px;
+ 	padding-top: 3px;
+ 	transition: background-color 0.2s;
+ 	margin-right: 50px; 
  } 
  
  .following_user button:hover {
  	border: solid 2px var(--neon3);
  	color: #FC3131;
- 	background-color: var(--main);
- 	font: var(--caption14);
+ 	background-color: var(--sub);
+ 	font: var(--caption12);
  }
 
  .user_name {
  	font: var(--heading20);
- 	margin: 0 80px 0 80px;
- }
+ 	/*margin: 0 60px 0 60px;*/
+ }  
+
+

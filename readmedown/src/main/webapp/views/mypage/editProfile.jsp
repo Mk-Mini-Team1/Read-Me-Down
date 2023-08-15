@@ -35,8 +35,7 @@
 						<div class="userId">
 							<p>readme@readme.com</p>
 						</div>
-						<div class="profileImage">
-							<img src="/images/profile-default.svg" />
+						<div class="profile-image">
 							<div class="editButton">
 								<button>Image Upload</button>
 							</div>

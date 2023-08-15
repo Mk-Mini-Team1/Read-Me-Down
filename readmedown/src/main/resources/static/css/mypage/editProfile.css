@@ -11,9 +11,15 @@
 }
 
 
-.container > a img {
-  width: 120px;
-  margin-top: 20px;
+.profile-image {
+	width: 120px;
+	height: 120px;
+	border-radius: 80px;
+	background-color: var(--main);
+	margin-top: 20px;
+	margin-left: 40px;
+	background-image: url('/images/profile-default.svg');
+    background-size: cover;	
 }
 
 .container > p {
@@ -57,13 +63,16 @@
 
 .signupForm > div button {
   height: 25px; 
-  width: 90px;
+  width: 120px;
   border-radius: 4px;
   font: var(--button12);
   border: solid 1px var(--neon3);
   color: var(--text);
   transition: background-color 0.2s;
+  margin-left: 130px;
+  margin-top: 50px;
 }
+
 .signupForm > div button:hover {
   color: var(--main);
   background-color: var(--neon3);
