@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="editor.EditorDAO">
+  	
+  	<select id="getBadges" parameterType="String" resultType="editor.BadgeDTO">
+  		SELECT *
+  		FROM badges
+  		<if test="keyword != '' and keyword != null">
+  		WHERE badge_name like concat('%',#{keyword},'%');
+  		</if>
+  	</select>
+  	
+</mapper>
+
+
+
+
+
+

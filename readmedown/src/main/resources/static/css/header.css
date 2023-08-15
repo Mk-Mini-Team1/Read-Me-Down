@@ -8,6 +8,7 @@
 	align-items: center;
 	justify-content: space-between;
 	position: fixed;
+	z-index: 5;
 }
 
 #header_logo{
@@ -94,12 +95,10 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	min-width:1500px;
 }
 
 #main_contents{
-	width: 90%;
-	height: 90%;
+	width: 100%;
+	height: auto;
 	margin: 0 auto;
-	border: 1px solid var(--text);
 }
