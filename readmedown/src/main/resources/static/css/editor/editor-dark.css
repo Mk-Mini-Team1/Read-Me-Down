@@ -88,6 +88,10 @@
   border-color: #494c56;
 }
 
+.toastui-editor-dark .toastui-editor-popup-add-heading ul li {
+  color: var(--text);
+}
+
 .toastui-editor-dark .toastui-editor-popup-add-heading ul li:hover {
   background-color: #36383f;
 }
@@ -471,4 +475,45 @@
 
 .toastui-editor-dark .toastui-editor-contents .toastui-editor-md-preview-highlight::after {
   background-color: rgba(255, 250, 193, 0.25);
+}
+
+/* 스크롤바 추가 */
+.toastui-editor-dark .ProseMirror::-webkit-scrollbar {
+    width: 10px;
+}
+
+.toastui-editor-dark .ProseMirror::-webkit-scrollbar-thumb {
+    background: var(--dark); /* 스크롤바 막대 색상 */
+    border: 2px solid var(--dark); /* 스크롤바 막대 테두리 설정  */
+    border-radius: 10px;
+}
+
+.toastui-editor-dark .ProseMirror::-webkit-scrollbar-thumb:hover {
+    background: var(--point); /* 스크롤바 막대 색상 */
+    border: 2px solid var(--point); /* 스크롤바 막대 테두리 설정  */
+}
+
+.toastui-editor-dark .ProseMirror::-webkit-scrollbar-track {
+	background: var(--main); /* 스크롤바 뒷 배경 색상 */
+	border-radius: 10px;
+}
+
+.toastui-editor-dark .toastui-editor-md-preview::-webkit-scrollbar {
+    width: 10px;
+}
+
+.toastui-editor-dark .toastui-editor-md-preview::-webkit-scrollbar-thumb {
+    background: var(--dark); /* 스크롤바 막대 색상 */
+    border: 2px solid var(--dark); /* 스크롤바 막대 테두리 설정  */
+    border-radius: 10px;
+}
+
+.toastui-editor-dark .toastui-editor-md-preview::-webkit-scrollbar-thumb:hover {
+    background: var(--point); /* 스크롤바 막대 색상 */
+    border: 2px solid var(--point); /* 스크롤바 막대 테두리 설정  */
+}
+
+.toastui-editor-dark .toastui-editor-md-preview::-webkit-scrollbar-track {
+	background: var(--main); /* 스크롤바 뒷 배경 색상 */
+	border-radius: 10px;
 }

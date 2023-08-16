@@ -13,5 +13,9 @@ public class EditorService {
 	List<BadgeDTO> getBadges(String keyword){
 		return dao.getBadges(keyword);
 	}
+	
+	List<StatsThemeDTO> getStatsThemes(String keyword){
+		return dao.getStatsThemes(keyword);
+	}
 
 }

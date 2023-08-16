@@ -24,4 +24,11 @@ public class EditorController {
 		List<BadgeDTO> list = service.getBadges(keyword);
 		return list;
 	}
+
+	@PostMapping("/getstatstheme")
+	@ResponseBody
+	public List<StatsThemeDTO> getStatsThemes(String keyword){
+		List<StatsThemeDTO> list = service.getStatsThemes(keyword);
+		return list;
+	}
 }

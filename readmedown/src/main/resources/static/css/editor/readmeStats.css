@@ -1,0 +1,388 @@
+#readme_stats_modal {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.50);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display:none;
+}
+
+#readme_stats_modal .modal_box {
+	position: relative;
+	width: 500px;
+	height: 800px;
+	flex-shrink: 0;
+	border-radius: 5px;
+	border: 2px solid var(--text, #EEE);
+	background: var(--main, #222831);
+	/* display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px; */
+	padding: 50px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	text-align: center;
+}
+
+#readme_stats_modal .modal_box>*{
+	margin: 0 auto 20px auto;
+}
+
+#readme_stats_modal .modal_box::-webkit-scrollbar {
+	width: 5px;
+}
+
+#readme_stats_modal .modal_box::-webkit-scrollbar-thumb {
+	background: var(--neon4, #00FEEF); /* 스크롤바 막대 색상 */
+	border: 2px solid var(--neon4, #00FEEF); /* 스크롤바 막대 테두리 설정  */
+}
+
+#readme_stats_modal .modal_box::-webkit-scrollbar-track {
+	background: var(--dark); /* 스크롤바 뒷 배경 색상 */
+}
+
+#readme_stats_modal .closebox {
+	height: 25px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+}
+
+#readme_stats_modal .modal_title {
+	color: var(--text, #EEE);
+	font: var(--heading24);
+}
+
+#readme_stats_modal .modal_subtitle {
+	color: var(--text, #EEE);
+	font: var(--heading20);
+}
+
+#readme_stats_modal .modal_tab {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 1px solid var(--neon4);
+}
+
+#readme_stats_modal .tabbtn {
+	width: 70px;
+	height: 30px;
+	font: var(--button14);
+	color: var(--text);
+	border-bottom: 3px solid transparent;
+}
+
+#readme_stats_modal .tabbtn:hover {
+	color: var(--neon4);
+	border-bottom: 3px solid var(--neon4);
+}
+
+#readme_stats_modal .tabbtn.active {
+	border-bottom: 3px solid var(--neon4);
+}
+
+/* 깃허브 아이디 입력박스 */
+#readme_stats_modal .modal_inputbox{
+	margin-top: 10px;
+	width: 300px;
+}
+#readme_stats_modal .modal_inputbox>div {
+	width: 300px;
+	text-align: center;
+	border-bottom: 1px solid var(--neon-3, #00FEEF);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+#readme_stats_modal .modal_inputbox>div>span {
+	width: 100px;
+	font: var(--highlight14);
+	text-align: center;
+	border-right: 1px solid var(--text);
+	padding: 0 10px;
+}
+
+#readme_stats_modal .modal_inputbox>div>input {
+	width: 200px;
+	height: 30px;
+	border-radius: 1px;
+	text-align: left;
+	font: var(--button14);
+	line-height: 30px;
+	color: var(--text);
+	padding: 0 10px;
+}
+
+#readme_stats_modal .modal_inputbox>p {
+	width: 300px;
+	text-align: center;
+	font: var(--button14);
+	line-height: 14px;
+	color: var(--text);
+	padding: 10px;
+}
+
+/* --------------- 옵션선택 입력박스 ----------------- */
+#readme_stats_modal #optionBoxWrap{
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+#readme_stats_modal .optionbox {
+	width: 400px;
+	border: 1px solid var(--neon4);
+	border-radius: 5px;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+#readme_stats_modal .optionbox_title {
+	width: 90px;
+	font: var(--body14);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding: 5px;
+	border-right: 1px solid var(--text);
+}
+
+#readme_stats_modal .optionbox_contents {
+	width: 300px;
+	height:auto;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 5px;
+}
+
+#readme_stats_modal .optionbox_contents label {
+	padding: 5px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
+}
+
+#readme_stats_modal .optionbox_contents label span {
+	font-size: 12px;
+	text-align: left;
+}
+
+#readme_stats_modal .optionbox_contents [type="checkbox"] {
+	vertical-align: middle;
+	appearance: none;
+	border: max(1px, 0.1em) solid var(--neon4);
+	border-radius: 2px; width : 1.25em;
+	height: 1.25em;
+	transition: border 0.2s ease-in-out;
+	width: 1.25em;
+}
+
+#readme_stats_modal .optionbox_contents label:hover [type="checkbox"] {
+	box-shadow: 0 0 0 max(4px, 0.2em) var(--gray2);
+}
+
+#readme_stats_modal .optionbox_contents label:hover span {
+	color: var(--neon4);
+}
+
+#readme_stats_modal .optionbox_contents [type="checkbox"]:checked {
+	background-image: url(/images/editor/checkbox_checked.svg);
+}
+
+#readme_stats_modal .optionbox_contents [type="radio"] {
+	vertical-align: middle;
+	appearance: none;
+	border: max(1px, 0.1em) solid var(--neon4);
+	border-radius: 50%; 
+	width : 1.25em;
+	height: 1.25em;
+	transition: border 0.2s ease-in-out;
+	width: 1.25em;
+}
+
+#readme_stats_modal .optionbox_contents label:hover [type="radio"] {
+	box-shadow: 0 0 0 max(4px, 0.2em) var(--gray2);
+}
+
+#readme_stats_modal .optionbox_contents [type="radio"]:checked {
+	border: 0.4em solid var(--neon4);
+}
+
+
+#readme_stats_modal .modal_searchbox {
+	margin-top: 10px;
+	width: 300px;
+	text-align: center;
+	border-bottom: 1px solid var(--neon-3, #00FEEF);
+}
+
+#readme_stats_modal .modal_searchbox>p {
+	text-align: center;
+	font: var(--button12);
+}
+
+#readme_stats_modal .modal_searchbox>div{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap:5px;
+}
+
+#readme_stats_modal .modal_searchbox>div>img {
+	width: 30px;
+	height: 30px;
+}
+
+#readme_stats_modal .modal_searchbox>div>input {
+	width: 250px;
+	height: 30px;
+	border-radius: 1px;
+	text-align: left;
+	font: var(--button14);
+	line-height: 30px;
+	color: var(--text);
+}
+
+/* 테마테이블 */
+#readme_stats_modal .themetable {
+	width: 400px;
+	height: 300px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	background-color: var(--dark);
+	margin-top: 5px;
+}
+
+#readme_stats_modal .themetable table {
+	width: 100%;
+}
+
+#readme_stats_modal .themetable table thead {
+	width: 100%;
+}
+
+#readme_stats_modal .themetable table thead tr {
+	display: grid;
+	grid-template-columns: 130px 260px;
+	border-bottom: 2px solid var(--neon4);
+}
+
+#readme_stats_modal table thead th {
+	font: var(--highlight14);
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+#readme_stats_modal table tbody {
+	width: 100%;
+	text-align: center;
+}
+
+#readme_stats_modal table tbody tr {
+	display: grid;
+	grid-template-columns: 130px 260px;
+	border-bottom: 1px solid var(--neon4);
+}
+
+#readme_stats_modal table tbody td {
+	height: 90px;
+	padding: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#readme_stats_modal table tbody label {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
+}
+
+#readme_stats_modal table tbody label span {
+	font: var(--button12);
+	text-align: left;
+}
+
+#readme_stats_modal table tbody [type="radio"] {
+	vertical-align: middle;
+	appearance: none;
+	border: max(1px, 0.1em) solid var(--neon4);
+	border-radius: 50%;
+	width: 1.25em;
+	height: 1.25em;
+	transition: border 0.2s ease-in-out;
+}
+
+#readme_stats_modal table tbody [type="radio"]:checked {
+	border: 0.4em solid var(--neon4);
+}
+
+#readme_stats_modal table tbody [type="radio"]:hover {
+	box-shadow: 0 0 0 max(4px, 0.2em) var(--gray2);
+}
+
+#readme_stats_modal table tbody td img {
+	width: 220px;
+}
+
+#readme_stats_modal .themetable::-webkit-scrollbar {
+	width: 5px;
+}
+
+#readme_stats_modal .themetable::-webkit-scrollbar-thumb {
+	background: var(--neon4, #00FEEF); /* 스크롤바 막대 색상 */
+	border: 2px solid var(--neon4, #00FEEF); /* 스크롤바 막대 테두리 설정  */
+	border-radius: 10px;
+}
+
+#readme_stats_modal .themetable::-webkit-scrollbar-track {
+	background: var(--dark); /* 스크롤바 뒷 배경 색상 */
+}
+
+#readme_stats_modal .modal_btns {
+	width: 300px;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 0px;
+}
+
+#readme_stats_modal .modal_btns>button {
+	width: 145px;
+	height: 35px;
+	font: var(--button14);
+	color: var(--text);
+	line-height: 14px;
+	border-radius: 5px;
+	border: 1px solid var(--neon-3, #00FEEF);
+}
+
+#readme_stats_modal .modal_btns>button:hover {
+	color: var(--main);
+	background: var(--neon-3, #00FEEF);
+}
+
+@keyframes vibration 
+{from { transform:translateY(-2px);}
+to {transform: translateY(2px);}
+}

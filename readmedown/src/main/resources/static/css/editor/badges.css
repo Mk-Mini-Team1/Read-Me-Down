@@ -9,7 +9,7 @@
 	display:none;
 }
 
-.modal_box {
+#badge_modal .modal_box {
 	position:relative;
 	width: 450px;
 	height: auto;
@@ -25,7 +25,7 @@
 	padding: 50px;
 }
 
-.closebox{
+#badge_modal .closebox{
 	height:25px;
 	position: absolute;
 	top:10px;
@@ -34,19 +34,19 @@
 }
 
 
-.modal_title {
+#badge_modal .modal_title {
 	color: var(--text, #EEE);
 	font: var(--heading24);
 }
 
-.modal_tab {
+#badge_modal .modal_tab {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border-bottom: 1px solid var(--neon4);
 }
 
-.tabbtn {
+#badge_modal .tabbtn {
 	width: 70px;
 	height: 30px;
 	font: var(--button14);
@@ -54,94 +54,123 @@
 	border-bottom: 3px solid transparent;
 }
 
-.tabbtn:hover {
+#badge_modal .tabbtn:hover {
 	color: var(--neon4);
 	border-bottom: 3px solid var(--neon4);
 }
 
-.tabbtn.active {
+#badge_modal .tabbtn.active {
 	border-bottom: 3px solid var(--neon4);
 }
 
-.modal_searchbox {
+#badge_modal .modal_searchbox {
 	width: 300px;
 	text-align: center;
+	border-bottom: 1px solid var(--neon-3, #00FEEF);
 }
 
-.modal_searchbox>p {
+#badge_modal .modal_searchbox>p {
 	text-align: center;
 	font: var(--button12);
 	margin-bottom: 5px;
 }
 
-.modal_searchbox>input {
-	width: 230px;
+#badge_modal .modal_searchbox>div{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap:5px;
+}
+
+#badge_modal .modal_searchbox>div>img {
+	width: 30px;
+	height: 30px;
+}
+
+#badge_modal .modal_searchbox>div>input {
+	width: 250px;
 	height: 30px;
 	border-radius: 1px;
-	border: 1px solid var(--neon-3, #00FEEF);
-	background: var(--text, #EEE);
 	text-align: center;
 	font: var(--button14);
 	line-height: 30px;
+	color: var(--text);
 }
 
-.modal_searchbox>button {
-	margin-left: 5px;
-	width: 55px;
-	height: 30px;
-	border-radius: 1px;
-	background: var(--neon-3, #00FEEF);
-	border: 1px solid var(--neon-3, #00FEEF);
-	font: var(--button14);
-	color: var(--main);
-}
-
-.modal_result {
+#badge_modal .modal_result {
 	width: 300px;
 	height: 150px;
-	overflow: scroll;
+	overflow-y: scroll;
+	background: var(--dark); /* 스크롤바 뒷 배경 색상 */
 }
 
-.modal_result>button {
+#badge_modal .modal_result::-webkit-scrollbar {
+    width: 5px;
+}
+
+#badge_modal .modal_result::-webkit-scrollbar-thumb {
+    background: var(--neon-3, #00FEEF); /* 스크롤바 막대 색상 */
+    border: 2px solid var(--neon-3, #00FEEF); /* 스크롤바 막대 테두리 설정  */
+    border-radius: 10px;
+}
+
+#badge_modal .modal_result::-webkit-scrollbar-track {
+	background: var(--dark); /* 스크롤바 뒷 배경 색상 */
+}
+
+#badge_modal .modal_result>button {
 	color: var(--text);
 	width: 100%;
 	height: 30px;
 	border-bottom: 1px solid var(--neon-3, #00FEEF);
 }
 
-.modal_result>button:nth-child(1) {
+#badge_modal .modal_result>button:nth-child(1) {
 	height: 35px;
 	border-top: 3px solid var(--neon-3, #00FEEF);
 }
 
-.modal_result>button:nth-last-child(1) {
+#badge_modal .modal_result>button:nth-last-child(1) {
 	border-bottom: 3px solid var(--neon-3, #00FEEF);
 }
 
-.modal_result_badges>p {
+#badge_modal .modal_result_badges>p {
 	text-align: center;
 	font: var(--button12);
 	margin-bottom: 5px;
 }
 
-.modal_result_badges>p:nth-child(1) {
+#badge_modal .modal_result_badges>p:nth-child(1) {
 	font: var(--button14);
 }
 
-.modal_result_badges>div {
+#badge_modal .modal_result_badges>div {
 	max-width: 350px;
 	max-height: 110px;
-	border-radius: 10px;
 	background: var(--dark, #161A20);
 	display: flex;
 	justify-content: center;
 	gap:5px;
 	flex-wrap:wrap;
 	padding:20px;
-	overflow: scroll;
+	overflow-y: scroll;
 }
 
-.modal_result_badges>div>button {
+#badge_modal #choosed_badges::-webkit-scrollbar {
+    width: 5px;
+}
+
+#badge_modal #choosed_badges::-webkit-scrollbar-thumb {
+    background: var(--neon-3, #00FEEF); /* 스크롤바 막대 색상 */
+    border: 2px solid var(--neon-3, #00FEEF); /* 스크롤바 막대 테두리 설정  */
+    border-radius: 10px;
+}
+
+#badge_modal #choosed_badges::-webkit-scrollbar-track {
+	background: var(--dark); /* 스크롤바 뒷 배경 색상 */
+}
+
+#badge_modal .modal_result_badges>div>button {
 	color: var(--main);
 	font: var(--button12);
 	line-height:12px;
@@ -151,14 +180,14 @@
 	border-radius: 20px;
 }
 
-.modal_btns{
+#badge_modal .modal_btns{
 	width: 300px;
 	display: flex;
 	justify-content: center;
 	gap:10px;
 }
 
-.modal_btns>button{
+#badge_modal .modal_btns>button{
 	width:145px;
 	height: 35px;
 	font: var(--button14);
@@ -168,7 +197,7 @@
 	border: 1px solid var(--neon-3, #00FEEF);
 }
 
-.modal_btns>button:hover{
+#badge_modal .modal_btns>button:hover{
 	color:var(--main);
 	background: var(--neon-3, #00FEEF);
 }

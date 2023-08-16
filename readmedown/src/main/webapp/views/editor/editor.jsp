@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="/css/style.css" />
 <link rel="stylesheet" href="/css/editor/editor.css" />
 <link rel="stylesheet" href="/css/editor/editorMenu.css" />
-<link rel="stylesheet" href="/css/editor/badges.css" />
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <!-- Toast UI Editor -->
 <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
@@ -44,8 +43,9 @@
 	</div>
 
 	<jsp:include page="badges.jsp" />
+	<jsp:include page="activityGraph.jsp" />
+	<jsp:include page="readmeStats.jsp" />
 
 	<script src="/js/editor/editor.js"></script>
-	<script src="/js/editor/badges.js"></script>
 </body>
 </html>
