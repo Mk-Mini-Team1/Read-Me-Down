@@ -1,0 +1,113 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 세로 중앙 정렬 */
+  align-items: center; /* 가로 중앙 정렬 */  
+}
+
+.profile-image {
+	width: 150px;
+	height: 150px;
+	border-radius: 80px;
+	background-color: var(--sub);
+	margin-bottom: 20px;
+	margin-top: 30px;
+	background-image: url('/images/mypage/profile-picture1.svg');
+    background-size: cover;	
+}
+
+
+.contentWrap .userInfo .user {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+}
+
+.contentWrap .userInfo .user .nick-name > p:first-of-type {
+  font: var(--heading34);
+  margin-bottom: 12px;
+  margin-left: 10px;
+}
+
+.user .nick-name > p:first-of-type span {
+  display: inline-block;
+  margin-left: 5px;
+  font: var(--heading24);
+}
+
+.contentWrap .userInfo .user .follow-num > p:first-of-type {
+  font: var(--heading18);
+  margin-bottom: 12px;
+  margin-left: 10px;
+}
+
+
+
+
+.contentWrap .userInfo .user {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-top: 12px;
+}
+
+.user img {
+  width: 150px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.categoryWrap {
+  display: flex;
+  justify-content: center; /* 가로 가운데 정렬 */
+  align-items: center; /* 세로 가운데 정렬 */
+  border-bottom: 7px solid var(--neon3);
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.category {
+	width: 80%;
+    min-width: 200px;   
+    position: relative;
+}
+
+.category p {    
+    display: flex;
+    font: var(--heading18);
+    justify-content: center;
+    align-items: center; 
+    margin-bottom: 3px;      
+}
+
+.infoWrap { 
+  display: flex; 
+  justify-content: center; 
+  width: 70%;
+  min-height: 700px;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 80px;
+  background-color: var(--main);
+  padding-top: 50px;
+ }
+ 
+ .follow_button button{
+ 	width: 100px;
+ 	height: 30px;
+ 	background-color: var(--neon3);
+ 	font: var(--button12);
+ 	border-radius: 5px;
+ 	padding-top: 3px;
+ 	transition: background-color 0.2s;
+ } 
+ 
+ .follow_button button:hover {
+ 	border: solid 2px var(--neon3);
+ 	color: #FC3131;
+ 	background-color: var(--sub);
+ 	font: var(--caption12);
+ }
+ 

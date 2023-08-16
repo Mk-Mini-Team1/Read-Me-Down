@@ -6,6 +6,16 @@
   align-items: center; /* 가로 중앙 정렬 */  
 }
 
+.profile-image {
+	width: 150px;
+	height: 150px;
+	border-radius: 80px;
+	background-color: var(--sub);
+	margin-bottom: 20px;
+	margin-top: 30px;
+	background-image: url('/images/profile-default.svg');
+    background-size: cover;	
+}
 
 .contentWrap .userInfo .user {
   display: flex;
@@ -36,10 +46,11 @@
   border-radius: 5px;
   background-color: var(--sub);
   margin-left: 5px;
+  transition: background-color 0.2s;
 }
 
 .user >button:hover{
-	color: var(--main);
+  color: var(--main);
   background-color: var(--neon3);
 }
 
@@ -100,3 +111,81 @@
         width: 50%;
         border-bottom: 7px solid var(--neon3);
     }
+      
+      
+      
+      
+.myTemplates {
+	padding-top : 10px;
+	display : flex;
+	justify-content: center;
+	width:100%;	
+}
+.grid { 
+	width:90%;	
+	margin : 0 auto;
+	/* border : 1px solid white;  */
+	padding-left: 20px;
+}
+.grid-sizer, .grid-item { width: 250px; }
+.grid-item {
+	margin-bottom:15px; 
+	border-radius: 20px; 
+	overflow:hidden;
+	
+	/* for 이미지호버 */
+	position:absolute;
+	cursor:pointer;
+}
+.grid-item img {
+	display: block; 
+	min-width:100%; 
+	max-width: 100%; 
+}
+
+/* for 이미지 호버 */
+.darkness {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#000000;
+  opacity:0;
+  transition:all .2s;
+}
+
+.btn-plus {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	opacity:0;
+	/* transform:scale(2); */
+	transition:all .2s;
+	text-align: right;
+  
+}
+.main_bookmark_btn {
+	width : 70px;
+	height : 45px;
+	border-radius: 2em; /* 타원형으로 만들기(%로 주면 그냥 동그라미됨) */
+	text-align: center;
+	margin-top : 20px;
+	margin-right : 20px;
+	background-color: var(--point);
+	cursor:pointer;
+	
+/* 	font-weight: bold; */
+
+}
+
+.grid-item:hover .darkness{
+  opacity:0.4;
+}
+
+.grid-item:hover .btn-plus {
+  opacity:1;
+  transform:scale(1);
+}}

@@ -29,8 +29,7 @@
 	  > a {
 	  		padding-right: 5px;
   			padding-left: 5px;
-  			font: var(--button12);
-  			margin-top: 3px; 
+  			font: var(--button12);  			
   			padding-bottom: 25px;
 			}
 }
