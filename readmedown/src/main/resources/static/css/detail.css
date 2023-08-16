@@ -1,45 +1,348 @@
-
-body, html {
-  margin: 0 auto;
-  padding: 0 auto;
-  min-width: 1100px;
-  
-
-}
-
 .split-container {
-	margin-top:66px;
-	margin-left:150px;
-gap:15px;
-  display: flex;
-  min-height: 1000px;
-  min-width: 800px;
-  width: 80%;
-  
-	
+	margin: 50px auto;
+	gap: 135px;
+	display: inline-flex;
 }
 
 .box {
-  flex: 1;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  border-radius: 20px;
+	margin: 0 auto;
+	padding-right: -100px;
+	flex: 1;
+	height: 100%;
+	display: flex;
+	box-sizing: border-box;
+	border-radius: 20px;
+	
 }
 
 .left-box {
-  background-color: #f0f0f0;
-  color:black;
-  border-right: 1px solid #ccc;
-  width: 450px;
+	margin-left: 70px;
+	margin-bottom: 100px;
+	background-color: #e0e0e0;
+	color: black;
+	border-right: 1px solid #eee;
+	height: 800px;
+	min-width: 570px;
+	align-items: center;
+	
+}
+.leftImg {
+	margin: 0 auto;
+	border-radius: 20px;
+	height: 798px;
+	min-width: 560px;
+}
+.right-box {
+	margin-bottom: 100px;
+	margin-left: -100px;
+	background-color: #eee;
+	color: black;
+	height: 800px;
+	min-width: 570px;
+	border-left: 1px solid #eee;
+	display: table;
 }
 
-.right-box {
-  background-color: #e0e0e0;
-  color:black;
-  width: 450px;
-  border-left: 1px solid #ccc;
+.detail_button {
+	display: flex; margin-left : 20px; margin-top : 30px;
+	gap: 10px;
+	width: 450px;
+	color: var(--main, #222831);
+	font-size: 14px;
+	font-weight: 600;
+	text-align: center;
+	margin-top: 30px;
+	margin-left: 20px;
 }
+
+.bookmark-icon {
+	margin-left: 478px;
+	margin-top: -60px;
+}
+
+
+
+.detail_title {
+	margin-top: 30px;
+	margin-left: 20px;
+	font-size: 24px;
+	font-weight: 700;
+}
+
+.user_nickline {
+	display: flex;
+	margin-top: 20px;
+	margin-left: 20px;
+	align-items: center;
+	font-size: 18px;
+	font-weight: 600;
+	
+}
+
+.user_nickname {
+	margin-left: 10px;
+	min-width: 150px;
+}
+
+.profileimg {
+	width: 30px;
+	height: 30px;
+}
+
+templateUse {
+	margin-top: 1px;
+}
+
+.shareImg {
+	margin-top: 4px;
+}
+
+
+.follow {
+	border-radius: 20px;
+	border: 1px solid var(--point, #00FEA3);
+	background: var(--text, #EEE);
+	margin-left: 260px;
+	color: var(--main, #222831);
+	text-align: center;
+	width: 70px;
+	height: 30px;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	transition: color 0.3s;
+}
+.follow:hover{
+	
+	  background-color: #00FEA3;
+}
+/* 초기 상태 */
+.detail_button .templateUse ,
+.detail_button .templateShare  {
+   transition:  color 0.3s; /* 호버 효과에 대한 전환 효과 설정 */
+}
+
+/* 호버 상태 */
+.detail_button .templateUse a:hover,
+.detail_button .templateShare a:hover {
+ 
+  color: #00FEA3; /* 호버 시 색상 변경 */
+
+}
+
+
+
+
+.detail_contents{
+	margin-top: 30px;
+	margin-left: 20px;	
+	height: 100px;
+	width: 397px;
+	font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+padding: 5px;
+}
+.linkImg{
+display: inline-flex;
+margin-left: 22px;
+margin-top:20px;
+margin-bottom: -25px; 
+width: 20px;
+height: 20px;
+flex-shrink: 0;	
+}
+.detailLink{
+    width:300px;
+	margin-left: 49px;
+	font-size: 13px;
+
+text-decoration: underline;
+
+   text-underline-offset: 5px;
+    text-decoration-thickness: 1px;
+  
+}
+
+.detailcommentstart {
+	margin-top: 20px;
+	margin-left: 20px;
+	width: 50px;
+	height: 25px;
+	flex-direction: column;
+	justify-content: center;
+	flex-shrink: 0;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+}
+.comment {
+	overflow: scroll;
+	overflow-x: hidden;
+	height: 255px;
+}
+.detailCommentLine {
+	display: flex;
+	border: 1px solid #D9D9D9;
+	border-radius: 15px;
+	width: 517px;
+	height: 80px;
+	margin-left: 20px;
+	margin-top: 20px;
+	padding: 10px;
+	 
+}
+
+.commentProfileImg {
+	width: 30px;
+	height: 30px;
+}
+
+.commentUser_nickname {
+	margin-left: 10px;
+	margin-top: 5px;
+}
+
+.commentCreatedat {
+	color: #C0C0C0;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: normal;
+	margin-left: 10px;
+	margin-top: 7px;
+}
+.pncline{
+	display: flex;
+	min-width: 300px;
+}
+.replyB {
+	margin-left: 150px;
+	margin-top: -30px; 
+	font-size : 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	font-size: 14px;
+	width: 50px;
+	transition: color 0.3s;
+	
+}
+.replyB:hover{
+	color: #00FEA3;
+}
+
+.detailComment {
+	margin-left: 73px;
+	margin-top: -30px;
+	font-size: 14px;
+
+  justify-items: center; /* 가로 정렬 방식 설정 (center, start, end 등) */
+  align-items: center; 
+}
+
+.reply_textarea {
+	display: flex;
+	border: 1px solid #D9D9D9;
+	border-radius: 15px;
+	width: 481px;
+	height: 80px;
+	margin-left: 55px;
+	margin-top: 20px;
+	padding: 15px;
+	white-space: normal;
+	box-sizing: border-box;
+	line-height: 1;
+	font-size: 16px;
+	background-color: #eee;
+}
+.replyCW{
+	margin-left: 428px;
+	margin-top: 10px;
+	transition: color 0.3s;
+}
+
+
+.replyCButton{
+	border-radius: 20px;
+border: 1px solid #D9D9D9;
+background: #D9D9D9;
+width: 50px;
+height: 25px;
+flex-shrink: 0;
+font-size: 12px;
+font-style: normal;
+font-weight: 700;
+color: var(--main, #222831);
+justify-content: center;
+transition: color 0.3s;
+}
+.replyWButton{
+	border-radius: 20px;
+border: 1px solid #D9D9D9;
+background: #D9D9D9;
+width: 50px;
+height: 25px;
+flex-shrink: 0;
+font-size: 12px;
+font-style: normal;
+font-weight: 700;
+color: var(--main, #222831);
+justify-content: center;
+transition: color 0.3s;
+}
+
+.replyCButton:hover,.replyWButton:hover{
+	background-color: #00FEA3;
+}
+
+.hr {
+	margin-top: 10px;
+	margin-left: 18px;
+	border-bottom: 1px solid black;
+	width: 530px;
+}
+.commentWrite{
+	
+	display: flex;
+	margin-left: -23px;
+	margin-top:20px;
+	align-items: center;
+	justify-content: center;
+	
+}
+
+
+.commentWProfileImg{
+	width: 30px;
+	height: 30px;
+
+
+}
+.comment_textarea{
+	padding:13px;
+	justify-content:center;
+border-radius: 20px;
+border: 1px solid #eee;
+width: 480px;
+height: 48px;
+background: #D9D9D9;
+margin-left: 10px;
+}
+.commentWButton {
+	margin-left: -40px;
+	color: var(--main, #222831);
+text-align: center;
+transition: color 0.3s;
+font-size: 12px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.commentWButton:hover 
+	{color: #00FEA3;}
+	
 
