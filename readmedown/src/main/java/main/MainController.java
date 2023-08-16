@@ -15,10 +15,6 @@ public class MainController {
 	public String test() {
 		return "masonryTest";
 	}
+
 	
-	@GetMapping("/writingForm")
-	public String writingForm() {
-		return "writingForm";
-	}
-	
-}
+}//class

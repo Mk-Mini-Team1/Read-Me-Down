@@ -2,9 +2,10 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<!-- 
+
 	<typeAliases>
-		<typeAlias type="user.UserDTO" alias="userdto" />
+		<typeAlias type="board.BoardDTO" alias="boarddto" />
+		<typeAlias type="board.BookmarkDTO" alias="bookmarkdto" />
 	</typeAliases>
- -->
+	
 </configuration>

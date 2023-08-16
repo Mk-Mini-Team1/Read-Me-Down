@@ -2,6 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="main.MainDAO">
+
+<!-- 전체 글목록 가져오기 -->
+<select id="mainBoardList" resultType="boarddto">
+	select * from board where delete_date is null;
+</select>
+  	
+<!-- Paging -->
+<!-- 전체 글 갯수 -->
+<select id="getBoardCnt" resultType="int" parameterType="Pagination.SearchDTO">
+	select count(*) 
+	from board 
+	where delete_date is null;
+</select> 
+
+<!-- 전체 글 목록 가져오기 -->
+<select id="getBoardList" resultType="boarddto" parameterType="Pagination.SearchDTO">
+	select * 
+	from board 
+	where delete_date is null;
+	order by write_time desc, board_id desc
+	limit #{pagination.limitStart}, #{recordSize}
+</select>
   	
 </mapper>
 

@@ -32,11 +32,11 @@ $(document).ready(function() {
 	
 	//북마크 추가(프론트)
 	$(".main_bookmark_btn").on('click', function(){
-		$(this).parents().siblings(".bookmarked-plus").show();
+		$(this).parents().siblings(".bookmarked-plus").show();//북마크추가 css효과
 	});
 	//북마크 해제(프론트)
 	$(".main_bookmarked_btn").on('click', function(){
-		$(this).parents(".bookmarked-plus").hide();
+		$(this).parents(".bookmarked-plus").hide();//북마크제거 css효과
 	});
 	
 	//검색 누르면 박스 오픈
@@ -82,11 +82,11 @@ $(document).ready(function() {
 				<div class="search_words_box">
 					<div class="one_searchword">
 						<div class="search_keyword">심플</div>
-						<div class="remove_keyword">X</div>
+						<!-- <div class="remove_keyword">X</div> -->
 					</div>
 					<div class="one_searchword">
 						<div class="search_keyword">화려</div>
-						<div class="remove_keyword">X</div>
+						<!-- <div class="remove_keyword">X</div> -->
 					</div>
 				</div>				
 			</div>
@@ -121,7 +121,7 @@ $(document).ready(function() {
 		       </c:forEach>
 			<c:forEach begin="1" end="19" varStatus="vs">
 		           <div class="grid-item"> 
-		               <img src='/images/main/readme_ex${vs.count}.png' alt="template">
+		               <img src='/images/main/readme_ex${vs.count}.png' alt="template" onerror="this.src='/images/main/no_img.svg'">
 		               <div class="darkness"></div>
 		               <div class="btn-plus">
 			               <div class="main_bookmark_box"><img class="main_bookmark_btn" src='/images/main/bookmark_before.svg'></div>

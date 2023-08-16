@@ -17,6 +17,9 @@
 <title>Read Me▼</title>
 <script>
 $(document).ready(function() {
+	//글 공개여부값 가져와 표시하기
+	 isSecret();
+	
 	// Textarea 자동 높이 조절
 	autosize($('textarea'));
 	
@@ -71,7 +74,7 @@ $(document).ready(function() {
  		if($.trim($("#board_img").val()) !== ""){
 	  		if($.trim($("#board_title").val()) !== ""){
  				if($('input[name="secret"]').is(':checked') == true) {
- 					$("#second_insert_form").submit();	
+ 					$("#second_update_form").submit();	
  				}
  				else {
 	 				alert("공개 여부를 선택해주세요."); 						 					
@@ -98,15 +101,15 @@ $(document).ready(function() {
 <div id="main_contents">
 <div id="whole_wrapper">
 
-<form action="secondinsert" id="second_insert_form" method="post">
+<form action="secondupdate" id="second_update_form" method="post">
 	<div id="writingForm_wrap_box">
 		<div id="writingForm_top_btns">
 			<div id="back_to_editor"><img id="back_to_editor_btn" src="/images/back_icon.png" /></div>
-			<div id="submit_board"><input type=button id="submit_board_btn" value="작성완료"/></div>
+			<div id="submit_board"><input type=button id="submit_board_btn" value="수정완료"/></div>
 		</div>
 		<div id="writingForm">
 			<div id="wf_left">
-				<div id="upload_img_box">
+				<div id="upload_img_box" style="display : none;">
 					<label for="board_img_upload">
 						<div id="upload_img_border_box">
 								<div id="img_plus_box"><img id="img_plus_btn" src="/images/img_plus_btn.png"></div>
@@ -116,24 +119,24 @@ $(document).ready(function() {
 					</label>
 					<input type="file" id="board_img_upload">
 				</div>
-				<div id="after_upload">					
- 					<div id="preview_wrapper">
+				<div id="after_upload" style="display : block;">					
+ 					<div id="preview_wrapper" >
 						<div id="delete_img_box"><div id="delete_img_icon" onclick='cancleImg(this)'>X</div></div>
 						<div id="img_preview_box">
-							<img id="img_preview" src="" onerror="this.src='/images/main/no_img.svg'"/>
-							<input type="hidden" id="board_img" name="board_img" value="" />
+							<img id="img_preview" src="${dto.board_img }" onerror="this.src='/images/main/no_img.svg'"/>
+							<input type="hidden" id="board_img" name="board_img" value="${dto.board_img }" />
 						</div>
 					</div>
 				</div>
 			</div>
 			<div id="wf_right">
-					<div id="board_title_box"><input type=text id="board_title" name="title" placeholder="제목" /></div>
+					<div id="board_title_box"><input type=text id="board_title" name="title" placeholder="제목" value="${dto.title }" /></div>
 					<div id="board_contents_box">
-					    <textarea rows=1, id="board_contents" name="contents" placeholder="내용을 입력하세요."></textarea>
+					    <textarea rows=1, id="board_contents" name="contents" placeholder="내용을 입력하세요.">${dto.contents }</textarea>
 					</div>
-					<div id="board_tag_box"><input type=text id="board_tag" name="board_tag" placeholder="#을 이용하여 태그를 추가해보세요." /></div>
-					<div id="board_link_box"><input type=text id="board_link" name="board_link" placeholder="링크를 추가하세요." /></div>
-					<input type=hidden id="board_id" name="board_id" value="df2bbf3b-3c01-11ee-8361-d8f2cabd8fe3"/>
+					<div id="board_tag_box"><input type=text id="board_tag" name="board_tag" placeholder="#을 이용하여 태그를 추가해보세요." value="${dto.board_tag }"/></div>
+					<div id="board_link_box"><input type=text id="board_link" name="board_link" placeholder="링크를 추가하세요." value="${dto.board_link }"/></div>
+					<input type=hidden id="board_id" name="board_id" value="${dto.board_id }"/>
 					<div id="is_secret_box">
 						<div id="for_gap_box">
 							<input type="checkbox" id="no_secret" name="secret" value="no"><label for="no_secret"></label>템플릿 공개하기
@@ -146,8 +149,7 @@ $(document).ready(function() {
 </form>	
 
 </div><!-- end whole_wrapper -->	
-</div>
-</div>
+</div></div>
 
 </body>
 <script>
@@ -163,5 +165,17 @@ function cancleImg(e){
 	$(e).parents().parents("#after_upload").hide();
 	$(e).parents().parents().prev("#upload_img_box").show();
 };  
+
+//체크박스 표시하기
+function isSecret(){
+	const secret = "${dto.secret}";
+	if("${dto.secret}" == "yes"){
+		$('#yes_secret').prop('checked',true);
+	}
+	else {
+		$('#no_secret').prop('checked',true);		
+	}
+	
+};
 </script>
 </html>
