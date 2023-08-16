@@ -57,3 +57,46 @@ function regName() {
 		$("#nameRequired").removeClass("required");
 	}
 };
+
+
+//editProfile.jsp
+const pwRegEdit = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,20}$/;
+const nameRegEdit = /^[가-힣a-zA-Z0-9]{2,10}$/;
+
+function regPwEdit() {
+    let pw = $('#newPassword').val();
+
+    if (!pwRegEdit.test(pw)) {
+        $("#pwRequired").text("비밀번호는 영문과 숫자를 포함한 6~20자리 입니다.");
+        $("#pwRequired").addClass("required");
+    } else {
+        $('#pwRequired').text('');
+        $("#pwRequired").removeClass("required");
+    }
+}
+
+function checkPwEdit() {
+    let pw = $('#newPassword').val();
+    let checkpw = $('#checkNewPassword').val()
+
+    if (pw !== checkpw) {
+        $("#checkPwRequired").text("비밀번호가 일치하지 않습니다.");
+        $("#checkPwRequired").addClass("required");
+    } else {
+        $('#checkPwRequired').text('');
+        $("#checkPwRequired").removeClass("required");
+    }
+}
+
+function regNameEdit() {
+    let name = $('#edit_name').val();
+
+    if (!nameRegEdit.test(name)) {
+        $("#nameRequired").text("닉네임은 2~10글자 이내로 한글, 영어, 숫자를 포함 할 수 있습니다.");
+        $("#nameRequired").addClass("required");
+    } else {
+        $('#nameRequired').text('');
+        $("#nameRequired").removeClass("required");
+    }
+}
+

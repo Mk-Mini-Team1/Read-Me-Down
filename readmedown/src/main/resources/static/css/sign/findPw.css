@@ -1,4 +1,6 @@
-.container {
+
+
+.modal_container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,12 +12,12 @@
   border-radius: 5px;
 }
 
-.container > a img {
+.modal_container > a img {
   width: 120px;
   margin-top: 10px;
 }
 
-.container > p {
+.modal_container > p {
   color: var(--text);
   font: var(--heading24);
   margin-top: 5px;

@@ -6,17 +6,14 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" href="/images/logo-pencil.png" />
-<link rel="apple-touch-icon" href="/images/logo-pencil.png" />
 <link rel="stylesheet" href="/css/style.css" />
 <link rel="stylesheet" href="/css/sign/findPw.css" />
 <script src="/js/jquery-3.6.4.min.js"></script>
-<title>Read Me▼</title>
 </head>
 <body>
-	<main class="container">
+
+<div id="findPw_modal" class="findPw_modal">
+	<main class="modal_container">
 		<div class="close">
 			<a id="closeModalButton"><img src="images/sign/Close.svg"
 				alt="창닫기" /></a>
@@ -36,5 +33,6 @@
 			<button class="submit">비밀번호 재설정</button>
 		</form>
 	</main>
+</div>
 </body>
 </html>

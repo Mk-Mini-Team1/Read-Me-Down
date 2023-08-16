@@ -11,12 +11,30 @@
 <link rel="icon" href="/images/logo-pencil.png" />
 <link rel="apple-touch-icon" href="/images/logo-pencil.png" />
 <link rel="stylesheet" href="/css/header.css" />
+<link rel="stylesheet" href="/css/style.css" />
 <script src="/js/jquery-3.6.4.min.js"></script>
 <title>Read Me▼</title>
 <script>
 	$(document).ready(function() {
 	})
 </script>
+
+<style>
+    /* 스크린 전체를 덮는 뒷 배경 */
+    .signIn_modal,.signUp_modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+</style>
 </head>
 <body>
 	<header id="header">
@@ -43,8 +61,8 @@
 		<div id="header_down">
 			<c:choose>
 				<c:when test="${user_id eq null}">
-					<button id="loginbtn">LogIn</button>
-					<button id="SignUpbtn">Sign Up</button>
+					<button id="loginbtn" onclick="openSignin()">LogIn</button>
+					<button id="SignUpbtn" onclick="openSignup()">Sign Up</button>
 				</c:when>
 				<c:otherwise>
 					<img id="logo" src="/images/default_profile.svg">
@@ -52,6 +70,16 @@
 				</c:otherwise>
 			</c:choose>
 		</div>
-	</header>
+</header>
+
+<div id="signIn_modal" class="signIn_modal" style="display: none;">
+    <jsp:include page="sign/signIn.jsp" />
+</div>
+
+<div id="signUp_modal" class="signUp_modal" style="display: none;">
+    <jsp:include page="sign/signUp.jsp" />
+</div>
+
+<script src="/js/header.js"></script>
 </body>
 </html>

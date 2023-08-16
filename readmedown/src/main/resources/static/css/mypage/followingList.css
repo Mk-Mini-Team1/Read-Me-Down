@@ -32,7 +32,7 @@
  	background-color: var(--neon3);
  	font: var(--button12);
  	border-radius: 5px;
- 	padding-top: 3px;
+ 	padding-top: 1px;
  	transition: background-color 0.2s;
  	margin-right: 50px; 
  } 
