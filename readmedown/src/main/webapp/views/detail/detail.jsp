@@ -12,16 +12,33 @@
 <link rel="icon" href="/images/logo-pencil.png" />
 <link rel="apple-touch-icon" href="/images/logo-pencil.png" />
 <link rel="stylesheet" href="/css/style.css" />
-<link rel="stylesheet" href="/css/detail.css" />
+<link rel="stylesheet" href="/css/detail/detail.css" />
+<link rel="stylesheet" href="/css/detail/modal.css" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 <script src="/js/jquery-3.6.4.min.js"></script>
 <title>Read Me▼</title>
 <script>
-	$(document).ready(function() {
-	}); //ready
-	</script>
+$(document).ready(function() {
+    var user_id = "${dto.user_id}";
+
+    if (user_id === 'user123') {
+        console.log('Showing #replyButton');
+        $(".templateUse").hide();
+        $(".templateShare").hide();
+        $(".updateBtn").show();
+        $(".deleteBtn").show();
+    } else {
+        console.log('Hiding #replyButton');
+        $(".templateUse").show();
+        $(".templateShare").show();
+        $(".updateBtn").hide();
+        $(".deleteBtn").hide();
+    }
+});
+</script>
+
 
 </head>
 <jsp:include page="../header.jsp" />
@@ -29,10 +46,10 @@
 
 	<div id="main_box">
 		<div id="main_contents">
-
+<div class="all_container">
 			<div class="split-container">
 				<div class="box left-box">
-<img class="leftImg" src="/images/main/img_ex2.jpg">
+<img class="leftImg" src="${dto.board_img }">
 							
 
 					<!-- 왼쪽 박스 내용 -->
@@ -40,7 +57,7 @@
 				
 				<div class="box right-box">
 					<div class="detail_button">
-						<div class="templateUse">
+						 <div class="templateUse">
 							<span class="material-symbols-outlined"> edit_square </span> <a
 								style="position: relative; top: -5px;" href="#">템플릿사용하기</a>
 						</div>
@@ -48,30 +65,40 @@
 							<img class="shareImg" src="/images/detail/Mask_group.svg">
 							<a style="position: relative; top: -5px;" href="#">공유하기</a>
 
+						</div> 
+					<div class="updateBtn">
+							<img class="updateImg"  src="/images/detail/t.svg">
+							<a class="updateA" style="position: relative; top: -5px;" href="#">
+							수정</a>
+						</div>
+						<div class="deleteBtn">
+							<img class="deleteImg" src="/images/detail/x.svg">
+							<a class="deleteA"  onclick="clickModal(event)" style="position: relative; top: -5px;" href="#">
+							삭제</a>
+
 						</div>
 
 					</div>
 					<div class="bookmark-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" width="50" height="69"
-							viewBox="0 0 40 59" fill="none">
-    <path d="M0 0.999999C0 0.447714 0.447715 0 1 0H39C39.5523 0 40 0.447715 40 1V57.5666C40 58.4602 38.9173 58.9051 38.289 58.2697L20.711 40.4943C20.3196 40.0985 19.6804 40.0985 19.289 40.4943L1.71105 58.2697C1.08272 58.9051 0 58.4602 0 57.5666V0.999999Z"
-	fill="#00FEA3" />
-  </svg>
+						<button onclick="toggleBookmark(event)"><img class="bookmarkImg" src="/images/main/bookmark_before.svg">
+							</button>
 					</div>
 
 
-					<div class="detail_title">Title</div>
-
+					<div class="detail_title">${dto.title}</div>
+<div id="modal" ></div>
 					<div class="user_nickline">
 						<img class="profileimg" src="/images/default_profile.svg">
 						<div class="user_nickname">user_nickname</div>
-						<button class="follow">팔로우</button>
+						<button onclick="clickfollow(event)" class="follow">팔로우</button>
 					</div>
 					
-					<img class="linkImg" src="/images/detail/image 147.png">
 							
-					<div class="detailLink"><a href="#"> http://github/adfdfadfadf</a></div>
-					<div class="detail_contents">내용이들어갑니다</div> 
+					<div class="detailLink">
+					<img class="linkImg" src="/images/detail/image 147.png">
+					<a href="#"> ${dto.board_link}</a>
+					</div>
+					<div class="detail_contents">${dto.contents}</div> 
 				
 				
 				
@@ -116,7 +143,9 @@
 			
 				
 				<div class="replyCW">
-<button class="replyCButton" style=" border: 2px solid var(--light-stroke);">취소</button>
+				
+
+<button class="replyCButton" style=" border: 2px solid var(--light-stroke);" >취소</button>
 <button class="replyWButton" style=" border: 2px solid var(--light-stroke);">작성</button>
 				</div>
 				</div>
@@ -157,12 +186,61 @@
 				</div>
 
 
-
+</div>
 
 			</div>
 		</div>
 	</div>
 
+ <script src="/js/detail/modal.js"></script>
+	<script>
+    function clickfollow(event) {
+        const button = event.currentTarget;
 
+        if (button.classList.contains("following")) {
+            // 이미 팔로우 중인 상태인 경우, 원래 상태로 복원
+            button.textContent = "팔로우";
+            button.classList.remove("following");
+            button.classList.remove("hovered");
+        } else {
+            // 팔로우하지 않은 상태인 경우, 팔로잉 상태로 변경
+            button.classList.add("following");
+            button.classList.add("hovered");
+            button.textContent = "∨팔로잉";
+        }
+    }
+</script>
+
+ <script>
+ function toggleBookmark(event) {
+     const bookmarkImage = event.currentTarget.querySelector(".bookmarkImg");
+     if (bookmarkImage.src.includes("bookmark_before.svg")) {
+         addBookmark();
+     } else {
+         deleteBookmark();
+     }
+ }
+
+	function addBookmark() {
+	  // 북마크 추가 동작 수행
+	  // ...
+
+	  // 이미지 변경
+	  const bookmarkImage = document.querySelector(".bookmarkImg");
+	  bookmarkImage.src = "/images/main/bookmark_after.svg";
+	}
+
+	function deleteBookmark() {
+	  // 북마크 추가 동작 수행
+	  // ...
+
+	  // 이미지 변경
+	  const bookmarkImage = document.querySelector(".bookmarkImg");
+	  bookmarkImage.src = "/images/main/bookmark_before.svg";
+	}
+
+ 
+ 
+ </script>
 </body>
 </html>
