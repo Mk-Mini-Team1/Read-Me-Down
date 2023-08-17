@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -14,14 +13,9 @@
 <link rel="stylesheet" href="/css/style.css" />
 <script src="/js/jquery-3.6.4.min.js"></script>
 <title>Read Me▼</title>
-<script>
-	$(document).ready(function() {
-	})
-</script>
-
 <style>
     /* 스크린 전체를 덮는 뒷 배경 */
-    .signIn_modal,.signUp_modal {
+    .signIn_modal, .signUp_modal {
         position: fixed;
         top: 0;
         left: 0;
@@ -33,43 +27,47 @@
         align-items: center;
         z-index: 9999;
     }
-
 </style>
 </head>
 <body>
-	<header id="header">
+<header id="header">
 		<div id='header_up'>
 			<div id="header_logo">
 				<img id="logo" src="/images/ReadMeD_Mint.svg">
 			</div>
-			<div class="header_item">
-				<img id="logo" src="/images/header/home-icon.svg">
-				<span>Main</span>
-			</div>
-			<div class="header_item">
-				<img id="logo" src="/images/header/edit-icon.svg">
-				<span>Edit .md</span>
-			</div>
-			<c:if test="${user_id ne null}">
+			<a href="/">
 				<div class="header_item">
-					<img id="logo" src="/images/header/profile-icon.svg">
-					<span>MyPage</span>
+					<img id="logo" src="/images/header/home-icon.svg"> 
+					<span>Main</span>
 				</div>
+			</a> 
+			<a href="/editor">
+				<div class="header_item">
+					<img id="logo" src="/images/header/edit-icon.svg"> 
+					<span>Edit.md</span>
+				</div>
+			</a>
+			<c:if test="${user_id ne null}">
+				<a href="/mypage">
+					<div class="header_item">
+						<img id="logo" src="/images/header/profile-icon.svg"> 
+						<span>MyPage</span>
+					</div>
+				</a>
 			</c:if>
 		</div>
-		
 		<div id="header_down">
-			<c:choose>
-				<c:when test="${user_id eq null}">
-					<button id="loginbtn" onclick="openSignin()">LogIn</button>
-					<button id="SignUpbtn" onclick="openSignup()">Sign Up</button>
-				</c:when>
-				<c:otherwise>
-					<img id="logo" src="/images/default_profile.svg">
-					<button id="logoutbtn">LogOut</button>
-				</c:otherwise>
-			</c:choose>
-		</div>
+    <c:choose>
+        <c:when test="${user_id eq null}">
+            <button id="loginbtn">LogIn</button>
+            <button id="SignUpbtn" class="openModalButton" data-modal="signUp_modal">Sign-in</button>
+        </c:when>
+        <c:otherwise>
+            <img id="logo" src="/images/default_profile.svg">
+            <button id="logoutbtn">LogOut</button>
+        </c:otherwise>
+    </c:choose>
+</div>
 </header>
 
 <div id="signIn_modal" class="signIn_modal" style="display: none;">
@@ -80,6 +78,18 @@
     <jsp:include page="sign/signUp.jsp" />
 </div>
 
+<script>
+    // 로그아웃 버튼 클릭 이벤트 처리
+    $(document).ready(function() {
+        $("#logoutbtn").click(function() {
+            // 로그아웃 요청
+            $.post("/logout", function(data) {
+                // 페이지 리로드
+                window.location.reload();
+            });
+        });
+    });
+</script>
 <script src="/js/header.js"></script>
 </body>
 </html>

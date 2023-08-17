@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias type="board.BoardDTO" alias="boarddto" />
 		<typeAlias type="board.BookmarkDTO" alias="bookmarkdto" />
+		<typeAlias type="user.UserDTO" alias="userdto" />
 	</typeAliases>
 	
 </configuration>

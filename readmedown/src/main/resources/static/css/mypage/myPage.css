@@ -1,4 +1,4 @@
-.container {
+.mypage_container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -6,7 +6,7 @@
   align-items: center; /* 가로 중앙 정렬 */  
 }
 
-.profile-image {
+.mypage-profile-image {
 	width: 150px;
 	height: 150px;
 	border-radius: 80px;
@@ -45,7 +45,6 @@
   border: solid 1px var(--neon3);
   border-radius: 5px;
   background-color: var(--sub);
-  margin-left: 5px;
   transition: background-color 0.2s;
 }
 

@@ -15,7 +15,7 @@
 <div id="findPw_modal" class="findPw_modal">
 	<main class="modal_container">
 		<div class="close">
-			<a id="closeModalButton"><img src="images/sign/Close.svg"
+			<a id="closeFindPwButton"><img src="images/sign/Close.svg"
 				alt="창닫기" /></a>
 		</div>
 		<a href="/"> <img src="images/ReadMeD_Mint.svg" alt="로고아이콘" />
@@ -26,7 +26,7 @@
 			<div class="email">
 				<p>E-mail</p>
 				<div class="checkEmail">
-					<input type="email" id="email" name="email" oninput="regEmail()"
+					<input type="email" id="findPw_email" name="findPw_email" oninput="regEmail()"
 						placeholder="이메일 입력" />
 				</div>
 			</div>
