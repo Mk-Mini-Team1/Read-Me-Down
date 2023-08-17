@@ -10,14 +10,14 @@
   	
 <!-- Paging -->
 <!-- 전체 글 갯수 -->
-<select id="getBoardCnt" resultType="int" parameterType="Pagination.SearchDTO">
+<select id="getBoardCnt" resultType="int" parameterType="pagination.SearchDTO">
 	select count(*) 
 	from board 
 	where delete_date is null;
 </select> 
 
 <!-- 전체 글 목록 가져오기 -->
-<select id="getBoardList" resultType="boarddto" parameterType="Pagination.SearchDTO">
+<select id="getBoardList" resultType="boarddto" parameterType="pagination.SearchDTO">
 	select * 
 	from board 
 	where delete_date is null;
