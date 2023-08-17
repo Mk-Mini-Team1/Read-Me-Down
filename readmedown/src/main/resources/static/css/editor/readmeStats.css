@@ -12,7 +12,7 @@
 #readme_stats_modal .modal_box {
 	position: relative;
 	width: 500px;
-	height: 800px;
+	height: 760px;
 	flex-shrink: 0;
 	border-radius: 5px;
 	border: 2px solid var(--text, #EEE);
@@ -131,10 +131,15 @@
 }
 
 /* --------------- 옵션선택 입력박스 ----------------- */
+#readme_stats_modal #additional_option_btn{
+	cursor: pointer;
+	display:block;
+	color:var(--neon2);
+	margin-bottom: 20px;
+}
+
 #readme_stats_modal #optionBoxWrap{
-	display: flex;
-	flex-direction: column;
-	gap: 5px;
+	display:none;
 }
 
 #readme_stats_modal .optionbox {
@@ -234,7 +239,7 @@
 
 #readme_stats_modal .modal_searchbox>p {
 	text-align: center;
-	font: var(--button12);
+	font: var(--button14);
 }
 
 #readme_stats_modal .modal_searchbox>div{

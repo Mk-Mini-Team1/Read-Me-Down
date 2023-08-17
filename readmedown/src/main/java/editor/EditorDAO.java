@@ -10,5 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface EditorDAO {
 	List<BadgeDTO> getBadges(String keyword);
 	List<StatsThemeDTO> getStatsThemes(String keyword);
+	
+	boolean isBoardIdExist(String new_id);
 
 }

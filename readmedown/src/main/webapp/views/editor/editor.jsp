@@ -41,10 +41,13 @@
 			<div id="editor"></div>
 		</div>
 	</div>
-
+	
+	<input type="hidden" id="user_id" value="${user_id}">
+	<jsp:include page="modal.jsp" />
 	<jsp:include page="badges.jsp" />
 	<jsp:include page="activityGraph.jsp" />
 	<jsp:include page="readmeStats.jsp" />
+	<jsp:include page="topLangs.jsp" />
 
 	<script src="/js/editor/editor.js"></script>
 </body>

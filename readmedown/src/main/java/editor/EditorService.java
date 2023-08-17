@@ -17,5 +17,9 @@ public class EditorService {
 	List<StatsThemeDTO> getStatsThemes(String keyword){
 		return dao.getStatsThemes(keyword);
 	}
+	
+	boolean isBoardIdExist(String new_id) {
+		return dao.isBoardIdExist(new_id);
+	}
 
 }

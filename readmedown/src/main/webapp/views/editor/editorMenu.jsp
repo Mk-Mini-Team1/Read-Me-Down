@@ -41,7 +41,7 @@
 					<button onclick="openReadmeStats()">Readme Stats</button>
 					<button>Streak Stats</button>
 					<button>Summary Card</button>
-					<button>Top Langs</button>
+					<button onclick="openTopLangs()">Top Langs</button>
 					<button>Trophy</button>
 				</div>
 			</div>
@@ -49,7 +49,7 @@
 		<div id="menubar_btns">
 			<button id="themebtn"></button>
 			<button id="copybtn">Copy Code</button>
-			<button id="savebtn">Save</button>
+			<button id="savecodebtn">Save</button>
 		</div>
 	</div>
 	<script>

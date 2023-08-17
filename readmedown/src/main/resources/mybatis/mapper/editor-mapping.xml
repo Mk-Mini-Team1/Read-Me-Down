@@ -19,6 +19,12 @@
   		</if>
   	</select>
   	
+  	<select id="isBoardIdExist" parameterType="String" resultType="boolean">
+  		SELECT count(*)
+  		FROM board
+  		WHERE board_id = #{keyword};
+  	</select>
+  	
 </mapper>
 
 
