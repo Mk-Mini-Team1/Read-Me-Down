@@ -22,10 +22,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import jakarta.servlet.http.HttpSession;
+import main.MainService;
+
 @Controller
 public class BoardController {
 	@Autowired
 	BoardService service;
+	
+	@Autowired
+	MainService service2;
 	
 	@GetMapping("/writingForm")
 	public String writingForm() {
@@ -167,5 +173,40 @@ public class BoardController {
 		return mv;
 	}
 	
+	//북마크 추가
+	@RequestMapping(value="/addBookmark", produces = {"application/json;charset=utf-8"})
+	public @ResponseBody int addBookmark (String board_id, HttpSession session) {
+		String userId = (String)session.getAttribute("user_id");
+		BookmarkDTO dto = new BookmarkDTO();
+		dto.setBoard_id(board_id);
+		dto.setUser_id(userId);
+		int bookmarkExist = service2.isBookmarked(dto);
+		int result;
+		if(bookmarkExist == 0) {
+			result = service.addBookmark(dto);
+		}
+		else {
+			result = -1;
+		}		
+		return result;
+	}
+	
+	//북마크 삭제
+	@RequestMapping(value="/deleteBookmark", produces = {"application/json;charset=utf-8"})
+	public @ResponseBody int deleteBookmark (String board_id, HttpSession session) {
+		String userId = (String)session.getAttribute("user_id");
+		BookmarkDTO dto = new BookmarkDTO();
+		dto.setBoard_id(board_id);
+		dto.setUser_id(userId);
+		int bookmarkExist = service2.isBookmarked(dto);
+		int result;
+		if(bookmarkExist > 0) {
+			result = service.deleteBookmark(dto);
+		}
+		else {
+			result = -1;
+		}		
+		return result;
+	}
 	
 }//class
