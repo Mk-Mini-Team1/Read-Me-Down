@@ -104,6 +104,11 @@ $("body").on('click','.modal_cancelbtn',function(){
 	$(this).parents(".modal").css("display","none");
 });
 
+//모달 내 테이블 tr누를시 선택(공통)
+$(".modal table tbody").on("click",'tr',function(){
+	$(this).find("input[type='radio']").prop("checked",true);
+});
+
 //모달함수선언
 function openAlertModal(modal_msg){
 	$("#alert_modal").css("display","flex");
@@ -219,4 +224,27 @@ function openTopLangs() {
 			console.log(error)
 		}
 	});//ajax end
+}
+
+function openBoj_h() {
+	$("#boj_h_modal").css("display", "flex");
+	//모달초기화
+	$("#boj_h_modal input[type='text']").val('');
+}
+function openBoj_m() {
+	$("#boj_m_modal").css("display", "flex");
+	//모달초기화
+	$("#boj_m_modal input[type='text']").val('');
+	$("#boj_m_modal input[type='radio']").prop("checked", false);
+}
+function openCodeForce() {
+	$("#codeforces_modal").css("display", "flex");
+	//모달초기화
+	$("#codeforces_modal input[type='text']").val('');
+}
+function openGrass() {
+	$("#solved_grass_modal").css("display", "flex");
+	//모달초기화
+	$("#solved_grass_modal input[type='text']").val('');
+	$($("#solved_grass_modal input[type='radio']")[0]).prop("checked", true);
 }

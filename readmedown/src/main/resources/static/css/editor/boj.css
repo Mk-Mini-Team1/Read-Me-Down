@@ -1,0 +1,241 @@
+#boj_m_modal,
+#boj_h_modal {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.50);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display:none;
+}
+
+#boj_m_modal .modal_box,
+#boj_h_modal .modal_box {
+	position: relative;
+	width: 500px;
+	height: auto;
+	flex-shrink: 0;
+	border-radius: 5px;
+	border: 2px solid var(--text, #EEE);
+	background: var(--main, #222831);
+	padding: 50px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+#boj_m_modal *::-webkit-scrollbar,
+#boj_h_modal *::-webkit-scrollbar {
+	width: 5px;
+}
+
+#boj_m_modal *::-webkit-scrollbar-thumb,
+#boj_h_modal *::-webkit-scrollbar-thumb {
+	background: var(--neon4, #00FEEF); /* 스크롤바 막대 색상 */
+	border: 2px solid var(--neon4, #00FEEF); /* 스크롤바 막대 테두리 설정  */
+}
+
+#boj_m_modal *::-webkit-scrollbar-track,
+#boj_h_modal *::-webkit-scrollbar-track {
+	background: var(--dark); /* 스크롤바 뒷 배경 색상 */
+}
+
+#boj_m_modal .closebox,
+#boj_h_modal .closebox {
+	height: 25px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+}
+
+#boj_m_modal .modal_title,
+#boj_h_modal .modal_title {
+	color: var(--text, #EEE);
+	font: var(--heading24);
+}
+
+#boj_m_modal .modal_subtitle,
+#boj_h_modal .modal_subtitle {
+	color: var(--text, #EEE);
+	font: var(--heading20);
+}
+
+#boj_m_modal .madal_subtitlebox>p,
+#boj_h_modal .madal_subtitlebox>p {
+	font: var(--button14);
+}
+
+/* 아이디 입력박스 */
+#boj_m_modal .modal_inputbox>div,
+#boj_h_modal .modal_inputbox>div {
+	width: 350px;
+	text-align: center;
+	border-bottom: 1px solid var(--neon-3, #00FEEF);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+#boj_m_modal .modal_inputbox>div>span,
+#boj_h_modal .modal_inputbox>div>span {
+	width: 150px;
+	font: var(--highlight14);
+	text-align: center;
+	border-right: 1px solid var(--text);
+	padding: 0 10px;
+}
+
+#boj_m_modal .modal_inputbox>div>input,
+#boj_h_modal .modal_inputbox>div>input {
+	width: 200px;
+	height: 30px;
+	border-radius: 1px;
+	text-align: left;
+	font: var(--button14);
+	line-height: 30px;
+	color: var(--text);
+	padding: 0 10px;
+}
+
+#boj_m_modal .modal_inputbox>p,
+#boj_h_modal .modal_inputbox>p {
+	width: 350px;
+	text-align: center;
+	font: var(--button14);
+	line-height: 14px;
+	color: var(--text);
+	padding: 10px 10px 5px 10px;
+}
+
+#boj_m_modal .modal_inputbox>p:nth-child(3),
+#boj_h_modal .modal_inputbox>p:nth-child(3) {
+	font-size: 12px;
+	line-height: 12px;
+	padding: 5px 10px 5px 10px;
+}
+
+/* 테이블 */
+#boj_m_modal .tablebox {
+	width: 400px;
+	height: auto;
+	background-color: var(--dark);
+}
+
+#boj_m_modal .tablebox table {
+	width: 100%;
+}
+
+#boj_m_modal .tablebox table thead {
+	width: 100%;
+}
+
+#boj_m_modal .tablebox table thead tr {
+	display: grid;
+	grid-template-columns: 130px 260px;
+	border-bottom: 2px solid var(--neon4);
+}
+
+#boj_m_modal .tablebox table thead th {
+	font: var(--highlight14);
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+#boj_m_modal .tablebox table tbody {
+	width: 100%;
+	text-align: center;
+}
+
+#boj_m_modal .tablebox table tbody tr {
+	display: grid;
+	grid-template-columns: 130px 260px;
+	border-bottom: 1px solid var(--neon4);
+}
+
+table tbody tr:hover {
+	background-color: var(--gray1);
+}
+
+#boj_m_modal .tablebox table tbody td {
+	height: auto;
+	padding: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#boj_m_modal .tablebox table tbody label {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
+	padding-left: 20px;
+}
+
+#boj_m_modal .tablebox table tbody label span {
+	font: var(--button12);
+	text-align: left;
+}
+
+#boj_m_modal .tablebox table tbody [type="radio"] {
+	vertical-align: middle;
+	appearance: none;
+	border: max(1px, 0.1em) solid var(--neon4);
+	border-radius: 50%;
+	width: 1.25em;
+	height: 1.25em;
+	transition: border 0.2s ease-in-out;
+}
+
+#boj_m_modal .tablebox table tbody [type="radio"]:checked {
+	border: 0.5em solid var(--neon4);
+}
+
+#boj_m_modal .tablebox table tbody [type="radio"]:hover {
+	box-shadow: 0 0 0 max(4px, 0.2em) var(--gray2);
+}
+
+#boj_m_modal .tablebox table tbody td img {
+	width: 250px;
+}
+
+/* 모달 하단 버튼 박스 */
+#boj_m_modal .modal_btns,
+#boj_h_modal .modal_btns {
+	width: 300px;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 0px;
+}
+
+#boj_m_modal .modal_btns>button,
+#boj_h_modal .modal_btns>button {
+	width: 145px;
+	height: 35px;
+	font: var(--button14);
+	color: var(--text);
+	line-height: 14px;
+	border-radius: 5px;
+	border: 1px solid var(--neon-3, #00FEEF);
+}
+
+#boj_m_modal .modal_btns>button:hover,
+#boj_h_modal .modal_btns>button:hover {
+	color: var(--main);
+	background: var(--neon-3, #00FEEF);
+}
+
+@keyframes vibration 
+{from { transform:translateY(-2px);}
+to {transform: translateY(2px);}
+}

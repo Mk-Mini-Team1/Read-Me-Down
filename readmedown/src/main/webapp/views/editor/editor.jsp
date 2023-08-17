@@ -48,7 +48,12 @@
 	<jsp:include page="activityGraph.jsp" />
 	<jsp:include page="readmeStats.jsp" />
 	<jsp:include page="topLangs.jsp" />
+	<jsp:include page="boj_h.jsp" />
+	<jsp:include page="boj_m.jsp" />
+	<jsp:include page="codeforces.jsp" />
+	<jsp:include page="solvedacgrass.jsp" />
 
 	<script src="/js/editor/editor.js"></script>
+	<script src="/js/editor/profile.js"></script>
 </body>
 </html>

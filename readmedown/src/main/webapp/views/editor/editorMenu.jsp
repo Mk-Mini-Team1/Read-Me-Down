@@ -16,8 +16,8 @@
 				</button>
 				<div class="dropdown-content">
 					<button onclick="openBadges()">Badges</button>
-					<button>Capsule Render</button>
-					<button>Typing Svg</button>
+					<button onclick="">Capsule Render</button>
+					<button onclick="">Typing Svg</button>
 				</div>
 			</div>
 			<div class="menubar_list"> 
@@ -26,8 +26,10 @@
 					<span>Profile</span>
 				</button>
 				<div class="dropdown-content">
-					<button>Boj profile</button>
-					<button>CodeForces</button>
+					<button onclick="openBoj_h()">Boj Profile (hyperflow)</button>
+					<button onclick="openBoj_m()">Boj Profile (mazacofo)</button>
+					<button onclick="openCodeForce()">CodeForces</button>
+					<button onclick="openGrass()">Solved.ac Grass</button>
 				</div>
 			</div>
 			<div class="menubar_list"> 
@@ -37,12 +39,12 @@
 				</button>
 				<div class="dropdown-content">
 					<button onclick="openActivityGraph()">Activity Graph</button>
-					<button>Hits</button>
+					<button onclick="">Hits</button>
 					<button onclick="openReadmeStats()">Readme Stats</button>
-					<button>Streak Stats</button>
-					<button>Summary Card</button>
+					<button onclick="">Streak Stats</button>
+					<button onclick="">Summary Card</button>
 					<button onclick="openTopLangs()">Top Langs</button>
-					<button>Trophy</button>
+					<button onclick="">Trophy</button>
 				</div>
 			</div>
 		</div>
