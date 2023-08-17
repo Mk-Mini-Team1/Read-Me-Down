@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"detail","user","main","mypage","editor"})
-@MapperScan(basePackages = {"detail","user","main","mypage","editor"})
+@ComponentScan(basePackages = {"detail","user","main","mypage","editor","board"})
+@MapperScan(basePackages = {"detail","user","main","mypage","editor", "board"})
 public class ReadmedownApplication {
 	
 	public static void main(String[] args) {

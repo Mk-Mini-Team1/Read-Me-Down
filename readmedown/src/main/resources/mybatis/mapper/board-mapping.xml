@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board.BoardDAO">
+
+<!-- <insert id="first_insert_board" parameterType="boarddto">
+	insert into board (user_id, title, contents, secret, board_img, board_link, board_tag , write_date)
+		values (#{user_id}, #{title}, #{contents}, ${secret}, #{board_img}, #{board_link}, #{board_tag}, now() );
+</insert> -->
+
+<insert id="first_insert_board" parameterType="boarddto">
+	insert into board (user_id, codes)
+		values (#{user_id}, #{codes});
+</insert>
+
+<!-- 코드 작성 이후 글쓰기 -->
+<update id="second_insert_board" parameterType="boarddto">
+	update board set  
+		title = #{title}, 
+		contents = #{contents}, 
+		secret = #{secret}, 
+		board_img = #{board_img}, 
+		board_link = #{board_link}, 
+		board_tag = #{board_tag},
+		write_date = now()
+	where 
+		board_id = #{board_id}
+</update>
+
+<!-- 글 조회하기 (글 수정시 사용) -->
+<select id="boardDetail" parameterType="String" resultType="boarddto">
+	select * from board where board_id = #{board_id};
+</select>
+
+<!-- 수정 업데이트 -->
+<update id="first_update_board" parameterType="boarddto">
+	update board set  
+		user_id = #{user_id}, 
+		codes = #{codes}
+	where 
+		board_id = #{board_id}
+</update>
+<update id="second_update_board" parameterType="boarddto">
+	update board set  
+		title = #{title}, 
+		contents = #{contents}, 
+		secret = #{secret}, 
+		board_img = #{board_img}, 
+		board_link = #{board_link}, 
+		board_tag = #{board_tag},
+		update_date = now()
+	where 
+		board_id = #{board_id}
+</update>
+
+<!-- 북마크 추가 -->
+<insert id="addBookmark" parameterType="bookmarkdto">
+	insert into bookmark (board_id, user_id )
+				values (#{board_id}, #{user_id} )
+</insert>
+
+<!-- 북마크 제거 -->
+<delete id="deleteBookmark" parameterType="bookmarkdto">
+	delete from bookmark where board_id = #{board_id} and user_id = #{user_id};
+</delete>
+
+</mapper>
+
+
+
+
+
+
