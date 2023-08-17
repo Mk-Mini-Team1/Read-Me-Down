@@ -28,7 +28,6 @@
 .contentWrap .userInfo .user .nick-name > p:first-of-type {
   font: var(--heading34);
   margin-bottom: 12px;
-  margin-left: 10px;
 }
 
 .user .nick-name > p:first-of-type span {
@@ -40,7 +39,6 @@
 .contentWrap .userInfo .user .follow-num > p:first-of-type {
   font: var(--heading18);
   margin-bottom: 12px;
-  margin-left: 10px;
 }
 
 
@@ -100,7 +98,7 @@
  	background-color: var(--neon3);
  	font: var(--button12);
  	border-radius: 5px;
- 	padding-top: 3px;
+ 	padding-top: 1px;
  	transition: background-color 0.2s;
  } 
  
@@ -111,3 +109,96 @@
  	font: var(--caption12);
  }
  
+ 
+ 
+/* 본문 부분(템플릿 이미지 나열) */
+#main_gallery{
+	padding-top : 10px;
+	display : flex;
+	justify-content: center;
+	width:100%;
+}
+.grid { 
+	width:90%;	
+	margin : 0 auto;
+	padding-left: 20px;
+}
+.grid-sizer, .grid-item { width: 250px; }
+.grid-item {
+	margin-bottom:15px; 
+	border-radius: 20px; 
+	overflow:hidden;
+	
+	/* for 이미지호버 */
+	position:absolute;
+	cursor:pointer;
+}
+.grid-item img {
+	display: block; 
+	min-width:100%; 
+	max-width: 100%; 
+}
+
+/* for 이미지 호버 */
+.darkness {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#000000;
+  opacity:0;
+  transition:all .2s;
+}
+
+.btn-plus {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	opacity:0;
+	/* transform:scale(2); */
+	transition:all .2s;
+}
+.main_bookmark_box{
+	width : 40px;
+	height : 60px;
+	margin-right : 20px;
+	cursor:pointer;
+	float : right;
+}
+.main_bookmark_btn {
+	width : 100%;
+	height : 100%;
+}
+
+.grid-item:hover .darkness{
+  opacity:0.4;
+}
+
+.grid-item:hover .btn-plus {
+  opacity:1;
+  transform:scale(1);
+}
+
+/*북마크 된 상태일때*/
+.bookmarked-plus {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	display : none;
+}
+.main_bookmarked_box{
+	width : 40px;
+	height : 60px;
+	margin-right : 20px;
+	cursor:pointer;
+	float : right;
+}
+.main_bookmarked_btn {
+	width : 100%;
+	height : 100%;
+}

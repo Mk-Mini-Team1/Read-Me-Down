@@ -4,10 +4,15 @@
   align-items: center;
   background-color: var(--main);
   width: 600px;
-  height: 950px;
+  height: 1050px;
   border: solid 2px var(--text);
   border-radius: 5px;
   margin: 0 auto;
+}
+
+.container > a img {
+  width: 120px;
+  margin-top: 15px;
 }
 
 
@@ -71,6 +76,7 @@
   transition: background-color 0.2s;
   margin-left: 130px;
   margin-top: 50px;
+  padding-bottom: 1px;
 }
 
 .signupForm > div button:hover {
@@ -99,6 +105,14 @@
   margin-left: 30px; 
 }
 
+
+
+.gitWrapper span {
+  font: var(--button12); 
+  color: var(--gray4); 
+  margin-left: 5px;
+}
+
 .required {
 	position: relative;	
 	color: #FC3131;
@@ -117,8 +131,11 @@ button.submit {
   border-radius: 4px;
   margin-top: 10px;
   transition: background-color 0.2s;
+  padding-top: 3px;
 }
 
 button.submit:hover {
   background-color: var(--neon2);
 }
+
+
