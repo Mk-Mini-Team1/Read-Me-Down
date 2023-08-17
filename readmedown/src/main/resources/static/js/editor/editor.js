@@ -55,7 +55,7 @@ $("body").on('click','.modal_cancelbtn',function(){
 });
 
 //모달함수선언
-function openbadges(){
+function openBadges(){
 	$.ajax({
 		type: 'post',
 		url: '/getbadges',
@@ -76,5 +76,54 @@ function openbadges(){
 		}
 	});//ajax end
 	$("#badge_modal").css("display","flex");
-	//로드시 modal_result 버튼 채우기
+}
+
+function openActivityGraph(){
+	$("#activity_graph_modal").css("display","flex");
+	//모달초기화
+	$("#activity_graph_modal #github_ID").val('');
+	$($("#activity_graph_modal input[type='radio']")[0]).prop("checked",true);
+	$('#activity_graph_modal #themetable').scrollTop(0);
+	$("#activity_graph_modal #github_ID_guide").text("조회할 github ID를 입력하세요.");
+	$("#activity_graph_modal #github_ID_guide").css("color","var(--text)");
+}
+
+function openReadmeStats() {
+	$("#readme_stats_modal").css("display", "flex");
+	//모달초기화
+	$('#readme_stats_modal .modal_box').scrollTop(0);
+	$('#readme_stats_modal #themetable').scrollTop(0);
+	$("#readme_stats_modal #github_ID").val('');
+	$("#readme_stats_modal #github_ID_guide").text("조회할 github ID를 입력하세요.");
+	$("#readme_stats_modal #github_ID_guide").css("color","var(--text)");
+	$("#readme_stats_modal input[name='hidden_option']").prop("checked",true);
+	$("#readme_stats_modal input[name='add_option']").prop("checked",false);
+	$($("#readme_stats_modal input[name='icon_option']")[0]).prop("checked",true);
+	
+	$.ajax({
+		type: 'post',
+		url: '/getstatstheme',
+		dataType: 'json',
+		data: {
+			keyword: $("#stats_theme_keyword").val()
+		},
+		success: function(data) { // 결과 성공 콜백함수
+			let list = data;
+			for (let i = 0; i < list.length; i++) {
+				let themename = list[i].stats_theme_name;
+				themename = themename.replace("-", "<br>");
+				themename = themename.replace("_", "<br>");
+				$("#readme_stats_modal #themetable tbody").append(
+					`<tr>
+					<td><label><input type="radio" name="theme" value="${list[i].stats_theme_name}" checked><span>${themename}</span></label></td>
+					<td><img src="${list[i].stats_theme_img}"></td>
+				</tr>`
+				);
+				$($("#readme_stats_modal input[name='theme']")[0]).prop("checked", true);
+			}
+		},
+		error: function(request, status, error) { // 결과 에러 콜백함수
+			console.log(error)
+		}
+	});//ajax end
 }

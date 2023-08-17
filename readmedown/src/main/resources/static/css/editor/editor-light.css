@@ -501,7 +501,7 @@ img.ProseMirror-separator {
 
 .toastui-editor-popup-body input[type=text]:focus {
     border-color: transparent;
-    outline: 1px solid #00a9ff
+    outline: 1px solid #00a9ff;
 }
 
 .toastui-editor-popup-body input[type=text].disabled {
@@ -1503,4 +1503,45 @@ img.ProseMirror-separator {
 
 .toastui-editor-md-custom-block .toastui-editor-md-meta {
     color: #5200d0
+}
+
+/* 스크롤바 추가 */
+.ProseMirror::-webkit-scrollbar {
+    width: 10px;
+}
+
+.ProseMirror::-webkit-scrollbar-thumb {
+    background: var(--gray3); /* 스크롤바 막대 색상 */
+    border: 2px solid var(--gray3); /* 스크롤바 막대 테두리 설정  */
+    border-radius: 10px;
+}
+
+.ProseMirror::-webkit-scrollbar-thumb:hover {
+    background: #00a9ff; /* 스크롤바 막대 색상 */
+    border: 2px solid #00a9ff; /* 스크롤바 막대 테두리 설정  */
+}
+
+.ProseMirror::-webkit-scrollbar-track {
+	background: var(--gray4); /* 스크롤바 뒷 배경 색상 */
+	border-radius: 10px;
+}
+
+.toastui-editor-md-preview::-webkit-scrollbar {
+    width: 10px;
+}
+
+.toastui-editor-md-preview::-webkit-scrollbar-thumb {
+    background: var(--gray3); /* 스크롤바 막대 색상 */
+    border: 2px solid var(--gray3); /* 스크롤바 막대 테두리 설정  */
+    border-radius: 10px;
+}
+
+.toastui-editor-md-preview::-webkit-scrollbar-thumb:hover {
+    background: #00a9ff; /* 스크롤바 막대 색상 */
+    border: 2px solid #00a9ff; /* 스크롤바 막대 테두리 설정  */
+}
+
+.toastui-editor-md-preview::-webkit-scrollbar-track {
+	background: var(--gray4); /* 스크롤바 뒷 배경 색상 */
+	border-radius: 10px;
 }

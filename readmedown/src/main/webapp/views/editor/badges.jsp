@@ -2,12 +2,14 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
-<head></head>
+<head>
+<link rel="stylesheet" href="/css/editor/badges.css" />
+</head>
 <body>
 	<div id="badge_modal" class="modal">
 		<div class="modal_box">
 			<div class="closebox">
-				<img class="modal_cancelbtn" src="images/sign/Close.svg" alt="창닫기" />
+				<img class="modal_cancelbtn" src="/images/sign/Close.svg" alt="창닫기" />
 			</div>
 			<span class="modal_title">Badges</span>
 			<!-- <div class="modal_tab">
@@ -16,8 +18,10 @@
 			</div> -->
 			<div class="modal_searchbox">
 				<p>프레임워크, 언어 등 공식 이름으로 검색</p>
-				<input id="badge_keyword" placeholder="검색어를 입력하세요"/>
-				<button id="searchbtn">검색</button>
+				<div>
+					<img alt="" src="/images/editor/search.svg">
+					<input id="badge_keyword" autocomplete='off' placeholder="검색어를 입력하세요"/>
+				</div>
 			</div>
 			<div class="modal_result" id="modal_result" ></div>
 			<div class="modal_result_badges">
@@ -32,5 +36,7 @@
 			</div>
 		</div>
 	</div>
+	
+	<script src="/js/editor/badges.js"></script>
 </body>
 </html>

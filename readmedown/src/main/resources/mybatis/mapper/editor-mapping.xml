@@ -10,6 +10,14 @@
   		WHERE badge_name like concat('%',#{keyword},'%');
   		</if>
   	</select>
+
+  	<select id="getStatsThemes" parameterType="String" resultType="editor.StatsThemeDTO">
+  		SELECT *
+  		FROM stats_theme
+  		<if test="keyword != '' and keyword != null">
+  		WHERE stats_theme_name like concat('%',#{keyword},'%');
+  		</if>
+  	</select>
   	
 </mapper>
 

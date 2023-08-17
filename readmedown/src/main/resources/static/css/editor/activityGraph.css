@@ -1,0 +1,235 @@
+#activity_graph_modal {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.50);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display:none;
+}
+
+#activity_graph_modal .modal_box {
+	position:relative;
+	width: 450px;
+	height: auto;
+	flex-shrink: 0;
+	border-radius: 5px;
+	border: 2px solid var(--text, #EEE);
+	background: var(--main, #222831);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	padding: 50px;
+}
+
+#activity_graph_modal .closebox{
+	height:25px;
+	position: absolute;
+	top:10px;
+	right: 10px;
+	cursor:pointer;
+}
+
+
+#activity_graph_modal .modal_title {
+	color: var(--text, #EEE);
+	font: var(--heading24);
+}
+
+#activity_graph_modal .modal_subtitle {
+	color: var(--text, #EEE);
+	font: var(--heading20);
+}
+
+#activity_graph_modal .modal_tab {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 1px solid var(--neon4);
+}
+
+#activity_graph_modal .tabbtn {
+	width: 70px;
+	height: 30px;
+	font: var(--button14);
+	color: var(--text);
+	border-bottom: 3px solid transparent;
+}
+
+#activity_graph_modal .tabbtn:hover {
+	color: var(--neon4);
+	border-bottom: 3px solid var(--neon4);
+}
+
+#activity_graph_modal .tabbtn.active {
+	border-bottom: 3px solid var(--neon4);
+}
+
+#activity_graph_modal .modal_inputbox>div {
+	width: 300px;
+	text-align: center;
+	border-bottom: 1px solid var(--neon-3, #00FEEF);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap:5px;
+}
+
+#activity_graph_modal .modal_inputbox>div>span{
+	width:100px;
+	font:var(--highlight14);
+	text-align: center;
+	border-right: 1px solid var(--text);
+	padding: 0 10px;
+}
+
+#activity_graph_modal .modal_inputbox>div>input {
+	width: 200px;
+	height: 30px;
+	border-radius: 1px;
+	text-align: left;
+	font: var(--button14);
+	line-height: 30px;
+	color: var(--text);
+	padding: 0 10px;
+}
+
+#activity_graph_modal .modal_inputbox>p {
+	width: 300px;
+	text-align: center;
+	font: var(--button14);
+	line-height: 14px;
+	color: var(--text);
+	padding: 10px;
+}
+
+#activity_graph_modal .themetable {
+	width: 350px;
+	height: 300px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	background-color: var(--dark);
+	margin-top: -10px;
+}
+
+#activity_graph_modal .themetable table{
+	width: 100%;
+}
+
+#activity_graph_modal .themetable table thead {
+  width: 100%;
+}
+
+#activity_graph_modal .themetable table thead tr {
+  display: grid;
+  grid-template-columns: 110px 230px;
+  border-bottom: 2px solid var(--neon4);
+}
+
+#activity_graph_modal table thead th {
+  font: var(--highlight14);
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+
+#activity_graph_modal table tbody {
+  width: 100%;
+  text-align: center;
+}
+#activity_graph_modal table tbody tr {
+  display: grid;
+  grid-template-columns: 110px 230px;
+  border-bottom: 1px solid var(--neon4);
+}
+#activity_graph_modal table tbody td {
+  height: 90px;
+  padding: 5px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#activity_graph_modal table tbody label {
+  width:100%;
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap:10px;
+  cursor: pointer;
+}
+
+#activity_graph_modal table tbody label span{
+	font:var(--button12);
+	text-align: left;
+}
+
+#activity_graph_modal table tbody [type="radio"] {
+  vertical-align: middle;
+  appearance: none;
+  border: max(1px, 0.1em) solid var(--neon4);
+  border-radius: 50%;
+  width: 1.25em;
+  height: 1.25em;
+  transition: border 0.2s ease-in-out;
+}
+
+#activity_graph_modal table tbody [type="radio"]:checked {
+  border: 0.4em solid var(--neon4);
+}
+
+#activity_graph_modal table tbody [type="radio"]:hover {
+  box-shadow: 0 0 0 max(4px, 0.2em) var(--gray2);
+}
+
+#activity_graph_modal table tbody td img {
+	width:220px;
+}
+
+#activity_graph_modal .themetable::-webkit-scrollbar {
+    width: 5px;
+}
+
+#activity_graph_modal .themetable::-webkit-scrollbar-thumb {
+    background: var(--neon4, #00FEEF); /* 스크롤바 막대 색상 */
+    border: 2px solid var(--neon4, #00FEEF); /* 스크롤바 막대 테두리 설정  */
+    border-radius: 10px;
+}
+
+#activity_graph_modal .themetable::-webkit-scrollbar-track {
+	background: var(--dark); /* 스크롤바 뒷 배경 색상 */
+}
+
+#activity_graph_modal .modal_btns{
+	width: 300px;
+	display: flex;
+	justify-content: center;
+	gap:10px;
+}
+
+#activity_graph_modal .modal_btns>button{
+	width:145px;
+	height: 35px;
+	font: var(--button14);
+	color:var(--text);
+	line-height:14px;
+	border-radius: 5px;
+	border: 1px solid var(--neon-3, #00FEEF);
+}
+
+#activity_graph_modal .modal_btns>button:hover{
+	color:var(--main);
+	background: var(--neon-3, #00FEEF);
+}
+
+@keyframes vibration {
+  from {
+    transform: translateY(-2px);
+  }
+  to {
+    transform: translateY(2px);
+  }
+}

@@ -15,7 +15,7 @@
 					<span>Design</span>
 				</button>
 				<div class="dropdown-content">
-					<button onclick="openbadges()">Badges</button>
+					<button onclick="openBadges()">Badges</button>
 					<button>Capsule Render</button>
 					<button>Typing Svg</button>
 				</div>
@@ -36,9 +36,9 @@
 					<span>Stats</span>
 				</button>
 				<div class="dropdown-content">
-					<button>Activity Graph</button>
+					<button onclick="openActivityGraph()">Activity Graph</button>
 					<button>Hits</button>
-					<button>Readme Stats</button>
+					<button onclick="openReadmeStats()">Readme Stats</button>
 					<button>Streak Stats</button>
 					<button>Summary Card</button>
 					<button>Top Langs</button>
