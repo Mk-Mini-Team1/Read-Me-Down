@@ -3,6 +3,8 @@ package detail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import board.BookmarkDTO;
+
 @Service
 public class DetailService {
 	@Autowired
@@ -14,8 +16,11 @@ public class DetailService {
 		return dao.detail(board_id);
 	};
 	
-	/*
-	 * //북마크 int addBookmark(BookmarkDTO dto) { return dao.addBookmark(dto); }; int
-	 * deleteBookmark(BookmarkDTO dto) { return dao.deleteBookmark(dto); };
-	 */
+	
+	  //북마크 
+	int addDBookmark(BookmarkDTO dto) { return dao.addDBookmark(dto); }; 
+	int deleteDBookmark(BookmarkDTO dto) { return dao.deleteDBookmark(dto); };
+	public int isDBookmarked(BookmarkDTO dto) {
+  		return dao.isDBookmarked(dto);
+  	};
 }

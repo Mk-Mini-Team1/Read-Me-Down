@@ -9,19 +9,18 @@
 	select * from board where board_id = #{board_id};
 </select>
 
-
-<!-- 
- 북마크 추가 
-<insert id="addBookmark" parameterType="bookmarkdto">
-	insert into bookmark (board_id, user_id )
+<insert id="addDBookmark" parameterType="bookmarkdto">
+	insert into Bookmark (board_id, user_id )
 				values (#{board_id}, #{user_id} )
 </insert>
 
-북마크 제거
-<delete id="deleteBookmark" parameterType="bookmarkdto">
-	delete from bookmark where board_id = #{board_id} and user_id = #{user_id};
+<!-- 북마크 제거 -->
+<delete id="deleteDBookmark" parameterType="bookmarkdto">
+	delete from Bookmark where board_id = #{board_id} and user_id = #{user_id};
 </delete>
- -->
+<select id="isDBookmarked" resultType="int" parameterType="bookmarkdto">
+	select count(*) from Bookmark where board_id = #{board_id} and user_id = #{user_id}
+</select>
 </mapper>
 
 

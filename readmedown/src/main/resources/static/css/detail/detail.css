@@ -42,8 +42,9 @@
 .leftImg {
 	margin: 0 auto;
 	border-radius: 20px;
-	height: 800px;
-	min-width: 570px;
+	width :100%;
+height :auto;
+max-height :100%; 
 }
 .right-box {
 
