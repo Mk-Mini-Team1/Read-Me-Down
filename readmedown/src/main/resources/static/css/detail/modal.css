@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+/* 모달 백드롭 스타일 */
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+/* 모달 내용 스타일 */
+.modalContent {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #222831;
+  border : 2px solid white;
+  border-radius: 8px;
+ font-size:16px;
+ color:#fff;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 400px;
+  z-index: 100;
+ justify-content:center;
+  text-align: center;
+  align-items: center;
+}
+
+.deleteModalImg{
+	margin-bottom: 20px;
+	width: 105px;
+	height: 80px;
+}
+/* 모달 제목 스타일 */
+.modalContent p {
+margin: 0 auto;
+
+}
+
+/* 모달 버튼 스타일 */
+.buttonWrap {
+  display: flex;
+justify-content:center;
+align-items:center;
+
+  margin-top: 20px;
+  gap:10px;
+
+  
+  }
+
+.buttonWrap button {
+	border-radius: 5px;
+border: 1px solid var(--point, #00FEA3);
+color:#00FEA3;
+width: 120px;
+height: 35px;
+line-height:35px;
+
+}
+.buttonWrap button:hover{
+		transition: color 0.3s,background-color 0.3s;
+		
+	background-color: #00FEA3;
+	color:black;
+}
+

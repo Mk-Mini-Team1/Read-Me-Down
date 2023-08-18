@@ -1,7 +1,20 @@
+.all_container{
+	 display : flex;
+    justify-content: center;
+    align-items: center;
+	height: 100vh;
+	width:100%;
+}
+
+
+
+
+
 .split-container {
-	margin: 50px auto;
-	gap: 135px;
+	
+	gap: 20px;
 	display: inline-flex;
+	
 }
 
 .box {
@@ -17,24 +30,24 @@
 
 .left-box {
 	margin-left: 70px;
-	margin-bottom: 100px;
+	
 	background-color: #e0e0e0;
 	color: black;
 	border-right: 1px solid #eee;
 	height: 800px;
-	min-width: 570px;
+	width: 570px;
 	align-items: center;
 	
 }
 .leftImg {
 	margin: 0 auto;
 	border-radius: 20px;
-	height: 798px;
-	min-width: 560px;
+	height: 800px;
+	min-width: 570px;
 }
 .right-box {
-	margin-bottom: 100px;
-	margin-left: -100px;
+
+	
 	background-color: #eee;
 	color: black;
 	height: 800px;
@@ -47,6 +60,7 @@
 	display: flex; margin-left : 20px; margin-top : 30px;
 	gap: 10px;
 	width: 450px;
+	height:30px;
 	color: var(--main, #222831);
 	font-size: 14px;
 	font-weight: 600;
@@ -67,6 +81,9 @@
 	margin-left: 20px;
 	font-size: 24px;
 	font-weight: 700;
+	max-width: 530px;
+	min-height: 40px;
+	overflow: hidden;
 }
 
 .user_nickline {
@@ -111,64 +128,116 @@ templateUse {
 	font-style: normal;
 	font-weight: 700;
 	line-height: normal;
-	transition: color 0.3s;
+
 }
 .follow:hover{
-	
+	transition: background-color 0.5s;
 	  background-color: #00FEA3;
 }
 /* 초기 상태 */
-.detail_button .templateUse ,
-.detail_button .templateShare  {
-   transition:  color 0.3s; /* 호버 효과에 대한 전환 효과 설정 */
-}
+  .follow.hovered {
+    background-color: #00FEA3;
 
+  }
+.templateUse:hover{
+	transition:  filter 0.3s;
+  filter:invert(67%) sepia(82%) saturate(877%) hue-rotate(101deg) brightness(102%) contrast(102%); /* 이미지의 색상을 변화시키는 효과 */
+; /* 호버 시 색상 변경 */
+	
+}
 /* 호버 상태 */
-.detail_button .templateUse a:hover,
-.detail_button .templateShare a:hover {
- 
-  color: #00FEA3; /* 호버 시 색상 변경 */
+
+.templateShare:hover {
+ transition:  filter 0.3s;
+  filter:invert(67%) sepia(82%) saturate(877%) hue-rotate(101deg) brightness(102%) contrast(102%); /* 이미지의 색상을 변화시키는 효과 */
+; /* 호버 시 색상 변경 */
 
 }
 
+/* 수정 버튼과 이미지에 대한 호버 효과 */
+.updateBtn:hover {
+	 transition:  filter 0.3s;
+    filter:invert(67%) sepia(82%) saturate(877%) hue-rotate(101deg) brightness(102%) contrast(102%); /* 이미지의 색상을 변화시키는 효과 */
+}
+
+/* 삭제 버튼과 이미지에 대한 호버 효과 */
+.deleteBtn:hover {
+	 transition:  filter 0.3s;
+    filter: invert(56%) sepia(95%) saturate(1427%) hue-rotate(295deg); /* 이미지의 색상과 그림자 효과 적용 */
+}
 
 
 
 .detail_contents{
 	margin-top: 30px;
 	margin-left: 20px;	
-	height: 100px;
-	width: 397px;
+	
+	width: 547px;
 	font-size: 14px;
 font-style: normal;
 font-weight: 400;
-line-height: normal;
+min-height: 100px;
+max-height: 100px;
+
+overflow-x:hidden;
+overflow-y:scroll;
 padding: 5px;
+
 }
+
+/* 스크롤바 */
+.detail_contents::-webkit-scrollbar {
+    width: 10px;  
+}
+.detail_contents::-webkit-scrollbar-thumb {
+    height: 20%; 
+    background: var(--gray3); 
+    border-radius: 5px;
+}
+.detail_contents::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background: var(--gray4);  
+}
+.detail_contents::-webkit-scrollbar-corner, #board_contents::-webkit-scrollbar-track:horizontal{
+    background: transparent;
+}
+
+
+
+
+
+
+
+
+
+
+
 .linkImg{
-display: inline-flex;
-margin-left: 22px;
-margin-top:20px;
-margin-bottom: -25px; 
+display: flex;
+margin-left: -19px;
+margin-bottom: -18px;
+margin-right:45px; 
 width: 20px;
 height: 20px;
-flex-shrink: 0;	
+
 }
-.detailLink{
-    width:300px;
-	margin-left: 49px;
+.detailLink {
+	width: 300px;
+	margin-top: 20px;
+	margin-left: 43px;
 	font-size: 13px;
+	text-decoration: underline;
+	text-underline-offset: 5px;
+	text-decoration-thickness: 1px;
+}
 
-text-decoration: underline;
-
-   text-underline-offset: 5px;
-    text-decoration-thickness: 1px;
-  
+.detailLink a{
+	margin-left: 5px;
 }
 
 .detailcommentstart {
 	margin-top: 20px;
-	margin-left: 20px;
+	margin-left: 25px;
 	width: 50px;
 	height: 25px;
 	flex-direction: column;
@@ -183,14 +252,35 @@ text-decoration: underline;
 	overflow: scroll;
 	overflow-x: hidden;
 	height: 255px;
+	width: 567px;
 }
+
+/* 댓글 스크롤바  */
+.comment::-webkit-scrollbar {
+    width: 10px;  
+}
+.comment::-webkit-scrollbar-thumb {
+    height: 20%; 
+    background: var(--gray3); 
+    border-radius: 5px;
+}
+.comment::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background: var(--gray4);  
+}
+.comment::-webkit-scrollbar-corner, #board_contents::-webkit-scrollbar-track:horizontal{
+    background: transparent;
+}
+
+
+
 .detailCommentLine {
 	display: flex;
 	border: 1px solid #D9D9D9;
 	border-radius: 15px;
 	width: 517px;
 	height: 80px;
-	margin-left: 20px;
+	margin-left: 25px;
 	margin-top: 20px;
 	padding: 10px;
 	 
@@ -231,6 +321,7 @@ text-decoration: underline;
 	
 }
 .replyB:hover{
+
 	color: #00FEA3;
 }
 
@@ -249,7 +340,7 @@ text-decoration: underline;
 	border-radius: 15px;
 	width: 481px;
 	height: 80px;
-	margin-left: 55px;
+	margin-left: 70px;
 	margin-top: 20px;
 	padding: 15px;
 	white-space: normal;
@@ -295,6 +386,7 @@ transition: color 0.3s;
 }
 
 .replyCButton:hover,.replyWButton:hover{
+		transition: background-color 0.3s;
 	background-color: #00FEA3;
 }
 
@@ -307,7 +399,7 @@ transition: color 0.3s;
 .commentWrite{
 	
 	display: flex;
-	margin-left: -23px;
+	margin-left: -15px;
 	margin-top:20px;
 	align-items: center;
 	justify-content: center;
@@ -343,6 +435,8 @@ line-height: normal;
 }
 
 .commentWButton:hover 
-	{color: #00FEA3;}
+	{
+		transition: color 0.3s;
+	color: #00FEA3;}
 	
-
+	
