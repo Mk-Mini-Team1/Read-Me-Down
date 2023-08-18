@@ -43,20 +43,20 @@
   cursor: pointer;
 }
 
-.signinForm {
+.signinform {
   width: 400px;
   padding: 20px;  
 }
 
-.signinForm > div {
+.signinform > div {
   margin-bottom: 10px;
 }
-.signinForm > div > p {
+.signinform > div > p {
   font: var(--button16);
   color: var(--text);
   margin-bottom: 5px;
 }
-.signinForm > div input {
+.signinform > div input {
   width: 100%;
   height: 45px;
   border: 1px solid var(--gray4);
@@ -65,19 +65,19 @@
    font: var(--button14);
    color: var(--text);
 }
-.signinForm > div input:focus {
+.signinform > div input:focus {
   border: 2px solid #00FEEF;
   caret-color: var(--neon3); 
 }
 
-.signinForm > div button {
+.signinform > div button {
   height: 45px; 
   border-radius: 4px;
   background-color: var(--neon3);
   transition: background-color 0.2s;
   padding-top: 2px;
 }
-.signinForm > div button:hover {
+.signinform > div button:hover {
   background-color: var(--neon2);
 }
 
@@ -136,4 +136,12 @@ button.signIn_submit:hover {
 
 .signIn > button:hover {
   background-color: var(--neon4) !important;
+}
+
+.errorMessage {
+  font: var(--button12);
+  color: red;
+  margin-top: -5px;
+  margin-left: 2px;
+  margin-bottom: 0 !important;
 }

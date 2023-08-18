@@ -19,14 +19,13 @@
 </head>
 <body>
 <jsp:include page="../header.jsp" />
-
 	<div id="main_box">
 		<div id="main_contents">
-			<div class="container">
+			<div class="mypage_container">
 				<div class="contentWrap">
 					<div class="userInfo">
 						<div class="user">
-							<div class="profile-image"></div>
+							<div class="mypage-profile-image"></div>
 							<p>
 								리드미개발자<span>님</span>
 							</p>
@@ -129,7 +128,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>		
 	</div>
 <script src="/js/mypage/mypage.js"></script>
 </body>

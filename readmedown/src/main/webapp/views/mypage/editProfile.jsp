@@ -13,59 +13,59 @@
 <link rel="stylesheet" href="/css/mypage/editProfile.css" />
 <script src="/js/jquery-3.6.4.min.js"></script>
 <title>Read Me▼</title>
+
 </head>
 <body>
-<jsp:include page="../header.jsp" />
+	<jsp:include page="../header.jsp" />
+	<div id="main_box">
+		<div id="main_contents">
+			<main class="edit_container">
+				<a href="/"> <img src="/images/ReadMeD_Mint.svg" alt="로고아이콘" />
+				</a>
+				<p>내 정보 수정</p>
+				<form method="post" action="editinfo" class="editinfoForm"
+					name="editinfoForm">
 
-<div id="main_box">
-    <div id="main_contents">
-        <main class="container">
-            <div class="close">
-                <a id="closeModalButton"><img src="/images/sign/Close.svg" alt="창닫기" /></a>
-            </div>
-            <a href="/"> <img src="/images/ReadMeD_Mint.svg" alt="로고아이콘" /> </a>
-            <p>내 정보 수정</p>
-            <form method="post" action="signup" class="signupForm" name="signupForm">
-
-                <div class="userWrapper">
-                    <div class="userId">
-                        <p>readme@readme.com</p>
-                    </div>
-                    <div class="profile-image">
-                        <div class="editButton">
-                            <button>Image Upload</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="nameWrapper">
-                    <p>닉네임</p>
-                    <input type="text" placeholder="닉네임 입력" id="edit_name" name="edit_name"
-                        oninput="regNameEdit()" /> <span id="nameRequired"></span>
-                </div>
-                <div class="password">
-                    <p>현재 비밀번호</p>
-                    <input type="password" id="N_password" placeholder="현재 비밀번호 입력" />
-                    <p>새 비밀번호</p>
-                    <input type="password" id="newPassword" name="password"
-                        maxlength="20" oninput="regPwEdit()" placeholder="비밀번호 입력" /> <span
-                        id="pwRequired"></span>
-                    <p>비밀번호 확인</p>
-                    <input type="password" id="checkNewPassword" maxlength="20"
-                        oninput="checkPwEdit()" placeholder="비밀번호 확인" /> <span
-                        id="checkPwRequired"></span>
-                </div>
-                <div class="gitWrapper">
-                    <p>
-                        Github ID<span>(선택)</span>
-                    </p>
-                    <input type="text" placeholder="깃아이디" id="edit_gitId" name="edit_gitId" />
-                </div>
-                <button class="submit">수정하기</button>
-            </form>
-        </main>
-    </div>
-</div>
-
-<script src="/js/sign/signInputCheck.js"></script>
+					<div class="edit_userWrapper">
+						<div class="userId">
+							<p>readme@readme.com</p>
+						</div>
+						<div class="edit_profile_image">
+							<div class="editButton">
+								<button>Image Upload</button>
+							</div>
+						</div>
+					</div>
+					<div class="edit_nameWrapper">
+						<p>닉네임</p>
+						<input type="text" placeholder="닉네임 입력" id="edit_name"
+							name="edit_name" /> 
+							<span id="Rule">닉네임은  2~10글자 이내로 한글, 영어, 숫자를 포함 할 수 있습니다.</span>
+					</div>
+					<div class="edit_passwordWrapper">
+						<p>현재 비밀번호</p>
+						<input type="password" id="N_password" placeholder="현재 비밀번호 입력" />
+						<p>새 비밀번호</p>
+						<input type="password" id="newPassword" name="password"
+							maxlength="25" placeholder="비밀번호 입력" /> <span
+							id="Rule">영문과 숫자, 특수문자를 포함한 10~25자리의 규칙을 지켜주세요.</span>
+						<p>비밀번호 확인</p>
+						<input type="password" id="checkNewPassword" maxlength="25"
+							placeholder="비밀번호 확인" /> 
+					</div>
+					<div class="edit_gitWrapper">
+						<p>
+							Github ID
+						</p>
+						<input type="text" placeholder="깃아이디" id="edit_gitId"
+							name="edit_gitId" />
+					</div>
+					<button class="submit">수정하기</button>
+				</form>
+			</main>
+		</div>
+	</div>
+<script src="/js/mypage/editInputCheck.js"></script>
 </body>
 </html>
+

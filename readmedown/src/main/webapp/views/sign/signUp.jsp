@@ -22,15 +22,15 @@
 			<div class="email">
 				<p>E-mail</p>
 				<div class="checkEmail">
-					<input type="email" id="signUp_email" name="signUp_email" oninput="regEmail()"
+					<input type="email" id="signUp_email" name="email" oninput="regEmail()"
 						placeholder="이메일 입력" />
-					<button>중복확인</button>
+					<button type="button" id="emailCheckButton" value="false">중복확인</button>
 				</div>				
 				<span id="emailRequired"></span>
 			</div>
 			<div class="password">
 				<p>Password</p>
-				<input type="password" id="signUp_password" name="signUp_password" maxlength="20"
+				<input type="password" id="signUp_password" name="password" maxlength="20"
 					oninput="regPw()" placeholder="비밀번호 입력" />			
 				<span id="pwRequired"></span>
 				<p>Password Check</p>
@@ -46,13 +46,14 @@
 			</div>			
 			<div class="gitWrapper">
 				<p>Github ID<span>(선택)</span></p>
-				<input type="text" placeholder="깃아이디" id="gitId" name="gitId"/> 					
+				<input type="text" placeholder="깃아이디" id="git_id" name="git_id"/> 					
 			</div>
-			<button class="signUp_submit">가입하기</button>
+			<button class="signUp_submit" onClick="return check()">가입하기</button>
 		</form>
 	</main>
 </div>
 	
 	<script src="/js/sign/signInputCheck.js"></script>
+	<script src="/js/sign/checkSignupForm.js"></script>
 </body>
 </html>

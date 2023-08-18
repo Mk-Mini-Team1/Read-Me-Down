@@ -1,58 +1,54 @@
-.container {
+.edit_container {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: var(--main);
-  width: 600px;
-  height: 1050px;
+  width: 1000px;
+  height: 1150px;
   border: solid 2px var(--text);
   border-radius: 5px;
-  margin: 0 auto;
+  margin: 50px auto;
 }
 
-.container > a img {
+.edit_container > a img {
   width: 120px;
-  margin-top: 15px;
+  margin-top: 50px;
 }
 
 
-.profile-image {
-	width: 120px;
-	height: 120px;
+.edit_profile_image {
+	width: 150px;
+	height: 150px;
 	border-radius: 80px;
 	background-color: var(--main);
 	margin-top: 20px;
-	margin-left: 40px;
+	margin-left: 20px;
 	background-image: url('/images/profile-default.svg');
     background-size: cover;	
 }
 
-.container > p {
+.edit_container > p {
   color: var(--text);
   font: var(--heading24);
   margin-top: 20px;
 }
 
-.close a img {
-  width: 35px;
-  height: 35px;
-  margin: 15px 0 0 520px;
-}
 
-.signupForm {
+.editinfoForm {
   width: 400px;
   padding: 20px;  
 }
 
-.signupForm > div {
+.editinfoForm > div {
   margin-bottom: 20px;
 }
-.signupForm > div > p {
+.editinfoForm > div > p {
   font: var(--button16);
   color: var(--text);
   margin-bottom: 5px;
+  margin-left: 1px;
 }
-.signupForm > div input {
+.editinfoForm > div input {
   width: 100%;
   height: 45px;
   border: 1px solid var(--gray4);
@@ -61,30 +57,30 @@
   font: var(--button14);
   color: var(--text);
 }
-.signupForm > div input:focus {
+.editinfoForm > div input:focus {
   border: 2px solid #00FEEF;
   caret-color: var(--neon3); 
 }
 
-.signupForm > div button {
-  height: 25px; 
-  width: 120px;
+.editinfoForm > div button {
+  height: 30px !important; 
+  width: 120px !important;
   border-radius: 4px;
   font: var(--button12);
   border: solid 1px var(--neon3);
   color: var(--text);
   transition: background-color 0.2s;
-  margin-left: 130px;
-  margin-top: 50px;
+  margin-left: 170px;
+  margin-top: 60px;
   padding-bottom: 1px;
 }
 
-.signupForm > div button:hover {
+.editinfoForm > div button:hover {
   color: var(--main);
   background-color: var(--neon3);
 }
 
-.userWrapper {
+.edit_userWrapper {
   text-align: center;
   margin-top: 5px;
 }
@@ -93,7 +89,7 @@
 	font: var(--heading20);
 }
 
-.userWrapper .profileImage {
+.edit_userWrapper .profileImage {
   display: flex; 
   flex-direction: row; 
   align-items: center; 
@@ -101,17 +97,10 @@
   margin: 20px 0 -10px 0;
 }
 
-.userWrapper .editButton {
+.edit_userWrapper .editButton {
   margin-left: 30px; 
 }
 
-
-
-.gitWrapper span {
-  font: var(--button12); 
-  color: var(--gray4); 
-  margin-left: 5px;
-}
 
 .required {
 	position: relative;	
@@ -119,14 +108,14 @@
 	font: var(--caption12);	
 }
 
-.password p{
+.edit_passwordWrapper p{
   margin: 20px 0 5px 0;
 }
 
 button.submit {
   width: 100%;
   height: 50px;
-  background-color: var(--neon3);
+  border: solid 2px var(--neon3);
   font: var(--heading18);
   border-radius: 4px;
   margin-top: 10px;
@@ -138,4 +127,7 @@ button.submit:hover {
   background-color: var(--neon2);
 }
 
-
+#Rule {
+	font: var(--caption12);
+	color: var(--gray4);
+}

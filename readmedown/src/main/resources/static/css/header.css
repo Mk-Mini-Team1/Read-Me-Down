@@ -73,16 +73,25 @@
 	font:var(--heading18);
 	padding:5px 15px;
 }
+
 #header_down button:nth-last-child(1) {
 	color: var(--point);
 	padding-bottom: 30px;
 }
+
+
 
 #loginbtn{
 	background-color: var(--point);
 	color: var(--main);
 	border-radius: 15px;
 }
+
+#loginbtn:hover{
+	background-color: var(--neon2);
+}
+
+
 
 #header_down img{
 	width: 40px;
