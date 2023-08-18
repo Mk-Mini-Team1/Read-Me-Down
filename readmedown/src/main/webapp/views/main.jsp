@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/marshallku/infinite-scroll/dist/infiniteScroll.min.js"></script>
 <link rel="icon" href="/images/logo-pencil.png" />
 <link rel="apple-touch-icon" href="/images/logo-pencil.png" />
 <link rel="stylesheet" href="/css/style.css" />
@@ -21,22 +22,98 @@ $(document).ready(function() {
 	//이미지 masonry로 배열
 	var msnry = new Masonry( '.grid', {
 		  itemSelector: '.grid-item',
-		  // columnWidth: 200
 		  columnWidth: '.grid-sizer',
 		  percentPosition: true,
 		  gutter : 20,
-		});
-	imagesLoaded( '.grid' ).on( 'progress', function() {
+	});
+	
+ 	imagesLoaded( '.grid' ).on( 'progress', function() {
 	  msnry.layout();
 	});
 	
-	//북마크 추가(프론트)
+/*    	infiniteScroll({
+	    container: ".grid",
+	    item: ".grid-item",
+	    next: ".next",
+ 	    prev: ".prev",
+	    prevLoader: ".prevLoader",
+ 	    pushHistory: true,
+	    nextCallback: (newElement) => {
+	        msnry.appended(newElement)
+	    },
+   	    prevCallback: (newElement) => {
+	        msnry.prepended(newElement)
+	    },
+ 	    onLoadFinish: () => {
+	        msnry.layout()
+	    }
+	}); */
+/*   	window.addEventListener("load", () => {
+	    //msnry.layout()
+  		imagesLoaded( '.grid' ).on( 'progress', function() {
+  		  msnry.layout();
+  		});
+	}) */
+	
+
+
+	//북마크 추가
 	$(".main_bookmark_btn").on('click', function(){
-		$(this).parents().siblings(".bookmarked-plus").show();//북마크추가 css효과
+		//$(this).parents().siblings(".bookmarked-plus").show();//북마크추가 css효과
+		const boardId = $(this).parents().parents(".grid-item").attr('id');
+		const bookmarkCss = $(this).parents().siblings(".bookmarked-plus");
+		//alert(boardId);
+		if("${user_id}" == "" || "${user_id}" == null){
+			alert("로그인이 필요합니다.");
+		}
+		else {
+	  		$.ajax({
+				url : 'addBookmark',
+				type : 'post',
+				data : {'board_id' : boardId},
+				success : function(response){
+					if(response != -1) {
+						bookmarkCss.show();//북마크추가 css효과					
+					}
+					else {
+						alert("문제가 발생했습니다.");
+					}
+				},
+	            error: function(request,status,error) {
+		      		alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		      		console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		      	}
+			});//ajax
+		} 
 	});
-	//북마크 해제(프론트)
+	//북마크 해제
 	$(".main_bookmarked_btn").on('click', function(){
-		$(this).parents(".bookmarked-plus").hide();//북마크제거 css효과
+		//$(this).parents(".bookmarked-plus").hide();//북마크제거 css효과
+		const boardId2 = $(this).parents().parents(".grid-item").attr('id');
+		const bookmarkCss2 = $(this).parents(".bookmarked-plus");
+		//alert(boardId2);
+		if("${user_id}" == "" || "${user_id}" == null){
+			alert("로그인이 필요합니다.");
+		}
+		else {
+	  		$.ajax({
+				url : 'deleteBookmark',
+				type : 'post',
+				data : {'board_id' : boardId2},
+				success : function(response){
+					if(response != -1) {
+						bookmarkCss2.hide();//북마크제거 css효과					
+					}
+					else {
+						alert("문제가 발생했습니다.");
+					}
+				},
+	            error: function(request,status,error) {
+		      		alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		      		console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		      	}
+			});//ajax
+		}
 	});
 	
 	//검색 누르면 박스 오픈
@@ -107,9 +184,10 @@ $(document).ready(function() {
 	<div id="main_gallery">
 		<div class="grid">
 		  <div class="grid-sizer"></div>
-			<c:forEach begin="1" end="19" varStatus="vs">
-		           <div class="grid-item"> 
-		               <img src='/images/main/readme_ex${vs.count}.png' alt="template">
+		  
+<%-- 			<c:forEach items="${response.list}" var="dto" varStatus="status">
+		           <div class="grid-item" id="${dto.board_id}"> 
+		               <img src='${dto.board_img}' onerror="this.src='/images/main/no_img.svg'" alt="template">
 		               <div class="darkness"></div>
 		               <div class="btn-plus">
 			               <div class="main_bookmark_box"><img class="main_bookmark_btn" src='/images/main/bookmark_before.svg'></div>
@@ -118,23 +196,53 @@ $(document).ready(function() {
 			               <div class="main_bookmarked_box"><img class="main_bookmarked_btn" src='/images/main/bookmark_after.svg'></div>
 		               </div>
 		           </div>	
-		       </c:forEach>
-			<c:forEach begin="1" end="19" varStatus="vs">
-		           <div class="grid-item"> 
-		               <img src='/images/main/readme_ex${vs.count}.png' alt="template" onerror="this.src='/images/main/no_img.svg'">
+		       </c:forEach> --%>
+			<c:forEach items="${response.list}" var="dto" varStatus="status">
+		           <div class="grid-item" id="${dto.board_id}"> 
+		               <img src='${dto.board_img}' onerror="this.src='/images/main/no_img.svg'" alt="template">
 		               <div class="darkness"></div>
 		               <div class="btn-plus">
 			               <div class="main_bookmark_box"><img class="main_bookmark_btn" src='/images/main/bookmark_before.svg'></div>
 		               </div>
-		               <div class="bookmarked-plus">
-			               <div class="main_bookmarked_box"><img class="main_bookmarked_btn" src='/images/main/bookmark_after.svg'></div>
-		               </div>
-		           </div>	
+					<c:choose>
+						<c:when test="${dto.bookmarked}">
+			               <div class="bookmarked-plus" style="display : block;">
+				               <div class="main_bookmarked_box"><img class="main_bookmarked_btn" src='/images/main/bookmark_after.svg'></div>
+			               </div>
+				        </c:when>
+						<c:otherwise>
+			               <div class="bookmarked-plus">
+				               <div class="main_bookmarked_box"><img class="main_bookmarked_btn" src='/images/main/bookmark_after.svg'></div>
+			               </div>
+				        </c:otherwise>
+					</c:choose>
+		           </div>
 		       </c:forEach>
+		       
 		</div>
 	</div>
+	
+<!-- pagination -->
+<div class="pagenation" style="visibility: hidden;">
+	<c:if test="${fn:length(response.list) != 0}">
+ 	   <%-- <a class="pagefirst"
+	      <c:if test="${!response.pagination.existPrevPage}"> 'http://localhost:8070/?page=1'</c:if>>
+	   </a> --%>
+ 	   <a class="prev"
+	      <c:if test="${!response.pagination.existPrevPage && searchdto.page > 1}"> href= 'http://localhost:8070/?page=${searchdto.page-1}' </c:if>>
+	   </a>
+	   <a class="next"
+	      <c:if test="${!response.pagination.existNextPage && searchdto.page < response.pagination.totalPageCount}">  href= 'http://localhost:8070/?page=${searchdto.page + 1}' </c:if>>
+	   </a>
+ 	   <%-- <a class="pagelast"
+	      <c:if test="${!response.pagination.existNextPage}"> href= 'http://localhost:8070/?page=${response.pagination.totalPageCount}' </c:if>>
+	   </a> --%>
+	</c:if>
+</div>
+<!-- pagination -->
+	
+	
 </div>
 </div>
-
 </body>
 </html>
