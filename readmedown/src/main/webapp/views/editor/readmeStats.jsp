@@ -13,12 +13,6 @@
 				<img class="modal_cancelbtn" src="/images/sign/Close.svg" alt="창닫기" />
 			</div>
 			<span class="modal_title">Read Me Stats</span>
-			<!-- 
-			<div class="modal_tab">
-				<button class="tabbtn active">기본형</button>
-				<button class="tabbtn">선택형</button>
-			</div>
-			 -->
 			<div class="modal_inputbox">
 				<div>
 					<span>github ID</span>
@@ -26,7 +20,25 @@
 				</div>
 				<p id="github_ID_guide">조회할 github ID를 입력하세요.</p>
 			</div>
+			<span class="modal_subtitle">테마 선택</span>
+			<div class="modal_searchbox">
+				<p>테마 이름 검색</p>
+				<div>
+					<img alt="" src="/images/editor/search.svg">
+					<input id="stats_theme_keyword" autocomplete='off' placeholder="검색어를 입력하세요"/>
+				</div>
+			</div>
+			<div class="themetable" id="themetable" >
+				<table>
+					<thead>
+						<tr><th>Name</th><th>Preview</th></tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
 			
+			<span class="modal_subtitle" id="additional_option_btn">▼추가 옵션 설정</span>
 			<div id="optionBoxWrap">
 				<div class="optionbox" id="hidden_option_box">
 					<div class="optionbox_title">출력할<br>옵션 선택</div>
@@ -59,24 +71,6 @@
 				</div>
 			</div>
 			
-			
-			<span class="modal_subtitle">테마 선택</span>
-			<div class="modal_searchbox">
-				<p>테마 이름 검색</p>
-				<div>
-					<img alt="" src="/images/editor/search.svg">
-					<input id="stats_theme_keyword" autocomplete='off' placeholder="검색어를 입력하세요"/>
-				</div>
-			</div>
-			<div class="themetable" id="themetable" >
-				<table>
-					<thead>
-						<tr><th>Name</th><th>Preview</th></tr>
-					</thead>
-					<tbody>
-					</tbody>
-				</table>
-			</div>
 			<div class="modal_btns">
 				<button class="modal_cancelbtn">취소</button>
 				<button id="applybtn">적용하기</button>

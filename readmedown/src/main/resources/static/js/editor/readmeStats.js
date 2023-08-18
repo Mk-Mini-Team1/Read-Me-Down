@@ -1,3 +1,13 @@
+$("#readme_stats_modal #additional_option_btn").on('click',function(){
+	if($(this).text()=='▼추가 옵션 설정'){
+		$(this).text('▲추가 옵션 설정');
+	}else{
+		$(this).text('▼추가 옵션 설정');
+	}
+	
+	$("#readme_stats_modal #optionBoxWrap").slideToggle();
+});
+
 $("#readme_stats_modal").on("click","input[name='hidden_option']",function(){
 	if($(this).val()=='all'){
 		if(!$(this).is(':checked')){
@@ -27,14 +37,14 @@ $("#readme_stats_modal").on("click","input[name='add_option']",function(){
 });
 
 
-$("#stats_theme_keyword").on("keyup",function(){
+$("#readme_stats_modal #stats_theme_keyword").on("keyup",function(){
 	$("#readme_stats_modal #themetable tbody").html('');
 	$.ajax({
 		type: 'post',
 		url: '/getstatstheme',
 		dataType: 'json',
 		data: {
-			keyword: $("#stats_theme_keyword").val()
+			keyword: $("#readme_stats_modal #stats_theme_keyword").val()
 		},
 		success: function(data) { // 결과 성공 콜백함수
 			let list = data;
