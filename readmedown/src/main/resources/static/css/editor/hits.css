@@ -1,0 +1,349 @@
+#hits_modal {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.50);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* display: none; */
+}
+
+#hits_modal .modal_box {
+	position: relative;
+	width: 500px;
+	height: 760px;
+	flex-shrink: 0;
+	border-radius: 5px;
+	border: 2px solid var(--text, #EEE);
+	background: var(--main, #222831);
+	/* display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px; */
+	padding: 50px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	text-align: center;
+}
+
+#hits_modal .modal_box>*{
+	margin: 0 auto 20px auto;
+}
+
+#hits_modal *::-webkit-scrollbar {
+	width: 5px;
+}
+
+#hits_modal *::-webkit-scrollbar-thumb {
+	background: var(--neon4, #00FEEF); /* 스크롤바 막대 색상 */
+	border: 2px solid var(--neon4, #00FEEF); /* 스크롤바 막대 테두리 설정  */
+}
+
+#hits_modal *::-webkit-scrollbar-track {
+	background: var(--dark); /* 스크롤바 뒷 배경 색상 */
+}
+
+#hits_modal .closebox {
+	height: 25px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+}
+
+#hits_modal .modal_title {
+	color: var(--text, #EEE);
+	font: var(--heading24);
+}
+
+#hits_modal .modal_subtitle {
+	color: var(--text, #EEE);
+	font: var(--heading20);
+}
+
+#hits_modal .modal_tab {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 1px solid var(--neon4);
+}
+
+#hits_modal .tabbtn {
+	width: 70px;
+	height: 30px;
+	font: var(--button14);
+	color: var(--text);
+	border-bottom: 3px solid transparent;
+}
+
+#hits_modal .tabbtn:hover {
+	color: var(--neon4);
+	border-bottom: 3px solid var(--neon4);
+}
+
+#hits_modal .tabbtn.active {
+	border-bottom: 3px solid var(--neon4);
+}
+
+/* Text 입력박스 */
+#hits_modal .modal_inputbox {
+	margin-top: 10px;
+	width: 400px;
+}
+
+#hits_modal .modal_inputbox>div {
+	width: 400px;
+	text-align: center;
+	border-bottom: 1px solid var(--neon-3, #00FEEF);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+#hits_modal .modal_inputbox>div>span {
+	width: 120px;
+	font: var(--highlight14);
+	text-align: center;
+	border-right: 1px solid var(--text);
+	padding: 0 10px;
+}
+
+#hits_modal .modal_inputbox>div>input {
+	width: 280px;
+	height: 30px;
+	border-radius: 1px;
+	text-align: left;
+	font: var(--button14);
+	line-height: 30px;
+	color: var(--text);
+	padding: 0 10px;
+}
+
+#hits_modal .modal_inputbox>p {
+	width: 100%;
+	text-align: center;
+	font: var(--button14);
+	line-height: 20px;
+	color: var(--text);
+	padding: 10px;
+}
+
+/* --------------- 옵션선택 입력박스 ----------------- */
+#hits_modal #additional_option_btn {
+	cursor: pointer;
+	display: block;
+	color: var(--neon2);
+	margin-bottom: 20px;
+}
+
+#hits_modal #optionBoxWrap {
+	display: flex;
+	flex-direction: column;
+	gap:5px;	
+}
+
+#hits_modal #optionBoxWrap>p {
+	width: 100%;
+	text-align: center;
+	font: var(--button14);
+	line-height: 20px;
+	color: var(--text);
+	padding: 5px;
+}
+
+#hits_modal .optionbox {
+	width: 400px;
+	border: 1px solid var(--neon4);
+	border-radius: 5px;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+#hits_modal .optionbox_title {
+	width: 130px;
+	font: var(--body14);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding: 5px;
+	border-right: 1px solid var(--text);
+}
+
+#hits_modal .optionbox_contents {
+	width: 270px;
+	height: auto;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: wrap;
+	padding: 5px;
+}
+
+#hits_modal .optionbox_contents label {
+	padding: 5px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
+}
+
+#hits_modal .optionbox_contents label span {
+	font-size: 12px;
+	text-align: left;
+}
+
+#hits_modal .optionbox_contents [type="checkbox"] {
+	vertical-align: middle;
+	appearance: none;
+	border: max(1px, 0.1em) solid var(--neon4);
+	border-radius: 2px;
+	width: 1.25em;
+	height: 1.25em;
+	transition: border 0.2s ease-in-out;
+	width: 1.25em;
+}
+
+#hits_modal .optionbox_contents label:hover [type="checkbox"] {
+	box-shadow: 0 0 0 max(4px, 0.2em) var(--gray2);
+}
+
+#hits_modal .optionbox_contents label:hover span {
+	color: var(--neon4);
+}
+
+#hits_modal .optionbox_contents [type="checkbox"]:checked {
+	background-image: url(/images/editor/checkbox_checked.svg);
+}
+
+#hits_modal .optionbox_contents [type="radio"] {
+	vertical-align: middle;
+	appearance: none;
+	border: max(1px, 0.1em) solid var(--neon4);
+	border-radius: 50%;
+	width: 1.25em;
+	height: 1.25em;
+	transition: border 0.2s ease-in-out;
+	width: 1.25em;
+}
+
+#hits_modal .optionbox_contents label:hover [type="radio"] {
+	box-shadow: 0 0 0 max(4px, 0.2em) var(--gray2);
+}
+
+#hits_modal .optionbox_contents [type="radio"]:checked {
+	border: 0.4em solid var(--neon4);
+}
+
+/* ----- 색깔 선택 ------ */
+#hits_modal .colorpicker{
+	width:70px;
+}
+
+#hits_modal .colorpicker+span{
+	padding-left: 10px;
+}
+
+/* ----- 드롭박스 ------ */
+#hits_modal .dropboxWrap{
+	display:flex;
+	flex-direction: column;
+	border: 1px solid var(--neon4, #00FEEF);
+	width:400px;
+	height:auto;
+	position: relative;
+	border-radius: 5px;
+}
+
+#hits_modal .dropbox_title{
+	width:100%;
+	font:var(--button14);
+	line-height: 40px;
+	height:40px;
+	cursor: pointer;
+}
+
+#hits_modal .dropbox_contents{
+	width:100%;
+	margin-top:5px;
+	border: 1px solid var(--neon4, #00FEEF);
+	height:200px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	position: absolute;
+	z-index:10;
+	top:40px;
+	background-color: var(--dark);
+	border-radius: 5px;
+	display:none;
+}
+
+#hits_modal .dropbox_contents>img{
+	width:45px;
+	height: 45px;
+	filter: invert(98%) sepia(2%) saturate(137%) hue-rotate(214deg) brightness(116%) contrast(87%);
+	padding:5px 2.5px;
+	cursor: pointer;
+}
+
+#hits_modal .dropbox_contents>img:hover{
+	background-color: var(--gray4);
+}
+
+/* ----- 검색어 ------ */
+#hits_modal .modal_searchbox {
+	width:90%;
+	text-align: center;
+	border: 1px solid var(--neon4, #00FEEF);
+	border-radius: 10px;
+	margin: 5px auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+#hits_modal .modal_searchbox>img {
+	width: 30px;
+	height: 30px;
+}
+
+#hits_modal .modal_searchbox>input {
+	width: 100%;
+	height: 30px;
+	text-align: left;
+	font: var(--button14);
+	line-height: 30px;
+	color: var(--text);
+}
+
+/* ----- 모달 하단버튼 ------ */
+#hits_modal .modal_btns {
+	width: 300px;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 0px;
+}
+
+#hits_modal .modal_btns>button {
+	width: 145px;
+	height: 35px;
+	font: var(--button14);
+	color: var(--text);
+	line-height: 14px;
+	border-radius: 5px;
+	border: 1px solid var(--neon-3, #00FEEF);
+}
+
+#hits_modal .modal_btns>button:hover {
+	color: var(--main);
+	background: var(--neon-3, #00FEEF);
+}

@@ -68,6 +68,7 @@
 	<jsp:include page="boj_m.jsp" />
 	<jsp:include page="codeforces.jsp" />
 	<jsp:include page="solvedacgrass.jsp" />
+	<jsp:include page="hits.jsp" />
 
 	<script src="/js/editor/editor.js"></script>
 	<script src="/js/editor/editorModal.js"></script>

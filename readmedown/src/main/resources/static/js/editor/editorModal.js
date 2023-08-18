@@ -8,6 +8,11 @@ $(".modal table tbody").on("click",'tr',function(){
 	$(this).find("input[type='radio']").prop("checked",true);
 });
 
+//모달 내 color 변경시(공통)
+$(".modal").on("change","input[type='color']",function(){
+	$(this).next().text($(this).val());
+});
+
 //모달함수선언
 function openAlertModal(modal_msg){
 	$("#alert_modal").css("display","flex");
