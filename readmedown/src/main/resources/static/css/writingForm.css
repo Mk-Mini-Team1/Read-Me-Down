@@ -290,20 +290,28 @@
 	align-items: center;
 	font-size : 15px;
 }
-input[name="secret"] + label {
+
+#for_gap_box label{
+	display : flex;
+	justify-content: center;
+	align-items: center;
+	gap:10px;
+	cursor: pointer;
+}
+
+input[name="secret"] {
 	display: inline-block;
 	width: 18px;
 	height: 18px;
 	/* margin-right : 5px; */
 	border: 2px solid var(--gray3);
 	cursor: pointer;
+	appearance: none;
 }
-input[name="secret"]:checked + label {
+input[name="secret"]:checked{
 	background-color: var(--gray2);
 }
-input[name="secret"] {
-	display: none;
-}
-#no_secret{
+
+/* #no_secret{
 	margin-right : 10px;
-}
+} */

@@ -11,7 +11,7 @@
 <!-- 전체 글 목록 가져오기 -->
 <select id="allBoardList" resultType="boarddto" parameterType="pagination.SearchDTO">
 	select * from board 
-	where delete_date is null
+	where delete_date is null and write_date is not null
 	order by write_date desc
 	limit #{pagination.limitStart}, #{recordSize}
 </select>

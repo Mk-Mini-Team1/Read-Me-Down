@@ -1,8 +1,5 @@
 package main;
 
-import java.util.HashMap;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import board.BoardDTO;
-import board.BoardService;
 import board.BookmarkDTO;
 import jakarta.servlet.http.HttpSession;
 import pagination.PagingResponse;
@@ -40,7 +36,7 @@ public class MainController {
 		SearchDTO searchdto = new SearchDTO();
 	    searchdto.setRecordSize(100);
 	    searchdto.setPage(page);
-	    System.out.println("========================================= page = " + page);
+	    //System.out.println("========================================= page = " + page);
 		PagingResponse<BoardDTO> list = service.allBoardList(searchdto);
 		
 		//사용자 북마크 목록
@@ -68,6 +64,6 @@ public class MainController {
 		}
 		mv.setViewName("main");
 		return mv;
-	}	
+	}
 	
 }//class

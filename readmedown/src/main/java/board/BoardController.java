@@ -34,8 +34,11 @@ public class BoardController {
 	MainService service2;
 	
 	@GetMapping("/writingForm")
-	public String writingForm() {
-		return "writingForm";
+	public ModelAndView writingForm(String bi) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("board_id", bi);
+		mv.setViewName("writingForm");
+		return mv;
 	}
 	
 	// 글 작성 페이지에서 이미지 업로드
@@ -120,14 +123,14 @@ public class BoardController {
 		
 		int result = service.second_insert_board(dto);
 		ModelAndView mv = new ModelAndView();
-		if(result == 1) {
+		if(result > 0) {
 			mv.addObject("msg", "템플릿 작성이 완료되었습니다.");
-			mv.addObject("url", "mypage");			
+			mv.addObject("url", "detail?board_id="+board_id);			
 			mv.setViewName("alert");						
 		}
 		else {
 			mv.addObject("msg", "문제가 발생했습니다.");
-			mv.addObject("url", "writingForm");			
+			mv.addObject("url", "writingForm?board_id="+board_id);			
 			mv.setViewName("alert");						
 		}
 		return mv;
@@ -135,9 +138,9 @@ public class BoardController {
 	
 	//글 조회(수정용)
 	@RequestMapping("/boardupdateform")
-	public ModelAndView board_detail(String board_id) {
-		System.out.println(board_id);
-		BoardDTO dto = service.boardDetail(board_id);
+	public ModelAndView board_detail(String bi) {
+		//System.out.println(board_id);
+		BoardDTO dto = service.boardDetail(bi);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("dto", dto);
 		mv.setViewName("update_writingForm");
