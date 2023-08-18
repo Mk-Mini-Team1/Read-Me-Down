@@ -22,6 +22,7 @@ $("#boj_m_modal").on("click",'#applybtn',function(){
 		if(version == 'v2'){
 			divString = `<div>[![Solved.ac profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=${bojID})](https://solved.ac/${bojID})</div>`;
 		}
+		$(".ProseMirror").focus();
 		$(".ProseMirror").append(divString);
 		$(this).parents(".modal").css("display","none");
 	}

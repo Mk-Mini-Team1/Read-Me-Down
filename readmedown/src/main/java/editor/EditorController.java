@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import board.BoardDTO;
 import board.BoardService;
@@ -21,9 +23,29 @@ public class EditorController {
 	BoardService board_service;
 	
 	@GetMapping("/editor")
-	public String editor(HttpSession session) {
-		/* session.setAttribute("user_id", "dkssud"); */
-		return "editor/editor";
+	public ModelAndView editor(@RequestParam(name="bi", required=false, defaultValue = "none") String bi, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		if(bi.equals("none")) {
+			//새글작성폼
+			mv.setViewName("editor/editor");
+		}else {
+			BoardDTO board = board_service.boardDetail(bi);
+			String CurrentUser = (String)session.getAttribute("user_id");
+			
+			if(board.getUser_id().equals(CurrentUser)) {
+				//내 템플릿일때 board 가져오기
+				board.setCodes(board.getCodes().replaceAll("<br>", "</div><div>"));
+				mv.addObject("board", board);
+				mv.setViewName("editor/editorUpdate");
+			}else {
+				//다른사람 템플릿일때 code만가져오기
+				String codes = board.getCodes();
+				codes = codes.replaceAll("<br>", "</div><div>");
+				mv.addObject("codes", codes);
+				mv.setViewName("editor/editor");
+			}
+		}
+		return mv;
 	}
 	
 	@PostMapping("/getbadges")
@@ -49,6 +71,14 @@ public class EditorController {
 		}
 		dto.setBoard_id(new_id);
 		board_service.first_insert_board(dto);
+		return "{\"board_id\":\""+dto.getBoard_id()+"\"}";
+	}
+	
+
+	@PostMapping("/updatecodes")
+	@ResponseBody
+	public String updatecodes(BoardDTO dto) {
+		board_service.first_update_board(dto);
 		return "{\"board_id\":\""+dto.getBoard_id()+"\"}";
 	}
 	

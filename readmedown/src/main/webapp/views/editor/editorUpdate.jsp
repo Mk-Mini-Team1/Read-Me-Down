@@ -43,7 +43,8 @@
 	</div>
 	
 	<input type="hidden" id="user_id" value="${user_id}">
-	<textarea id="otherCodes" style="display:none;">${codes}</textarea>
+	<textarea id="myBoardID" style="display:none;">${board.board_id}</textarea>
+	<textarea id="myCodes" style="display:none;">${board.codes}</textarea>
 	<jsp:include page="modal.jsp" />
 	<jsp:include page="badges.jsp" />
 	<jsp:include page="activityGraph.jsp" />
@@ -54,7 +55,7 @@
 	<jsp:include page="codeforces.jsp" />
 	<jsp:include page="solvedacgrass.jsp" />
 
-	<script src="/js/editor/editor.js"></script>
+	<script src="/js/editor/editorUpdate.js"></script>
 	<script src="/js/editor/editorModal.js"></script>
 	<script src="/js/editor/profile.js"></script>
 </body>
