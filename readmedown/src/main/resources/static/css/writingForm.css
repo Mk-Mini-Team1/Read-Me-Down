@@ -30,29 +30,21 @@
 	align-items: center;
 	height : 40px;
 }
-#back_to_editor {
+#back_to_editor, #cancle_board {
 	width: 40px;
 }
-#back_to_editor >img {
+#back_to_editor >img, #cancle_board >img {
 	width:35px;
 	height:35px;
 	cursor: pointer;
 }
-#submit_board {
-	width : 85px;
-}
-#submit_board_btn {
-	width:80px;
-	height:35px;
-	line-height:35px;
-	border-radius: 2em;
-	border : 2.5px solid black;
-	cursor: pointer;
-}
-#submit_board_btn:hover{
-	color : var(--point);
-	border : 2.5px solid var(--point);
+#back_to_editor_btn:hover{
+	filter: invert(79%) sepia(22%) saturate(5577%) hue-rotate(105deg) brightness(98%) contrast(114%);
 } 
+#cancle_board_btn:hover {
+	filter: invert(58%) sepia(73%) saturate(1804%) hue-rotate(277deg) brightness(101%) contrast(102%);
+}
+
 #writingForm {
 	width : 80%;
 	height : 650px;
@@ -60,6 +52,7 @@
 	padding-top: 10px;	
 	display : flex;
 }
+
 
 /* ----------------- 왼쪽 이미지 공간 ----------------------- */
 
@@ -141,7 +134,6 @@
 	overflow:hidden;
 }
 
-/* 첫번째 스타일(위아래여백O) */
 #delete_img_box{
 	width : 100%;
 	height : 25px;
@@ -176,41 +168,6 @@
 	transform: translate(0, -50%);
 }
 
-/*---------------- 두번째 스타일(위아래여백X) ----------------*/
-/* #delete_img_box{
-	width : 100%;
-	height : 30px;
-	margin: 0 auto;
-	text-align: right;
-	padding-top : 5px;
- 	padding-right : 10px;
-	color : var(--point);
-	font-weight:bolder;
-	font-size : 20px;
-	cursor: pointer;
-	position: absolute;
-	z-index : 10;
-}
-#img_preview_box{
-	width : 100%;
-	height : 600px;	
-	border-radius: 1em;
-	overflow:hidden;
-	position: relative;
-	z-index : 0;
-}
-#img_preview {
-	width : 100%;
-	height : auto;
-	max-height : 100%;
-	overflow:hidden;
-	position: absolute;
-	top:50%;
-	transform: translate(0, -50%);
-	z-index : 0;
-} */
-
-
 /* ----------------- 오른쪽 글쓰기 공간 ----------------------- */
 
 #wf_right{
@@ -219,7 +176,6 @@
 }
 #wf_right >div {
 	width : 100%;
-	/* border: 1px solid var(--gray2); */
 	margin-bottom : 10px;
 }
 #board_title_box{
@@ -233,13 +189,13 @@
 }
 #board_contents_box{	
 	width: 100%;
-	height : 340px;
+	height : 320px;
 	margin-top: 30px;
 }
 #board_contents{
 	width: 100%;
 	height : auto;
-	max-height : 340px;
+	max-height : 320px;
 	border:none;
 	border-bottom : 1px solid var(--gray2);
 	background-color: var(--text);
@@ -266,7 +222,7 @@
 
 
 #board_tag_box, #board_link_box{
-	height : 50px;
+	height : 45px;
 	border-bottom: 1px solid var(--gray2);
 	margin-bottom : 10px;
 	display : flex;
@@ -276,33 +232,33 @@
 	width : 100%;
 }
 #is_secret_box{
-	height : 35px;
+	height : 30px;
 	color : black;
 	display : flex;
 	justify-content: flex-end;
 	align-items: center;
 }
 #for_gap_box{
-	width : 240px;
+	width : 200px;
 	height : 20px;	
 	display : flex;
 	justify-content: space-between;
 	align-items: center;
-	font-size : 15px;
+	font-size : 13px;
 }
 
 #for_gap_box label{
 	display : flex;
 	justify-content: center;
 	align-items: center;
-	gap:10px;
+	gap:5px;
 	cursor: pointer;
 }
 
 input[name="secret"] {
 	display: inline-block;
-	width: 18px;
-	height: 18px;
+	width: 15px;
+	height: 15px;
 	/* margin-right : 5px; */
 	border: 2px solid var(--gray3);
 	cursor: pointer;
@@ -312,6 +268,15 @@ input[name="secret"]:checked{
 	background-color: var(--gray2);
 }
 
-/* #no_secret{
-	margin-right : 10px;
-} */
+#submit_board_btn{
+	width:100%;
+	height:35px;
+	line-height:35px;
+	border-radius: 5px;
+	border : 1px solid black;
+	cursor: pointer;
+}
+#submit_board_btn:hover{
+	color : var(--point);
+	border : 1px solid var(--point);
+}

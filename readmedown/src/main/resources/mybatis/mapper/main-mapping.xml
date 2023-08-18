@@ -11,7 +11,7 @@
 <!-- 전체 글 목록 가져오기 -->
 <select id="allBoardList" resultType="boarddto" parameterType="pagination.SearchDTO">
 	select * from board 
-	where delete_date is null and write_date is not null
+	where delete_date is null and write_date is not null and secret="no"
 	order by write_date desc
 	limit #{pagination.limitStart}, #{recordSize}
 </select>
@@ -27,7 +27,7 @@
 </select>
 
   	
-<!--테이블 조인 용 resultMap -->
+<!-- board + bookmark 테이블 조인 용 resultMap -->
 <!-- <resultMap type="boarddto" id="boardBookmarkMap">
 	<id property="board_id" column="b_board_id"/>
 	<result property="user_id" column="b_user_id"/>
@@ -58,9 +58,5 @@
 
 
 </mapper>
-
-
-
-
 
 
