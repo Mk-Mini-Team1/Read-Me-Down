@@ -65,8 +65,14 @@ $(document).ready(function() {
         });//ajax
 	});//사진첨부
 	
-	//글 작성(코드 이후)
+	//2차 글 작성
 	$("#submit_board_btn").on('click', function(){
+		
+		//enter => <br>
+		let text = $('#board_contents').val();
+		text = text.replace(/(?:\r\n|\r|\n)/g, '<br>');
+		$('#board_contents').val(text);
+		
 		//제목, 이미지첨부, 공개여부 없으면 입력불가
  		if($.trim($("#board_img").val()) !== ""){
 	  		if($.trim($("#board_title").val()) !== ""){
@@ -74,19 +80,33 @@ $(document).ready(function() {
  					$("#second_insert_form").submit();	
  				}
  				else {
-	 				alert("공개 여부를 선택해주세요."); 						 					
+	 				//alert("공개 여부를 선택해주세요.");
+	 				openAlertModal("공개 여부를 선택해주세요.");
  				}
  			}
  			else {
-	 			alert("제목을 입력해주세요.");
+	 			//alert("제목을 입력해주세요.");
+ 				openAlertModal("제목을 입력해주세요.");
  			}	
  		}
  		else {
-			alert("대표 이미지를 첨부해주세요.");
+			//alert("대표 이미지를 첨부해주세요.");
+			openAlertModal("대표 이미지를 첨부해주세요.");
  		} 
 		 
 	});
 	
+	/* -------------------- Modal -------------------- */
+	//모달 취소버튼(공통)
+	$("body").on('click','.modal_cancelbtn',function(){
+		$(this).parents(".modal").css("display","none");
+	});
+
+	//모달함수선언
+	function openAlertModal(modal_msg){
+		$("#alert_modal").css("display","flex");
+		$("#alert_modal #modal_alert_text").html(modal_msg);
+	}
 	
 }); //ready
 </script>
@@ -129,15 +149,15 @@ $(document).ready(function() {
 			<div id="wf_right">
 					<div id="board_title_box"><input type=text id="board_title" name="title" placeholder="제목" /></div>
 					<div id="board_contents_box">
-					    <textarea rows=1, id="board_contents" name="contents" placeholder="내용을 입력하세요."></textarea>
+					    <textarea rows=1, id="board_contents" name="contents" placeholder="내용을 입력하세요." ></textarea>
 					</div>
 					<div id="board_tag_box"><input type=text id="board_tag" name="board_tag" placeholder="#을 이용하여 태그를 추가해보세요." /></div>
 					<div id="board_link_box"><input type=text id="board_link" name="board_link" placeholder="링크를 추가하세요." /></div>
-					<input type=hidden id="board_id" name="board_id" value="df2bbf3b-3c01-11ee-8361-d8f2cabd8fe3"/>
+					<input type=hidden id="board_id" name="board_id" value="${board_id}"/>
 					<div id="is_secret_box">
 						<div id="for_gap_box">
-							<input type="checkbox" id="no_secret" name="secret" value="no"><label for="no_secret"></label>템플릿 공개하기
-							<input type="checkbox" id="yes_secret" name="secret" value="yes"><label for="yes_secret"></label>나만 보기
+							<label><input type="checkbox" id="no_secret" name="secret" value="no">템플릿 공개하기</label>
+							<label><input type="checkbox" id="yes_secret" name="secret" value="yes">나만 보기</label>
 						</div>
 					</div>
 			</div>
@@ -148,7 +168,7 @@ $(document).ready(function() {
 </div><!-- end whole_wrapper -->	
 </div>
 </div>
-
+<jsp:include page="editor/modal.jsp"/>
 </body>
 <script>
 //댓글,대댓글에 사진 첨부한거 취소하기

@@ -20,51 +20,53 @@
 <script>
 $(document).ready(function() {
 	//이미지 masonry로 배열
-	var msnry = new Masonry( '.grid', {
+ 	var msnry = new Masonry( '.grid', {
 		  itemSelector: '.grid-item',
 		  columnWidth: '.grid-sizer',
 		  percentPosition: true,
 		  gutter : 20,
 	});
 	
- 	imagesLoaded( '.grid' ).on( 'progress', function() {
 	  msnry.layout();
-	});
-	
-/*    	infiniteScroll({
+	  
+/*    infiniteScroll({
 	    container: ".grid",
 	    item: ".grid-item",
 	    next: ".next",
  	    prev: ".prev",
-	    prevLoader: ".prevLoader",
+	    prevLoader: ".prevLoader", 
  	    pushHistory: true,
 	    nextCallback: (newElement) => {
 	        msnry.appended(newElement)
 	    },
    	    prevCallback: (newElement) => {
 	        msnry.prepended(newElement)
-	    },
+	    } ,
  	    onLoadFinish: () => {
 	        msnry.layout()
 	    }
-	}); */
-/*   	window.addEventListener("load", () => {
-	    //msnry.layout()
-  		imagesLoaded( '.grid' ).on( 'progress', function() {
+	});
+   	window.addEventListener("load", () => {
+	    msnry.layout()
+   		imagesLoaded( '.grid' ).on( 'progress', function() {
   		  msnry.layout();
-  		});
-	}) */
+  		}); */
+	
+/* 	imagesLoaded( '.grid' ).on( 'progress', function() {
+	  msnry.layout();
+	}); */
 	
 
 
 	//북마크 추가
-	$(".main_bookmark_btn").on('click', function(){
-		//$(this).parents().siblings(".bookmarked-plus").show();//북마크추가 css효과
+	$(".main_bookmark_btn").on('click', function(e){
+		e.stopPropagation();//클릭 이벤트 버블링 막기
 		const boardId = $(this).parents().parents(".grid-item").attr('id');
 		const bookmarkCss = $(this).parents().siblings(".bookmarked-plus");
 		//alert(boardId);
 		if("${user_id}" == "" || "${user_id}" == null){
-			alert("로그인이 필요합니다.");
+			//alert("로그인이 필요합니다.");
+			openAlertModal("로그인이 필요합니다.");
 		}
 		else {
 	  		$.ajax({
@@ -73,10 +75,11 @@ $(document).ready(function() {
 				data : {'board_id' : boardId},
 				success : function(response){
 					if(response != -1) {
-						bookmarkCss.show();//북마크추가 css효과					
+						bookmarkCss.show();//북마크추가 css효과
 					}
 					else {
-						alert("문제가 발생했습니다.");
+						//alert("문제가 발생했습니다.");
+						openAlertModal("문제가 발생했습니다.");
 					}
 				},
 	            error: function(request,status,error) {
@@ -87,13 +90,14 @@ $(document).ready(function() {
 		} 
 	});
 	//북마크 해제
-	$(".main_bookmarked_btn").on('click', function(){
-		//$(this).parents(".bookmarked-plus").hide();//북마크제거 css효과
+	$(".main_bookmarked_btn").on('click', function(e){
+		e.stopPropagation();//클릭 이벤트 버블링 막기
 		const boardId2 = $(this).parents().parents(".grid-item").attr('id');
 		const bookmarkCss2 = $(this).parents(".bookmarked-plus");
 		//alert(boardId2);
 		if("${user_id}" == "" || "${user_id}" == null){
-			alert("로그인이 필요합니다.");
+			//alert("로그인이 필요합니다.");
+			openAlertModal("로그인이 필요합니다.");
 		}
 		else {
 	  		$.ajax({
@@ -105,7 +109,8 @@ $(document).ready(function() {
 						bookmarkCss2.hide();//북마크제거 css효과					
 					}
 					else {
-						alert("문제가 발생했습니다.");
+						//alert("문제가 발생했습니다.");
+						openAlertModal("문제가 발생했습니다.");
 					}
 				},
 	            error: function(request,status,error) {
@@ -126,6 +131,24 @@ $(document).ready(function() {
 		$(this).parents(".one_searchword").css("display", "none");
 	});
 	
+	//사진 누르면 디테일 페이지로 이동
+	$(".grid").on('click', ".grid-item" ,function(){
+		let bi = $(this).attr("id");
+		//alert(bi);
+		location.href = "/detail?bi="+bi;
+	});
+	
+	/* -------------------- Modal -------------------- */
+	//모달 취소버튼(공통)
+	$("body").on('click','.modal_cancelbtn',function(){
+		$(this).parents(".modal").css("display","none");
+	});
+
+	//모달함수선언
+	function openAlertModal(modal_msg){
+		$("#alert_modal").css("display","flex");
+		$("#alert_modal #modal_alert_text").html(modal_msg);
+	}
 	
 }); //ready
 </script>
@@ -244,5 +267,39 @@ $(document).ready(function() {
 	
 </div>
 </div>
+<jsp:include page="editor/modal.jsp"/>
 </body>
+<!-- <script>
+var msnry = new Masonry( '.grid', {
+	  itemSelector: '.grid-item',
+	  columnWidth: '.grid-sizer',
+	  percentPosition: true,
+	  gutter : 20,
+});
+
+infiniteScroll({
+  container: ".grid",
+  item: ".grid-item",
+  next: ".next",
+   prev: ".prev",
+   autoPrev : true,
+   pushHistory: true,
+   nextCallback: (newElement) => {
+      msnry.appended(newElement)
+  },
+	/*    prevCallback: (newElement) => {
+      msnry.prepended(newElement)
+  }, */
+   onLoadFinish: () => {
+      msnry.layout()
+  }
+}),
+
+window.addEventListener("load", () => {
+  //msnry.layout()
+	imagesLoaded( '.grid' ).on( 'progress', function() {
+	  msnry.layout();
+	});
+})
+</script> -->
 </html>
