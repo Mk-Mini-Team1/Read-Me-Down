@@ -125,18 +125,18 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView();
 		if(result > 0) {
 			mv.addObject("msg", "템플릿 작성이 완료되었습니다.");
-			mv.addObject("url", "detail?board_id="+board_id);			
+			mv.addObject("url", "detail?bi="+board_id);			
 			mv.setViewName("alert");						
 		}
 		else {
 			mv.addObject("msg", "문제가 발생했습니다.");
-			mv.addObject("url", "writingForm?board_id="+board_id);			
+			mv.addObject("url", "writingForm?bi="+board_id);			
 			mv.setViewName("alert");						
 		}
 		return mv;
 	}
 	
-	//글 조회(수정용)
+	//글 조회-> 수정폼 이동
 	@RequestMapping("/boardupdateform")
 	public ModelAndView board_detail(String bi) {
 		//System.out.println(board_id);
@@ -165,7 +165,7 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView();
 		if(result == 1) {
 			mv.addObject("msg", "수정이 완료되었습니다.");
-			mv.addObject("url", "mypage");			
+			mv.addObject("url", "detail?bi="+board_id);			
 			mv.setViewName("alert");						
 		}
 		else {
