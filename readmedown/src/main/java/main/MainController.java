@@ -36,7 +36,6 @@ public class MainController {
 	//메인 글 목록 불러오기
 	@RequestMapping("/")
 	public ModelAndView allBoardList(@RequestParam(value="page", required=false, defaultValue="1" ) int page, HttpSession session) {
-		session.setAttribute("user_id", "dkslwn");
 		//글 목록
 		SearchDTO searchdto = new SearchDTO();
 	    searchdto.setRecordSize(100);

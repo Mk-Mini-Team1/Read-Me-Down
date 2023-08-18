@@ -38,9 +38,7 @@ window.onresize = function() {
 }
 
 //에디터 내부 초기화
-if($("#otherCodes").val()!=''){
-	$(".ProseMirror").html($("#otherCodes").val()+"</div>");
-}
+$(".ProseMirror").html($("#myCodes").val()+"</div>");
 
 //에디터 다크모드전환
 $("body").on('click','#themebtn',function(){
@@ -83,25 +81,26 @@ $("body").on('click', '#savecodebtn', function() {
 	let saveCode = editor.getMarkdown();
 	saveCode = saveCode.replace(/\r\n|\n|\r/ig, '<br>');
 	
-	if ($("#user_id").val() == '') {
+	if($("#user_id").val()==''){
 		openAlertModal("로그인 회원 전용 기능입니다.<br>로그인 후 이용해 주세요.");
-	} else if (saveCode.length < 1) {
+	}else if(saveCode.length < 1){
 		openAlertModal("내용을 작성해 주세요.");
-	} else {
+	}else{
 		$.ajax({
-			type: 'post',
-			url: '/savecodes',
-			dataType: 'json',
-			data: {
-				user_id: $("#user_id").val(),
-				codes: saveCode
-			},
-			success: function(data) { // 결과 성공 콜백함수
-				location.href = "/writingForm?bi=" + data.board_id;
-			},
-			error: function(request, status, error) { // 결과 에러 콜백함수
-				console.log(error)
-			}
-		});//ajax end
+		type: 'post',
+		url: '/updatecodes',
+		dataType: 'json',
+		data: {
+			board_id:$("#myBoardID").val(),
+			user_id:$("#user_id").val(),
+			codes: saveCode
+		},
+		success: function(data) { // 결과 성공 콜백함수
+			location.href = "/boardupdateform?bi="+data.board_id;
+		},
+		error: function(request, status, error) { // 결과 에러 콜백함수
+			console.log(error)
+		}
+	});//ajax end
 	}
 });
