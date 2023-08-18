@@ -24,6 +24,12 @@
   		FROM board
   		WHERE board_id = #{keyword};
   	</select>
+
+  	<delete id="deleteNoSaveBoard" parameterType="String">
+  		DELETE
+  		FROM board
+  		WHERE user_id = #{user_id} and write_date is null;
+  	</delete>
   	
 </mapper>
 

@@ -21,5 +21,9 @@ public class EditorService {
 	boolean isBoardIdExist(String new_id) {
 		return dao.isBoardIdExist(new_id);
 	}
+	
+	int deleteNoSaveBoard(String user_id) {
+		return dao.deleteNoSaveBoard(user_id);
+	}
 
 }
