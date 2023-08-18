@@ -3,6 +3,8 @@ package detail;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import board.BookmarkDTO;
+
 @Mapper
 @Repository
 public interface DetailDAO {
@@ -11,8 +13,9 @@ public interface DetailDAO {
 	DetailDTO detail(String board_id);
 	
 	//북마크
-	/*
-	 * int addBookmark(BookmarkDTO dto); int deleteBookmark(BookmarkDTO dto);
-	 */
+ int addDBookmark(BookmarkDTO dto); 
+ int deleteDBookmark(BookmarkDTO dto);
+public Integer isDBookmarked(BookmarkDTO dto);
+	
 	
 }//class

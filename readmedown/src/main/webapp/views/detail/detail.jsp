@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -19,18 +20,17 @@
 
 <script src="/js/jquery-3.6.4.min.js"></script>
 <title>Read Me▼</title>
+<!-- 버튼 세션 처리 -->
 <script>
 $(document).ready(function() {
-    var user_id = "${dto.user_id}";
+	 var user_id = '<%=session.getAttribute("user_id")%>';
 
-    if (user_id === 'user123') {
-        console.log('Showing #replyButton');
+    if (user_id === '${dto.user_id}') {
         $(".templateUse").hide();
         $(".templateShare").hide();
         $(".updateBtn").show();
         $(".deleteBtn").show();
     } else {
-        console.log('Hiding #replyButton');
         $(".templateUse").show();
         $(".templateShare").show();
         $(".updateBtn").hide();
@@ -38,6 +38,9 @@ $(document).ready(function() {
     }
 });
 </script>
+ 
+
+
 
 
 </head>
@@ -61,11 +64,12 @@ $(document).ready(function() {
 							<span class="material-symbols-outlined"> edit_square </span> <a
 								style="position: relative; top: -5px;" href="#">템플릿사용하기</a>
 						</div>
-						<div class="templateShare">
-							<img class="shareImg" src="/images/detail/Mask_group.svg">
-							<a style="position: relative; top: -5px;" href="#">공유하기</a>
+						<!-- HTML 코드 -->
+<div class="templateShare">
+    <img class="shareImg" src="/images/detail/Mask_group.svg">
+    <a id="shareLink" style="position: relative; top: -5px;" href="#">공유하기</a>
+</div>
 
-						</div> 
 					<div class="updateBtn">
 							<img class="updateImg"  src="/images/detail/t.svg">
 							<a class="updateA" style="position: relative; top: -5px;" href="#">
@@ -79,13 +83,24 @@ $(document).ready(function() {
 						</div>
 
 					</div>
-					<div class="bookmark-icon">
-						<button onclick="toggleBookmark(event)"><img class="bookmarkImg" src="/images/main/bookmark_before.svg">
-							</button>
-					</div>
+					
+				
+		
+<c:choose>
+<c:when test="${dto.bookmarked}">
+ <div class="bookmarked-plus" style="display : block;">
+              <div class="bookmark-icon"><button onclick="toggleBookmark(event)"><img class="bookmarkImg" src='/images/main/bookmark_after.svg'>
+               </button></div>
+         </div>
+	        </c:when>
+						<c:otherwise>
+	      <div class="bookmarked-plus">
+               <div class="bookmark-icon"><button onclick="toggleBookmark(event)"><img class="bookmarkImg" src='/images/main/bookmark_before.svg'></button></div>
+               </div>
+				        </c:otherwise>
+			</c:choose>
 
-
-					<div class="detail_title">${dto.title}</div>
+				<div class="detail_title">${dto.title}</div>
 <div id="modal" ></div>
 					<div class="user_nickline">
 						<img class="profileimg" src="/images/default_profile.svg">
@@ -96,7 +111,7 @@ $(document).ready(function() {
 							
 					<div class="detailLink">
 					<img class="linkImg" src="/images/detail/image 147.png">
-					<a href="#"> ${dto.board_link}</a>
+					<a href="${dto.board_link}"> ${dto.board_link}</a>
 					</div>
 					<div class="detail_contents">${dto.contents}</div> 
 				
@@ -210,36 +225,81 @@ $(document).ready(function() {
         }
     }
 </script>
+<script>
+function toggleBookmark(event) {
+    const bookmarkImage = event.currentTarget.querySelector(".bookmarkImg");
+    const boardId = "${dto.board_id}";
 
- <script>
- function toggleBookmark(event) {
-     const bookmarkImage = event.currentTarget.querySelector(".bookmarkImg");
-     if (bookmarkImage.src.includes("bookmark_before.svg")) {
-         addBookmark();
-     } else {
-         deleteBookmark();
-     }
- }
+    if ("${user_id}" === "" || "${user_id}" === null) {
+        alert("로그인이 필요합니다.");
+        return; // 로그인이 필요한 경우 함수 종료
+    }
 
-	function addBookmark() {
-	  // 북마크 추가 동작 수행
-	  // ...
+    if (bookmarkImage.src.includes("bookmark_before.svg")) {
+        addDBookmark(boardId);
+        bookmarkImage.src = "/images/main/bookmark_after.svg";
+    } else {
+        deleteDBookmark(boardId);
+        bookmarkImage.src = "/images/main/bookmark_before.svg";
+    }
+}
 
-	  // 이미지 변경
-	  const bookmarkImage = document.querySelector(".bookmarkImg");
-	  bookmarkImage.src = "/images/main/bookmark_after.svg";
-	}
+function addDBookmark(boardId) {
+    $.ajax({
+        url: 'addDBookmark',
+        type: 'post',
+        data: { 'board_id': boardId },
+        success: function (response) {
+            if (response !== -1) {
+            	 alert("북마크가 추가되었습니다.");
+            } else {
+                alert("문제가 발생했습니다.");
+            }
+        },
+        error: function (request, status, error) {
+            alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+            console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+        }
+    });
+}
 
-	function deleteBookmark() {
-	  // 북마크 추가 동작 수행
-	  // ...
+function deleteDBookmark(boardId) {
+    $.ajax({
+        url: 'deleteDBookmark',
+        type: 'post',
+        data: { 'board_id': boardId },
+        success: function (response) {
+            if (response !== -1) {
+            	 alert("북마크가 삭제되었습니다.");
+            } else {
+                alert("문제가 발생했습니다.");
+            }
+        },
+        error: function (request, status, error) {
+            alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+            console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+        }
+    });
+}
+</script>
+<script>
 
-	  // 이미지 변경
-	  const bookmarkImage = document.querySelector(".bookmarkImg");
-	  bookmarkImage.src = "/images/main/bookmark_before.svg";
-	}
+ document.getElementById("shareLink").addEventListener("click", function(event) {
+     event.preventDefault(); // 기본 링크 동작 방지
 
- 
+     const currentURL = window.location.href; // 현재 페이지의 URL 가져오기
+
+     // 가상의 textarea 엘리먼트를 생성하여 클립보드에 복사
+     const textarea = document.createElement("textarea");
+     textarea.value = currentURL;
+     document.body.appendChild(textarea);
+     textarea.select();
+     document.execCommand("copy");
+     document.body.removeChild(textarea);
+
+     alert("URL이 복사되었습니다 " );
+ });
+
  
  </script>
 </body>
