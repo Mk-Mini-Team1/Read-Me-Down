@@ -33,8 +33,8 @@
 				</div>
 				<div class="categoryWrap">
 					<div class="category">
-						<a href="/mypage" class="category-link" id="myTemplateLink"
-							style="border-bottom: 7px solid var(--neon3);"> <img
+						<a href="/mypage" class="category-link"
+							id="myTemplateLink"> <img
 							src="/images/mypage/my_template.svg">내 템플릿
 						</a>
 					</div>
@@ -44,30 +44,33 @@
 						</a>
 					</div>
 					<div class="category">
-						<a href="/following" class="category-link"
-							id="followingLink"> <img src="/images/mypage/following.svg">팔로잉
+						<a href="/following" class="category-link" id="followingLink"
+							style="border-bottom: 7px solid var(--neon3);"> <img
+							src="/images/mypage/following.svg">팔로잉
 						</a>
 					</div>
+
 				</div>
 				<div class="infoWrap" id="infoWrap">
-					<div class="myTemplate_list">
-						<div class="myTemplates">
-							<div class="grid-item" id="${dto.board_id}">
-								<img src='${dto.board_img}'
-									onerror="this.src='/images/main/no_img.svg'" alt="template">
-								<div class="darkness"></div>
-								<div class="btn-plus">
-									<div class="mypage_unlock_box">
-										<img class="mypage_unlock_btn"
-											src='/images/mypage/unlock.svg'>
-									</div>
-								</div>
-								<div class="lock-plus">
-									<div class="mypage_lock_box">
-										<img class="mypage_lock_btn"
-											src='/images/mypage/lock.svg'>
-									</div>
-								</div>
+					<div class="following_list">
+						<div class="following_user">
+							<div class="user_image"></div>
+							<div class="user_name">
+								<p>@템플릿기부천사</p>
+							</div>
+							<div class="follow_button">
+								<button onmouseover="showUnfollowText(this)"
+									onclick="removeFollowingUser(this)">팔로잉</button>
+							</div>
+						</div>
+						<div class="following_user">
+							<div class="user_image"></div>
+							<div class="user_name">
+								<p>@리드미참쉽죠</p>
+							</div>
+							<div class="follow_button">
+								<button onmouseover="showUnfollowText(this)"
+									onclick="removeFollowingUser(this)">팔로잉</button>
 							</div>
 						</div>
 					</div>

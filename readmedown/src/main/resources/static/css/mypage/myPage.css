@@ -13,6 +13,7 @@
 	background-color: var(--sub);
 	margin-bottom: 20px;
 	margin-top: 30px;
+	margin-left: 5px;
 	background-image: url('/images/profile-default.svg');
     background-size: cover;	
 }
@@ -28,14 +29,8 @@
 .contentWrap .userInfo .user > p:first-of-type {
   font: var(--heading34);
   margin-bottom: 12px;
-  margin-left: 10px;
 }
 
-.user > p:first-of-type span {
-  display: inline-block;
-  margin-left: 5px;
-  font: var(--heading24);
-}
 
 .user >button{
   width: 100px;
@@ -93,6 +88,9 @@
     cursor: pointer;  
 }
 
+.category a:hover {   
+        border-bottom: 7px solid var(--neon3);
+}
 
 .infoWrap { 
   display: flex; 
@@ -107,10 +105,6 @@
   padding-bottom:80px;
  }
  
- .category-selected {        
-        width: 50%;
-        border-bottom: 7px solid var(--neon3);
-    }
       
       
 .myTemplate_list {
@@ -137,14 +131,8 @@
 	width:100%;	
 }
 
-.grid { 
-	width:90%;	
-	margin : 0 auto;
-	/* border : 1px solid white;  */
-	padding-left: 70px;
-}
 
-.grid-sizer, .grid-item { width: 250px; }
+.grid-item { width: 250px; }
 .grid-item {
 	margin-bottom:15px; 
 	border-radius: 20px; 
@@ -182,14 +170,16 @@
 	/* transform:scale(2); */
 	transition:all .2s;
 }
-.main_bookmark_box{
+
+
+.mypage_bookmark_box{
 	width : 40px;
 	height : 60px;
 	margin-right : 20px;
 	cursor:pointer;
 	float : right;
 }
-.main_bookmark_btn {
+.mypage_bookmark_btn {
 	width : 100%;
 	height : 100%;
 }
@@ -212,14 +202,58 @@
 	height:100%;
 	display : none;
 }
-.main_bookmarked_box{
+.mypage_bookmarked_box{
 	width : 40px;
 	height : 60px;
 	margin-right : 20px;
 	cursor:pointer;
 	float : right;
 }
-.main_bookmarked_btn {
+.mypage_bookmarked_btn {
 	width : 100%;
 	height : 100%;
+}
+
+
+
+
+
+
+
+.mypage_unlock_box{
+	width : 40px;
+	height : 60px;
+	margin-right : 20px;
+	cursor:pointer;
+	float : right;
+}
+.mypage_unlock_btn {
+	margin-left: 5px;
+	width : 100%;
+	height : 100%;
+}
+
+
+
+/*북마크 된 상태일때*/
+.lock-plus {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	display : none;
+}
+.mypage_lock_box{
+	width : 40px;
+	height : 60px;
+	margin-right : 20px;
+	cursor:pointer;
+	float : right;
+}
+.mypage_lock_btn {
+	margin-top: 12px;
+	margin-left: 5px;
+	width : 58%;
+	height : 58%;
 }

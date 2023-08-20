@@ -1,4 +1,28 @@
-// 함수 정의: 팔로우 버튼에 마우스를 가져다 대면 언팔로우로 변경
+//프로필수정 이동
+function redirectToEditProfile() {
+	window.location.href = "/mypage/edit"; // 지정된 페이지로 이동
+}
+
+//북마크 추가(프론트)
+$(".mypage_bookmark_btn").on('click', function() {
+	$(this).parents().siblings(".bookmarked-plus").show();
+});
+//북마크 해제(프론트)
+$(".mypage_bookmarked_btn").on('click', function() {
+	$(this).parents(".bookmarked-plus").hide();
+});
+
+//템플릿 공개(프론트)
+$(".mypage_unlock_btn").on('click', function() {
+	$(this).parents().siblings(".lock-plus").show();
+});
+//템플릿 비공개(프론트)
+$(".mypage_lock_btn").on('click', function() {
+	$(this).parents(".lock-plus").hide();
+});
+
+
+//함수 정의: 팔로우 버튼에 마우스를 가져다 대면 언팔로우로 변경
 function showUnfollowText(button) {
     $(button).text("언팔로우");
 }
@@ -37,75 +61,3 @@ function removeFollowingUser(button) {
         }
     }
 }
-
-
-
-
-//프로필수정 이동
-function redirectToEditProfile() {
-	window.location.href = "/mypage/edit"; // 지정된 페이지로 이동
-}
-
-//카테고리 적용
-function showContent(contentType) {
-	var contentDivs = document.getElementsByClassName("infoWrap")[0].children;
-	for (var i = 0; i < contentDivs.length; i++) {
-		if (contentDivs[i].classList.contains(contentType + "_list")) {
-			contentDivs[i].style.display = "block";
-		} else {
-			contentDivs[i].style.display = "none";
-		}
-	}
-
-	// 카테고리 링크에 선택된 스타일 적용
-	var categoryLinks = document.getElementsByClassName("category-link");
-	for (var i = 0; i < categoryLinks.length; i++) {
-		if (categoryLinks[i].id === contentType + "Link") {
-			categoryLinks[i].classList.add("category-selected");
-		} else {
-			categoryLinks[i].classList.remove("category-selected");
-		}
-	}
-
-	// 내 템플릿 카테고리에 선택된 스타일 적용 (기본 선택)
-	var myTemplateLink = document.getElementById("myTemplateLink");
-	if (contentType === "myTemplate") {
-		myTemplateLink.classList.add("category-selected");
-	} else {
-		myTemplateLink.classList.remove("category-selected");
-	}
-}
-
-
-
-//북마크 추가(프론트)
-$(".main_bookmark_btn").on('click', function() {
-	$(this).parents().siblings(".bookmarked-plus").show();
-});
-//북마크 해제(프론트)
-$(".main_bookmarked_btn").on('click', function() {
-	$(this).parents(".bookmarked-plus").hide();
-});
-
-
-
-// 페이지 로딩 시 기본 카테고리 설정
-window.onload = function() {
-	showContent('myTemplate');
-};
-
-
-
-//Masonry
-$(document).ready(function() {
-	var msnry = new Masonry('.grid', {
-		itemSelector : '.grid-item',
-		columnWidth : '.grid-sizer',
-		percentPosition : true,
-		gutter : 20,
-	});
-	imagesLoaded('.grid').on('progress', function() {
-		msnry.layout();
-	});
-
-}); //ready
