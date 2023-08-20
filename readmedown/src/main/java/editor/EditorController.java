@@ -45,6 +45,7 @@ public class EditorController {
 				mv.setViewName("editor/editor");
 			}
 		}
+		mv.addObject("hitsList", service.getHits(""));
 		return mv;
 	}
 	
@@ -59,6 +60,13 @@ public class EditorController {
 	@ResponseBody
 	public List<StatsThemeDTO> getStatsThemes(String keyword){
 		List<StatsThemeDTO> list = service.getStatsThemes(keyword);
+		return list;
+	}
+
+	@PostMapping("/gethits")
+	@ResponseBody
+	public List<HitDTO> gethits(String keyword){
+		List<HitDTO> list = service.getHits(keyword);
 		return list;
 	}
 	

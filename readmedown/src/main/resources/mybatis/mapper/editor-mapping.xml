@@ -18,6 +18,14 @@
   		WHERE stats_theme_name like concat('%',#{keyword},'%');
   		</if>
   	</select>
+
+  	<select id="getHits" parameterType="String" resultType="editor.HitDTO">
+  		SELECT *
+  		FROM hits
+  		<if test="keyword != '' and keyword != null">
+  		WHERE hits_name like concat('%',#{keyword},'%');
+  		</if>
+  	</select>
   	
   	<select id="isBoardIdExist" parameterType="String" resultType="boolean">
   		SELECT count(*)
