@@ -45,7 +45,6 @@ public class EditorController {
 				mv.setViewName("editor/editor");
 			}
 		}
-		mv.addObject("hitsList", service.getHits(""));
 		return mv;
 	}
 	
