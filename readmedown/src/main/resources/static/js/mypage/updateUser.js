@@ -9,19 +9,19 @@ $(document).ready(function () {
 
         // 닉네임 규칙 검사
         if (!isNicknameValid(name)) {
-            alert('닉네임은 2~10글자 이내의 한글, 알파벳, 숫자를 사용할 수 있습니다.');
+            showModal('새 닉네임이<br>닉네임 규칙에 적합하지 않습니다.');
             return false;
         }
 
         if (editPassword.length !== 0) {
             // 비밀번호가 입력되었을 때 비밀번호 규칙 검사
             if (!isPasswordValid(editPassword)) {
-                alert('새 비밀번호가 비밀번호 규칙에 적합하지 않습니다.');
+                showModal('새 비밀번호가 비밀번호 규칙에<br>적합하지 않습니다.');
                 return false;
             }
 
             if (editPassword !== checkEditPassword) {
-                alert('새 비밀번호 확인이 일치하지 않습니다.');
+                showModal('새 비밀번호 확인이 일치하지 않습니다.');
                 return false;
             }
         }
@@ -37,13 +37,17 @@ $(document).ready(function () {
                 profile_image: imageValue,  // 이미지 데이터가 있는 경우에만 포함
                 git_id: editGitId,
             },
-            success: function (data) {
-                alert(data.response);
-                location.reload();
+             success: function (data) {
+                if (data.response === "현재 비밀번호를 입력해주세요.") {
+                    showModal(data.response);
+                } else if (data.response === "수정이 완료되었습니다.") {
+                    showModal(data.response, function () {
+                        window.location.href = '/mypage'; // /mypage 페이지로 이동
+                    });
+                }
             },
             error: function (error) {
-                console.log(error); // 에러 메시지를 콘솔에 출력
-                alert("서버에서 오류가 발생했습니다. 자세한 내용은 콘솔을 확인해주세요.");
+                console.log(error); // 에러 메시지를 콘솔에 출력                
             }
         });
     });
@@ -62,3 +66,20 @@ function isNicknameValid(nickname) {
     const nicknameRegex = /^[a-zA-Z0-9가-힣]{2,10}$/;
     return nicknameRegex.test(nickname);
 }
+
+function showModal(message, callback) {
+    $('#modal_alert_text').html(message);
+    $('#alert_modal').css('display', 'block');
+    
+    // 확인 버튼 클릭 시 콜백 함수 실행
+    $(document).on('click', '.modal_cancelbtn', function () {
+        $('#alert_modal').css('display', 'none');
+        if (typeof callback === 'function') {
+            callback();
+        }
+    });
+}
+
+$(document).on('click', '.modal_cancelbtn', function () {
+    $('#alert_modal').css('display', 'none');
+});

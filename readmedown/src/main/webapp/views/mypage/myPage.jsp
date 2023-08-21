@@ -23,10 +23,9 @@
 				<div class="contentWrap">
 					<div class="userInfo">
 						<div class="user">
-							<div class="mypage-profile-image"></div>
-							<p>
-								릳미팀개발자
-							</p>
+							<div class="mypage-profile-image"><img src="${info.profile_image}"></div>
+							<span id="name">${info.name}</span>
+							<span id="git"><img src="/images/mypage/git.svg">${info.git_id}</span>
 							<button onclick="redirectToEditProfile()">Edit Profile</button>
 						</div>
 					</div>

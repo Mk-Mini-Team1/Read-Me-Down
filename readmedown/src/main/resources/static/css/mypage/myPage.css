@@ -18,6 +18,13 @@
     background-size: cover;	
 }
 
+.mypage-profile-image >img {
+	width: 150px;
+	height: 150px;
+	border-radius: 80px;	
+	object-fit: cover;
+}
+
 .contentWrap .userInfo .user {
   display: flex;
   flex-direction: column;
@@ -26,11 +33,19 @@
 }
 
 
-.contentWrap .userInfo .user > p:first-of-type {
+.contentWrap .userInfo .user > span:first-of-type {
   font: var(--heading34);
-  margin-bottom: 12px;
 }
 
+.contentWrap .userInfo .user #git {
+        font: var(--heading20);
+        margin-bottom: 10px;
+    }
+    
+#git img {
+    vertical-align: middle;
+    margin-right: 5px;
+}
 
 .user >button{
   width: 100px;
@@ -55,11 +70,7 @@
   margin-top: 12px;
 }
 
-.user img {
-  width: 150px;
-  margin-top: 50px;
-  margin-bottom: 20px;
-}
+
 
 .categoryWrap {
   display: flex;
