@@ -39,7 +39,7 @@
 				</button>
 				<div class="dropdown-content">
 					<button onclick="openActivityGraph()">Activity Graph</button>
-					<button onclick="">Hits</button>
+					<button onclick="openHits()">Hits</button>
 					<button onclick="openReadmeStats()">Readme Stats</button>
 					<button onclick="">Streak Stats</button>
 					<button onclick="">Summary Card</button>

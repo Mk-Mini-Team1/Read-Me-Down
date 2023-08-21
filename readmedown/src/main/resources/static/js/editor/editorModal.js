@@ -151,3 +151,19 @@ function openGrass() {
 	$("#solved_grass_modal input[type='text']").val('');
 	$($("#solved_grass_modal input[type='radio']")[0]).prop("checked", true);
 }
+function openHits() {
+	$("#hits_modal").css("display", "flex");
+	//모달초기화
+	$("#hits_modal input[type='text']").val('');
+	$("#hits_modal #hit_icon_title_div").html('아이콘 이미지 선택');
+	$("#hits_modal #title_color").val('#555555');
+	$("#hits_modal #title_color+span").text('#555555');
+	$("#hits_modal #count_color").val('#79C83D');
+	$("#hits_modal #count_color+span").text('#79C83D');
+	$("#hits_modal #icon_color").val('#ffffff');
+	$("#hits_modal #icon_color+span").text('#ffffff');
+	$($("#hits_modal input[type='radio']")[0]).prop("checked", true);
+	$("#hit_icon_keyword").val('');
+	$("#hits_modal .dropbox_contents").css('display','none');
+	$("#hits_modal .dropboxWrap").css("height","auto");
+}

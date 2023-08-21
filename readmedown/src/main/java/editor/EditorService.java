@@ -18,6 +18,10 @@ public class EditorService {
 		return dao.getStatsThemes(keyword);
 	}
 	
+	List<HitDTO> getHits(String keyword){
+		return dao.getHits(keyword);
+	}
+	
 	boolean isBoardIdExist(String new_id) {
 		return dao.isBoardIdExist(new_id);
 	}
