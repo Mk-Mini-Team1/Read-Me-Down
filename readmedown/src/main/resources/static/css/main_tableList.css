@@ -1,0 +1,229 @@
+#main_contents > div{
+	display: flex;
+	flex-flow : row wrap;
+	align-items: center;
+	justify-content: center;
+}
+#main_wrapper{
+	width : 100%;
+	height : 100vh;
+}
+#main_wrapper > div{
+	display: flex;
+	flex-flow : row wrap;
+	align-items: center;
+	justify-content: center;
+}
+#top_box{
+	width : 100%;
+	height : 13%;
+	position: relative;
+}
+#main_gallery{
+	width : 100%;
+	height : 76%;
+}
+#below_box{
+	width : 100%;
+	height : 10%;
+}
+
+/*상단 검색바*/
+#search_top_box{
+	width : 91%;
+	height : 80px;
+	margin : 0 auto;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#search_box{
+	width : 100%;
+	height : 60px;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	border-bottom : 1px solid var(--point);
+}
+#search_icon_box {
+	width : 50px;
+	height : 50px;
+	margin-left : 10px;
+}
+#search_icon_img{
+	width : 100%;
+	height : 100%;
+}
+#search_word_box{
+	width : 100%;
+	height : 50px;
+	margin-left : 10px;
+}
+#search_word_input{
+	width : 90%;
+	height : 50px;
+	color : var(--text);
+	font-size : 20px;
+}
+
+#top_box > #search_below_box{
+	width : 100%;
+	height : 80px;
+	position: absolute;
+	z-index : 10;
+	display : none;
+	margin-top : 160px;
+	background-color : var(--sub);
+}
+#search_btns_box{
+	width : 90%;
+ 	padding : 20px;
+	margin : 0 auto;
+	border-radius : 20px;
+	border : 1px solid var(--point);
+	background-color : var(--sub);
+}
+.search_words_box{
+	width : 90%;
+	display : flex;
+	font-size : 15px;
+}
+.one_searchword{
+	width : max-content;
+	height : 35px;
+	border-radius: 2em;
+	background-color: var(--text); 
+	display : flex;
+	align-items:center;
+	justify-content : center;
+	border : 1px solid black;
+	margin : 10px;
+}
+.search_keyword, .remove_keyword{
+	width : max-content;
+	height : 100%;
+	margin-right : 10px;
+	margin-left : 10px;
+	color : black;
+	display : flex;
+	align-items:center;
+	justify-content : center;
+	cursor: pointer;
+} 
+
+/*메인*/
+#board_list_box {
+	width : 90%;
+	height : 100%;
+	margin : 0 auto;
+	display: flex;
+	flex-flow : row wrap;
+}
+
+.one_board{
+	width : 250px;
+	height : 333.33px;
+	display: flex;
+	align-items: center;
+	border-radius: 20px;
+	overflow: hidden;
+	margin-top : 15px;
+	margin-left : 20px;
+	
+	/* for 이미지호버 */
+	position:relative;
+	cursor:pointer;
+}
+.one_board >img{
+	width : 100%;
+	height : 100%;
+}
+
+/* for 이미지 호버 */
+.darkness {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#000000;
+  opacity:0;
+  transition:all .2s;
+}
+
+.btn-plus {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	opacity:0;
+	/* transform:scale(2); */
+	transition:all .2s;
+}
+.main_bookmark_box{
+	width : 40px;
+	height : 60px;
+	margin-right : 20px;
+	cursor:pointer;
+	float : right;
+}
+.main_bookmark_btn {
+	width : 100%;
+	height : 100%;
+}
+
+.one_board:hover .darkness{
+  opacity:0.4;
+}
+
+.one_board:hover .btn-plus {
+  opacity:1;
+  transform:scale(1);
+}
+
+/*북마크 된 상태일때*/
+.bookmarked-plus {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	display : none;
+}
+.main_bookmarked_box{
+	width : 40px;
+	height : 60px;
+	margin-right : 20px;
+	cursor:pointer;
+	float : right;
+}
+.main_bookmarked_btn {
+	width : 100%;
+	height : 100%;
+}
+
+/*페이징 버튼*/
+#board_paging_box {
+	width : 100%; height : 30px;
+	display : flex;
+	justify-content: center;
+	align-items: center;
+}
+#board_paging_box > div {
+	display : flex;	
+	display : flex;
+	justify-content: center;
+	align-items: center;
+}
+.pageNumBtn, .pageBtn{
+	font-size : 18px;
+	margin : 8px;
+	border : none;
+	background-color: transparent;
+	cursor: pointer;
+	color : var(--text);
+	display : flex;
+	justify-content: center;
+	align-items: center;
+}
