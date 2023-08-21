@@ -16,7 +16,7 @@
 			<div class="modal_inputbox">
 				<div>
 					<span>github ID</span>
-					<input id="github_ID" autocomplete='off' placeholder="User github ID"/>
+					<input id="github_ID" autocomplete='off' placeholder="User github ID" value="${user_git_id eq null ? '' : user_git_id}"/>
 				</div>
 				<p id="github_ID_guide">조회할 github ID를 입력하세요.</p>
 			</div>

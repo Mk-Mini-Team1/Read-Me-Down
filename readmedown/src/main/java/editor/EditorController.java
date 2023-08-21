@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import board.BoardDTO;
 import board.BoardService;
 import jakarta.servlet.http.HttpSession;
+import user.UserDTO;
 
 @Controller
 public class EditorController {
@@ -44,6 +45,13 @@ public class EditorController {
 				mv.addObject("codes", codes);
 				mv.setViewName("editor/editor");
 			}
+		}
+		
+		//유저가 로그인되어있는 경우
+		String user_id = (String) session.getAttribute("user_id");
+		if(user_id != null) {
+			UserDTO loginuser = service.getLoginUser(user_id);
+			mv.addObject("user_git_id", loginuser.getGit_id());
 		}
 		return mv;
 	}

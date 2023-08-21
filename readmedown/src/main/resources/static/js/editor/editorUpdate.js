@@ -127,7 +127,7 @@ $("body").on('click', '#savecodebtn', function() {
 				},
 				success: function(data) { // 결과 성공 콜백함수
 					$("#save_okay_modal").css("display", "flex");
-					$("#save_okay_modal #modal_alert_text").text("코드 저장이 완료되었습니다.<br>다음 글쓰기 단계로 이동합니다.");
+					$("#save_okay_modal #modal_alert_text").html("코드 저장이 완료되었습니다.<br>다음 글쓰기 단계로 이동합니다.");
 					$("#save_okay_modal #modal_okay_btn").on('click', function() {
 						location.href = "/writingForm?bi=" + data.board_id;
 					});
