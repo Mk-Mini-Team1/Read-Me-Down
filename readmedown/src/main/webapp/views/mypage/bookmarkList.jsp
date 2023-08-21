@@ -33,14 +33,15 @@
 				</div>
 				<div class="categoryWrap">
 					<div class="category">
-						<a href="/mypage" class="category-link" id="myTemplateLink"
-							style="border-bottom: 7px solid var(--neon3);"> <img
+						<a href="/mypage" class="category-link"
+							id="myTemplateLink"> <img
 							src="/images/mypage/my_template.svg">내 템플릿
 						</a>
 					</div>
 					<div class="category">
-						<a href="/bookmarks" class="category-link"
-							id="bookmarksLink"> <img src="/images/mypage/bookmarks.svg">북마크
+						<a href="/bookmarks" class="category-link" id="bookmarksLink"
+							style="border-bottom: 7px solid var(--neon3);"> <img
+							src="/images/mypage/bookmarks.svg">북마크
 						</a>
 					</div>
 					<div class="category">
@@ -50,22 +51,22 @@
 					</div>
 				</div>
 				<div class="infoWrap" id="infoWrap">
-					<div class="myTemplate_list">
-						<div class="myTemplates">
+					<div class="bookmarks_list">
+						<div class="bookmarks">
 							<div class="grid-item" id="${dto.board_id}">
 								<img src='${dto.board_img}'
 									onerror="this.src='/images/main/no_img.svg'" alt="template">
 								<div class="darkness"></div>
 								<div class="btn-plus">
-									<div class="mypage_unlock_box">
-										<img class="mypage_unlock_btn"
-											src='/images/mypage/unlock.svg'>
+									<div class="mypage_bookmark_box">
+										<img class="mypage_bookmark_btn"
+											src='/images/main/bookmark_before.svg'>
 									</div>
 								</div>
-								<div class="lock-plus">
-									<div class="mypage_lock_box">
-										<img class="mypage_lock_btn"
-											src='/images/mypage/lock.svg'>
+								<div class="bookmarked-plus">
+									<div class="mypage_bookmarked_box">
+										<img class="mypage_bookmarked_btn"
+											src='/images/main/bookmark_after.svg'>
 									</div>
 								</div>
 							</div>

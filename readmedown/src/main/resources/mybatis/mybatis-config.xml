@@ -9,6 +9,7 @@
 		<typeAlias type="detail.CommentDTO" alias="commentdto" />
 		<typeAlias type="board.BookmarkDTO" alias="bookmarkdto" />
 		<typeAlias type="user.UserDTO" alias="userdto" />
+		<typeAlias type="mypage.MypageDTO" alias="mypagedto" />
 	</typeAliases>
 	
 </configuration>

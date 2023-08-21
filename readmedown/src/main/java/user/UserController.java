@@ -90,10 +90,7 @@ public class UserController {
             result.put("errorMessage", "등록되지 않은 이메일 입니다");
         }
         return result;
-    }
-
-
-    
+    }    
     
     @RequestMapping("/logout")
     public String logout(HttpSession session) {
@@ -104,6 +101,9 @@ public class UserController {
     }
 
 
+    
+    
+    
 
 	@GetMapping("/findpw")
 	public String findPassword() {
