@@ -27,13 +27,6 @@ $(document).ready(function() {
 	     $(this).prop('checked',true);
 	  }
 	});
-	
-	//뒤로가기 버튼 호버이벤트
-	$("#back_to_editor_btn").hover(function(){
-		$(this).attr("src", "/images/back_icon_point.png");
-	}, function(){
-		$(this).attr("src", "/images/back_icon.png");
-	});
 
 	//이미지 첨부
  	$("#board_img_upload").change(function() {
@@ -65,9 +58,8 @@ $(document).ready(function() {
         });//ajax
 	});//사진첨부
 	
-	//2차 글 작성
+	//2차폼 글 작성
 	$("#submit_board_btn").on('click', function(){
-		
 		//enter => <br>
 		let text = $('#board_contents').val();
 		text = text.replace(/(?:\r\n|\r|\n)/g, '<br>');
@@ -108,6 +100,29 @@ $(document).ready(function() {
 		$("#alert_modal #modal_alert_text").html(modal_msg);
 	}
 	
+	//confirm창 모달함수선언
+	function openConfirmModal(modal_msg){
+		$("#confirm_modal").css("display","flex");
+		$("#confirm_modal #modal_alert_text").html(modal_msg);
+	}
+	/* -------------------- Modal -------------------- */
+	
+	//상단 x 버튼 클릭시 작성 취소
+	$("#cancle_board_btn").on('click', function(){
+		openConfirmModal("작성중이던 모든 내용은 삭제됩니다. <br> 정말 작성을 그만두시겠습니까?");
+		$("#confirm_modal_ok_btn").on("click", function(){
+			location.href="/";				
+		});
+	});
+	
+	//상단 <- 버튼 클릭시 뒤로가기
+	$("#back_to_editor_btn").on('click', function(){
+		let bi = $("#board_id").val();
+		location.href="/editor?bi=" + bi;
+	});
+	
+	
+	
 }); //ready
 </script>
 </head>
@@ -122,7 +137,7 @@ $(document).ready(function() {
 	<div id="writingForm_wrap_box">
 		<div id="writingForm_top_btns">
 			<div id="back_to_editor"><img id="back_to_editor_btn" src="/images/back_icon.png" /></div>
-			<div id="submit_board"><input type=button id="submit_board_btn" value="작성완료"/></div>
+			<div id="cancle_board"><img id="cancle_board_btn" src="/images/cancle_icon.png" /></div>
 		</div>
 		<div id="writingForm">
 			<div id="wf_left">
@@ -140,7 +155,7 @@ $(document).ready(function() {
  					<div id="preview_wrapper">
 						<div id="delete_img_box"><div id="delete_img_icon" onclick='cancleImg(this)'>X</div></div>
 						<div id="img_preview_box">
-							<img id="img_preview" src="" onerror="this.src='/images/main/no_img.svg'"/>
+							<img id="img_preview" src="" />
 							<input type="hidden" id="board_img" name="board_img" value="" />
 						</div>
 					</div>
@@ -160,6 +175,7 @@ $(document).ready(function() {
 							<label><input type="checkbox" id="yes_secret" name="secret" value="yes">나만 보기</label>
 						</div>
 					</div>
+					<div id="submit_board"><input type=button id="submit_board_btn" value="작성완료"/></div>
 			</div>
 		</div>
 	</div>
@@ -169,6 +185,7 @@ $(document).ready(function() {
 </div>
 </div>
 <jsp:include page="editor/modal.jsp"/>
+<jsp:include page="confirm_modal.jsp"/>
 </body>
 <script>
 //댓글,대댓글에 사진 첨부한거 취소하기

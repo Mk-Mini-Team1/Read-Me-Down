@@ -18,9 +18,9 @@
 <body>
 	<div id="alert_modal" class="modal">
 		<div class="modal_box">
-			<div class="closebox">
+<!-- 			<div class="closebox">
 				<img class="modal_cancelbtn" src="/images/sign/Close.svg" alt="창닫기" />
-			</div>
+			</div> -->
 			<div class="logobox">
 				<img src="/images/ReadMeD_Mint.svg" alt="logo" />
 			</div>
