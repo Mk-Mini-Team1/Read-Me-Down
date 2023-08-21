@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="/css/style.css" />
 <link rel="stylesheet" href="/css/editor/editor.css" />
 <link rel="stylesheet" href="/css/editor/editorMenu.css" />
+<link rel="stylesheet" href="/css/editor/okay_modal.css" />
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <!-- Toast UI Editor -->
 <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
@@ -42,6 +43,20 @@
 		</div>
 	</div>
 	
+	<div id="save_okay_modal" class="modal">
+		<div class="modal_box">
+			<div class="logobox">
+				<img src="/images/ReadMeD_Mint.svg" alt="logo" />
+			</div>
+			<div class="modal_alert_text" id="modal_alert_text">
+				코드 저장이 완료되었습니다.<br>다음 글쓰기 단계로 이동합니다.
+			</div>
+			<div class="modal_btns">
+				<button id="modal_okay_btn">확인</button>
+			</div>
+		</div>
+	</div>
+	
 	<input type="hidden" id="user_id" value="${user_id}">
 	<textarea id="otherCodes" style="display:none;">${codes}</textarea>
 	<jsp:include page="modal.jsp" />
@@ -57,5 +72,6 @@
 	<script src="/js/editor/editor.js"></script>
 	<script src="/js/editor/editorModal.js"></script>
 	<script src="/js/editor/profile.js"></script>
+
 </body>
 </html>

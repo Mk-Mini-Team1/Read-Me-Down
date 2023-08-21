@@ -66,10 +66,11 @@ public class EditorController {
 	@ResponseBody
 	public String saveCodes(BoardDTO dto) {
 		String new_id = UUID.randomUUID().toString();
-		while(service.isBoardIdExist(new_id)) {
-			new_id = UUID.randomUUID().toString();
-		}
+		while(service.isBoardIdExist(new_id)) {	new_id = UUID.randomUUID().toString();	}
 		dto.setBoard_id(new_id);
+		//이전에 저장안된 게시물 지우기
+		service.deleteNoSaveBoard(dto.getUser_id());
+		//신규게시물 등록
 		board_service.first_insert_board(dto);
 		return "{\"board_id\":\""+dto.getBoard_id()+"\"}";
 	}

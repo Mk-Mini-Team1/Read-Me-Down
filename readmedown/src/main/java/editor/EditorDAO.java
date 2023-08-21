@@ -12,5 +12,5 @@ public interface EditorDAO {
 	List<StatsThemeDTO> getStatsThemes(String keyword);
 	
 	boolean isBoardIdExist(String new_id);
-
+	int deleteNoSaveBoard(String user_id);
 }
