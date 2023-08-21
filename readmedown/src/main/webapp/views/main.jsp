@@ -48,8 +48,6 @@ $(document).ready(function() {
 	});
    	window.addEventListener("load", () => {
 	    msnry.layout()
-   		imagesLoaded( '.grid' ).on( 'progress', function() {
-  		  msnry.layout();
   		}); */
 	
 /* 	imagesLoaded( '.grid' ).on( 'progress', function() {
