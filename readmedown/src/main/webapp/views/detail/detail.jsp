@@ -60,24 +60,26 @@ $(document).ready(function() {
 				
 				<div class="box right-box">
 					<div class="detail_button">
-						 <div class="templateUse">
-							<span class="material-symbols-outlined"> edit_square </span> <a
+						 <div  class="templateUse" onclick="window.location.href='/editor?bi=${dto.board_id}'">
+							<span  style="cursor: pointer;" class="material-symbols-outlined"> edit_square </span> <a
 								style="position: relative; top: -5px;" href="#">템플릿사용하기</a>
 						</div>
 						<!-- HTML 코드 -->
-<div class="templateShare">
+<div id="shareLink"  style="cursor: pointer;" class="templateShare">
     <img class="shareImg" src="/images/detail/Mask_group.svg">
-    <a id="shareLink" style="position: relative; top: -5px;" href="#">공유하기</a>
+    <a id="shareLink" style="position: relative; top: -5px;" >공유하기</a>
 </div>
 
-					<div class="updateBtn">
-							<img class="updateImg"  src="/images/detail/t.svg">
-							<a class="updateA" style="position: relative; top: -5px;" href="#">
-							수정</a>
-						</div>
-						<div class="deleteBtn">
+				<div class="updateBtn">
+    <img class="updateImg" style="cursor: pointer;" src="/images/detail/t.svg" onclick="window.location.href='/editor?bi=${dto.board_id}'">
+    <a class="updateA" style="position: relative; top: -5px;" href="/editor?bi=${dto.board_id}">
+        수정
+    </a>
+</div>
+
+						<div style="cursor: pointer;"  onclick="clickModal(event)" class="deleteBtn">
 							<img class="deleteImg" src="/images/detail/x.svg">
-							<a class="deleteA"  onclick="clickModal(event)" style="position: relative; top: -5px;" href="#">
+							<a class="deleteA"  onclick="clickModal(event)" data-placeid="${dto.board_id}" style="position: relative; top: -5px;" >
 							삭제</a>
 
 						</div>
@@ -103,16 +105,22 @@ $(document).ready(function() {
 				<div class="detail_title">${dto.title}</div>
 <div id="modal" ></div>
 					<div class="user_nickline">
-						<img class="profileimg" src="/images/default_profile.svg">
-						<div class="user_nickname">user_nickname</div>
+						<img class="profileimg" src="${boardUser.profile_image}" alt="Profile Image" onerror="this.src='/images/default_profile.svg'">
+						
+						<div class="user_nickname">${boardUser.name}</div>
 						<button onclick="clickfollow(event)" class="follow">팔로우</button>
 					</div>
 					
 							
-					<div class="detailLink">
-					<img class="linkImg" src="/images/detail/image 147.png">
-					<a href="${dto.board_link}"> ${dto.board_link}</a>
-					</div>
+
+<div class="detailLink" id="linkSection">
+    <img class="linkImg" src="/images/detail/image 147.png">
+    <a href="${dto.board_link}">${dto.board_link}</a>
+</div>
+
+
+					
+					
 					<div class="detail_contents">${dto.contents}</div> 
 				
 				
@@ -120,77 +128,32 @@ $(document).ready(function() {
 				
 				<p class="detailcommentstart">댓글</p>
 				<div class="comment">
-				<div class="detailCommentLine">
-				<div class="pncline">
-						<img class="commentProfileImg" src="/images/default_profile.svg">
-						<div class="commentUser_nickname">user_nickname</div>
-						<div class="commentCreatedat">2023.08.12</div>
-						</div>
-						<button class="replyB">답글</button>
-				
-				</div>
-						<div class="detailComment">댓글댓글댓글댓글댓글</div>
-			
-				<div class="replyLine">
-				<textarea class="reply_textarea" id="reply-input"
-				name='reply_contents' placeholder="답글을 입력해주세요."></textarea>
-			
-				
-				<div class="replyCW">
-<button class="replyCButton" style=" border: 2px solid var(--light-stroke);">취소</button>
-<button class="replyWButton" style=" border: 2px solid var(--light-stroke);">작성</button>
-				</div>
-				</div>
-				<div class="detailCommentLine">
-				<div class="pncline">
-						<img class="commentProfileImg" src="/images/default_profile.svg">
-						<div class="commentUser_nickname">user_nickname</div>
-						<div class="commentCreatedat">2023.08.12</div>
-						</div>
-						<button class="replyB">답글</button>
-				
-				</div>
-						<div class="detailComment">댓글댓글댓글댓글댓글</div>
-			
-				<div class="replyLine">
-				<textarea class="reply_textarea" id="reply-input"
-				name='reply_contents' placeholder="답글을 입력해주세요."></textarea>
-			
-				
-				<div class="replyCW">
-				
+				<c:forEach var="comment" items="${commentdtoList}">
+    <div class="detailCommentLine">
+        <div class="pncline">
+            <img class="commentProfileImg" src="/images/default_profile.svg">
+            <div class="commentUser_nickname">${comment.comment_writer}</div>
+            <div class="commentCreatedat"><fmt:formatDate value="${comment.comment_write_date}" pattern="yyyy-MM-dd H:mm" /></div>
+        </div>
+        <button class="replyB">답글</button>
+    </div>
+    <div class="detailComment">${comment.comment_contents}</div>
+    <div class="replyLine">
+        <textarea class="reply_textarea" id="reply-input" name='reply_contents' placeholder="답글을 입력해주세요."></textarea>
+        <div class="replyCW">
+            <button class="replyCButton" style="border: 2px solid var(--light-stroke);">취소</button>
+            <button class="replyWButton" style="border: 2px solid var(--light-stroke);">작성</button>
+        </div>
+    </div>
+</c:forEach>
 
-<button class="replyCButton" style=" border: 2px solid var(--light-stroke);" >취소</button>
-<button class="replyWButton" style=" border: 2px solid var(--light-stroke);">작성</button>
-				</div>
-				</div>
-				<div class="detailCommentLine">
-				<div class="pncline">
-						<img class="commentProfileImg" src="/images/default_profile.svg">
-						<div class="commentUser_nickname">user_nickname</div>
-						<div class="commentCreatedat">2023.08.12</div>
-						</div>
-						<button class="replyB">답글</button>
 				
-				</div>
-						<div class="detailComment">댓글댓글댓글댓글댓글</div>
-			
-				<div class="replyLine">
-				<textarea class="reply_textarea" id="reply-input"
-				name='reply_contents' placeholder="답글을 입력해주세요."></textarea>
-			
-				
-				<div class="replyCW">
-<button class="replyCButton" style=" border: 2px solid var(--light-stroke);">취소</button>
-<button class="replyWButton" style=" border: 2px solid var(--light-stroke);">작성</button>
-				</div>
-				</div>
 				</div>
 			
 				<div class="hr"></div>
 				<div>
 				<div class="commentWrite">
-				<img class="commentWProfileImg" src="/images/default_profile.svg">
+				<img class="commentWProfileImg" src="${userdto.profile_image}"onerror="this.src='/images/default_profile.svg'">
 				<input type="text" class="comment_textarea" id="comment-input"
 				name='comment_contents' placeholder="댓글을 입력해주세요.">
 			<button class="commentWButton">작성</button>
@@ -232,6 +195,7 @@ function toggleBookmark(event) {
 
     if ("${user_id}" === "" || "${user_id}" === null) {
         alert("로그인이 필요합니다.");
+        
         return; // 로그인이 필요한 경우 함수 종료
     }
 
@@ -302,5 +266,22 @@ function deleteDBookmark(boardId) {
 
  
  </script>
+ <script>
+
+ document.addEventListener("DOMContentLoaded", function() {
+     const linkSection = document.getElementById("linkSection");
+     const linkImg = linkSection.querySelector(".linkImg");
+     const linkAnchor = linkSection.querySelector("a");
+     
+     // href 속성이 없을 경우 이미지 영역을 숨김
+     if (!linkAnchor.getAttribute("href")) {
+         linkImg.style.display = "none";
+     }
+ });
+
+
+
+</script>
+ 
 </body>
 </html>

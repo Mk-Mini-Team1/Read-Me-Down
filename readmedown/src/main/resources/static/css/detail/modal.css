@@ -70,3 +70,16 @@ line-height:35px;
 	color:black;
 }
 
+.closebox{
+	display:flex;
+	justify-content:flex-end;
+		margin-top:-24px;
+		margin-right:-20px;
+	width: 400px;
+	height: 25px;
+}
+.modal_cancelbtn{
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+}

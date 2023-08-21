@@ -9,17 +9,48 @@
 	select * from board where board_id = #{board_id};
 </select>
 
+<!-- 해당 글의 유저정보 불러오기 -->
+<select id="getUserInfoByBoardId" parameterType="String" resultType="userdto">
+    SELECT * FROM user WHERE user_id = (
+        SELECT user_id FROM board WHERE board_id = #{board_id}
+    );
+</select>
+
+
+<!--세션유저정보 불러오기 -->
+<select id="detailuser" parameterType="String" resultType="userdto">
+	select * from user where user_id = #{user_id};
+</select>
+
+
+<!--댓글 조회  -->
+<select id="comment" parameterType="String" resultType="commentdto">
+	select * from comment where board_id = #{board_id};
+</select>
+
+
+
+<!--보드삭제  -->
+<update id="deleteBoard" parameterType="detaildto">
+    UPDATE board
+    SET delete_date = NOW()  
+    WHERE board_id = #{board_id}
+        AND delete_date IS NULL; 
+</update>
+
+
+
 <insert id="addDBookmark" parameterType="bookmarkdto">
-	insert into Bookmark (board_id, user_id )
+	insert into bookmark (board_id, user_id )
 				values (#{board_id}, #{user_id} )
 </insert>
 
 <!-- 북마크 제거 -->
 <delete id="deleteDBookmark" parameterType="bookmarkdto">
-	delete from Bookmark where board_id = #{board_id} and user_id = #{user_id};
+	delete from bookmark where board_id = #{board_id} and user_id = #{user_id};
 </delete>
 <select id="isDBookmarked" resultType="int" parameterType="bookmarkdto">
-	select count(*) from Bookmark where board_id = #{board_id} and user_id = #{user_id}
+	select count(*) from bookmark where board_id = #{board_id} and user_id = #{user_id}
 </select>
 </mapper>
 
