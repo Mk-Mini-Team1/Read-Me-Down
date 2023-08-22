@@ -11,6 +11,7 @@
 <link rel="apple-touch-icon" href="/images/logo-pencil.png" />
 <link rel="stylesheet" href="/css/style.css" />
 <link rel="stylesheet" href="/css/mypage/editProfile.css" />
+<link rel="stylesheet" href="/css/mypage/modal.css" />
 <script src="/js/jquery-3.6.4.min.js"></script>
 <title>Read Me▼</title>
 
@@ -30,21 +31,24 @@
 						</div>
 						<div class="upload_img_box">
 							<div class="edit_profile_image">
-								<img id="img_preview" src="${my_info.profile_image}"
-  								  onerror="this.src='/images/profile-default.svg'" />
-
-									<input type="file" id="imageUploadInput" style="display: none;">
-									<input type="hidden" id="profile_img" name="profile_img" value="" />
+								<img id="img_preview" src="${info.profile_image}"
+									onerror="this.src='/images/profile-default.svg'" /> <input
+									type="file" id="imageUploadInput" style="display: none;">
+								<input type="hidden" id="profile_img" name="profile_img"
+									value="${info.profile_image}" />
 								<button
 									onclick="document.getElementById('imageUploadInput').click();">Image
 									Upload</button>
+								<div id="delete_img_box">
+									<div id="delete_img_icon" onclick="deleteImage(this)">X</div>
+								</div>
 							</div>
 						</div>
 					</div>
 					<div class="edit_nameWrapper">
 						<p>닉네임</p>
 						<input type="text" placeholder="닉네임 입력" id="edit_name"
-							name="edit_name" value="${my_info.name}"/> 
+							name="edit_name" value="${info.name}"/> 
 							<span id="Rule">닉네임은  2~10글자 이내로 한글, 영어, 숫자를 포함 할 수 있습니다.</span>
 					</div>
 					<div class="edit_passwordWrapper">
@@ -63,11 +67,25 @@
 							Github ID
 						</p>
 						<input type="text" placeholder="깃아이디" id="edit_gitId"
-							name="edit_gitId" value="${my_info.git_id}"/>
+							name="edit_gitId" value="${info.git_id}"/>
 					</div>
 					<button class="editButton">수정하기</button>
 				</div>
 			</main>
+		</div>
+	</div>
+	<div id="alert_modal" class="modal">
+		<div class="modal_box">
+			<div class="closebox">
+				<img class="modal_cancelbtn" src="/images/sign/Close.svg" alt="창닫기" />
+			</div>
+			<div class="logobox">
+				<img src="/images/ReadMeD_Mint.svg" alt="logo" />
+			</div>
+			<div class="modal_alert_text" id="modal_alert_text"></div>
+			<div class="modal_btns">
+				<button class="modal_cancelbtn">확인</button>
+			</div>
 		</div>
 	</div>
 	<script>
@@ -104,8 +122,18 @@
     });//사진첨부
     
     
-    
-    
+  		//프로필이미지 삭제 (디폴트이미지로 변경)
+		function deleteImage(iconElement) {
+			var imgPreview = document.getElementById('img_preview');
+			var profileImageInput = document.getElementById('profile_img');
+
+			imgPreview.src = '/images/profile-default.svg';
+
+			profileImageInput.value = '/images/profile-default.svg';
+
+			var deleteImgBox = iconElement.parentElement;
+			deleteImgBox.style.display = 'none';
+		}
 	</script>
 
 <script src="/js/mypage/updateUser.js"></script>

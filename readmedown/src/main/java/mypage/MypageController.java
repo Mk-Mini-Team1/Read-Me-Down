@@ -24,6 +24,10 @@ public class MypageController {
 	    ModelAndView mv = new ModelAndView();
 	    
 	    if (session.getAttribute("user_id") != null) {
+	    	String user_id = session.getAttribute("user_id").toString();
+	    	MypageDTO my_info = service.userInfo(user_id); // service 사용
+	    	
+	    	 mv.addObject("info", my_info);
 	        mv.setViewName("mypage/myPage"); // 로그인된 경우 마이페이지로 이동
 	    } else {
 	        mv.setViewName("redirect:/"); // 로그인되지 않은 경우 로그인 페이지로 이동
@@ -37,6 +41,10 @@ public class MypageController {
 	    ModelAndView mv = new ModelAndView();
 	    
 	    if (session.getAttribute("user_id") != null) {
+	    	String user_id = session.getAttribute("user_id").toString();
+	    	MypageDTO my_info = service.userInfo(user_id); // service 사용
+	    	
+	    	mv.addObject("info", my_info);
 	        mv.setViewName("mypage/bookmarkList"); // 로그인된 경우 마이페이지로 이동
 	    } else {
 	        mv.setViewName("redirect:/"); // 로그인되지 않은 경우 로그인 페이지로 이동
@@ -51,6 +59,10 @@ public class MypageController {
 	    ModelAndView mv = new ModelAndView();
 	    
 	    if (session.getAttribute("user_id") != null) {
+	    	String user_id = session.getAttribute("user_id").toString();
+	    	MypageDTO my_info = service.userInfo(user_id); // service 사용
+	    	
+	    	mv.addObject("info", my_info);
 	        mv.setViewName("mypage/followingList"); // 로그인된 경우 마이페이지로 이동
 	    } else {
 	        mv.setViewName("redirect:/"); // 로그인되지 않은 경우 로그인 페이지로 이동
@@ -68,7 +80,7 @@ public class MypageController {
 	        String user_id = session.getAttribute("user_id").toString();
 	        MypageDTO my_info = service.userInfo(user_id); // service 사용
 
-	        mv.addObject("my_info", my_info);
+	        mv.addObject("info", my_info);
 	        mv.setViewName("mypage/editProfile");
 	    } else {
 	        request.setAttribute("msg", "로그인 후 이용가능합니다.");
@@ -94,7 +106,7 @@ public class MypageController {
                     service.updatePw(edit_password, user_id);	                    
                 }
             } else {
-                return "{\"response\" :  \"비밀번호가 틀렸습니다.\"}";
+                return "{\"response\" :  \"현재 비밀번호를 입력해주세요.\"}";
             }
         }
 
