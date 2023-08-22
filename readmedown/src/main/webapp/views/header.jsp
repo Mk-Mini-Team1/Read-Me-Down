@@ -31,43 +31,45 @@
 </head>
 <body>
 <header id="header">
-		<div id='header_up'>
+	<div id='header_up'>
+		<a href="/">
 			<div id="header_logo">
 				<img id="logo" src="/images/ReadMeD_Mint.svg">
 			</div>
-			<a href="/">
-				<div class="header_item">
-					<img id="logo" src="/images/header/home-icon.svg"> 
-					<span>Main</span>
-				</div>
-			</a> 
-			<a href="/editor">
-				<div class="header_item">
-					<img id="logo" src="/images/header/edit-icon.svg"> 
-					<span>Edit.md</span>
-				</div>
-			</a>
-			<c:if test="${user_id ne null}">
-				<a href="/mypage?searchType1=${user_id}">
-					<div class="header_item">
-						<img id="logo" src="/images/header/profile-icon.svg"> 
-						<span>MyPage</span>
-					</div>
-				</a>
-			</c:if>
-		</div>
-		<div id="header_down">
-    <c:choose>
-        <c:when test="${user_id eq null}">
-            <button id="loginbtn">LogIn</button>
-            <button id="SignUpbtn" class="openModalButton" data-modal="signUp_modal">Sign-in</button>
-        </c:when>
-        <c:otherwise>
-            <img id="logo" src="/images/default_profile.svg">
-            <button id="logoutbtn">LogOut</button>
-        </c:otherwise>
-    </c:choose>
-</div>
+		</a> 
+		<a href="/">
+			<div class="header_item">
+				<img src="/images/header/home-icon.svg"> 
+				<span>Main</span>
+			</div>
+		</a> 
+		<a href="/boardlist">
+			<div class="header_item">
+				<img src="/images/header/templates.svg"> 
+				<span>Templates</span>
+			</div>
+		</a> 
+		<a href="/editor">
+			<div class="header_item">
+				<img src="/images/header/edit-icon.svg"> 
+				<span>Edit.md</span>
+			</div>
+		</a>
+	</div>
+	<div id="header_down">
+	    <c:choose>
+	        <c:when test="${user_id eq null}">
+	            <button id="loginbtn">LogIn</button>
+	            <button id="SignUpbtn" class="openModalButton" data-modal="signUp_modal">Sign Up</button>
+	        </c:when>
+	        <c:otherwise>
+	        	<a href="/mypage?searchType1=${user_id}">
+	            <img id="logo" src="${user_profile eq null?'/images/default_profile.svg':user_profile}">
+	            </a>
+	            <button id="logoutbtn">LogOut</button>
+	        </c:otherwise>
+	    </c:choose>
+	</div>
 </header>
 
 <div id="signIn_modal" class="signIn_modal" style="display: none;">

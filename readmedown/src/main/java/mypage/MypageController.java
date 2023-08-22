@@ -123,6 +123,7 @@ public class MypageController {
 
             if (password.equals(checkPw)) {
                 service.updateUser(user_id, name, profile_image, git_id);
+                session.setAttribute("user_profile", profile_image);
 
                 if (!edit_password.equals("")) {	                    
                     service.updatePw(edit_password, user_id);	                    
