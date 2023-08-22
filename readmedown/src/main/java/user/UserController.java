@@ -76,6 +76,7 @@ public class UserController {
             if (dto.getPassword().equals(password)) {
                 if (dto.getDeleted_date() == null) {
                     session.setAttribute("user_id", dto.getUser_id());
+                    session.setAttribute("user_profile", dto.getProfile_image());
                     result.put("success", true); // 로그인 성공
                 } else {
                     result.put("success", false);
