@@ -1,7 +1,6 @@
 package mypage;
 
 import board.BoardDTO;
-import board.BookmarkDTO;
 import pagination.PagingResponse;
 import pagination.SearchDTO;
 
@@ -12,4 +11,6 @@ public interface MypageService {
     void updatePw(String password, String user_id);
     public PagingResponse<BoardDTO> allTemplatesList(SearchDTO dto);
     public PagingResponse<BoardDTO> allBookmarksList(SearchDTO dto);
+    void updateTemplateSecret(String boardId, String secret);
+     
 }

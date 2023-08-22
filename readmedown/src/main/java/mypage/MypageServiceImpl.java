@@ -1,7 +1,9 @@
 package mypage;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,7 +56,7 @@ public class MypageServiceImpl implements MypageService {
         int count = dao.allBookmarksCnt(dto);
         if (count < 1) {
             return new PagingResponse<>(Collections.emptyList(), null);
-        }
+        } 
 
         // Pagination 객체를 생성해서 페이지 정보 계산 후 SearchDto 타입의 객체인 params에 계산된 페이지 정보 저장
         Pagination pagination = new Pagination(count, dto);
@@ -64,4 +66,12 @@ public class MypageServiceImpl implements MypageService {
         List<BoardDTO> list = dao.allBookmarksList(dto);
         return new PagingResponse<>(list, pagination);
     };
+    
+    @Override
+    public void updateTemplateSecret(String boardId, String secret) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("boardId", boardId);
+        params.put("secret", secret);
+        dao.updateTemplateSecret(params);
+    }
 }

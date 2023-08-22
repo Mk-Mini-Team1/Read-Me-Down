@@ -82,8 +82,7 @@
 	width: 80%;
     min-width: 200px;
     height: 40px;
-    position: relative;
-     
+    position: relative;  
 }
 
 .category a {
@@ -109,24 +108,18 @@
   border-radius: 5px;
   margin-bottom: 80px;
   background-color: var(--main);
-  
- }     
+}     
       
       
-.myTemplate_list {
+.mypage_list {
 	 width: 100%;
 	 display : flex;
      align-items:center;
 	 justify-content : center;
 	 flex-flow : row wrap;
-	 
-}
-
-.bookmarks_list {
-    width: 100%;
 }
       
-.myTemplate_list .myTemplates {
+.mypage_list .mypage {
 	padding-top : 10px;	
 	display: flex;
 	flex-flow : row wrap;
@@ -135,15 +128,6 @@
 	align-items:center;
 	justify-content : center;
 }
-
-.bookmarks_list .bookmarks {
-	padding-top : 10px;
-	display : flex;
-	justify-content: center;
-	width:100%;	
-}
-
-
 
 .grid-item {
 	margin-left: 5px;
@@ -155,9 +139,7 @@
 	position: relative;
 	width: 210px;
 	height: 300px; 
-	
 }
-
 
 .grid-item img {
 	display: block; 
@@ -167,62 +149,48 @@
 }
 
 
-.dark-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 50% 투명도의 블랙 배경 */
-    opacity: 0;
-    transition: opacity 0.2s;
+/* for 이미지 호버 */
+.darkness {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#000000;
+  opacity:0;
+  transition:all .2s;
 }
 
-.grid-item:hover .dark-overlay {
-    opacity: 1;
+.btn-plus {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	opacity:0;
+	/* transform:scale(2); */
+	transition:all .2s;
 }
-
-
-	
-   
-
-
-.mypage_lock_box .mypage_lock_btn {
-	width: 10%;
-	height: 10%;
-	margin-left: 10px;
-	margin-top: 10px;
-	
-}
-
-.mypage_unlock_box .mypage_unlock_btn {
-	width: 15%;
-	height: 15%;
-	margin-left: 10px;
-	margin-top: 10px;
-	
-}
-
-
-
-
-.mypage_bookmark_box{
+.main_bookmark_box{
 	width : 40px;
 	height : 60px;
 	margin-right : 20px;
 	cursor:pointer;
 	float : right;
 }
-.mypage_bookmark_btn {
+.main_bookmark_btn {
 	width : 100%;
 	height : 100%;
 }
 
-.btn-plus, .lock-plus {
-	width : 100%;
-	height : 100%;	
+.grid-item:hover .darkness{
+  opacity:0.4;
 }
 
+.grid-item:hover .btn-plus {
+  opacity:1;
+  transform:scale(1);
+}
 
 /*북마크 된 상태일때*/
 .bookmarked-plus {
@@ -233,18 +201,43 @@
 	height:100%;
 	display : none;
 }
-.mypage_bookmarked_box{
+.main_bookmarked_box{
 	width : 40px;
 	height : 60px;
 	margin-right : 20px;
 	cursor:pointer;
 	float : right;
 }
-.mypage_bookmarked_btn {
+.main_bookmarked_btn {
 	width : 100%;
 	height : 100%;
 }
 
 
+.lock-plus {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	display : none;
+}
+.main_lock_box{
+	margin-right : 20px;
+	cursor:pointer;
+	float : right;
+
+}
+.main_lock_box img{	
+	height : 50px;
+	margin-top: 4px;
+	margin-right: 1px;
+}
+
+}
+.main_lock_btn {
+	width : 100%;
+	height : 100%;
+}
 
 

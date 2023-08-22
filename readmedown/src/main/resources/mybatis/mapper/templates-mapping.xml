@@ -18,15 +18,11 @@
     limit #{pagination.limitStart}, #{recordSize}    
 </select>
 
-<!-- 유저 북마크 목록 -->
-<select id="userTemplate" resultType="bookmarkdto" parameterType="String">
-	select * from board where user_id = #{user_id}
-</select>
 
-<!-- 로그인 유저의 해당 보드 북마크 여부 -->
-<select id="checkTemplateLock" resultType="int" parameterType="pagination.SearchDTO">
-	select count(*) from board where board_id = #{board_id} and user_id = #{user_id}
-</select>
-	
+<update id="updateTemplateSecret" parameterType="java.util.Map">
+        UPDATE board
+        SET secret = #{searchType1}
+        WHERE board_id = #{boardId}
+    </update>	
 </mapper>
 
