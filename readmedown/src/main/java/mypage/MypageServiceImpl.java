@@ -1,6 +1,7 @@
 package mypage;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,11 @@ public class MypageServiceImpl implements MypageService {
     public void updateUser(String user_id, String name, String profile_image, String git_id) {
         dao.updateUser(user_id, name, profile_image, git_id);
     }
+    
+    public void updateDelete (Date deleted_date, String user_id) {
+		dao.updateDelete(deleted_date, user_id);
+		
+	}
 
     public String checkPw(String user_id) {
         return dao.checkPw(user_id);

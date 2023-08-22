@@ -58,7 +58,7 @@
 
 #alert_modal .modal_alert_text {
 	color: var(--text, #EEE);
-	font-size:20px;
+	font-size:18px;
 	text-align: center;
 }
 
@@ -83,4 +83,86 @@
 #alert_modal .modal_btns>button:hover {
 	color: var(--main);
 	background: var(--neon-3, #00FEEF);
+}
+
+
+
+.modalContent, .modalBackdrop {
+	overflow: hidden;
+	transition: opacity 0.2s ease-in;
+	text-align: center;
+}
+.modalContent p {
+	font: var(--body16);
+	margin-top: 10px;
+}
+
+.buttonWrap {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 15px;
+}
+
+
+
+.modalContent .btn {
+	text-align: center;
+	cursor: pointer;
+	width: 120px;
+	height: 38px;
+	color: var(--text);
+	border: 1px solid var(--neon4);
+	border-radius: 7px;
+	margin-top: 15px;
+	line-height: 38px;
+}
+.modalContent .btn:hover {
+	color: var(--main);
+	background-color: var(--neon4);
+}
+
+
+.cancel {
+	background-color: var(--light-sub);
+}
+
+#modal {
+	display: none;
+	background: rgba(0, 0, 0, 0.50);
+}
+
+#modal.active,
+#modal.active .modalBackdrop{
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 9;
+	display: inline-block;
+	opacity : 1;
+	transition: opacity 0.2s ease-in;
+}
+
+#modal.active .modalContent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	opacity: 1;
+	border-radius: 5px;
+    border: 2px solid var(--text);
+    background: var(--main);
+	max-width: 400px;
+	width: 380px;
+	height: 250px;
+	padding: 60px 50px 35px;
+	z-index: 999;
+	position: fixed;
+	top: 50%;
+	left: 53%;
+	transform: translate(-50%, -50%);
+	display: inline-block;	
+	margin-left: 10px;
 }

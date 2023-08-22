@@ -70,10 +70,11 @@
 							name="edit_gitId" value="${info.git_id}"/>
 					</div>
 					<button class="editButton">수정하기</button>
+					<p class="deleteUser" onclick="clickModal()">회원탈퇴하기</p>
 				</div>
 			</main>
 		</div>
-	</div>
+	</div>	
 	<div id="alert_modal" class="modal">
 		<div class="modal_box">
 			<div class="closebox">
@@ -87,7 +88,8 @@
 				<button class="modal_cancelbtn">확인</button>
 			</div>
 		</div>
-	</div>
+	</div>	
+	<div id="modal"></div>
 	<script>
     // 이미지 첨부
     $("#imageUploadInput").change(function () {
@@ -133,10 +135,12 @@
 
 			var deleteImgBox = iconElement.parentElement;
 			deleteImgBox.style.display = 'none';
-		}
-	</script>
+		}       
+    
 
+	</script>
 <script src="/js/mypage/updateUser.js"></script>
+<script src="/js/mypage/deleteUser.js"></script>	
 </body>
 </html>
 

@@ -1,7 +1,11 @@
 package mypage;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -135,6 +139,18 @@ public class MypageController {
 
         return "{\"response\" :  \"수정이 완료되었습니다.\"}";
     }
+	
+	@RequestMapping("/deleteuser")
+	public ResponseEntity<Void> deleteUser(HttpSession session, Date today) {
+
+		if (session.getAttribute("user_id") != null) {
+			String user_id = session.getAttribute("user_id").toString();
+			service.updateDelete(today, user_id);
+
+			session.removeAttribute("user_id");
+		}
+		return new ResponseEntity(HttpStatus.OK);
+	}
 
 	
 	@PostMapping("/updateTemplateSecret")
