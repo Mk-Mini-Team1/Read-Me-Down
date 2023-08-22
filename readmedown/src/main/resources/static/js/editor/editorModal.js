@@ -168,7 +168,7 @@ function openHits() {
 	$("#hits_modal .dropbox_contents").css('display','none');
 	$("#hits_modal .dropboxWrap").css("height","auto");
 }
-function openHits() {
+function openCapsuleRender() {
 	$("#capsule_render_modal").css("display", "flex");
 	//모달초기화
 	$('#capsule_render_modal .modal_box').scrollTop(0);
@@ -205,5 +205,25 @@ function openHits() {
 		$("#capsule_render_modal #add_desc_option_btn").text(str2);
 	}
 	$("#capsule_render_modal .additional_optionBoxWrap").css('display','none');
+}
+
+function openTrophy() {
+	$("#trophy_modal").css("display", "flex");
+	//모달초기화
+	$('#trophy_modal .modal_box').scrollTop(0);
+	$('#trophy_modal .themetable').scrollTop(0);
 	
+	$("#trophy_modal #trophy_github_ID_guide").text("조회할 github ID를 입력하세요.");
+	$("#trophy_modal #trophy_github_ID_guide").css("color","var(--text)");
+	$("#trophy_modal #trophy_github_ID").val($("#user_git_id").val());
+	
+	$("#trophy_modal input[type='checkbox']").prop("checked", true);
+	$($("#trophy_modal input[name='theme']")[0]).prop("checked", true);
+	$($("#trophy_modal input[name='trophy_bg_color']")[1]).prop("checked", true);
+	$($("#trophy_modal input[name='trophy_border_color']")[1]).prop("checked", true);
+
+	$("#trophy_modal #trophy_row").val(3);
+	$("#trophy_modal #trophy_col").val(6);
+	$("#trophy_modal #trophy_row_margin").val(0);
+	$("#trophy_modal #trophy_col_margin").val(0);
 }

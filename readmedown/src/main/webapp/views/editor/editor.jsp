@@ -71,6 +71,7 @@
 	<jsp:include page="solvedacgrass.jsp" />
 	<jsp:include page="hits.jsp" />
 	<jsp:include page="capsuleRender.jsp" />
+	<jsp:include page="trophy.jsp" />
 
 	<script src="/js/editor/editor.js"></script>
 	<script src="/js/editor/editorModal.js"></script>

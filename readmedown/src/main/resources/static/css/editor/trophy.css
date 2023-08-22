@@ -1,0 +1,363 @@
+#trophy_modal {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.50);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	display:none;
+}
+
+#trophy_modal .modal_box {
+	position: relative;
+	width: 500px;
+	height: 660px;
+	border-radius: 5px;
+	border: 2px solid var(--text, #EEE);
+	background: var(--main, #222831);
+	padding: 50px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	text-align: center;
+}
+
+#trophy_modal *::-webkit-scrollbar {
+	width: 5px;
+}
+
+#trophy_modal *::-webkit-scrollbar-thumb {
+	background: var(--neon4, #00FEEF); /* 스크롤바 막대 색상 */
+	border: 2px solid var(--neon4, #00FEEF); /* 스크롤바 막대 테두리 설정  */
+}
+
+#trophy_modal *::-webkit-scrollbar-track {
+	background: var(--dark); /* 스크롤바 뒷 배경 색상 */
+}
+
+#trophy_modal .closebox {
+	height: 25px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+}
+
+#trophy_modal .modal_title {
+	display:block;
+	color: var(--text, #EEE);
+	font: var(--heading24);
+	margin-bottom: 10px;
+}
+
+#trophy_modal .modal_subtitle {
+	display:block;
+	color: var(--text, #EEE);
+	font: var(--heading20);
+	margin-bottom: 10px;
+}
+
+#trophy_modal .modal_tab {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 1px solid var(--neon4);
+}
+
+#trophy_modal .tabbtn {
+	width: 70px;
+	height: 30px;
+	font: var(--button14);
+	color: var(--text);
+	border-bottom: 3px solid transparent;
+}
+
+#trophy_modal .tabbtn:hover {
+	color: var(--neon4);
+	border-bottom: 3px solid var(--neon4);
+}
+
+#trophy_modal .tabbtn.active {
+	border-bottom: 3px solid var(--neon4);
+}
+
+/* 깃허브 아이디 입력박스 */
+#trophy_modal .modal_inputbox{
+	margin: 10px auto;
+	width: 300px;
+}
+#trophy_modal .modal_inputbox>div {
+	width: 300px;
+	text-align: center;
+	border-bottom: 1px solid var(--neon-3, #00FEEF);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+#trophy_modal .modal_inputbox>div>span {
+	width: 100px;
+	font: var(--highlight14);
+	text-align: center;
+	border-right: 1px solid var(--text);
+	padding: 0 10px;
+}
+
+#trophy_modal .modal_inputbox>div>input {
+	width: 200px;
+	height: 30px;
+	border-radius: 1px;
+	text-align: left;
+	font: var(--button14);
+	line-height: 30px;
+	color: var(--text);
+	padding: 0 10px;
+}
+
+#trophy_modal .modal_inputbox>p {
+	width: 300px;
+	text-align: center;
+	font: var(--button14);
+	line-height: 14px;
+	color: var(--text);
+	padding: 10px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+/* -----추가옵션박스-------- */
+#trophy_modal .modal_subtitle.addoption{
+	cursor: pointer;
+	display:block;
+	color:var(--neon2);
+	margin-bottom: 20px;
+}
+
+#trophy_modal .additional_optionBoxWrap{
+	display: flex;
+	flex-direction: column;
+	gap:5px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	border: 1px solid var(--neon4);
+	border-radius: 5px;
+	background-color: var(--dark);
+	display:none;
+}
+
+.additional_optionBoxWrap .add_optionbox {
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	padding:5px;
+	border-bottom: 1px solid var(--text);
+}
+
+.additional_optionBoxWrap .add_optionbox_title {
+	width: 130px;
+	font: var(--body14);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	padding: 5px;
+	line-height: 20px;
+}
+
+.additional_optionBoxWrap .add_optionbox_contents {
+	width: 230px;
+	height:auto;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: wrap;
+	gap:5px;
+	padding: 5px;
+}
+.additional_optionBoxWrap .add_optionbox_contents *{
+	font:var(--body14);
+}
+
+.additional_optionBoxWrap .add_optionbox_contents label {
+	padding: 5px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
+}
+
+.additional_optionBoxWrap .add_optionbox_contents label span {
+	font-size: 12px;
+	text-align: left;
+}
+
+.additional_optionBoxWrap .add_optionbox_contents [type="radio"] {
+	vertical-align: middle;
+	appearance: none;
+	border: max(1px, 0.1em) solid var(--neon4);
+	border-radius: 50%; 
+	width : 1.25em;
+	height: 1.25em;
+	transition: border 0.2s ease-in-out;
+	width: 1.25em;
+}
+
+.additional_optionBoxWrap .add_optionbox_contents label:hover [type="radio"] {
+	box-shadow: 0 0 0 max(4px, 0.2em) var(--gray2);
+}
+
+.additional_optionBoxWrap .add_optionbox_contents [type="radio"]:checked {
+	border: 0.4em solid var(--neon4);
+}
+
+.additional_optionBoxWrap .add_optionbox_contents [type="checkbox"] {
+	vertical-align: middle;
+	appearance: none;
+	border: max(1px, 0.1em) solid var(--neon4);
+	border-radius: 2px; 
+	width : 1.25em;
+	height: 1.25em;
+	transition: border 0.2s ease-in-out;
+	width: 1.25em;
+}
+
+.additional_optionBoxWrap .add_optionbox_contents label:hover [type="checkbox"] {
+	box-shadow: 0 0 0 max(4px, 0.2em) var(--gray2);
+}
+
+.additional_optionBoxWrap .add_optionbox_contents label:hover span {
+	color: var(--neon4);
+}
+
+.additional_optionBoxWrap .add_optionbox_contents [type="checkbox"]:checked {
+	background-image: url(/images/editor/checkbox_checked.svg);
+}
+
+.additional_optionBoxWrap .add_optionbox_contents input[type="number"]{
+	padding-top: 6px;
+	height: 25px;
+	line-height: 25px;
+	color:var(--neon1);
+}
+
+/* 테이블 */
+#trophy_modal .themetable {
+	width: 400px;
+	height: 300px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	background-color: var(--dark);
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+#trophy_modal table {
+	width: 100%;
+}
+
+#trophy_modal table thead {
+	width: 100%;
+}
+
+#trophy_modal table thead tr {
+	display: grid;
+	grid-template-columns: 130px 260px;
+	border-bottom: 2px solid var(--neon4);
+}
+
+#trophy_modal table thead th {
+	font: var(--highlight14);
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+#trophy_modal table tbody {
+	width: 100%;
+	text-align: center;
+}
+
+#trophy_modal table tbody tr {
+	display: grid;
+	grid-template-columns: 130px 260px;
+	border-bottom: 1px solid var(--neon4);
+}
+
+#trophy_modal table tbody td {
+	min-height:30px;
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	line-height: 16px;
+}
+
+#trophy_modal table tbody label {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
+}
+
+#trophy_modal table tbody label span {
+	font: var(--button14);
+	text-align: left;
+}
+
+#trophy_modal table tbody [type="radio"] {
+	vertical-align: middle;
+	appearance: none;
+	border: max(1px, 0.1em) solid var(--neon4);
+	border-radius: 50%;
+	width: 15px;
+	height: 15px;
+	transition: border 0.2s ease-in-out;
+}
+
+#trophy_modal table tbody [type="radio"]:checked {
+	border: 0.4em solid var(--neon4);
+}
+
+#trophy_modal table tbody [type="radio"]:hover {
+	box-shadow: 0 0 0 max(4px, 0.2em) var(--gray2);
+}
+
+#trophy_modal table tbody td img {
+	width:250px;
+}
+
+#trophy_modal table tbody td>div{
+	font:var(--body14);
+}
+
+#trophy_modal .modal_btns {
+	width: 300px;
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin:0px auto;
+	margin-top:20px;
+}
+
+#trophy_modal .modal_btns>button {
+	width: 145px;
+	height: 35px;
+	font: var(--button14);
+	color: var(--text);
+	line-height: 14px;
+	border-radius: 5px;
+	border: 1px solid var(--neon-3, #00FEEF);
+}
+
+#trophy_modal .modal_btns>button:hover {
+	color: var(--main);
+	background: var(--neon-3, #00FEEF);
+}

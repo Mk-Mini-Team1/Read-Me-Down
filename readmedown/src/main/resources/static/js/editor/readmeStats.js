@@ -1,11 +1,13 @@
 $("#readme_stats_modal #additional_option_btn").on('click',function(){
-	if($(this).text()=='▼추가 옵션 설정'){
-		$(this).text('▲추가 옵션 설정');
+	let str = $(this).text();
+	if(str.includes("▼")){
+		str=str.replaceAll("▼","▲")
+		$(this).text(str);
 	}else{
-		$(this).text('▼추가 옵션 설정');
+		str=str.replaceAll("▲","▼")
+		$(this).text(str);
 	}
-	
-	$("#readme_stats_modal #optionBoxWrap").slideToggle();
+	$("#readme_stats_modal #optionBoxWrap").slideToggle(300);
 });
 
 $("#readme_stats_modal").on("click","input[name='hidden_option']",function(){

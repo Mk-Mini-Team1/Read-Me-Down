@@ -16,8 +16,7 @@
 				</button>
 				<div class="dropdown-content">
 					<button onclick="openBadges()">Badges</button>
-					<button onclick="openHits()">Capsule Render</button>
-					<button onclick="">Typing Svg</button>
+					<button onclick="openCapsuleRender()">Capsule Render</button>
 				</div>
 			</div>
 			<div class="menubar_list"> 
@@ -41,10 +40,8 @@
 					<button onclick="openActivityGraph()">Activity Graph</button>
 					<button onclick="openHits()">Hits</button>
 					<button onclick="openReadmeStats()">Readme Stats</button>
-					<button onclick="">Streak Stats</button>
-					<button onclick="">Summary Card</button>
 					<button onclick="openTopLangs()">Top Langs</button>
-					<button onclick="">Trophy</button>
+					<button onclick="openTrophy()">Trophy</button>
 				</div>
 			</div>
 		</div>
