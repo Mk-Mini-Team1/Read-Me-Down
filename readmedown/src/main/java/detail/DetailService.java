@@ -40,6 +40,16 @@ public class DetailService {
 	public List<CommentDTO> comment(String board_id) {
 	    return (List<CommentDTO>) dao.comment(board_id); // 댓글 목록을 리스트로 반환하도록 수정
 	}
+	public int insertcomment(CommentDTO dto) {
+		 return dao.insertcomment(dto);	}
+	 
+	public UserDTO getCommentUserByWriter(String commentWriter) {
+        return dao.getCommentUserByWriter(commentWriter);
+    }
+	public void deletecomment(CommentDTO dto) {
+		dao.deletecomment(dto);
+		
+	}
 
 
 }
