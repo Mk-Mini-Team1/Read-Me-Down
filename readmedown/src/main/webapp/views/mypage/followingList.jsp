@@ -59,7 +59,7 @@
 							<div class="following_user">
 								<div class="user_image" style="background-image: url('${following.user.profile_image eq null?'/images/default_profile.svg':following.user.profile_image}')"></div>
 								<div class="user_name">
-									<a href="/usermain">@${following.user.name}</a>
+									<a href="/usermain?ui=${following.user.user_id}">@${following.user.name}</a>
 								</div>
 								<div class="follow_button">
 									<button>팔로잉</button>

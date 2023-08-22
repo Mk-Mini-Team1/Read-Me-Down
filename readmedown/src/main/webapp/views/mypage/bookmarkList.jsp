@@ -101,7 +101,7 @@ let searchWord = $("#infoWrap").val();
 				</div>
 				<div class="infoWrap" id="infoWrap">
 					<div class="mypage_list" id="mypage_list">
-						<div class="mypage">
+						<div class="mypage" id="mypage">
 							<c:forEach items="${response.list}" var="bookmark"
 								varStatus="status">
 								<div class="grid-item" id="${bookmark.board_id}">
@@ -160,8 +160,9 @@ let searchWord = $("#infoWrap").val();
 	</div>
 <script>
 //북마크 해제
-$("#mypage_list").on('click','.main_bookmarked_btn', function(e){
+$(".main_bookmarked_btn").on('click', function(e){
 	e.stopPropagation();//클릭 이벤트 버블링 막기
+	const gridItem = $(this).parents().parents(".grid-item");
 	const boardId2 = $(this).parents().parents(".grid-item").attr('id');
 	const bookmarkCss2 = $(this).parents(".bookmarked-plus");	
 	
@@ -172,7 +173,7 @@ $("#mypage_list").on('click','.main_bookmarked_btn', function(e){
 			success : function(response){
 				if(response != -1) {
 					bookmarkCss2.hide();//북마크제거 css효과		
-					$("#mypage_list").load(window.location.href + " #mypage_list");
+					gridItem.remove();
 				}
 				else {
 					//alert("문제가 발생했습니다.");

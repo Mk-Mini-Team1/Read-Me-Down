@@ -50,33 +50,29 @@
 					</div>
 				</div>
 				<div class="infoWrap" id="infoWrap">
-					<div class="mypage_list">
-						<div class="mypage">
+					<div class="mypage_list" id="mypage_list">
+						<div class="mypage" id="mypage">
 							<c:forEach items="${response.list}" var="template">
 								<div class="grid-item" id="${template.board_id}">
-									<img src='${template.board_img}'
-										onerror="this.src='/images/main/no_img.svg'" alt="template">
+									<img src='${template.board_img}' onerror="this.src='/images/main/no_img.svg'" alt="template">
 									<div class="darkness"></div>
 									<div class="btn-plus">
-										<div class="main_bookmark_box">
-											<img class="main_bookmark_btn"
-												src='/images/mypage/unlock.svg'>
+										<div class="main_bookmark_box" id="${template.secret}">
+											<img class="main_bookmark_btn" src='/images/mypage/unlock.svg'>
 										</div>
 									</div>
 									<c:choose>
 										<c:when test="${template.secret eq 'yes'}">
 											<div class="lock-plus" style="display: block;">
-												<div class="main_lock_box">
-													<img class="main_lock_btn"
-														src='/images/mypage/lock.svg'>
+												<div class="main_lock_box" id="${template.secret}">
+													<img class="main_lock_btn" src='/images/mypage/lock.svg'>
 												</div>
 											</div>
 										</c:when>
 										<c:otherwise>
 											<div class="lock-plus">
-												<div class="main_lock_box">
-													<img class="main_lock_btn"
-														src='/images/mypage/lock.svg'>
+												<div class="main_lock_box" id="${template.secret}">
+													<img class="main_lock_btn" src='/images/mypage/lock.svg'>
 												</div>
 											</div>
 										</c:otherwise>
@@ -137,28 +133,47 @@ $(".mypage").on('click', ".grid-item" ,function(){
 });
 
 
-$(".main_bookmark_btn").on('click', function(e) {
-    e.stopPropagation(); // 클릭 이벤트 버블링 막기
+$(".main_bookmark_btn").on('click' ,function(e) {
+	e.stopPropagation(); // 클릭 이벤트 버블링 막기
     const boardId = $(this).parents(".grid-item").attr('id'); 
     const lockCss = $(this).parents().siblings(".lock-plus"); 
-    const isSecret = $(this).parents(".grid-item").find(".secret");
 
     $.ajax({
         url: '/updateTemplateSecret',
         type: 'post',
         data: {
             'board_id': boardId,
-            'secret': isSecret.text().trim() === 'yes' ? 'no' : 'yes' // .trim()으로 공백 제거하여 비교
+            'secret': 'yes'
         },
         success: function(response) {
             if (response === 'success') {
-                if (isSecret.text().trim() === 'yes') {
-                    lockCss.hide();
-                    isSecret.text('no');
-                } else {
-                    lockCss.show();
-                    isSecret.text('yes');
-                }
+            	lockCss.show();
+            } else {               
+                openAlertModal("문제가 발생했습니다.");
+            }
+        },
+        error: function(request, status, error) {
+            alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+            console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+        }
+    }); // ajax
+});
+
+$(".main_lock_btn").on('click' ,function(e) {
+	e.stopPropagation(); // 클릭 이벤트 버블링 막기
+    const boardId = $(this).parents(".grid-item").attr('id'); 
+    const lockCss = $(this).parents(".lock-plus"); 
+
+    $.ajax({
+        url: '/updateTemplateSecret',
+        type: 'post',
+        data: {
+            'board_id': boardId,
+            'secret': 'no'
+        },
+        success: function(response) {
+            if (response === 'success') {
+            	lockCss.hide();
             } else {               
                 openAlertModal("문제가 발생했습니다.");
             }
@@ -219,7 +234,6 @@ let searchWord = $("#search_word_input").val();
 	location.href = location.pathname + '?' + new URLSearchParams(queryparamsPage).toString();
 });//pageNumBtn클릭
 //------------------------------- paging --------------------------------------
-
 
 </script>
 
