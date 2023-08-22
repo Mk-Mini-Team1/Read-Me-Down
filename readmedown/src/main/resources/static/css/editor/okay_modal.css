@@ -32,7 +32,7 @@
 
 #save_okay_modal .modal_alert_text {
 	color: var(--text, #EEE);
-	font-size:20px;
+	font-size:18px;
 	text-align: center;
 }
 

@@ -53,4 +53,27 @@ $(document).ready(function() {
     $("#signUpmodal_cancelbtn").click(function() {
         $("#signUp_modal").hide();
     });
+    
+    let link = document.location.pathname;
+    if(link == "/"){
+		headerCss("header_main");
+	}else if(link == "/boardlist"){
+		headerCss("header_templates");
+	}else if(link == "/editor"){
+		headerCss("header_editor");
+	}
+    
+    function headerCss(divid){
+	    $("#"+divid).css({
+			"background-color" : "var(--dark)",
+			"border-right" : "5px solid var(--point, #00FEA3)",
+			"cursor" : "pointer"
+		});
+	    $("#"+divid).find("img").css({
+			"filter" : "invert(79%) sepia(22%) saturate(5577%) hue-rotate(105deg) brightness(98%) contrast(114%)"
+		});
+	    $("#"+divid).find("span").css({
+			"color" : "var(--point)"
+		});
+	}
 });

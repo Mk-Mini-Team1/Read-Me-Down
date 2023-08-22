@@ -39,7 +39,6 @@ $("#capsule_render_modal").on("click",'#cr_applybtn',function(){
 	/* 출력 */
 	let divString = `<div>![${section}](https://capsule-render.vercel.app/api?section=${section}&type=${type}&color=${color}&height=${height}&text=${text}&reversal=${reversal}`;
 	for (const [key, value] of map) {
-		console.log(key+"/"+value);
 		if(value == "" || value == null || value == undefined || value==0){
 			continue;
 		}else{

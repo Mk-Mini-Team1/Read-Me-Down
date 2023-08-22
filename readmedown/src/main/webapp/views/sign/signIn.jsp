@@ -88,7 +88,8 @@
                 success: function(response) {
                     if (response.success) {
                         // 로그인 성공 시 처리
-                        location.href = "/"; // 홈 페이지로 리다이렉트
+                    	$("#signIn_modal").css("display","none");
+                    	$("#header_down").load(window.location.href + " #header_down");
                     } else {
                         $(".errorMessage").text(response.errorMessage);
                     }
