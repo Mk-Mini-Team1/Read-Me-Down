@@ -16,7 +16,7 @@
 				</button>
 				<div class="dropdown-content">
 					<button onclick="openBadges()">Badges</button>
-					<button onclick="">Capsule Render</button>
+					<button onclick="openHits()">Capsule Render</button>
 					<button onclick="">Typing Svg</button>
 				</div>
 			</div>

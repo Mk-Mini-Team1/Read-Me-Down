@@ -26,6 +26,12 @@
   		WHERE hits_name like concat('%',#{keyword},'%');
   		</if>
   	</select>
+
+  	<select id="getLoginUser" parameterType="String" resultType="userdto">
+  		SELECT *
+  		FROM `user`
+  		WHERE user_id = #{user_id};
+  	</select>
   	
   	<select id="isBoardIdExist" parameterType="String" resultType="boolean">
   		SELECT count(*)

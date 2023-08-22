@@ -11,7 +11,7 @@ $("#hit_icon_title_div").click(function(){
 			success: function(data) { // 결과 성공 콜백함수
 				let list = data;
 				for (let i = 0; i < list.length; i++) {
-					$("#hit_resultbox").append(`<img id="${list[i].hits_name}.svg" decoding="async" loading="lazy" width="45" height="45" class="hit_icons" src="https://hits.seeyoufarm.com${list[i].hits_img}">`);
+					$("#hit_resultbox").append(`<img id="${list[i].hits_name}.svg" decoding="async" loading="lazy" width="45" height="45" class="hit_icons" src="${list[i].hits_img}">`);
 				}
 			},
 			error: function(request, status, error) { // 결과 에러 콜백함수
@@ -26,8 +26,13 @@ $("#hit_icon_title_div").click(function(){
 
 
 $("#hit_resultbox").on('click','.hit_icons',function(){
-	$("#hit_icon_title").val($(this).attr('id'));
-	$("#hit_icon_title_div").html($(this).attr('id'));
+	if($(this).attr('id') == 'no_icon.svg'){
+		$("#hit_icon_title").val('');
+		$("#hit_icon_title_div").html("아이콘 선택 안함");
+	}else{
+		$("#hit_icon_title").val($(this).attr('id'));
+		$("#hit_icon_title_div").html($(this).attr('id'));
+	}
 	$("#hit_icon_keyword").val('');
 	$(this).parents('.dropbox_contents').slideToggle(300);
 	$(this).parents('.dropboxWrap').css("height","auto");
@@ -45,7 +50,7 @@ $("#hits_modal #hit_icon_keyword").on("keyup", function() {
 		success: function(data) { // 결과 성공 콜백함수
 			let list = data;
 			for (let i = 0; i < list.length; i++) {
-				$("#hit_resultbox").append(`<img id="${list[i].hits_name}.svg" class="hit_icons" decoding="async" loading="lazy" width="45" height="45" src="https://hits.seeyoufarm.com${list[i].hits_img}">`);
+				$("#hit_resultbox").append(`<img id="${list[i].hits_name}.svg" class="hit_icons" decoding="async" loading="lazy" width="45" height="45" src="${list[i].hits_img}">`);
 			}
 		},
 		error: function(request, status, error) { // 결과 에러 콜백함수
@@ -55,8 +60,8 @@ $("#hits_modal #hit_icon_keyword").on("keyup", function() {
 })
 
 $("#hit_applybtn").on('click',function(){
-	let targetURL = $("#hits_modal #target_url").val();
-	let targetTitle = $("#hits_modal #target_title").val();
+	let targetURL = $("#hits_modal #target_url").val().replace(":","%3A").replace("/","%2F");
+	let targetTitle = $("#hits_modal #target_title").val().replace(" ","+");
 	let isflat = $("#hits_modal input[name='border_option']:checked").val();
 	let titleColor = $("#hits_modal #title_color").val().replace("#","%23");
 	let countColor = $("#hits_modal #count_color").val().replace("#","%23");

@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import user.UserDTO;
+
 @Mapper
 @Repository
 public interface EditorDAO {
@@ -14,4 +16,6 @@ public interface EditorDAO {
 	
 	boolean isBoardIdExist(String new_id);
 	int deleteNoSaveBoard(String user_id);
+	
+	UserDTO getLoginUser(String user_id);
 }

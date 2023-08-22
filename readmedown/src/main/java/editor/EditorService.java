@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import user.UserDTO;
+
 @Service
 public class EditorService {
 	@Autowired
@@ -28,6 +30,10 @@ public class EditorService {
 	
 	int deleteNoSaveBoard(String user_id) {
 		return dao.deleteNoSaveBoard(user_id);
+	}
+	
+	UserDTO getLoginUser(String user_id) {
+		return dao.getLoginUser(user_id);
 	}
 
 }

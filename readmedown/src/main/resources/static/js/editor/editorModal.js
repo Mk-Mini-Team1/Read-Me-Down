@@ -45,7 +45,7 @@ function openBadges(){
 function openActivityGraph(){
 	$("#activity_graph_modal").css("display","flex");
 	//모달초기화
-	$("#activity_graph_modal #github_ID").val('');
+	$("#activity_graph_modal #github_ID").val($("#user_git_id").val());
 	$($("#activity_graph_modal input[type='radio']")[0]).prop("checked",true);
 	$('#activity_graph_modal #themetable').scrollTop(0);
 	$("#activity_graph_modal #github_ID_guide").text("조회할 github ID를 입력하세요.");
@@ -63,7 +63,7 @@ function openReadmeStats() {
 	$("#readme_stats_modal input[name='hidden_option']").prop("checked",true);
 	$("#readme_stats_modal input[name='add_option']").prop("checked",false);
 	$($("#readme_stats_modal input[name='icon_option']")[0]).prop("checked",true);
-	
+	$("#readme_stats_modal #github_ID").val($("#user_git_id").val());
 	$.ajax({
 		type: 'post',
 		url: '/getstatstheme',
@@ -101,6 +101,7 @@ function openTopLangs() {
 	$("#top_langs_modal #github_ID_guide").text("조회할 github ID를 입력하세요.");
 	$("#top_langs_modal #github_ID_guide").css("color","var(--text)");
 	$("#top_langs_modal input[type='text']").val('');
+	$("#top_langs_modal #github_ID").val($("#user_git_id").val());
 	$($("#top_langs_modal input[name='layout']")[0]).prop("checked", true);
 	$.ajax({
 		type: 'post',
@@ -166,4 +167,43 @@ function openHits() {
 	$("#hit_icon_keyword").val('');
 	$("#hits_modal .dropbox_contents").css('display','none');
 	$("#hits_modal .dropboxWrap").css("height","auto");
+}
+function openHits() {
+	$("#capsule_render_modal").css("display", "flex");
+	//모달초기화
+	$('#capsule_render_modal .modal_box').scrollTop(0);
+	$('#capsule_render_modal .typetable').scrollTop(0);
+	$("#capsule_render_modal input[type='text']").val('');
+	$("#capsule_render_modal input[type='color']").val('');
+	$("#capsule_render_modal input[type='color']+span").text('색상선택');
+	$("#capsule_render_modal input[type='number']").val(0);
+	
+	$("#capsule_render_modal input[name='cr_height']").val(120);
+	$("#capsule_render_modal #cr_font_size").val(70);
+	$("#capsule_render_modal #cr_align_x").val(50);
+	$("#capsule_render_modal #cr_align_y").val(50);
+	
+	$("#capsule_render_modal #cr_desc_size").val(20);
+	$("#capsule_render_modal #cr_descalign_x").val(50);
+	$("#capsule_render_modal #cr_descalign_y").val(60);
+	
+	$($("#capsule_render_modal input[name='section_option']")[0]).prop("checked", true);
+	$($("#capsule_render_modal input[name='reversal_option']")[0]).prop("checked", true);
+	$($("#capsule_render_modal input[name='type']")[0]).prop("checked", true);
+	$($("#capsule_render_modal input[name='cr_color_option']")[0]).prop("checked", true);
+	$("#capsule_render_modal input[name='cr_animation']").prop("checked",false);
+
+	$($("#capsule_render_modal input[name='cr_color_option']")[0]).prop("checked", true);
+	$("#capsule_render_modal input[name='cr_animation']").prop("checked",false);
+	
+	let str1 = $("#capsule_render_modal #add_text_option_btn").text();
+	let str2 = $("#capsule_render_modal #add_desc_option_btn").text();
+	if(str1.includes("▲") || str2.includes("▲")){
+		str1=str1.replaceAll("▲","▼");
+		str2=str2.replaceAll("▲","▼");
+		$("#capsule_render_modal #add_text_option_btn").text(str1);
+		$("#capsule_render_modal #add_desc_option_btn").text(str2);
+	}
+	$("#capsule_render_modal .additional_optionBoxWrap").css('display','none');
+	
 }

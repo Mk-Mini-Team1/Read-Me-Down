@@ -57,6 +57,7 @@
 		</div>
 	</div>
 	
+	<input type="hidden" id="user_git_id" value="${user_git_id}">
 	<input type="hidden" id="user_id" value="${user_id}">
 	<textarea id="otherCodes" style="display:none;">${codes}</textarea>
 	<jsp:include page="modal.jsp" />
@@ -69,6 +70,7 @@
 	<jsp:include page="codeforces.jsp" />
 	<jsp:include page="solvedacgrass.jsp" />
 	<jsp:include page="hits.jsp" />
+	<jsp:include page="capsuleRender.jsp" />
 
 	<script src="/js/editor/editor.js"></script>
 	<script src="/js/editor/editorModal.js"></script>
