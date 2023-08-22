@@ -1,52 +1,77 @@
- .following_user{
-   display: flex;   
-   align-items: center;
-   justify-content: center;
-   width: 550px;
-   height:130px;
-   border-radius: 10px;
-   background-color: var(--sub);  
-   margin-bottom: 10px;
- }
- 
- 
- .following_user .user_image {
-	width: 90px;
-	height: 90px;
-	border-radius: 80px;
+.following_list {
+	width: 100%;
+	max-height: 700px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	text-align: center;
+}
+
+.following_list::-webkit-scrollbar {
+	width: 5px;
+}
+
+.following_list::-webkit-scrollbar-thumb {
+	background: var(--neon4, #00FEEF); /* 스크롤바 막대 색상 */
+	border: 2px solid var(--neon3, #00FEEF); /* 스크롤바 막대 테두리 설정  */
+}
+
+.following_list::-webkit-scrollbar-track {
+	background: var(--dark); /* 스크롤바 뒷 배경 색상 */
+}
+
+.no_list {
+	height: 200px;
+	font-size: 30px;
+	line-height: 200px;
+	color: var(--point);
+}
+
+.following_user {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 550px;
+	height: 130px;
+	border-radius: 10px;
+	background-color: var(--sub);
+	margin: 10px auto;
+}
+
+.following_user .user_image {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
 	background-color: var(--sub);
 	margin-left: 20px;
-    background-size: cover;	
-    background-image: url('/images/mypage/profile-picture1.svg');
-    margin-left: 50px; 
+	background-size: cover;
+	margin-left: 50px;
 }
- 
+
 .following_user .user_name {
-  flex: 1;
-  text-align: center;
+	flex: 1;
+	text-align: center;
+	font: var(--heading20);
 }
 
- .following_user button {
- 	width: 100px;
- 	height: 30px;
- 	background-color: var(--neon3);
- 	font: var(--button12);
- 	border-radius: 5px;
- 	padding-top: 1px;
- 	transition: background-color 0.2s;
- 	margin-right: 50px; 
- } 
- 
- .following_user button:hover {
- 	border: solid 2px var(--neon3);
- 	color: #FC3131;
- 	background-color: var(--sub);
- 	font: var(--caption12);
- }
+.following_user button {
+	width: 100px;
+	height: 40px;
+	background-color: var(--neon3);
+	font: var(--button14);
+	border-radius: 5px;
+	padding-top: 1px;
+	transition: background-color 0.2s;
+	margin-right: 50px;
+}
 
- .user_name {
- 	font: var(--heading20);
- 	/*margin: 0 60px 0 60px;*/
- }  
+.following_user button:hover {
+	border: solid 2px var(--neon3);
+	color: var(--neon5); background-color : var( --sub);
+	font: var(--button14);
+	background-color: var(--sub);
+}
 
-
+.user_name {
+	font: var(--heading20);
+	/*margin: 0 60px 0 60px;*/
+}

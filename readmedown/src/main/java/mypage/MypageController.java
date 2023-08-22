@@ -76,22 +76,22 @@ public class MypageController {
 	}
 	
 	
-	@GetMapping("/following")
-	public ModelAndView followingList(HttpSession session) {
-	    ModelAndView mv = new ModelAndView();
-	    
-	    if (session.getAttribute("user_id") != null) {
-	    	String user_id = session.getAttribute("user_id").toString();
-	    	MypageDTO my_info = service.userInfo(user_id); // service 사용
-	    	
-	    	mv.addObject("info", my_info);
-	        mv.setViewName("mypage/followingList"); // 로그인된 경우 마이페이지로 이동
-	    } else {
-	        mv.setViewName("redirect:/"); // 로그인되지 않은 경우 로그인 페이지로 이동
-	    }
-	    
-	    return mv;
-	}
+//	@GetMapping("/following")
+//	public ModelAndView followingList(HttpSession session) {
+//	    ModelAndView mv = new ModelAndView();
+//	    
+//	    if (session.getAttribute("user_id") != null) {
+//	    	String user_id = session.getAttribute("user_id").toString();
+//	    	MypageDTO my_info = service.userInfo(user_id); // service 사용
+//	    	
+//	    	mv.addObject("info", my_info);
+//	        mv.setViewName("mypage/followingList"); // 로그인된 경우 마이페이지로 이동
+//	    } else {
+//	        mv.setViewName("redirect:/"); // 로그인되지 않은 경우 로그인 페이지로 이동
+//	    }
+//	    
+//	    return mv;
+//	}
 
 	
 	@RequestMapping("/mypage/edit")
