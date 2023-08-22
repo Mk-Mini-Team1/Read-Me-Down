@@ -20,7 +20,6 @@ public interface MypageDAO {
     Integer allTemplatesCnt(SearchDTO searchDTO);
     List<BoardDTO> allBookmarksList(SearchDTO searchDTO);
     Integer allBookmarksCnt(SearchDTO searchDTO);    
-    void updateTemplateSecret(Map<String, Object> params);
-    
+    int updateTemplateSecret(Map<String, String> params);
     
 }

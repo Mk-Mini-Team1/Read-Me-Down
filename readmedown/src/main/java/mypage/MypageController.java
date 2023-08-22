@@ -139,8 +139,8 @@ public class MypageController {
 	
 	@PostMapping("/updateTemplateSecret")
     @ResponseBody
-    public String updateTemplateSecret(@RequestParam("board_id") String boardId, @RequestParam("secret") String secret) {
-        service.updateTemplateSecret(boardId, secret);
+    public String updateTemplateSecret(@RequestParam("board_id") String board_id, @RequestParam("secret") String secret) {
+        service.updateTemplateSecret(board_id, secret);
         return "success"; 
     }
 
