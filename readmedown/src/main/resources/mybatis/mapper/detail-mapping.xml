@@ -23,11 +23,23 @@
 </select>
 
 
-<!--댓글 조회  -->
+<!--댓글 전체 조회  -->
 <select id="comment" parameterType="String" resultType="commentdto">
-	select * from comment where board_id = #{board_id};
+    SELECT * FROM comment WHERE board_id = #{board_id}
+    ORDER BY IF(parent_id =0, comment_id, parent_id), comment_write_date
 </select>
 
+
+<!--댓글 작성  -->
+<insert id="insertcomment" parameterType="commentdto">
+  INSERT INTO comment(comment_writer, board_id, comment_write_date, comment_contents, parent_id)
+    VALUES (#{user_id}, #{board_id},now(),#{comment_contents},#{parent_id});  
+  </insert>
+<!--댓글 유저 정보  -->  
+<!-- 댓글 작성자의 유저 정보 조회 -->
+<select id="getCommentUserByWriter" parameterType="String" resultType="userdto">
+    SELECT * FROM user WHERE user_id = #{comment_writer}
+</select>
 
 
 <!--보드삭제  -->
@@ -38,6 +50,12 @@
         AND delete_date IS NULL; 
 </update>
 
+
+<delete id="deletecomment" parameterType="commentdto">
+	DELETE FROM comment
+    WHERE comment_id = #{comment_id}
+	
+</delete>
 
 
 <insert id="addDBookmark" parameterType="bookmarkdto">
