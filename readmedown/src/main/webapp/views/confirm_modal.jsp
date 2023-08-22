@@ -17,8 +17,8 @@
 			</div>
 			<div class="modal_alert_text" id="modal_alert_text"></div>
 			<div class="modal_btns">
-				<button id="confirm_modal_ok_btn">확인</button>
 				<button class="modal_cancelbtn">취소</button>
+				<button id="confirm_modal_ok_btn">확인</button>
 			</div>
 		</div>
 	</div>

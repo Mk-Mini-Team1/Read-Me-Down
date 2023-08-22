@@ -68,10 +68,10 @@ $(document).ready(function() {
 	//북마크 추가
 	$(".main_bookmark_btn").on('click', function(e){
 		e.stopPropagation();//클릭 이벤트 버블링 막기
-		const boardId = $(this).parents().parents(".grid-item").attr('id');
+		const boardId = $(this).parents().parents(".one_board").attr('id');
 		const bookmarkCss = $(this).parents().siblings(".bookmarked-plus");
 		//alert(boardId);
-		if("${user_id}" == "" || "${user_id}" == null){
+ 		if("${user_id}" == "" || "${user_id}" == null){
 			//alert("로그인이 필요합니다.");
 			openAlertModal("로그인이 필요합니다.");
 		}
@@ -99,10 +99,10 @@ $(document).ready(function() {
 	//북마크 해제
 	$(".main_bookmarked_btn").on('click', function(e){
 		e.stopPropagation();//클릭 이벤트 버블링 막기
-		const boardId2 = $(this).parents().parents(".grid-item").attr('id');
+		const boardId2 = $(this).parents().parents(".one_board").attr('id');
 		const bookmarkCss2 = $(this).parents(".bookmarked-plus");
 		//alert(boardId2);
-		if("${user_id}" == "" || "${user_id}" == null){
+ 		if("${user_id}" == "" || "${user_id}" == null){
 			//alert("로그인이 필요합니다.");
 			openAlertModal("로그인이 필요합니다.");
 		}
@@ -133,9 +133,11 @@ $(document).ready(function() {
 		$("#search_below_box").slideToggle(300);
 	});
 	
-	//검색어 x누르면 삭제(아직기능구현X) -> 근데 추천검색어만 둔다면 필요없음.. 일단 냅두기
-	$(".remove_keyword").on('click', function(){
-		$(this).parents(".one_searchword").css("display", "none");
+	//추천검색어 누르면 검색
+ 	$(".search_keyword").on('click', function(){
+		let keyword = $(this).text();
+		//alert(keyword);
+		location.href="http://localhost:8070/boardlist?keyword="+keyword;
 	});
 	
 	//사진 누르면 디테일 페이지로 이동
@@ -196,15 +198,12 @@ $(document).ready(function() {
 				<div class="search_words_box">
 					<div class="one_searchword">
 						<div class="search_keyword">심플</div>
-						<div class="remove_keyword">X</div>
 					</div>
 					<div class="one_searchword">
 						<div class="search_keyword">라이트모드</div>
-						<div class="remove_keyword">X</div>
 					</div>
 					<div class="one_searchword">
 						<div class="search_keyword">다크모드</div>
-						<div class="remove_keyword">X</div>
 					</div>
 				</div>				
 			</div>
