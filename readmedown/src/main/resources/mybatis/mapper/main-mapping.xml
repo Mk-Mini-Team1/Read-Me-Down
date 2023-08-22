@@ -2,16 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="main.MainDAO">
-<!-- Paging -->
-<!-- 전체 글 갯수 -->
-<select id="allBoardCnt" resultType="int">
-	select count(*) from board where delete_date is null
+
+<!-- 글 목록 불러오기 - masonry ver -->
+<select id="masonryBoardCnt" resultType="int" parameterType="pagination.SearchDTO">
+	select count(*) from board
+	where delete_date is null and write_date is not null and secret="no"
+		<!-- 검색 조건 있을때 -->
+		<if test="keyword != null and keyword != ''">
+    	      and board_tag LIKE CONCAT('%', #{keyword}, '%')
+		</if>	
 </select> 
 
-<!-- 전체 글 목록 가져오기 -->
-<select id="allBoardList" resultType="boarddto" parameterType="pagination.SearchDTO">
+<select id="masonryBoardList" resultType="boarddto" parameterType="pagination.SearchDTO">
 	select * from board 
 	where delete_date is null and write_date is not null and secret="no"
+		<!-- 검색 조건 있을때 -->
+		<if test="keyword != null and keyword != ''">
+	   	      and board_tag LIKE CONCAT('%', #{keyword}, '%')
+		</if>
 	order by write_date desc
 	limit #{pagination.limitStart}, #{recordSize}
 </select>
@@ -24,6 +32,29 @@
 <!-- 로그인 유저의 해당 보드 북마크 여부 -->
 <select id="isBookmarked" resultType="int" parameterType="bookmarkdto">
 	select count(*) from bookmark where board_id = #{board_id} and user_id = #{user_id}
+</select>
+
+<!-- 글 목록 불러오기 - 테이블 게시판 ver -->
+<select id="tableBoardCnt" resultType="int" parameterType="pagination.SearchDTO">
+	select count(*) 
+	from board
+	where delete_date is null and write_date is not null and secret="no"
+		<!-- 검색 조건 있을때 -->
+		<if test="keyword != null and keyword != ''">
+    	      and board_tag LIKE CONCAT('%', #{keyword}, '%')
+		</if>	
+</select>
+
+<select id="tableBoardList" resultType="boarddto" parameterType="pagination.SearchDTO">
+	select * 
+	from board 
+	where delete_date is null and write_date is not null and secret="no"
+	<!-- 검색 조건 있을때 -->
+	<if test="keyword != null and keyword != ''">
+   	      and board_tag LIKE CONCAT('%', #{keyword}, '%')
+	</if>
+	order by write_date desc
+	limit #{pagination.limitStart}, #{recordSize}
 </select>
 
   	

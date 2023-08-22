@@ -13,42 +13,41 @@
 <link rel="icon" href="/images/logo-pencil.png" />
 <link rel="apple-touch-icon" href="/images/logo-pencil.png" />
 <link rel="stylesheet" href="/css/style.css" />
-<link rel="stylesheet" href="/css/main_test.css" />
+<link rel="stylesheet" href="/css/main_masonry.css" />
 <script src="/js/jquery-3.6.4.min.js"></script>
 <title>Read Me▼</title>
 <script>
 $(document).ready(function() {
-	//이미지 masonry로 배열
-/*  	var msnry = new Masonry( '.grid', {
-		  itemSelector: '.grid-item',
-		  columnWidth: '.grid-sizer',
-		  percentPosition: true,
-		  gutter : 20,
-	});
-	
-    //msnry.layout()
-    
-    infiniteScroll({
-	    container: ".grid",
-	    item: ".grid-item",
-	    next: ".next",
- 	    prev: ".prev",
-	    prevLoader: ".prevLoader", 
- 	    pushHistory: true,
-	    nextCallback: (newElement) => {
-	        msnry.appended(newElement)
-	    },
-   	    prevCallback: (newElement) => {
-	        msnry.prepended(newElement)
-	    } ,
- 	    onLoadFinish: () => {
-	        msnry.layout()
-	    }
-	}),
-   	window.addEventListener("load", () => {
-	    msnry.layout()
-  		});
- */
+ 	//이미지 masonry로 배열
+	var msnry = new Masonry( '.grid', {
+	  itemSelector: '.grid-item',
+	  columnWidth: '.grid-sizer',
+	  percentPosition: true,
+	  gutter : 20,
+});
+
+//msnry.layout()
+
+   infiniteScroll({
+    container: ".grid",
+    item: ".grid-item",
+    next: ".next",
+	prev: ".prev",
+	autoPrev : false,
+ 	prevButton: ".prevBtn",
+    prevLoader: ".prevLoader", 
+    nextLoader: ".nextLoader", 
+	pushHistory: true,
+    nextCallback: (newElement) => {
+        msnry.appended(newElement)
+    },
+  	prevCallback: (newElement) => {
+        msnry.prepended(newElement)
+    },
+	onLoadFinish: () => {
+        msnry.layout()
+    }
+});
 	//북마크 추가
 	$(".main_bookmark_btn").on('click', function(e){
 		e.stopPropagation();//클릭 이벤트 버블링 막기
@@ -123,11 +122,11 @@ $(document).ready(function() {
 	});
 	
 	//사진 누르면 디테일 페이지로 이동
- 	$(".grid").on('click', ".grid-item" ,function(){
+/*  	$(".grid").on('click', ".grid-item" ,function(){
 		let bi = $(this).attr("id");
 		//alert(bi);
 		location.href = "/detail?bi="+bi;
-	});
+	}); */
 
 	
 	/* -------------------- Modal -------------------- */
@@ -142,6 +141,37 @@ $(document).ready(function() {
 		$("#alert_modal #modal_alert_text").html(modal_msg);
 	}
 
+	//이전페이지로 이동 버튼관련
+ 	let curruntPageNum = "${param.page}";
+	//alert(curruntPageNum);
+ 	if(curruntPageNum >1){
+		$("#prevBtn_div").show();
+	}
+	else{
+		$("#prevBtn_div").hide();
+	}
+
+	//사진 누르면 디테일 페이지로 이동
+ 	$(".grid").on('click', ".grid-item" ,function(){
+		let bi = $(this).attr("id");
+		location.href = "/detail?bi="+bi;
+	});
+
+	//검색 ---------------------------------------
+	$("#search_word_input").on("keyup",function(key){
+        if(key.keyCode==13) {
+			let searchWord = $("#search_word_input").val();
+		
+			if(searchWord.trim() !== "") {
+	            location.href="http://localhost:8070?keyword="+searchWord;
+			}
+			else {
+	            location.href="http://localhost:8070";
+				alert("검색어가 없습니다.");
+			}
+        }
+	});
+	
 	
 }); //ready
 </script>
@@ -156,7 +186,7 @@ $(document).ready(function() {
 		<div id="search_top_box">
 			<div id="search_box">
 				<div id="search_icon_box"><img id="search_icon_img" src="/images/main/search_icon.svg"></div>
-				<div id="search_word_box"><input type="text" id="search_word_input"></div>
+				<div id="search_word_box"><input type="text" id="search_word_input" name="searchWord" value="${searchdto.keyword }" autocomplete="off"></div>
 			</div>
 		</div>
 		<div id="search_below_box">
@@ -168,7 +198,11 @@ $(document).ready(function() {
 							<!-- <div class="remove_keyword">X</div> -->
 						</div>
 						<div class="one_searchword">
-							<div class="search_keyword">화려</div>
+							<div class="search_keyword">라이트모드</div>
+							<!-- <div class="remove_keyword">X</div> -->
+						</div>
+						<div class="one_searchword">
+							<div class="search_keyword">다크모드</div>
 							<!-- <div class="remove_keyword">X</div> -->
 						</div>
 					</div>				
@@ -177,27 +211,14 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
-
-	<div id="prevBtn_div" style="display:none;"><a id="goToPrevPage" href="">이전 페이지 로드하기</a></div>
-
+	<div id="prevBtn_div" style="display:none;"><input type="button" id="prevBtn" class="prevBtn" value="이전 페이지 로드하기"></div>
+<%-- <c:if test="${searchdto.page > 1 }">
+</c:if> --%>
 	<div id="main_gallery">
 		<div class="grid">
 		<div class="prevLoader"></div>
 		<div class="nextLoader"></div>
 		  <div class="grid-sizer"></div>
-		  
-<%-- 			<c:forEach items="${response.list}" var="dto" varStatus="status">
-		           <div class="grid-item" id="${dto.board_id}"> 
-		               <img src='${dto.board_img}' onerror="this.src='/images/main/no_img.svg'" alt="template">
-		               <div class="darkness"></div>
-		               <div class="btn-plus">
-			               <div class="main_bookmark_box"><img class="main_bookmark_btn" src='/images/main/bookmark_before.svg'></div>
-		               </div>
-		               <div class="bookmarked-plus">
-			               <div class="main_bookmarked_box"><img class="main_bookmarked_btn" src='/images/main/bookmark_after.svg'></div>
-		               </div>
-		           </div>	
-		       </c:forEach> --%>
 			<c:forEach items="${response.list}" var="dto" varStatus="status">
 		           <div class="grid-item" id="${dto.board_id}"> 
 		               <img src='${dto.board_img}' onerror="this.src='/images/main/no_img.svg'" alt="template">
@@ -227,17 +248,17 @@ $(document).ready(function() {
 <div class="pagenation" style="visibility: hidden;">
 	<c:if test="${fn:length(response.list) != 0}">
  	   <a class="pagefirst"
-	      <c:if test="${!response.pagination.existPrevPage}"> 'http://localhost:8070/?page=1'</c:if>>
+	      <c:if test="${!response.pagination.existPrevPage}"> 'http://localhost:8070?page=1&keyword=${param.keyword}'</c:if>>
 	   </a>   
  	   <a class="prev"
-	      <c:if test="${searchdto.page > 1}"> href= 'http://localhost:8070/maintest?page=${searchdto.page-1}' </c:if>>
+	      <c:if test="${searchdto.page > 1}"> href= 'http://localhost:8070?page=${searchdto.page-1}&keyword=${param.keyword}' </c:if>>
 	   </a>
 	   <a class="next"
-	      <c:if test="${!response.pagination.existNextPage && searchdto.page < response.pagination.totalPageCount}">  href= 'http://localhost:8070/maintest?page=${searchdto.page + 1}' </c:if>>
+	      <c:if test="${!response.pagination.existNextPage && searchdto.page < response.pagination.totalPageCount}">  href= 'http://localhost:8070?page=${searchdto.page + 1}&keyword=${param.keyword}' </c:if>>
 	   </a>
 	   
  	   <a class="pagelast"
-	      <c:if test="${!response.pagination.existNextPage}"> href= 'http://localhost:8070/?page=${response.pagination.totalPageCount}' </c:if>>
+	      <c:if test="${!response.pagination.existNextPage}"> href= 'http://localhost:8070?page=${response.pagination.totalPageCount}&keyword=${param.keyword}' </c:if>>
 	   </a>
 	</c:if>
 </div>
@@ -287,6 +308,7 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
     	console.log("k() 시작");
     	
         const e = document.querySelector(t); //다음페이지 a태그
+    	
         if (null === e || !0 === g || e.classList.contains("done"))//다음페이지 없으면 그만하도록?
             return;
         let r = 0
@@ -309,7 +331,7 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
                 a && e.querySelectorAll("img").forEach(e=>{
                     r++,
                     e.addEventListener("load", ()=>{
-                        r === ++o && (i && history.pushState(null, null, c),
+                        r === ++o && (i  && history.pushState(null, null, c), //주소 안바뀌게하려고 지움
                         s && m.next.classList.remove(L),
                         l && !S.classList.contains("done") && (l.style.display = ""),
                         g = !1,
@@ -337,7 +359,7 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
     	console.log("F() 시작");
     	
         const e = document.querySelector(r); //.prev 셀렉터
-        if (null === e || !0 === w || e.classList.contains("done")|| "${searchdto.page}" == 1) //처음에 두번호출되는거 막으려고 조건추가
+        if (null === e || !0 === w || e.classList.contains("done"))
             return;
         let t = !1
           , l = 0
@@ -347,6 +369,7 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
             l === s && (c && m.prev.classList.remove(L),
             w = !1,
             o && !v.classList.contains("done") && (o.style.display = ""),
+            history.pushState(null, null, i),//이전페이지 로드할때도 url바뀌도록 추가함
             u && u())
         }
         ;
@@ -454,7 +477,7 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
 
 </script>
 <script>
-//이미지 masonry로 배열
+/*  //이미지 masonry로 배열
 	var msnry = new Masonry( '.grid', {
 	  itemSelector: '.grid-item',
 	  columnWidth: '.grid-sizer',
@@ -464,11 +487,13 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
 
 //msnry.layout()
 
- infiniteScroll({
+  infiniteScroll({
     container: ".grid",
     item: ".grid-item",
     next: ".next",
 	prev: ".prev",
+	autoPrev : false,
+ 	prevButton: ".prevBtn",
     prevLoader: ".prevLoader", 
     nextLoader: ".nextLoader", 
 	pushHistory: true,
@@ -481,7 +506,7 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
 	onLoadFinish: () => {
         msnry.layout()
     }
-});
+}); */
 /* 	window.addEventListener("load", () => {
     msnry.layout()
 		}); */
