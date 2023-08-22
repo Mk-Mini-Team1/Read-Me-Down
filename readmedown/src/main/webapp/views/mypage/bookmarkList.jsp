@@ -25,14 +25,14 @@
 						<div class="user">
 							<div class="mypage-profile-image"><img src="${info.profile_image}"></div>
 							<span id="name">${info.name}</span>
-							<span id="git">My Github : ${info.git_id}</span>
+							<span id="git"><img src="/images/mypage/git.svg">${info.git_id}</span>
 							<button onclick="redirectToEditProfile()">Edit Profile</button>
 						</div>
 					</div>
 				</div>
 				<div class="categoryWrap">
 					<div class="category">
-						<a href="/mypage" class="category-link"
+						<a href="/mypage?searchType1=${user_id}" class="category-link"
 							id="myTemplateLink"> <img
 							src="/images/mypage/my_template.svg">내 템플릿
 						</a>
@@ -52,8 +52,9 @@
 				<div class="infoWrap" id="infoWrap">
 					<div class="bookmarks_list">
 						<div class="bookmarks">
-							<div class="grid-item" id="${dto.board_id}">
-								<img src='${dto.board_img}'
+						<c:forEach items="${response.list}" var="bookmark">
+							<div class="grid-item" id="${bookmark.board_id}">
+								<img src='${bookmark.board_img}'
 									onerror="this.src='/images/main/no_img.svg'" alt="template">
 								<div class="darkness"></div>
 								<div class="btn-plus">
@@ -69,6 +70,7 @@
 									</div>
 								</div>
 							</div>
+						</c:forEach>
 						</div>
 					</div>
 				</div>

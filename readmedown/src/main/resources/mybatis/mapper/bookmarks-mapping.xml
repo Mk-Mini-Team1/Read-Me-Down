@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mypage.MypageDAO">
+<resultMap type="board.BoardDTO" id="boarddtomap">
+	<result column="board_id" property="board_id" />
+    <result column="user_id" property="user_id" />
+    <result column="write_date" property="write_date" />
+    <result column="update_date" property="update_date" />
+    <result column="delete_date" property="delete_date" />
+    <result column="board_img" property="board_img" />
+    <result column="bookmarked" property="bookmarked" />
+    <collection property="user" resultMap="user" />
+</resultMap>
+<resultMap type="userdto" id="user">
+    <result column="user_id" property="user_id" />
+</resultMap>
+
+<!-- Paging -->
+<select id="allBookmarksCnt" resultType="int" parameterType="pagination.SearchDTO">
+    SELECT COUNT(*)
+        FROM board
+        WHERE user_id = #{searchType1}
+</select> 
+
+<select id="allBookmarksList" resultType="boarddto" parameterType="pagination.SearchDTO">
+    SELECT board.*
+		FROM board
+		INNER JOIN bookmark ON board.board_id = bookmark.board_id
+		WHERE bookmark.user_id = #{searchType1}
+		ORDER BY board.write_date DESC
+		LIMIT #{pagination.limitStart}, #{recordSize}
+</select>
+
+	
+</mapper>
+

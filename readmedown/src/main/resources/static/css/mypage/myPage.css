@@ -32,7 +32,6 @@
   align-items: start;
 }
 
-
 .contentWrap .userInfo .user > span:first-of-type {
   font: var(--heading34);
 }
@@ -70,8 +69,6 @@
   margin-top: 12px;
 }
 
-
-
 .categoryWrap {
   display: flex;
   justify-content: center; /* 가로 가운데 정렬 */
@@ -107,33 +104,37 @@
   display: flex; 
   justify-content: center; 
   width: 70%;
-  min-height: 700px;
-  height: auto;
+  min-height: 700px;  
+  height: 700px;
   border-radius: 5px;
   margin-bottom: 80px;
   background-color: var(--main);
-  padding-top: 50px;
-  padding-bottom:80px;
- }
- 
+  
+ }     
       
       
 .myTemplate_list {
 	 width: 100%;
+	 display : flex;
+     align-items:center;
+	 justify-content : center;
+	 flex-flow : row wrap;
+	 
 }
 
 .bookmarks_list {
     width: 100%;
 }
-
       
 .myTemplate_list .myTemplates {
-	padding-top : 10px;
-	display : flex;
-	justify-content: center;
-	width:100%;	
+	padding-top : 10px;	
+	display: flex;
+	flex-flow : row wrap;
+	margin : 0 auto;
+	width: 90%;
+	align-items:center;
+	justify-content : center;
 }
-
 
 .bookmarks_list .bookmarks {
 	padding-top : 10px;
@@ -143,44 +144,66 @@
 }
 
 
-.grid-item { width: 250px; }
+
 .grid-item {
-	margin-bottom:15px; 
-	border-radius: 20px; 
-	overflow:hidden;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 15px;
+	border-radius: 20px;
+	overflow: hidden;
+	cursor: pointer;
+	position: relative;
+	width: 210px;
+	height: 300px; 
 	
-	/* for 이미지호버 */
-	position:absolute;
-	cursor:pointer;
 }
+
+
 .grid-item img {
 	display: block; 
-	min-width:100%; 
-	max-width: 100%; 
-}
-
-/* for 이미지 호버 */
-.darkness {
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:#000000;
-  opacity:0;
-  transition:all .2s;
-}
-
-.btn-plus {
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
+	width : 100%;
 	height:100%;
-	opacity:0;
-	/* transform:scale(2); */
-	transition:all .2s;
+	object-fit: cover;	
 }
+
+
+.dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 50% 투명도의 블랙 배경 */
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.grid-item:hover .dark-overlay {
+    opacity: 1;
+}
+
+
+	
+   
+
+
+.mypage_lock_box .mypage_lock_btn {
+	width: 10%;
+	height: 10%;
+	margin-left: 10px;
+	margin-top: 10px;
+	
+}
+
+.mypage_unlock_box .mypage_unlock_btn {
+	width: 15%;
+	height: 15%;
+	margin-left: 10px;
+	margin-top: 10px;
+	
+}
+
+
 
 
 .mypage_bookmark_box{
@@ -195,14 +218,11 @@
 	height : 100%;
 }
 
-.grid-item:hover .darkness{
-  opacity:0.4;
+.btn-plus, .lock-plus {
+	width : 100%;
+	height : 100%;	
 }
 
-.grid-item:hover .btn-plus {
-  opacity:1;
-  transform:scale(1);
-}
 
 /*북마크 된 상태일때*/
 .bookmarked-plus {
@@ -228,43 +248,3 @@
 
 
 
-
-
-
-.mypage_unlock_box{
-	width : 40px;
-	height : 60px;
-	margin-right : 20px;
-	cursor:pointer;
-	float : right;
-}
-.mypage_unlock_btn {
-	margin-left: 5px;
-	width : 100%;
-	height : 100%;
-}
-
-
-
-/*북마크 된 상태일때*/
-.lock-plus {
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	display : none;
-}
-.mypage_lock_box{
-	width : 40px;
-	height : 60px;
-	margin-right : 20px;
-	cursor:pointer;
-	float : right;
-}
-.mypage_lock_btn {
-	margin-top: 12px;
-	margin-left: 5px;
-	width : 58%;
-	height : 58%;
-}
