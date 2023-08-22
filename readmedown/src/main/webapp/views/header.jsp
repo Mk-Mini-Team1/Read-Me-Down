@@ -48,7 +48,7 @@
 				</div>
 			</a>
 			<c:if test="${user_id ne null}">
-				<a href="/mypage">
+				<a href="/mypage?searchType1=${user_id}">
 					<div class="header_item">
 						<img id="logo" src="/images/header/profile-icon.svg"> 
 						<span>MyPage</span>

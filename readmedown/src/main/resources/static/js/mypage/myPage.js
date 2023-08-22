@@ -12,15 +12,6 @@ $(".mypage_bookmarked_btn").on('click', function() {
 	$(this).parents(".bookmarked-plus").hide();
 });
 
-//템플릿 공개(프론트)
-$(".mypage_unlock_btn").on('click', function() {
-	$(this).parents().siblings(".lock-plus").show();
-});
-//템플릿 비공개(프론트)
-$(".mypage_lock_btn").on('click', function() {
-	$(this).parents(".lock-plus").hide();
-});
-
 
 //함수 정의: 팔로우 버튼에 마우스를 가져다 대면 언팔로우로 변경
 function showUnfollowText(button) {
