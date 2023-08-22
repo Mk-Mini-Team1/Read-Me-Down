@@ -18,36 +18,6 @@
 <title>Read Me▼</title>
 <script>
 $(document).ready(function() {
- 	//이미지 masonry로 배열
-	var msnry = new Masonry( '.grid', {
-	  itemSelector: '.grid-item',
-	  columnWidth: '.grid-sizer',
-	  percentPosition: true,
-	  gutter : 20,
-});
-
-//msnry.layout()
-
-   infiniteScroll({
-    container: ".grid",
-    item: ".grid-item",
-    next: ".next",
-	prev: ".prev",
-	autoPrev : false,
- 	prevButton: ".prevBtn",
-    prevLoader: ".prevLoader", 
-    nextLoader: ".nextLoader", 
-	pushHistory: true,
-    nextCallback: (newElement) => {
-        msnry.appended(newElement)
-    },
-  	prevCallback: (newElement) => {
-        msnry.prepended(newElement)
-    },
-	onLoadFinish: () => {
-        msnry.layout()
-    }
-});
 	//북마크 추가
 	$(".main_bookmark_btn").on('click', function(e){
 		e.stopPropagation();//클릭 이벤트 버블링 막기
@@ -116,17 +86,19 @@ $(document).ready(function() {
 		$("#search_below_box").slideToggle(300);
 	});
 	
-	//검색어 x누르면 삭제(아직기능구현X) -> 근데 추천검색어만 둔다면 필요없음.. 일단 냅두기
-	$(".remove_keyword").on('click', function(){
-		$(this).parents(".one_searchword").css("display", "none");
+	//추천검색어 누르면 검색
+ 	$(".search_keyword").on('click', function(){
+		let keyword = $(this).text();
+		//alert(keyword);
+		location.href="http://localhost:8070?keyword="+keyword;
 	});
 	
 	//사진 누르면 디테일 페이지로 이동
-/*  	$(".grid").on('click', ".grid-item" ,function(){
+  	$(".grid").on('click', ".grid-item" ,function(){
 		let bi = $(this).attr("id");
 		//alert(bi);
 		location.href = "/detail?bi="+bi;
-	}); */
+	});
 
 	
 	/* -------------------- Modal -------------------- */
@@ -142,7 +114,7 @@ $(document).ready(function() {
 	}
 
 	//이전페이지로 이동 버튼관련
- 	let curruntPageNum = "${param.page}";
+  	let curruntPageNum = "${searchdto.page}";
 	//alert(curruntPageNum);
  	if(curruntPageNum >1){
 		$("#prevBtn_div").show();
@@ -150,12 +122,6 @@ $(document).ready(function() {
 	else{
 		$("#prevBtn_div").hide();
 	}
-
-	//사진 누르면 디테일 페이지로 이동
- 	$(".grid").on('click', ".grid-item" ,function(){
-		let bi = $(this).attr("id");
-		location.href = "/detail?bi="+bi;
-	});
 
 	//검색 ---------------------------------------
 	$("#search_word_input").on("keyup",function(key){
@@ -284,7 +250,8 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
     let g = !1 //!1은 존재하지않는다는 뜻
       , w = !1
       , A = window.scrollY || window.pageYOffset //스크롤 높이
-      , E = !1;
+      , E = !1,
+      pageNum = 1;
       
     function x() {
     	console.log("x() 시작");
@@ -306,6 +273,8 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
     //다음페이지 불러오는 함수
     function k() {
     	console.log("k() 시작");
+    	pageNum++;
+    	console.log("pageNum = " + pageNum);
     	
         const e = document.querySelector(t); //다음페이지 a태그
     	
@@ -357,6 +326,8 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
  	// 이전페이지 불러오는 함수 F()
     function F() {
     	console.log("F() 시작");
+    	pageNum == pageNum-1;
+    	console.log("pageNum = " + pageNum);
     	
         const e = document.querySelector(r); //.prev 셀렉터
         if (null === e || !0 === w || e.classList.contains("done"))
@@ -436,10 +407,33 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
  	//container 높이 파악하고 조건 따지는 함수 -> 이전페이지 다음페이지 불러오기위해서인듯?
      function O() {
     	console.log("O() 시작");
+    	const totalPageCount ="${response.pagination.totalPageCount}";
+     	console.log("totalPageCount = " + totalPageCount);
+    	//console.log("pageNum = " + pageNum);
+    	
+     	//const searchdto ="${searchdto.page}";
+    	//console.log("searchdto = " + searchdto);
+    	//const paramPage ="${param.page}";
+    	//console.log("paramPage = " + paramPage);
+    	//const s_pageNum ="${s_pageNum}";
+    	
     	
         const e = p.offsetTop; //container의 top높이?
-        !l && null !== S && "" !== S.getAttribute("href") && !g && A >= e + p.scrollHeight - h - 500 && k(),//다음페이지 정보 없으면
-        !o && null !== v && "" !== v.getAttribute("href") && !w && A <= e + 500 && F()//이전페이지 정보 없으면 ??
+        if(p.scrollHeight > 800){
+	        !l && null !== S && "" !== S.getAttribute("href") && !g && A >= e + p.scrollHeight - h - 800 && k(),//다음페이지 정보 없으면
+	        !o && null !== v && "" !== v.getAttribute("href") && !w && A <= e + 800 && F()//이전페이지 정보 없으면 ??         	
+        }
+        		
+        		
+/*     	if(p.scrollHeight > 800 && pageNum < totalPageCount && searchdtoPage < totalPageCount) {	
+	        !l && null !== S && "" !== S.getAttribute("href") && !g && A >= e + p.scrollHeight - h - 800 && k()//다음페이지 정보 없으면
+       	}
+        if(paramPage != "" && paramPage > 1){
+        	pageNum = searchdtoPage;
+	        !o && null !== v && "" !== v.getAttribute("href") && !w && A <= e + 800 && F()//이전페이지 정보 없으면 ?? 
+        }else if(paramPage == 1){
+        	b();
+        } */
     }
 
     !function() {
@@ -477,39 +471,36 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
 
 </script>
 <script>
-/*  //이미지 masonry로 배열
-	var msnry = new Masonry( '.grid', {
-	  itemSelector: '.grid-item',
-	  columnWidth: '.grid-sizer',
-	  percentPosition: true,
-	  gutter : 20,
+//이미지 masonry로 배열
+var msnry = new Masonry( '.grid', {
+	itemSelector: '.grid-item',
+	columnWidth: '.grid-sizer',
+	percentPosition: true,
+	gutter : 20,
 });
 
 //msnry.layout()
 
-  infiniteScroll({
-    container: ".grid",
-    item: ".grid-item",
-    next: ".next",
+infiniteScroll({
+	container: ".grid",
+	item: ".grid-item",
+	next: ".next",
 	prev: ".prev",
 	autoPrev : false,
- 	prevButton: ".prevBtn",
-    prevLoader: ".prevLoader", 
-    nextLoader: ".nextLoader", 
+		prevButton: ".prevBtn",
+	prevLoader: ".prevLoader", 
+	nextLoader: ".nextLoader", 
 	pushHistory: true,
-    nextCallback: (newElement) => {
-        msnry.appended(newElement)
-    },
-  	prevCallback: (newElement) => {
-        msnry.prepended(newElement)
-    },
+	nextCallback: (newElement) => {
+	    msnry.appended(newElement)
+	},
+		prevCallback: (newElement) => {
+	    msnry.prepended(newElement)
+	},
 	onLoadFinish: () => {
-        msnry.layout()
-    }
-}); */
-/* 	window.addEventListener("load", () => {
-    msnry.layout()
-		}); */
+	    msnry.layout()
+	}
+});
 
 </script>
 </html>

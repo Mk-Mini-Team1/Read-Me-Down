@@ -7,6 +7,7 @@
 	justify-content: center;
 	align-items: center;
 	display:none;
+	z-index: 99;
 }
 
 #alert_modal .modal_box {
@@ -53,7 +54,7 @@
 
 #alert_modal .modal_alert_text {
 	color: var(--text, #EEE);
-	font-size:20px;
+	font-size:18px;
 	text-align: center;
 }
 

@@ -38,19 +38,19 @@
 			</div>
 		</a> 
 		<a href="/">
-			<div class="header_item">
+			<div class="header_item" id="header_main">
 				<img src="/images/header/home-icon.svg"> 
 				<span>Main</span>
 			</div>
 		</a> 
-		<a href="/boardlist">
-			<div class="header_item">
+		<a id="/boardlist" href="/boardlist">
+			<div class="header_item" id="header_templates">
 				<img src="/images/header/templates.svg"> 
 				<span>Templates</span>
 			</div>
 		</a> 
-		<a href="/editor">
-			<div class="header_item">
+		<a id="/editor" href="/editor" >
+			<div class="header_item" id="header_editor">
 				<img src="/images/header/edit-icon.svg"> 
 				<span>Edit.md</span>
 			</div>

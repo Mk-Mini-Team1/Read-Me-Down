@@ -55,12 +55,15 @@
 		</div>
 	</div>
 	
-	<input type="hidden" id="user_git_id" value="${user_git_id}">
-	<input type="hidden" id="user_id" value="${user_id}">
-	<input type="hidden" id="myBoardID" value="${board.board_id}">
-	<input type="hidden" id="myBoardWritetime" value="${board.write_date}">
-	<textarea id="myCodes" style="display:none;">${board.codes}</textarea>
+	<div id="hiddenData" style="display:none;">
+		<input type="hidden" id="user_git_id" value="${user_git_id}">
+		<input type="hidden" id="user_id" value="${user_id}">
+		<input type="hidden" id="myBoardID" value="${board.board_id}">
+		<input type="hidden" id="myBoardWritetime" value="${board.write_date}">
+		<textarea id="myCodes" style="display:none;">${board.codes}</textarea>
+	</div>
 	<jsp:include page="modal.jsp" />
+	<jsp:include page="../confirm_modal.jsp" />
 	<jsp:include page="badges.jsp" />
 	<jsp:include page="activityGraph.jsp" />
 	<jsp:include page="readmeStats.jsp" />

@@ -109,7 +109,7 @@ $(document).ready(function() {
 	
 	//상단 x 버튼 클릭시 작성 취소
 	$("#cancle_board_btn").on('click', function(){
-		openConfirmModal("작성중이던 모든 내용은 삭제됩니다.<br>정말 작성을 그만두시겠습니까?");
+		openConfirmModal("작성중이던 모든 내용은<br>삭제됩니다.<br>정말 작성을 그만두시겠습니까?");
 		$("#confirm_modal_ok_btn").on("click", function(){
 			location.href="/";				
 		});

@@ -37,8 +37,11 @@ $(document).ready(function() {
         $(".deleteBtn").hide();
     }
 });
+
+
 </script>
  
+
 
 
 
@@ -128,21 +131,40 @@ $(document).ready(function() {
 				
 				<p class="detailcommentstart">댓글</p>
 				<div class="comment">
-				<c:forEach var="comment" items="${commentdtoList}">
-    <div class="detailCommentLine">
+				<c:if test="${empty commentdto}">
+			
+						<div style="color:var(--gray3); margin-left: 24px; margin-top: 20px;">아직 댓글이 없습니다. </div>
+				
+			   </c:if>
+				
+				
+				
+			<c:forEach var="comment" items="${commentdto}">
+    <div ${comment.parent_id > 0 ? 'style="margin-left: 60px; width: 473px;"' : ''} class="detailCommentLine">
         <div class="pncline">
-            <img class="commentProfileImg" src="/images/default_profile.svg">
-            <div class="commentUser_nickname">${comment.comment_writer}</div>
+            <img style="margin-top: 8px;" class="commentProfileImg" src="${comment.user.profile_image}">
+            
+            <div style="margin-top: 8px;" class="commentUser_nickname">${comment.user.name}</div>
             <div class="commentCreatedat"><fmt:formatDate value="${comment.comment_write_date}" pattern="yyyy-MM-dd H:mm" /></div>
+        <c:choose>
+            <c:when test="${comment.comment_writer != userdto.user_id}">
+                <button style="display: none;" data-placeid="${comment.comment_id}" onclick="clickCommentModal(event)" class="CommentD">삭제</button>
+            </c:when>
+            <c:otherwise>
+                <button data-placeid="${comment.comment_id}" onclick="clickCommentModal(event)" class="CommentD">삭제</button>
+            </c:otherwise>
+        </c:choose>
         </div>
-        <button class="replyB">답글</button>
+        <button ${comment.parent_id > 0 ? 'style="display:none;"' : ''} data-replybtn="replyLine${comment.comment_id}" onclick="toggleReply(event)" class="replyB">답글</button>
+       
     </div>
-    <div class="detailComment">${comment.comment_contents}</div>
-    <div class="replyLine">
-        <textarea class="reply_textarea" id="reply-input" name='reply_contents' placeholder="답글을 입력해주세요."></textarea>
+    <div ${comment.parent_id > 0 ? 'style="margin-left: 123px;"' : ''} class="detailComment">${comment.comment_contents}</div>
+    <div style="display: none;" id="commentid">${comment.comment_id}</div>
+    <div id="replyLine${comment.comment_id}" style="display: none;" class="replyLine">
+        <textarea class="reply_textarea" id="reply-input${comment.comment_id}" name='reply_contents' placeholder="답글을 입력해주세요."></textarea>
         <div class="replyCW">
-            <button class="replyCButton" style="border: 2px solid var(--light-stroke);">취소</button>
-            <button class="replyWButton" style="border: 2px solid var(--light-stroke);">작성</button>
+            <button class="replyCButton" data-replybtn="replyLine${comment.comment_id}" onclick="toggleReply(event)" style="border: 2px solid var(--light-stroke);">취소</button>
+            <button class="replyWButton" data-replybtn="replyLine${comment.comment_id}" style="border: 2px solid var(--light-stroke);" onclick="writeReply('${comment.comment_id}')">작성</button>
         </div>
     </div>
 </c:forEach>
@@ -153,11 +175,11 @@ $(document).ready(function() {
 				<div class="hr"></div>
 				<div>
 				<div class="commentWrite">
-				<img class="commentWProfileImg" src="${userdto.profile_image}"onerror="this.src='/images/default_profile.svg'">
-				<input type="text" class="comment_textarea" id="comment-input"
-				name='comment_contents' placeholder="댓글을 입력해주세요.">
-			<button class="commentWButton">작성</button>
-			</div>
+    <img class="commentWProfileImg" src="${userdto.profile_image}" onerror="this.src='/images/default_profile.svg'">
+    <input type="text" class="comment_textarea" id="comment-input" name='comment_contents' placeholder="댓글을 입력해주세요.">
+    <button onclick="edit()" class="commentWButton">작성</button>
+</div>
+
 				
 				</div>
 					<!-- 오른쪽 박스 내용 -->
@@ -176,23 +198,76 @@ $(document).ready(function() {
         const button = event.currentTarget;
 
         if (button.classList.contains("following")) {
-            // 이미 팔로우 중인 상태인 경우, 원래 상태로 복원
+          
             button.textContent = "팔로우";
             button.classList.remove("following");
             button.classList.remove("hovered");
         } else {
-            // 팔로우하지 않은 상태인 경우, 팔로잉 상태로 변경
+         
             button.classList.add("following");
             button.classList.add("hovered");
             button.textContent = "∨팔로잉";
         }
     }
 </script>
+ <script>
+ function toggleReply(event) {
+	    if ("${user_id}" === "" || "${user_id}" === null) {
+	        alert("로그인이 필요합니다.");
+	        return;
+	    }
+
+	    const button = event.currentTarget;
+	    const targetReplyId = button.getAttribute("data-replybtn");
+	    const replyLine = document.getElementById(targetReplyId);
+
+	    if (replyLine) {
+	        replyLine.style.display = replyLine.style.display === "none" ? "block" : "none";
+	    }
+	}
+ function writeReply(parentCommentId) {
+	    // 필요한 데이터를 변수에 저장
+	    let comment_contents = document.getElementById('reply-input' + parentCommentId).value;
+	    let board_id = "${dto.board_id}";
+	    let user_id = "${userdto.user_id}";
+	    
+	    // FormData 객체를 생성하여 데이터 추가
+	    let formData = new FormData();
+	    formData.append("comment_contents", comment_contents);
+	    formData.append("user_id", user_id);
+	    formData.append("board_id", board_id);
+	    formData.append("parent_id", parentCommentId); // 대댓글의 부모 댓글 ID
+
+	    // AJAX를 통해 답글 작성 처리
+	    $.ajax({
+	        url: "addComment",
+	        type: "post",
+	        data: formData,
+	        contentType: false,
+	        processData: false,
+	        success: function (data) {
+	            if (user_id == 'null') {
+	                alert('로그인이 필요합니다.');
+	            } else {
+	                alert('답글 등록이 완료되었습니다.');
+	                // 페이지 새로고침
+	                location.reload();
+	            }
+	        },
+	        error: function (xhr, status, error) {
+	            alert('답글 등록이 실패했습니다.');
+	        }
+	    });
+	}
+
+</script>
+
+
 <script>
 function toggleBookmark(event) {
     const bookmarkImage = event.currentTarget.querySelector(".bookmarkImg");
     const boardId = "${dto.board_id}";
-
+	
     if ("${user_id}" === "" || "${user_id}" === null) {
         alert("로그인이 필요합니다.");
         
@@ -279,9 +354,51 @@ function deleteDBookmark(boardId) {
      }
  });
 
-
-
 </script>
- 
+<script>
+function edit() {
+    // 댓글 내용을 가져옴
+    let comment_contents = document.getElementsByName('comment_contents')[0].value;
+    
+    // 필요한 데이터를 변수에 저장
+    let board_id = "${dto.board_id}";
+    let user_id = "${userdto.user_id}";
+    
+    // 댓글 내용이 비어있는 경우 알림을 띄움
+    if (comment_contents === '') {
+        alert('댓글을 입력해주세요.');
+        return false;
+    }
+
+    // FormData 객체를 생성하여 데이터 추가
+    let formData = new FormData();
+    formData.append("comment_contents", comment_contents);
+    formData.append("user_id", user_id);
+    formData.append("board_id", board_id);
+
+    // AJAX를 통해 댓글 작성 처리
+    $.ajax({
+        url: "addComment",
+        type: "post",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            if (user_id == 'null') {
+                alert('로그인이 필요합니다.');
+            
+            } else {
+                alert('댓글 등록이 완료되었습니다.');
+                // 페이지 새로고침
+                location.reload();
+            }
+        },
+        error: function (xhr, status, error) {
+            alert('댓글 등록이 실패했습니다.');
+        }
+    });
+}
+</script>
+
 </body>
 </html>

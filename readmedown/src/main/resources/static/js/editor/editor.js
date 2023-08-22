@@ -8,10 +8,24 @@ $('body').on('click','#menubar_homebtn',function(){
 		$(this).toggleClass('active');
 		$("#header").animate({ left: "-100px" }, 300);
 		$("#main_box").animate({ 'margin-left' : "0" }, 300);
+		$("#header").toggleClass('show');
 	}else{
 		$(this).toggleClass('active')
 		$("#header").animate({ left: "0px" }, 300);
 		$("#main_box").animate({ 'margin-left' : "100px" }, 300);
+		$("#header").toggleClass('show');
+	}
+})
+
+$('body').on('click','#header a',function(e){
+	if($("#header").hasClass('show')){
+		let href = $(this).attr('href');
+		e.preventDefault();
+		openConfirmModal("작성중이던 정보는 저장되지 않습니다.<br>해당 항목으로 이동하시겠습니까?");
+		$("#confirm_modal #confirm_modal_ok_btn").on('click', function() {
+			$(this).parents(".modal").css("display","none");
+			location.href = href;
+		});
 	}
 })
 
@@ -114,7 +128,11 @@ $("body").on('click', '#savecodebtn', function() {
 	saveCode = saveCode.replace(/\r\n|\n|\r/ig, '<br>');
 	
 	if ($("#user_id").val() == '') {
-		openAlertModal("로그인 회원 전용 기능입니다.<br>로그인 후 이용해 주세요.");
+		openConfirmModal("로그인 회원 전용 기능입니다.<br>로그인 하시겠습니까?");
+		$("#confirm_modal #confirm_modal_ok_btn").on('click', function() {
+			$(this).parents(".modal").css("display","none");
+			$("#signIn_modal").show();
+		});
 	} else if (saveCode.length < 1) {
 		openAlertModal("내용을 작성해 주세요.");
 	} else {
@@ -137,4 +155,30 @@ $("body").on('click', '#savecodebtn', function() {
 			}
 		});//ajax end
 	}
+});
+
+$("#signIn_modal .signIn_submit").click(function(event) {
+	event.preventDefault(); // 폼 제출 방지
+
+	var email = $("#email").val();
+	var password = $("#password").val();
+
+	$.ajax({
+		type: "POST",
+		url: "/signin",
+		data: {
+			email: email,
+			password: password
+		},
+		success: function(response) {
+			if (response.success) {
+				// 로그인 성공 시 처리
+				$("#signIn_modal").css("display", "none");
+				$("#header_down").load(window.location.href + " #header_down");
+				$("#hiddenData").load(window.location.href + " #hiddenData");
+			} else {
+				$(".errorMessage").text(response.errorMessage);
+			}
+		}
+	});
 });

@@ -71,8 +71,21 @@ max-height :100%;
 }
 
 .bookmark-icon {
-	margin-left: 478px;
+	margin-left: 476px;
 	margin-top: -60px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.show {
+    display: block;
 }
 
 
@@ -103,9 +116,15 @@ max-height :100%;
 }
 
 .profileimg {
-	width: 30px;
-	height: 30px;
+    width: 45px;
+    height: 45px;
+    	 border-radius: 70%;
+    overflow: hidden;    object-fit: cover;
+    
 }
+
+
+
 
 templateUse {
 	margin-top: 1px;
@@ -120,7 +139,7 @@ templateUse {
 	border-radius: 20px;
 	border: 1px solid var(--point, #00FEA3);
 	background: var(--text, #EEE);
-	margin-left: 260px;
+	margin-left: 238px;
 	color: var(--main, #222831);
 	text-align: center;
 	width: 70px;
@@ -279,7 +298,7 @@ height: 20px;
 	display: flex;
 	border: 1px solid #D9D9D9;
 	border-radius: 15px;
-	width: 517px;
+	width: 507px;
 	height: 80px;
 	margin-left: 25px;
 	margin-top: 20px;
@@ -288,8 +307,10 @@ height: 20px;
 }
 
 .commentProfileImg {
-	width: 30px;
-	height: 30px;
+ width: 40px;
+    height: 40px;
+    	 border-radius: 70%;
+    overflow: hidden;    object-fit: cover;
 }
 
 .commentUser_nickname {
@@ -307,11 +328,13 @@ height: 20px;
 }
 .pncline{
 	display: flex;
-	min-width: 300px;
+	min-width: 450px;
+	
 }
 .replyB {
-	margin-left: 150px;
-	margin-top: -30px; 
+	display:inline;
+	
+	margin-top: -24px; 
 	font-size : 14px;
 	font-style: normal;
 	font-weight: 400;
@@ -321,13 +344,32 @@ height: 20px;
 	transition: color 0.3s;
 	
 }
+
+
 .replyB:hover{
 
 	color: #00FEA3;
 }
 
+.CommentD{
+	margin-bottom: 23px;
+	font-size : 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	font-size: 14px;
+	color: var(--gray3);
+	width: 50px;
+	transition: color 0.3s;
+}
+
+.CommentD:hover {
+	 
+    filter: invert(56%) sepia(95%) saturate(1427%) hue-rotate(295deg); /* 이미지의 색상과 그림자 효과 적용 */
+}
+
 .detailComment {
-	margin-left: 73px;
+	margin-left: 88px;
 	margin-top: -30px;
 	font-size: 14px;
 
@@ -409,8 +451,10 @@ transition: color 0.3s;
 
 
 .commentWProfileImg{
-	width: 30px;
-	height: 30px;
+ width: 45px;
+    height: 45px;
+    	 border-radius: 70%;
+    overflow: hidden;    object-fit: cover;
 
 
 }

@@ -8,40 +8,40 @@
 	width : 100%;
 	height : 100vh;
 }
-#main_wrapper > div{
-	display: flex;
-	flex-flow : row wrap;
-	align-items: center;
-	justify-content: center;
-}
 #top_box{
 	width : 100%;
-	height : 13%;
+	height : 80px;
 	position: relative;
 }
 #main_gallery{
 	width : 100%;
 	height : 76%;
+	display: flex;
+	flex-flow : row wrap;
+	align-items: center;
+	justify-content: center;
 }
 #below_box{
 	width : 100%;
-	height : 10%;
+	height : 85px;
+	display: flex;
+	flex-flow : row wrap;
+	align-items: center;
+	justify-content: center;
 }
 
 /*상단 검색바*/
 #search_top_box{
 	width : 91%;
-	height : 80px;
+	height : 70px;
 	margin : 0 auto;
 	display: flex;
-    align-items: center;
-    justify-content: center;
 }
 #search_box{
 	width : 100%;
 	height : 60px;
 	display: flex;
-    align-items: center;
+     align-items: center;
     justify-content: center;
 	border-bottom : 1px solid var(--point);
 }
@@ -72,8 +72,9 @@
 	position: absolute;
 	z-index : 10;
 	display : none;
-	margin-top : 160px;
+	/* margin-top : 5px; */
 	background-color : var(--sub);
+	
 }
 #search_btns_box{
 	width : 90%;
@@ -137,6 +138,7 @@
 .one_board >img{
 	width : 100%;
 	height : 100%;
+	object-fit: cover;
 }
 
 /* for 이미지 호버 */

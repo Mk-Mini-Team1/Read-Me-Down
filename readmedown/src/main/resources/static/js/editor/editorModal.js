@@ -13,10 +13,15 @@ $(".modal").on("change","input[type='color']",function(){
 	$(this).next().text($(this).val());
 });
 
-//모달함수선언
+//Alert모달함수선언
 function openAlertModal(modal_msg){
 	$("#alert_modal").css("display","flex");
 	$("#alert_modal #modal_alert_text").html(modal_msg);
+}
+//Confirm모달함수선언
+function openConfirmModal(modal_msg){
+	$("#confirm_modal").css("display","flex");
+	$("#confirm_modal #modal_alert_text").html(modal_msg);
 }
 
 function openBadges(){

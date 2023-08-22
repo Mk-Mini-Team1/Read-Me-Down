@@ -51,33 +51,28 @@
 
 				</div>
 				<div class="infoWrap" id="infoWrap">
-					<div class="following_list">
-						<div class="following_user">
-							<div class="user_image"></div>
-							<div class="user_name">
-								<p>@템플릿기부천사</p>
+					<div class="following_list" id="following_list">
+						<c:if test="${fn:length(followList)==0}">
+							<div class="no_list">팔로우중인 유저가 없습니다.</div>
+						</c:if>
+						<c:forEach items="${followList}" var="following">
+							<div class="following_user">
+								<div class="user_image" style="background-image: url('${following.user.profile_image eq null?'/images/default_profile.svg':following.user.profile_image}')"></div>
+								<div class="user_name">
+									<a href="/usermain">@${following.user.name}</a>
+								</div>
+								<div class="follow_button">
+									<button>팔로잉</button>
+									<input type="hidden" value="${following.follow_id}">
+								</div>
 							</div>
-							<div class="follow_button">
-								<button onmouseover="showUnfollowText(this)"
-									onclick="removeFollowingUser(this)">팔로잉</button>
-							</div>
-						</div>
-						<div class="following_user">
-							<div class="user_image"></div>
-							<div class="user_name">
-								<p>@리드미참쉽죠</p>
-							</div>
-							<div class="follow_button">
-								<button onmouseover="showUnfollowText(this)"
-									onclick="removeFollowingUser(this)">팔로잉</button>
-							</div>
-						</div>
-					</div>
-				</div>
+						</c:forEach>
+					</div><!-- following_list -->
+				</div><!-- infoWrap -->
 			</div>
 		</div>		
 	</div>
-<script src="/js/mypage/myPage.js"></script>
+<script src="/js/mypage/following.js"></script>
 </body>
 </html>
 

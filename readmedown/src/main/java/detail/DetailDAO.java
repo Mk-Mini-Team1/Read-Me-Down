@@ -26,7 +26,9 @@ public Integer isDBookmarked(BookmarkDTO dto);
  int deleteBoard(DetailDTO dto);
  //댓글 조회
  List<CommentDTO> comment(String board_id);
-
+int insertcomment(CommentDTO dto);
+UserDTO getCommentUserByWriter(String commentWriter);
+int deletecomment(CommentDTO dto);
 
 
 	
