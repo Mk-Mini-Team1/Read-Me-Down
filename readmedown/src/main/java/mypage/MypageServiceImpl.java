@@ -68,10 +68,10 @@ public class MypageServiceImpl implements MypageService {
     };
     
     @Override
-    public void updateTemplateSecret(String boardId, String secret) {
-        Map<String, Object> params = new HashMap<>();
-        params.put("boardId", boardId);
+    public int updateTemplateSecret(String board_id, String secret) {
+        Map<String, String> params = new HashMap<>();
+        params.put("board_id", board_id);
         params.put("secret", secret);
-        dao.updateTemplateSecret(params);
+        return dao.updateTemplateSecret(params);
     }
 }

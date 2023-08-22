@@ -18,11 +18,11 @@
     limit #{pagination.limitStart}, #{recordSize}    
 </select>
 
-
+<!-- 템플릿공개여부 secret컬럼 업데이트 -->
 <update id="updateTemplateSecret" parameterType="java.util.Map">
         UPDATE board
-        SET secret = #{searchType1}
-        WHERE board_id = #{boardId}
-    </update>	
+        SET secret = #{secret}
+        WHERE board_id = #{board_id}
+</update>	
 </mapper>
 

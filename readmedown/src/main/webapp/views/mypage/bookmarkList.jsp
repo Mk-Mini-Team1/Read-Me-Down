@@ -14,6 +14,56 @@
 <link rel="stylesheet" href="/css/mypage/followingList.css" />
 <script src="/js/jquery-3.6.4.min.js"></script>
 <title>Read Me▼</title>
+<script>
+$(document).ready(function() {
+//------------------------------- paging --------------------------------------
+let searchWord = $("#infoWrap").val();
+
+//페이지 버튼 눌렀을때 해당페이지 보여주기
+	$(".pageNumBtn").on('click', function(){
+	const queryparamsPage = {
+	   page: $(this).val(),
+	   keyword : searchWord
+	}
+	location.href = location.pathname + '?' + new URLSearchParams(queryparamsPage).toString();
+});//pageNumBtn클릭
+
+//첫페이지
+	$("#boardPageBtnFirst").on('click', function(){
+	const queryparamsPage = {
+	   page: 1,
+	   keyword : searchWord
+	}
+	location.href = location.pathname + '?' + new URLSearchParams(queryparamsPage).toString();
+});
+	//이전페이지
+	$("#boardPageBtnPre").on('click', function(){
+	const queryparamsPage = {
+	   page: "${response.pagination.startPage-1}",
+	   keyword : searchWord
+	}
+	location.href = location.pathname + '?' + new URLSearchParams(queryparamsPage).toString();
+});
+//다음페이지
+	$("#boardPageBtnNext").on('click', function(){
+	const queryparamsPage = {
+	   page: "${response.pagination.endPage+1}",
+	   keyword : searchWord
+	}
+	location.href = location.pathname + '?' + new URLSearchParams(queryparamsPage).toString();
+});
+
+	//마지막페이지
+	$("#boardPageBtnLast").on('click', function(){
+	const queryparamsPage = {
+	   page: "${response.pagination.totalPageCount}",
+	   keyword : searchWord
+	}
+	location.href = location.pathname + '?' + new URLSearchParams(queryparamsPage).toString();
+});//pageNumBtn클릭
+});
+//------------------------------- paging --------------------------------------
+</script>
 </head>
 <body>
 <jsp:include page="../header.jsp" />
@@ -38,13 +88,13 @@
 						</a>
 					</div>
 					<div class="category">
-						<a href="/bookmarks" class="category-link" id="bookmarksLink"
+						<a href="/bookmarks?searchType1=${user_id}" class="category-link" id="bookmarksLink"
 							style="border-bottom: 7px solid var(--neon3);"> <img
 							src="/images/mypage/bookmarks.svg">북마크
 						</a>
 					</div>
 					<div class="category">
-						<a href="/following" class="category-link"
+						<a href="/following?searchType1=${user_id}" class="category-link"
 							id="followingLink"> <img src="/images/mypage/following.svg">팔로잉
 						</a>
 					</div>
@@ -69,6 +119,42 @@
 						</div>
 					</div>
 				</div>
+							<!-- pagination -->
+<div id="below_box">
+<div id="board_paging_box">
+         <c:if test="${fn:length(response.list) != 0}">
+            <div class="pagefirst"
+               <c:if test="${!response.pagination.existPrevPage}"> style="visibility: hidden;" </c:if>>
+               <input type="button" class="pageBtn" id="boardPageBtnFirst" value="◁◁">
+            </div>
+            <div class="prev" id="${response.pagination.startPage-1}"
+               <c:if test="${!response.pagination.existPrevPage}"> style="visibility: hidden;" </c:if>>
+               <input type="button" class="pageBtn" id="boardPageBtnPre" value="◁">
+            </div>
+
+            <c:forEach begin="${response.pagination.startPage}"
+               end="${response.pagination.endPage}" varStatus="vs">
+               <c:if test="${vs.index == searchdto.page}">
+	               <input type="button" class="pageNumBtn" value="${vs.index}" style="font-weight: 900; color:var(--point);">
+               </c:if>
+               <c:if test="${vs.index != searchdto.page}">
+	               <input type="button" class="pageNumBtn" value="${vs.index}" style="font-weight: 300">
+               </c:if>
+            </c:forEach>
+
+            <div class="next" id="${response.pagination.startPage+10}"
+               <c:if test="${!response.pagination.existNextPage}"> style="visibility: hidden;" </c:if>>
+               <input type="button" class="pageBtn" id="boardPageBtnNext" value="▷">
+            </div>
+            <div class="pagelast" id="${response.pagination.totalPageCount}"
+               <c:if test="${!response.pagination.existNextPage}"> style="visibility: hidden;" </c:if>>
+               <input type="button" class="pageBtn" id="boardPageBtnLast" value="▷▷">
+            </div>
+         </c:if>
+</div>
+</div>
+<!-- pagination -->
+				
 			</div>
 		</div>		
 	</div>
@@ -106,6 +192,7 @@ $(".mypage").on('click', ".grid-item" ,function(){
 	//alert(bi);
 	location.href = "/detail?bi="+bi;
 });
+
 </script>
 <script src="/js/mypage/myPage.js"></script>
 </body>
