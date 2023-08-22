@@ -3,16 +3,6 @@ function redirectToEditProfile() {
 	window.location.href = "/mypage/edit"; // 지정된 페이지로 이동
 }
 
-//북마크 추가(프론트)
-$(".mypage_bookmark_btn").on('click', function() {
-	$(this).parents().siblings(".bookmarked-plus").show();
-});
-//북마크 해제(프론트)
-$(".mypage_bookmarked_btn").on('click', function() {
-	$(this).parents(".bookmarked-plus").hide();
-});
-
-
 //함수 정의: 팔로우 버튼에 마우스를 가져다 대면 언팔로우로 변경
 function showUnfollowText(button) {
     $(button).text("언팔로우");
