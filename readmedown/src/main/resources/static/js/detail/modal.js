@@ -30,7 +30,7 @@ function clickModal(event) {
 			</div>
 		<img class="deleteModalImg"  src="/images/ReadMeD_Mint.svg">
 		<p>삭제된 데이터는 복구 불가합니다.</p>
-		<p>템플릿을 정말 삭제하시겠습니까?</p>
+		<p>게시물을 정말 삭제하시겠습니까?</p>
 		<br>
 	
 		<div class="buttonWrap">
@@ -101,8 +101,12 @@ function clickCommentModal(event) {
   modal.innerHTML = `
 	<div class="modalBackdrop" onclick="cancel()"></div>
 	<div class="modalContent">
-		<h3>정말로 댓글을 삭제 하시겠습니까?</h3>
-		<p>삭제한 댓글은 되돌릴 수 없습니다.</p>
+	<div onclick="cancel()" class="closebox">
+				<img class="modal_cancelbtn" src="/images/sign/Close.svg" alt="창닫기" />
+			</div>
+				<img class="deleteModalImg"  src="/images/ReadMeD_Mint.svg">
+		<p>삭제된 데이터는 복구 불가합니다.</p>
+		<p>댓글을 정말 삭제하시겠습니까?</p>
 		<div class="buttonWrap">
 		  <button class="btn cancel" onclick="cancel()">취소</button>
 		  <button class="btn delete" id="${id}" data-placeid="${comment_id}" onclick="deleteComment(event)">삭제</button>

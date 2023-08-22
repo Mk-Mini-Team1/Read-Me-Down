@@ -26,8 +26,9 @@
 <!--댓글 전체 조회  -->
 <select id="comment" parameterType="String" resultType="commentdto">
     SELECT * FROM comment WHERE board_id = #{board_id}
-    ORDER BY IF(parent_id =0, comment_id, parent_id), comment_write_date
+    ORDER BY IF(parent_id = 0, comment_id, parent_id), comment_write_date 
 </select>
+
 
 
 <!--댓글 작성  -->
@@ -53,8 +54,7 @@
 
 <delete id="deletecomment" parameterType="commentdto">
 	DELETE FROM comment
-    WHERE comment_id = #{comment_id}
-	
+       WHERE comment_id = #{comment_id} OR (parent_id = #{comment_id} AND parent_id != 0);
 </delete>
 
 
@@ -70,6 +70,25 @@
 <select id="isDBookmarked" resultType="int" parameterType="bookmarkdto">
 	select count(*) from bookmark where board_id = #{board_id} and user_id = #{user_id}
 </select>
+
+<!--팔로우 추가  -->
+<insert id="addFollow" parameterType="followdto">
+	insert into follow (follow_id ,your_id, my_id )
+				values ( UUID() ,#{your_id}, #{my_id} )
+</insert>
+<!--팔로우 삭제 -->
+<delete id="deleteDFollow" parameterType="followdto">
+	delete from follow where your_id = #{your_id} and my_id = #{my_id};
+</delete>
+
+<!--팔로우 여부  -->
+<select id="isFollow" resultType="int" parameterType="followdto">
+	select count(*) from follow where your_id = #{your_id} and my_id = #{my_id}
+</select>
+
+
+
+
 </mapper>
 
 

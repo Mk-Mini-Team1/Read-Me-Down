@@ -107,11 +107,26 @@ $(document).ready(function() {
 
 				<div class="detail_title">${dto.title}</div>
 <div id="modal" ></div>
-					<div class="user_nickline">
-						<img class="profileimg" src="${boardUser.profile_image}" alt="Profile Image" onerror="this.src='/images/default_profile.svg'">
-						
+					<div  class="user_nickline">
+					
+					<img style="cursor: pointer;" title="이미지를 클릭하면 해당 유저의 템플릿을 볼 수 있습니다." class="profileimg" onclick="window.location.href='/usermain?ui=${boardUser.user_id}'" src="${boardUser.profile_image}" alt="Profile Image" onerror="this.src='/images/default_profile.svg'">
+	
 						<div class="user_nickname">${boardUser.name}</div>
-						<button onclick="clickfollow(event)" class="follow">팔로우</button>
+						
+						
+	<c:choose>
+    <c:when test="${dto.following }">
+        <button onclick="toggleFollow(event)" class="following">∨팔로잉</button>
+    </c:when>
+    <c:otherwise>
+        <button onclick="toggleFollow(event)" class="follow">팔로우</button>
+    </c:otherwise>
+</c:choose>
+
+
+					
+					
+					
 					</div>
 					
 							
@@ -142,10 +157,45 @@ $(document).ready(function() {
 			<c:forEach var="comment" items="${commentdto}">
     <div ${comment.parent_id > 0 ? 'style="margin-left: 60px; width: 473px;"' : ''} class="detailCommentLine">
         <div class="pncline">
-            <img style="margin-top: 8px;" class="commentProfileImg" src="${comment.user.profile_image}">
+            <img style="margin-top: 10.5px; cursor: pointer;" title="이미지를 클릭하면 해당 유저의 템플릿을 볼 수 있습니다." class="commentProfileImg" 
+             onclick="window.location.href='/usermain?ui=${comment.user.user_id}'"
+           
+            src="${comment.user.profile_image}">
             
-            <div style="margin-top: 8px;" class="commentUser_nickname">${comment.user.name}</div>
-            <div class="commentCreatedat"><fmt:formatDate value="${comment.comment_write_date}" pattern="yyyy-MM-dd H:mm" /></div>
+            <div style="margin-top: 10px;" class="commentUser_nickname">${comment.user.name}</div>
+            
+            
+            <div class="commentCreatedat">
+              <jsp:useBean id="now" class="java.util.Date" />
+                <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="nowDate" />
+                <c:choose>
+                     <c:when test="${comment.comment_update_date != null}">
+                       
+                        <fmt:parseDate value="${comment.comment_update_date}" pattern="yyyy-MM-dd HH:mm:ss" var="reg" />
+                     </c:when>
+                     <c:otherwise>
+                       
+            <fmt:parseDate  value="${comment.comment_write_date}" pattern="yyyy-MM-dd HH:mm:ss" var="reg" />
+            
+            
+                     </c:otherwise>
+                </c:choose> 
+                <fmt:formatDate value="${reg}" pattern="yyyy-MM-dd" var="regDate" />
+                <fmt:formatDate value="${reg}" pattern="HH:mm" var="regTime" />
+                <c:choose>
+                     <c:when test="${nowDate == regDate}">
+                        ${regTime}
+                     </c:when>
+                     <c:otherwise>
+                        ${regDate}
+                     </c:otherwise>
+                </c:choose></div>
+            
+            
+          
+            
+            
+            
         <c:choose>
             <c:when test="${comment.comment_writer != userdto.user_id}">
                 <button style="display: none;" data-placeid="${comment.comment_id}" onclick="clickCommentModal(event)" class="CommentD">삭제</button>
@@ -158,10 +208,10 @@ $(document).ready(function() {
         <button ${comment.parent_id > 0 ? 'style="display:none;"' : ''} data-replybtn="replyLine${comment.comment_id}" onclick="toggleReply(event)" class="replyB">답글</button>
        
     </div>
-    <div ${comment.parent_id > 0 ? 'style="margin-left: 123px;"' : ''} class="detailComment">${comment.comment_contents}</div>
+    <div ${comment.parent_id > 0 ? 'style="margin-left: 130px;"' : ''} class="detailComment">${comment.comment_contents}</div>
     <div style="display: none;" id="commentid">${comment.comment_id}</div>
     <div id="replyLine${comment.comment_id}" style="display: none;" class="replyLine">
-        <textarea class="reply_textarea" id="reply-input${comment.comment_id}" name='reply_contents' placeholder="답글을 입력해주세요."></textarea>
+        <textarea class="reply_textarea" id="reply-input${comment.comment_id}" onkeydown="handleReplyKeyDown(event, '${comment.comment_id}')" name='reply_contents' placeholder="답글을 입력해주세요."></textarea>
         <div class="replyCW">
             <button class="replyCButton" data-replybtn="replyLine${comment.comment_id}" onclick="toggleReply(event)" style="border: 2px solid var(--light-stroke);">취소</button>
             <button class="replyWButton" data-replybtn="replyLine${comment.comment_id}" style="border: 2px solid var(--light-stroke);" onclick="writeReply('${comment.comment_id}')">작성</button>
@@ -175,8 +225,8 @@ $(document).ready(function() {
 				<div class="hr"></div>
 				<div>
 				<div class="commentWrite">
-    <img class="commentWProfileImg" src="${userdto.profile_image}" onerror="this.src='/images/default_profile.svg'">
-    <input type="text" class="comment_textarea" id="comment-input" name='comment_contents' placeholder="댓글을 입력해주세요.">
+    <img class="commentWProfileImg" title="이미지를 클릭하면 해당 유저의 템플릿을 볼 수 있습니다."  style="cursor: pointer;" onclick="window.location.href='/usermain?ui=${userdto.user_id}'" src="${userdto.profile_image}" onerror="this.src='/images/default_profile.svg'">
+    <input type="text" onkeydown="handleCommentKeyDown(event)" class="comment_textarea" id="comment-input" name='comment_contents' placeholder="댓글을 입력해주세요.">
     <button onclick="edit()" class="commentWButton">작성</button>
 </div>
 
@@ -192,28 +242,103 @@ $(document).ready(function() {
 		</div>
 	</div>
 
+<script>
+function handleReplyKeyDown(event, commentId) {
+    if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault(); // 엔터 키의 기본 동작인 줄바꿈을 막음
+        writeReply(commentId); // 여기에 작성 함수 호출 등의 동작을 추가
+    }
+}
+function handleCommentKeyDown(event) {
+    if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        edit(); // 여기에 댓글 작성 함수 호출 등의 동작을 추가
+    }
+}
+
+
+</script>
+
  <script src="/js/detail/modal.js"></script>
 	<script>
-    function clickfollow(event) {
-        const button = event.currentTarget;
-
-        if (button.classList.contains("following")) {
-          
-            button.textContent = "팔로우";
-            button.classList.remove("following");
-            button.classList.remove("hovered");
-        } else {
-         
-            button.classList.add("following");
-            button.classList.add("hovered");
-            button.textContent = "∨팔로잉";
-        }
+function toggleFollow(event) {
+    const button = event.currentTarget;
+    const yourId = "${dto.user_id}";
+    
+    if ("${user_id}" === "" || "${user_id}" === null) {
+    	 alert("로그인이 필요합니다.");
+     	$("#signIn_modal").show();
+        return; // 로그인이 필요한 경우 함수 종료
     }
+    
+    if (button.classList.contains("following")) {
+        deleteDFollow(yourId);
+        button.classList.remove("following");
+        button.classList.add("follow");
+        button.textContent = "팔로우"; // 버튼 텍스트 변경
+    } else {
+        addFollow(yourId);
+        button.classList.remove("follow");
+        button.classList.add("following");
+        button.textContent = "∨팔로잉"; // 버튼 텍스트 변경
+    }
+}
+
+function addFollow(yourId) {
+	
+    $.ajax({
+        url: 'addFollow',
+        type: 'post',
+        data: { 'your_id': yourId },
+        success: function (response) {
+            if (response !== -1) {
+            	 alert("팔로우가 추가되었습니다.");
+            	
+
+            } else {
+                alert("문제가 발생했습니다.");
+            }
+        },
+        error: function (request, status, error) {
+            alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+            console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+        }
+    });
+}
+function deleteDFollow(yourId) {
+    $.ajax({
+        url: 'deleteDFollow',
+        type: 'post',
+        data: { 'your_id': yourId },
+        success: function (response) {
+            if (response !== -1) {
+            	 alert("팔로우가 삭제되었습니다.");
+                
+
+            } else {
+                alert("문제가 발생했습니다.");
+            }
+        },
+        error: function (request, status, error) {
+            alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+            console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+        }
+    });
+}
+
 </script>
+
+
+
+
+
+
+
  <script>
  function toggleReply(event) {
 	    if ("${user_id}" === "" || "${user_id}" === null) {
-	        alert("로그인이 필요합니다.");
+	    	 alert("로그인이 필요합니다.");
+	     	$("#signIn_modal").show();
 	        return;
 	    }
 
@@ -247,9 +372,10 @@ $(document).ready(function() {
 	        processData: false,
 	        success: function (data) {
 	            if (user_id == 'null') {
-	                alert('로그인이 필요합니다.');
+	            	 alert("로그인이 필요합니다.");
+	             	$("#signIn_modal").show();
 	            } else {
-	                alert('답글 등록이 완료되었습니다.');
+	           
 	                // 페이지 새로고침
 	                location.reload();
 	            }
@@ -269,7 +395,8 @@ function toggleBookmark(event) {
     const boardId = "${dto.board_id}";
 	
     if ("${user_id}" === "" || "${user_id}" === null) {
-        alert("로그인이 필요합니다.");
+    	 alert("로그인이 필요합니다.");
+     	$("#signIn_modal").show();
         
         return; // 로그인이 필요한 경우 함수 종료
     }
@@ -365,11 +492,19 @@ function edit() {
     let user_id = "${userdto.user_id}";
     
     // 댓글 내용이 비어있는 경우 알림을 띄움
+    
+    
+    if ("${user_id}" === "" || "${user_id}" === null) {
+    	 alert("로그인이 필요합니다.");
+    	$("#signIn_modal").show();
+        
+        return; // 로그인이 필요한 경우 함수 종료
+    }
     if (comment_contents === '') {
         alert('댓글을 입력해주세요.');
         return false;
     }
-
+    
     // FormData 객체를 생성하여 데이터 추가
     let formData = new FormData();
     formData.append("comment_contents", comment_contents);
@@ -385,10 +520,9 @@ function edit() {
         processData: false,
         success: function (data) {
             if (user_id == 'null') {
-                alert('로그인이 필요합니다.');
-            
+            	 alert('댓글 등록이 실패했습니다.');
             } else {
-                alert('댓글 등록이 완료되었습니다.');
+              
                 // 페이지 새로고침
                 location.reload();
             }
@@ -398,6 +532,34 @@ function edit() {
         }
     });
 }
+</script>
+
+<script>
+$("#signIn_modal .signIn_submit").click(function(event) {
+    event.preventDefault(); // 폼 제출 방지
+
+    var email = $("#email").val();
+    var password = $("#password").val();
+
+    $.ajax({
+        type: "POST",
+        url: "/signin",
+        data: {
+            email: email,
+            password: password
+        },
+        success: function(response) {
+            if (response.success) {
+                // 로그인 성공 시 처리
+                $("#signIn_modal").css("display", "none");
+                //새로고침코드
+                location.reload();
+            } else {
+                $(".errorMessage").text(response.errorMessage);
+            }
+        }
+    });
+});
 </script>
 
 </body>

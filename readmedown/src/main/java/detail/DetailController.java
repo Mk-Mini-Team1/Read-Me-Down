@@ -17,6 +17,7 @@ import board.BookmarkDTO;
 import ch.qos.logback.core.model.Model;
 import jakarta.servlet.http.HttpSession;
 import main.MainService;
+import mypage.FollowDTO;
 import user.UserDTO;
 
 
@@ -45,7 +46,7 @@ public class DetailController {
 			        UserDTO commentUser = service.getCommentUserByWriter(comment.getComment_writer());
 			        comment.setUser(commentUser); // Set the user information for the comment
 			    }
-		   
+		   //북마크여부
 			BookmarkDTO bmdto = new BookmarkDTO();
 			bmdto.setBoard_id(dto.getBoard_id());
 			bmdto.setUser_id(user_id);
@@ -56,6 +57,18 @@ public class DetailController {
 			else {
 				dto.setBookmarked(false);
 			}
+			//팔로잉여부
+			FollowDTO fdto = new FollowDTO();
+			fdto.setYour_id(dto.getUser_id());
+			fdto.setMy_id(user_id);
+			int followcnt = service.isFollow(fdto);
+			if(followcnt != 0) {
+				dto.setFollowing(true);
+			}
+			else {
+				dto.setFollowing(false);
+			}
+			
 			
 			
 			ModelAndView mv = new ModelAndView();
@@ -139,6 +152,70 @@ public class DetailController {
 			}		
 			return result;
 		}
+		
+		//팔로우 추가
+		@RequestMapping(value = "/addFollow", produces = {"application/json;charset=utf-8"})
+		public @ResponseBody int addFollow( String your_id, HttpSession session) {
+		    String myId = (String) session.getAttribute("user_id");
+		    
+		    if (myId != null) {
+		        FollowDTO dto = new FollowDTO();
+		        dto.setYour_id(your_id);
+		        dto.setMy_id(myId);
+		        
+		        int followExist = service.isFollow(dto);
+		        int result;
+		        
+		        if (followExist == 0) {
+		            result = service.addFollow(dto);
+		        } else {
+		            result = -1;
+		        }
+		        
+		        return result;
+		    } else {
+		        return -2; // 세션에 유저 아이디가 없을 경우에 대한 처리
+		    }
+		}
+
+				
+				
+		// 팔로우 삭제
+
+		@RequestMapping(value = "/deleteDFollow", produces = { "application/json;charset=utf-8" })
+		public @ResponseBody int deleteDFollow(String your_id, HttpSession session) {
+		
+			  String myId = (String) session.getAttribute("user_id");
+			    
+			 if (myId != null) {
+			        FollowDTO dto = new FollowDTO();
+			        dto.setYour_id(your_id);
+			        dto.setMy_id(myId);
+			        
+			        int followExist = service.isFollow(dto);
+			        int result;
+			        
+			        if (followExist >0) {
+			            result = service.deleteDFollow(dto);
+			        } else {
+			            result = -1;
+			        }
+			        
+			        return result;
+			    } else {
+			        return -2; // 세션에 유저 아이디가 없을 경우에 대한 처리
+			    }
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 }
 
 
