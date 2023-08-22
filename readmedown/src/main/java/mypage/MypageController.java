@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import board.BoardDTO;
-import board.BookmarkDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import pagination.PagingResponse;
@@ -136,5 +136,12 @@ public class MypageController {
         return "{\"response\" :  \"수정이 완료되었습니다.\"}";
     }
 
+	
+	@PostMapping("/updateTemplateSecret")
+    @ResponseBody
+    public String updateTemplateSecret(@RequestParam("board_id") String boardId, @RequestParam("secret") String secret) {
+        service.updateTemplateSecret(boardId, secret);
+        return "success"; 
+    }
 
 }

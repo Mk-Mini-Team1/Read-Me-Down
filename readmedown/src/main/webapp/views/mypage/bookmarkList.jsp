@@ -50,33 +50,63 @@
 					</div>
 				</div>
 				<div class="infoWrap" id="infoWrap">
-					<div class="bookmarks_list">
-						<div class="bookmarks">
-						<c:forEach items="${response.list}" var="bookmark">
-							<div class="grid-item" id="${bookmark.board_id}">
-								<img src='${bookmark.board_img}'
-									onerror="this.src='/images/main/no_img.svg'" alt="template">
-								<div class="darkness"></div>
-								<div class="btn-plus">
-									<div class="mypage_bookmark_box">
-										<img class="mypage_bookmark_btn"
-											src='/images/main/bookmark_before.svg'>
+					<div class="mypage_list" id="mypage_list">
+						<div class="mypage">
+							<c:forEach items="${response.list}" var="bookmark"
+								varStatus="status">
+								<div class="grid-item" id="${bookmark.board_id}">
+									<img src='${bookmark.board_img}'
+										onerror="this.src='/images/main/no_img.svg'" alt="template">
+									<div class="darkness"></div>
+									<div class="bookmarked-plus" style="display: block;">
+										<div class="main_bookmarked_box">
+											<img class="main_bookmarked_btn"
+												src='/images/main/bookmark_after.svg'>
+										</div>
 									</div>
 								</div>
-								<div class="bookmarked-plus">
-									<div class="mypage_bookmarked_box">
-										<img class="mypage_bookmarked_btn"
-											src='/images/main/bookmark_after.svg'>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>		
 	</div>
+<script>
+//북마크 해제
+$("#mypage_list").on('click','.main_bookmarked_btn', function(e){
+	e.stopPropagation();//클릭 이벤트 버블링 막기
+	const boardId2 = $(this).parents().parents(".grid-item").attr('id');
+	const bookmarkCss2 = $(this).parents(".bookmarked-plus");	
+	
+  		$.ajax({
+			url : 'deleteBookmark',
+			type : 'post',
+			data : {'board_id' : boardId2},
+			success : function(response){
+				if(response != -1) {
+					bookmarkCss2.hide();//북마크제거 css효과		
+					$("#mypage_list").load(window.location.href + " #mypage_list");
+				}
+				else {
+					//alert("문제가 발생했습니다.");
+					openAlertModal("문제가 발생했습니다.");
+				}
+			},
+            error: function(request,status,error) {
+	      		alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	      		console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	      	}
+		});//ajax	
+});
+
+//상세페이지이동
+$(".mypage").on('click', ".grid-item" ,function(){
+	let bi = $(this).attr("id");
+	//alert(bi);
+	location.href = "/detail?bi="+bi;
+});
+</script>
 <script src="/js/mypage/myPage.js"></script>
 </body>
 </html>
