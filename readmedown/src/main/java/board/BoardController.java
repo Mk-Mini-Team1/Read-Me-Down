@@ -47,6 +47,7 @@ public class BoardController {
 	public HashMap<String, Object> boardImageUpload(MultipartFile[] uploadFile) {
 		HashMap<String, Object> result = new HashMap<>(); // ajax로 반환할 데이터(json)
         String uploadFolder = "C:\\upload";
+        //String uploadFolder = "/usr/mydir/upload";
         
         // 날짜 폴더 생성
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
