@@ -143,7 +143,7 @@ $(document).ready(function() {
  	$(".search_keyword").on('click', function(){
 		let keyword = $(this).text();
 		//alert(keyword);
-		location.href="http://localhost:8070/boardlist?keyword="+keyword;
+		location.href="/boardlist?keyword="+keyword;
 	});
 	
 	//사진 누르면 디테일 페이지로 이동
@@ -209,10 +209,10 @@ $(document).ready(function() {
 			let searchWord = $("#search_word_input").val();
 		
 			if(searchWord.trim() !== "") {
-	            location.href="http://localhost:8070/boardlist?keyword="+searchWord;
+	            location.href="/boardlist?keyword="+searchWord;
 			}
 			else {
-	            location.href="http://localhost:8070/boardlist";
+	            location.href="/boardlist";
 				alert("검색어가 없습니다.");
 			}
         }
