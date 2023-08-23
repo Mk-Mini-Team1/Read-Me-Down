@@ -72,8 +72,11 @@ $(document).ready(function() {
 		const bookmarkCss = $(this).parents().siblings(".bookmarked-plus");
 		//alert(boardId);
  		if("${user_id}" == "" || "${user_id}" == null){
-			//alert("로그인이 필요합니다.");
-			openAlertModal("로그인이 필요합니다.");
+			openConfirmModal("로그인 회원 전용 기능입니다.<br>로그인 하시겠습니까?");
+			$("#confirm_modal #confirm_modal_ok_btn").on('click', function() {
+			   $(this).parents(".modal").css("display", "none");
+			   $("#signIn_modal").show();
+			});
 		}
 		else {
 	  		$.ajax({
@@ -103,8 +106,11 @@ $(document).ready(function() {
 		const bookmarkCss2 = $(this).parents(".bookmarked-plus");
 		//alert(boardId2);
  		if("${user_id}" == "" || "${user_id}" == null){
-			//alert("로그인이 필요합니다.");
-			openAlertModal("로그인이 필요합니다.");
+			openConfirmModal("로그인 회원 전용 기능입니다.<br>로그인 하시겠습니까?");
+			$("#confirm_modal #confirm_modal_ok_btn").on('click', function() {
+			   $(this).parents(".modal").css("display", "none");
+			   $("#signIn_modal").show();
+			});
 		}
 		else {
 	  		$.ajax({
@@ -151,14 +157,51 @@ $(document).ready(function() {
 	/* -------------------- Modal -------------------- */
 	//모달 취소버튼(공통)
 	$("body").on('click','.modal_cancelbtn',function(){
-		$(this).parents(".modal").css("display","none");
+	   $(this).parents(".modal").css("display","none");
 	});
-
+	
 	//모달함수선언
 	function openAlertModal(modal_msg){
 		$("#alert_modal").css("display","flex");
 		$("#alert_modal #modal_alert_text").html(modal_msg);
 	}
+	
+	//Confirm모달함수선언
+	function openConfirmModal(modal_msg) {
+	   $("#confirm_modal").css("display", "flex");
+	   $("#confirm_modal #modal_alert_text").html(modal_msg);
+	   $("#confirm_modal").css("top", $(window).scrollTop() + "px");
+	   $('#confirm_modal').on('scroll touchmove mousewheel', function(event) {
+	      event.preventDefault();
+	      event.stopPropagation();
+	      return false;
+	   });
+	}
+	
+	$("#signIn_modal .signIn_submit").click(function(event) {
+	   event.preventDefault(); // 폼 제출 방지
+	
+	   var email = $("#email").val();
+	   var password = $("#password").val();
+	
+	   $.ajax({
+	      type: "POST",
+	      url: "/signin",
+	      data: {
+	         email: email,
+	         password: password
+	      },
+	      success: function(response) {
+	         if (response.success) {
+	            // 로그인 성공 시 처리
+	            $("#signIn_modal").css("display", "none");
+	            location.reload();
+	         } else {
+	            $(".errorMessage").text(response.errorMessage);
+	         }
+	      }
+	   });
+	});
 	
 	//검색 ---------------------------------------
  	$("#search_word_input").on("keyup",function(key){
@@ -278,5 +321,6 @@ $(document).ready(function() {
 </div>
 </div>
 <jsp:include page="editor/modal.jsp"/>
+<jsp:include page="confirm_modal.jsp"/>
 </body>
 </html>
