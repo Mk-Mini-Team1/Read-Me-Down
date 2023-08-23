@@ -81,8 +81,6 @@
 							</c:forEach>
 						</div>
 					</div>
-						
-
 				</div>
 				
 				<!-- pagination -->

@@ -1,5 +1,7 @@
 package mypage;
 
+import java.util.Date;
+
 import board.BoardDTO;
 import pagination.PagingResponse;
 import pagination.SearchDTO;
@@ -7,6 +9,7 @@ import pagination.SearchDTO;
 public interface MypageService {
     MypageDTO userInfo(String user_id);
     void updateUser(String user_id, String name, String profile_image, String git_id);
+    public void updateDelete(Date deleted_date, String user_id);
     String checkPw(String user_id);
     void updatePw(String password, String user_id);
     public PagingResponse<BoardDTO> allTemplatesList(SearchDTO dto);

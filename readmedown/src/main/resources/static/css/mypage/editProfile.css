@@ -52,6 +52,7 @@
 .editinfoForm {
   width: 400px;
   padding: 20px;  
+  position: relative; 
 }
 
 .editinfoForm > div {
@@ -147,4 +148,14 @@ button.editButton:hover {
 #Rule {
 	font: var(--caption12);
 	color: var(--gray4);
+}
+
+.deleteUser {
+    font: var(--caption12);
+    color: var(--gray2);
+        margin-top: 5px;
+        margin-right: 22px;
+        position: absolute;
+        right: 0;
+        cursor: pointer;
 }
