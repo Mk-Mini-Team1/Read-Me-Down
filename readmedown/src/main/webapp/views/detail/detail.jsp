@@ -139,8 +139,13 @@ $(document).ready(function() {
 
 					
 					
-					<div class="detail_contents">${dto.contents}</div> 
-				
+					<div class="detail_contents"><div style="width: 507px;">${dto.contents}
+					</div>
+					<br>
+					</div> 
+					<div style="cursor: pointer;" class="tag">
+					<a href="/boardlist?keyword=${dto.board_tag}">${dto.board_tag}</a>
+				</div>
 				
 				
 				
