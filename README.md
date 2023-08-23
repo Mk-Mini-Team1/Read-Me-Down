@@ -34,27 +34,32 @@
 <br>
 
 ## 🖥️ 구현기능
-### 🪄 Sign Up
-> 1. email 중복검사
-> 2. 데이터 유효성 검사
-
 ### 🪄 Login, Find Password
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/13595c36-1890-4cbd-baf1-640295fc6164)
 > 1. 비밀번호 찾기
 > 2. 가입 이메일로 임시비밀번호 발급
 
+### 🪄 Sign Up
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/76be8630-5c0a-418d-83ec-7fb9bfd90b37)
+> 1. email 중복검사
+> 2. 데이터 유효성 검사
+
 ### 🪄 Main
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/36edb96b-bd2b-42f0-b0ce-ec3256bd3023)
 > 1. Masonry Layout + Infinity Scroll
 > 2. 키워드 검색
 > 3. 클릭시 상세페이지 이동
 > 4. (회원 전용) 북마크
 
 ### 🪄 Templates
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/cebd449c-20d8-44f0-a51c-869741eacc62)
 > 1. Template 목록 리스트 조회 및 페이징
 > 2. 키워드 검색
 > 3. 클릭시 상세페이지 이동
 > 4. (회원 전용) 북마크
 
 ### 🪄 Detail
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/8ea0a3e5-ebd4-4baa-b6a6-c9da3a8ba651)
 > 1. 템플릿 조회
 > 2. 작성자 프로필 클릭시 유저메인 이동
 > 3. (회원 전용) 작성 템플릿 수정, 삭제
@@ -77,6 +82,7 @@
 > 2. (회원 전용) 게시글 내용 작성 및 저장
 
 ### 🪄 Mypage
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/c1b0c0f1-6dc2-4fff-ae98-b75368d6d0ce)
 > 1. (회원 전용) 회원정보 수정
 > 2. (회원 전용) 작성 템플릿 조회 및 페이징, 템플릿 공개여부 수정
 > 3. (회원 전용) 북마크한 템플릿 조회 및 페이징, 템플릿 북마크 취소
