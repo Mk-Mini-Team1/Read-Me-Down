@@ -18,7 +18,13 @@ public class UserServiceImpl implements UserService {
 	
 	public UserDTO loginUser(String email) {
 		return dao.loginUser(email);
+	} 
+	
+	public int newPassword(UserDTO userDTO) {
+		return dao.newPassword(userDTO);
+	}  
+	public int findpwEmail(String email) {
+		return dao.findpwEmail(email);
 	}
-	
-	
+	  
 }

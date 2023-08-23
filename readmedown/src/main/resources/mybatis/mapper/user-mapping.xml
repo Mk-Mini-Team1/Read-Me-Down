@@ -14,8 +14,16 @@
 	<select id="loginUser" parameterType="string" resultType="userdto">
   		select * from user where email=#{email}
   	</select>
+  	
+   	<update id="newPassword" parameterType="userdto">
+		UPDATE user
+    	SET password = #{password}
+    	WHERE email = #{email}
+	</update> 
 	
-	
+	<select id="findpwEmail" parameterType="string" resultType="int">
+		select count(*) from user where email=#{email} and deleted_date is null
+	</select> 
 </mapper>
 
 
