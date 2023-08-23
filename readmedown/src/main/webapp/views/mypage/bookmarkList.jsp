@@ -98,6 +98,9 @@ $(document).ready(function() {
 				<div class="infoWrap" id="infoWrap">
 					<div class="mypage_list" id="mypage_list">
 						<div class="mypage" id="mypage">
+							<c:if test="${fn:length(response.list)==0}">
+								<div class="no_list">북마크한 템플릿이 없습니다.</div>
+							</c:if>
 							<c:forEach items="${response.list}" var="bookmark"
 								varStatus="status">
 								<div class="grid-item" id="${bookmark.board_id}">
