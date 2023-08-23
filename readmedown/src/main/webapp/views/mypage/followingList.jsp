@@ -32,7 +32,7 @@
 				</div>
 				<div class="categoryWrap">
 					<div class="category">
-						<a href="/mypage?searchType1=${user_id}" class="category-link"
+						<a href="/mypage" class="category-link"
 							id="myTemplateLink"> <img
 							src="/images/mypage/my_template.svg">내 템플릿
 						</a>

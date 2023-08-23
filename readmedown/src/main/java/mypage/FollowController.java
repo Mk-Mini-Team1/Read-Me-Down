@@ -44,7 +44,9 @@ public class FollowController {
 	    	mv.addObject("followList", followList);
 	        mv.setViewName("mypage/followingList"); // 로그인된 경우 마이페이지로 이동
 	    } else {
-	        mv.setViewName("redirect:/"); // 로그인되지 않은 경우 로그인 페이지로 이동
+	    	mv.addObject("msg", "로그인이 필요한 서비스입니다.");
+	    	mv.addObject("url", "/");
+	        mv.setViewName("alert"); // 로그인되지 않은 경우 로그인 페이지로 이동
 	    }
 	    return mv;
 	}
@@ -72,35 +74,37 @@ public class FollowController {
 	
 	@GetMapping("/usermain")
 	public ModelAndView userMain(String ui, HttpSession session, @RequestParam(name = "page", required = false, defaultValue = "1")int page) {
-		String userId = session.getAttribute("user_id").toString();
-		
+		ModelAndView mv = new ModelAndView();
 		UserDTO otherInfo = follow_service.getOtherUserInfo(ui);
 		int followerCnt = follow_service.getFollowerCnt(ui);
-		//팔로잉여부검사
-		FollowDTO follow = new FollowDTO();
-		follow.setMy_id(userId);
-		follow.setYour_id(ui);
-		boolean isfollowing = follow_service.isFollowing(follow);
 		
 		SearchDTO searchdto = new SearchDTO();
 		searchdto.setSearchType1(ui);
 		searchdto.setPage(page);
 		//작성한 글 불러오기
 		PagingResponse<BoardDTO> list = follow_service.getOtherUserBoards(searchdto);
-		//해당유저 작성글 중 북마크여부 검사
-		for(BoardDTO b : list.getList()) {
-			BookmarkDTO bmdto = new BookmarkDTO();
-			bmdto.setBoard_id(b.getBoard_id());
-			bmdto.setUser_id(userId);
-			int bookmarkcnt = main_service.isBookmarked(bmdto);
-			if(bookmarkcnt != 0) {b.setBookmarked(true);}
-			else {b.setBookmarked(false);}
+
+		if (session.getAttribute("user_id") != null) {
+			String userId = session.getAttribute("user_id").toString();
+			//내 팔로잉여부검사
+			FollowDTO follow = new FollowDTO();
+			follow.setMy_id(userId);
+			follow.setYour_id(ui);
+			boolean isfollowing = follow_service.isFollowing(follow);
+			
+			//해당유저 작성글 중 내 북마크여부 검사
+			for(BoardDTO b : list.getList()) {
+				BookmarkDTO bmdto = new BookmarkDTO();
+				bmdto.setBoard_id(b.getBoard_id());
+				bmdto.setUser_id(userId);
+				int bookmarkcnt = main_service.isBookmarked(bmdto);
+				if(bookmarkcnt != 0) {b.setBookmarked(true);}
+				else {b.setBookmarked(false);}
+			}
+			mv.addObject("isfollowing", isfollowing);
 		}
-		
-		ModelAndView mv = new ModelAndView();
 		mv.addObject("otherInfo", otherInfo);
 		mv.addObject("followerCnt", followerCnt);
-		mv.addObject("isfollowing", isfollowing);
 		mv.addObject("response", list);
 		mv.setViewName("/userMain");
 		return mv;
