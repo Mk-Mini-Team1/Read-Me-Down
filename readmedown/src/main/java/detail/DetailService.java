@@ -60,6 +60,9 @@ public class DetailService {
 	public int deleteDFollow(FollowDTO dto) {
 		return dao.deleteDFollow(dto);
 	}
+	public int updatecomment(CommentDTO dto) {
+		return dao.updatecomment(dto);
+	}
 
 
 }

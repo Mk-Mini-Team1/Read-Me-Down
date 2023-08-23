@@ -131,7 +131,7 @@ $(document).ready(function() {
 					
 							
 
-<div class="detailLink" id="linkSection">
+<div class="detailLink" title="해당 링크로 이동합니다." id="linkSection">
     <img class="linkImg" src="/images/detail/image 147.png">
     <a href="${dto.board_link}">${dto.board_link}</a>
 </div>
@@ -198,25 +198,46 @@ $(document).ready(function() {
             
         <c:choose>
             <c:when test="${comment.comment_writer != userdto.user_id}">
+				 <button style="display: none;" data-editbtn="editLine${comment.comment_id}" class="CommentE" onclick="toggleEditcomment(event)">수정</button>            
                 <button style="display: none;" data-placeid="${comment.comment_id}" onclick="clickCommentModal(event)" class="CommentD">삭제</button>
             </c:when>
             <c:otherwise>
-                <button data-placeid="${comment.comment_id}" onclick="clickCommentModal(event)" class="CommentD">삭제</button>
+             <button data-editbtn="editLine${comment.comment_id}"  class="CommentE" onclick="toggleEditcomment(event)">수정</button>
+                <button data-placeid="${comment.comment_id}" onclick="clickCommentModal(event)" style="margin-left: -17px; " class="CommentD">삭제</button>
             </c:otherwise>
         </c:choose>
+        
+        
+        
+        
+        
+        
+        
+        
+        
         </div>
         <button ${comment.parent_id > 0 ? 'style="display:none;"' : ''} data-replybtn="replyLine${comment.comment_id}" onclick="toggleReply(event)" class="replyB">답글</button>
        
     </div>
     <div ${comment.parent_id > 0 ? 'style="margin-left: 130px;"' : ''} class="detailComment">${comment.comment_contents}</div>
-    <div style="display: none;" id="commentid">${comment.comment_id}</div>
+    <input type="hidden" id="commentid" value="${comment.comment_id}">
+    <input type="hidden"  id="parentid"  value="${comment.parent_id}">
     <div id="replyLine${comment.comment_id}" style="display: none;" class="replyLine">
+    
         <textarea class="reply_textarea" id="reply-input${comment.comment_id}" onkeydown="handleReplyKeyDown(event, '${comment.comment_id}')" name='reply_contents' placeholder="답글을 입력해주세요."></textarea>
         <div class="replyCW">
             <button class="replyCButton" data-replybtn="replyLine${comment.comment_id}" onclick="toggleReply(event)" style="border: 2px solid var(--light-stroke);">취소</button>
             <button class="replyWButton" data-replybtn="replyLine${comment.comment_id}" style="border: 2px solid var(--light-stroke);" onclick="writeReply('${comment.comment_id}')">작성</button>
         </div>
     </div>
+    <div id="editLine${comment.comment_id}" style="display: none;" class="replyLine">
+        <textarea class="reply_textarea" id="edit-input${comment.comment_id}" onkeydown="handleEditKeyDown(event,'${comment.comment_id}')" name='reply_contents' >${comment.comment_contents}</textarea>
+        <div class="replyCW">
+            <button class="replyCButton" data-replybtn="replyLine${comment.comment_id}" onclick="toggleEditcomment(event)" style="border: 2px solid var(--light-stroke);">취소</button>
+            <button class="replyWButton" data-replybtn="replyLine${comment.comment_id}" style="border: 2px solid var(--light-stroke);" onclick="editComment('${comment.comment_id}')">수정</button>
+        </div>
+    </div>
+    
 </c:forEach>
 
 				
@@ -242,6 +263,128 @@ $(document).ready(function() {
 		</div>
 	</div>
 
+<!-- 댓글 수정/삭제를 위한 스크립트 -->
+<script>
+ function toggleEditcomment(event) {
+	    if ("${user_id}" === "" || "${user_id}" === null) {
+	    	 alert("로그인이 필요합니다.");
+	     	$("#signIn_modal").show();
+	        return;
+	    }
+
+	    const button = event.currentTarget;
+	    const targetReplyId = button.getAttribute("data-editbtn");
+	    const replyLine = document.getElementById(targetReplyId);
+
+	    if (replyLine) {
+	        replyLine.style.display = replyLine.style.display === "none" ? "block" : "none";
+	    }
+	}
+ function editComment(CommentId) {
+	    // 필요한 데이터를 변수에 저장
+	    let comment_contents = document.getElementById('edit-input' + CommentId).value;
+	  	let comment_id = CommentId;
+	    let board_id = "${dto.board_id}";
+	    let user_id = "${userdto.user_id}";
+	    
+	    // FormData 객체를 생성하여 데이터 추가
+	    let formData = new FormData();
+	    formData.append("comment_contents", comment_contents);
+	    formData.append("user_id", user_id);
+	    formData.append("board_id", board_id);
+	    formData.append("comment_id", comment_id);
+	    // AJAX를 통해 답글 작성 처리
+	    $.ajax({
+	        url: "updateComment",
+	        type: "post",
+	        data: formData,
+	        contentType: false,
+	        processData: false,
+	        success: function (data) {
+	            if (user_id == 'null') {
+	            	 alert("로그인이 필요합니다.");
+	             	$("#signIn_modal").show();
+	            } else {
+	           
+	                // 페이지 새로고침
+	                location.reload();
+	            }
+	        },
+	        error: function (xhr, status, error) {
+	            alert('답글 등록이 실패했습니다.');
+	        }
+	    });
+	}
+
+</script>
+<script>
+ function toggleReply(event) {
+	    if ("${user_id}" === "" || "${user_id}" === null) {
+	    	 alert("로그인이 필요합니다.");
+	     	$("#signIn_modal").show();
+	        return;
+	    }
+
+	    const button = event.currentTarget;
+	    const targetReplyId = button.getAttribute("data-replybtn");
+	    const replyLine = document.getElementById(targetReplyId);
+
+	    if (replyLine) {
+	        replyLine.style.display = replyLine.style.display === "none" ? "block" : "none";
+	    }
+	}
+ function writeReply(parentCommentId) {
+	    // 필요한 데이터를 변수에 저장
+	    let comment_contents = document.getElementById('reply-input' + parentCommentId).value;
+	    let board_id = "${dto.board_id}";
+	    let user_id = "${userdto.user_id}";
+	    
+	    // FormData 객체를 생성하여 데이터 추가
+	    let formData = new FormData();
+	    formData.append("comment_contents", comment_contents);
+	    formData.append("user_id", user_id);
+	    formData.append("board_id", board_id);
+	    formData.append("parent_id", parentCommentId); // 대댓글의 부모 댓글 ID
+
+	    // AJAX를 통해 답글 작성 처리
+	    $.ajax({
+	        url: "addComment",
+	        type: "post",
+	        data: formData,
+	        contentType: false,
+	        processData: false,
+	        success: function (data) {
+	            if (user_id == 'null') {
+	            	 alert("로그인이 필요합니다.");
+	             	$("#signIn_modal").show();
+	            } else {
+	           
+	                // 페이지 새로고침
+	                location.reload();
+	            }
+	        },
+	        error: function (xhr, status, error) {
+	            alert('답글 등록이 실패했습니다.');
+	        }
+	    });
+	}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
 function handleReplyKeyDown(event, commentId) {
     if (event.key === "Enter" && !event.shiftKey) {
@@ -249,6 +392,13 @@ function handleReplyKeyDown(event, commentId) {
         writeReply(commentId); // 여기에 작성 함수 호출 등의 동작을 추가
     }
 }
+function handleEditKeyDown(event, CommentId) {
+    if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault(); // 엔터 키의 기본 동작인 줄바꿈을 막음
+        editComment(CommentId); // 여기에 작성 함수 호출 등의 동작을 추가
+    }
+}
+
 function handleCommentKeyDown(event) {
     if (event.key === "Enter" && !event.shiftKey) {
         event.preventDefault();
@@ -334,59 +484,7 @@ function deleteDFollow(yourId) {
 
 
 
- <script>
- function toggleReply(event) {
-	    if ("${user_id}" === "" || "${user_id}" === null) {
-	    	 alert("로그인이 필요합니다.");
-	     	$("#signIn_modal").show();
-	        return;
-	    }
-
-	    const button = event.currentTarget;
-	    const targetReplyId = button.getAttribute("data-replybtn");
-	    const replyLine = document.getElementById(targetReplyId);
-
-	    if (replyLine) {
-	        replyLine.style.display = replyLine.style.display === "none" ? "block" : "none";
-	    }
-	}
- function writeReply(parentCommentId) {
-	    // 필요한 데이터를 변수에 저장
-	    let comment_contents = document.getElementById('reply-input' + parentCommentId).value;
-	    let board_id = "${dto.board_id}";
-	    let user_id = "${userdto.user_id}";
-	    
-	    // FormData 객체를 생성하여 데이터 추가
-	    let formData = new FormData();
-	    formData.append("comment_contents", comment_contents);
-	    formData.append("user_id", user_id);
-	    formData.append("board_id", board_id);
-	    formData.append("parent_id", parentCommentId); // 대댓글의 부모 댓글 ID
-
-	    // AJAX를 통해 답글 작성 처리
-	    $.ajax({
-	        url: "addComment",
-	        type: "post",
-	        data: formData,
-	        contentType: false,
-	        processData: false,
-	        success: function (data) {
-	            if (user_id == 'null') {
-	            	 alert("로그인이 필요합니다.");
-	             	$("#signIn_modal").show();
-	            } else {
-	           
-	                // 페이지 새로고침
-	                location.reload();
-	            }
-	        },
-	        error: function (xhr, status, error) {
-	            alert('답글 등록이 실패했습니다.');
-	        }
-	    });
-	}
-
-</script>
+ 
 
 
 <script>

@@ -36,6 +36,19 @@
   INSERT INTO comment(comment_writer, board_id, comment_write_date, comment_contents, parent_id)
     VALUES (#{user_id}, #{board_id},now(),#{comment_contents},#{parent_id});  
   </insert>
+  
+<!--댓글 수정-->
+<update id="updatecomment" parameterType="commentdto">
+  UPDATE comment
+  SET comment_contents = #{comment_contents},
+      comment_update_date = now()
+  WHERE comment_id = #{comment_id};
+</update>
+
+
+  
+  
+  
 <!--댓글 유저 정보  -->  
 <!-- 댓글 작성자의 유저 정보 조회 -->
 <select id="getCommentUserByWriter" parameterType="String" resultType="userdto">

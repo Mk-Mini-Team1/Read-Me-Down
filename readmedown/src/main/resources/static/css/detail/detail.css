@@ -33,7 +33,7 @@
 	
 	background-color: #e0e0e0;
 	color: black;
-	border-right: 1px solid #eee;
+
 	height: 800px;
 	width: 570px;
 	align-items: center;
@@ -398,6 +398,27 @@ height: 20px;
 	 
     filter: invert(56%) sepia(95%) saturate(1427%) hue-rotate(295deg); /* 이미지의 색상과 그림자 효과 적용 */
 }
+
+.CommentE{
+	margin-left:-5px;
+	margin-bottom: 25px;
+	font-size : 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	font-size: 14px;
+	color: var(--gray3);
+	width: 50px;
+	transition: color 0.3s;
+}
+
+.CommentE:hover {
+	 
+    filter:invert(67%) sepia(82%) saturate(877%) hue-rotate(101deg) brightness(102%) contrast(102%); /* 이미지의 색상을 변화시키는 효과 */
+;}
+
+
+
 
 .detailComment {
 	margin-left: 94px;
