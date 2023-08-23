@@ -3,7 +3,7 @@ const modal = document.getElementById('modal');
 function cancel() {
   modal.classList.remove('active');
   modal.innerHTML = ''; // 모달 내용 초기화
-
+location.reload();
 }
 function ok() {
 	modal.classList.remove('active');
@@ -13,8 +13,8 @@ function ok() {
 }
 function Cok() {
 	modal.classList.remove('active');
-  modal.innerHTML = ''; // 모달 내용 초기화
   location.reload();
+ 
 
 }
 
@@ -56,9 +56,9 @@ function deleteBoard(event) {
     success: function() {
       // 삭제 성공 시 모달 내용 업데이트
       modal.innerHTML = `
-        <div class="modalBackdrop" onclick="cancel()"></div>
+        <div class="modalBackdrop" onclick="ok()"></div>
         <div class="modalContent">
-        <div onclick="cancel()" class="closebox">
+        <div onclick="ok()" class="closebox">
 				<img class="modal_cancelbtn" src="/images/sign/Close.svg" alt="창닫기" />
 			</div>
           <img class="deleteModalImg" src="/images/ReadMeD_Mint.svg">
@@ -127,10 +127,10 @@ function deleteComment(event) {
     },
     success: function() {
       modal.innerHTML = `
-        <div class="modalBackdrop" onclick="cancel()"></div>
-        <div  style="width:60px;" class="modalContent">
-        <div  style="margin-left:300px;   width:60px;" onclick="cancel()" class="closebox">
-				<img class="modal_cancelbtn" src="/images/sign/Close.svg" alt="창닫기" />
+        <div class="modalBackdrop" onclick="Cok()"></div>
+        <div  onclick="Cok()" style="width:60px;" class="modalContent">
+        <div  style="margin-left:300px;   width:60px;" " class="closebox">
+				<img onclick="Cok()" class="modal_cancelbtn" src="/images/sign/Close.svg" alt="창닫기" />
 			</div>
           <p >댓글이 삭제되었습니다.</p>
           <br>

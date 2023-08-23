@@ -430,7 +430,6 @@ function handleCommentKeyDown(event) {
 
 </script>
 
-<script src="/js/detail/modal.js"></script>
 <script>
 function toggleFollow(event) {
     const button = event.currentTarget;
@@ -610,7 +609,7 @@ function urlmodal() {
             <p>URL이 복사되었습니다.</p>
             <br>
             <div class="buttonWrap">
-                <button class="btn cancel" onclick="Cok()">확인</button>
+                <button class="btn cancel" onclick="cancel()">확인</button>
             </div>
         </div>
     `;
@@ -622,10 +621,7 @@ function cancel() {
     modal.innerHTML = ""; // 모달 내용 초기화
 }
 
-// 확인 버튼 클릭 시 모달 닫기
-function Cok() {
-    cancel(); // 모달 닫기
-}
+
 </script>
 
  <script>
@@ -722,5 +718,6 @@ $("#signIn_modal .signIn_submit").click(function(event) {
 });
 </script>
 
+<script src="/js/detail/modal.js"></script>
 </body>
 </html>
