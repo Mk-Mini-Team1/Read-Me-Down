@@ -143,9 +143,16 @@ $(document).ready(function() {
 					</div>
 					<br>
 					</div> 
-					<div style="cursor: pointer;" class="tag">
-					<a href="/boardlist?keyword=${dto.board_tag}">${dto.board_tag}</a>
-				</div>
+					
+
+<c:set var="tags" value="${dto.board_tag}" /> <!-- 받은 태그들 -->
+<div style="cursor: pointer;" class="tag">
+    <c:forEach items="${fn:split(tags, '#')}" var="tag">
+        <a href="/boardlist?keyword=${tag}">#${tag}</a>
+    </c:forEach>
+</div>
+
+
 				
 				
 				
