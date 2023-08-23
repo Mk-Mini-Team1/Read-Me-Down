@@ -113,7 +113,6 @@
 .mypage_list {
 	 width: 100%;
 	 display : flex;
-     align-items:center;
 	 justify-content : center;
 	 flex-flow : row wrap;
 }
@@ -124,7 +123,7 @@
 	flex-flow : row wrap;
 	margin : 0 auto;
 	width: 90%;
-	align-items:center;
+	margin-top: 25px;
 	justify-content : center;
 }
 

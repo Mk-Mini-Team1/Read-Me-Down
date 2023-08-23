@@ -17,38 +17,34 @@
 <script>
 $(document).ready(function() {
 //------------------------------- paging --------------------------------------
-let searchWord = $("#infoWrap").val();
-
 //페이지 버튼 눌렀을때 해당페이지 보여주기
 	$(".pageNumBtn").on('click', function(){
 	const queryparamsPage = {
-	   page: $(this).val(),
-	   keyword : searchWord
-	}
+	   page: $(this).val()
+	   }
 	location.href = location.pathname + '?' + new URLSearchParams(queryparamsPage).toString();
 });//pageNumBtn클릭
 
 //첫페이지
 	$("#boardPageBtnFirst").on('click', function(){
 	const queryparamsPage = {
-	   page: 1,
-	   keyword : searchWord
+	   page: 1
 	}
 	location.href = location.pathname + '?' + new URLSearchParams(queryparamsPage).toString();
 });
 	//이전페이지
 	$("#boardPageBtnPre").on('click', function(){
 	const queryparamsPage = {
-	   page: "${response.pagination.startPage-1}",
-	   keyword : searchWord
+	   page: "${response.pagination.startPage-1}"
+	 
 	}
 	location.href = location.pathname + '?' + new URLSearchParams(queryparamsPage).toString();
 });
 //다음페이지
 	$("#boardPageBtnNext").on('click', function(){
 	const queryparamsPage = {
-	   page: "${response.pagination.endPage+1}",
-	   keyword : searchWord
+	   page: "${response.pagination.endPage+1}"
+	   
 	}
 	location.href = location.pathname + '?' + new URLSearchParams(queryparamsPage).toString();
 });
@@ -56,8 +52,8 @@ let searchWord = $("#infoWrap").val();
 	//마지막페이지
 	$("#boardPageBtnLast").on('click', function(){
 	const queryparamsPage = {
-	   page: "${response.pagination.totalPageCount}",
-	   keyword : searchWord
+	   page: "${response.pagination.totalPageCount}"
+	 
 	}
 	location.href = location.pathname + '?' + new URLSearchParams(queryparamsPage).toString();
 });//pageNumBtn클릭
