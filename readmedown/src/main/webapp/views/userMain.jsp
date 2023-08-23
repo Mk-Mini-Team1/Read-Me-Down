@@ -26,21 +26,23 @@
 					<div class="profile-image" style="background-image: url('${otherInfo.profile_image eq null?'/images/default_profile.svg':otherInfo.profile_image}');"></div>
 					<div class="user" id="user">
 						<div class="nick-name">${otherInfo.name}</div>
-						<c:if test="${otherInfo.git_id ne null}">
+						<c:if test="${otherInfo.git_id != ''}">
 							<div class="git-name"><a href="https://github.com/${otherInfo.git_id}"><img src="/images/mypage/git.svg"><span>${otherInfo.git_id}</span></a></div>
 						</c:if>
 						<div class="follow-num">팔로워 ${followerCnt}명</div>
 					</div>
-					<div class="follow_button" id="follow_button">
-						<c:choose>
-							<c:when test="${isfollowing ne null && isfollowing}">
-								<button id="followingbtn"><img src="/images/mypage/check.svg">팔로잉</button>
-							</c:when>
-							<c:otherwise>
-								<button id="followbtn">팔로우</button>
-							</c:otherwise>
-						</c:choose>
-					</div>
+					<c:if test="${otherInfo.user_id != user_id}">
+						<div class="follow_button" id="follow_button">
+							<c:choose>
+								<c:when test="${isfollowing ne null && isfollowing}">
+									<button id="followingbtn"><img src="/images/mypage/check.svg">팔로잉</button>
+								</c:when>
+								<c:otherwise>
+									<button id="followbtn">팔로우</button>
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</c:if>
 				</div>
 				<div class="categoryWrap">
 					<div class="category">
@@ -49,6 +51,9 @@
 				</div>
 				<div class="listWrap" id="listWrap">
 					<div id="templateWrap">
+						<c:if test="${fn:length(response.list)==0}">
+							<div class="no_list">작성한 템플릿이 없습니다.</div>
+						</c:if>
 						<c:forEach items="${response.list}" var="dto" varStatus="status">
 							<div class="templates" id="${dto.board_id}">
 								<img src='${dto.board_img}' onerror="this.src='/images/main/no_img.svg'" alt="template">
@@ -119,7 +124,7 @@
 	<input type="hidden" id="user_id" value="${user_id}">
 	<input type="hidden" id="other_id" value="${otherInfo.user_id}">
 	
-	
+	<jsp:include page="editor/modal.jsp"/>
 	<jsp:include page="confirm_modal.jsp"/>
 	
 	<script src="/js/userMain.js"></script>

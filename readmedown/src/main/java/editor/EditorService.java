@@ -35,5 +35,9 @@ public class EditorService {
 	UserDTO getLoginUser(String user_id) {
 		return dao.getLoginUser(user_id);
 	}
+	
+	String helpBoardCodes() {
+		return dao.helpBoardCodes();
+	}
 
 }

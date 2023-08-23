@@ -61,6 +61,7 @@
 		<input type="hidden" id="user_git_id" value="${user_git_id}">
 		<input type="hidden" id="user_id" value="${user_id}">
 		<textarea id="otherCodes" style="display:none;">${codes}</textarea>
+		<textarea id="helpCodes" style="display:none;">${helpCode}</textarea>
 	</div>
 	<jsp:include page="modal.jsp" />
 	<jsp:include page="../confirm_modal.jsp" />

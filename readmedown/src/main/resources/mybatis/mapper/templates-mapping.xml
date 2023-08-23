@@ -7,13 +7,13 @@
 <select id="allTemplatesCnt" resultType="int" parameterType="pagination.SearchDTO">
     SELECT COUNT(*)
         FROM board
-        WHERE delete_date IS NULL AND user_id = #{searchType1}
+        WHERE delete_date IS NULL AND write_date IS not NULL AND user_id = #{searchType1}
 </select> 
 
 <select id="allTemplatesList" resultType="boarddto" parameterType="pagination.SearchDTO">
     SELECT *
         FROM board
-        WHERE delete_date IS NULL AND user_id = #{searchType1}
+        WHERE delete_date IS NULL write_date IS not NULL AND AND user_id = #{searchType1}
         ORDER BY write_date DESC
     limit #{pagination.limitStart}, #{recordSize}    
 </select>

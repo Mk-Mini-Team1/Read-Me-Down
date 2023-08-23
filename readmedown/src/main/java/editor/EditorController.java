@@ -53,6 +53,10 @@ public class EditorController {
 			UserDTO loginuser = service.getLoginUser(user_id);
 			mv.addObject("user_git_id", loginuser.getGit_id());
 		}
+		
+		//기본으로 들어가는 help 코드
+		String helpCode = service.helpBoardCodes().replaceAll("<br>", "</div><div>");
+		mv.addObject("helpCode", helpCode);
 		return mv;
 	}
 	
@@ -89,7 +93,13 @@ public class EditorController {
 		board_service.first_insert_board(dto);
 		return "{\"board_id\":\""+dto.getBoard_id()+"\"}";
 	}
-	
+
+	@PostMapping("/deleteNoSaveBoard")
+	@ResponseBody
+	public String deleteNotBoard(String user_id) {
+		int result = service.deleteNoSaveBoard(user_id);
+		return "{\"result\":\""+result+"\"}";
+	}
 
 	@PostMapping("/updatecodes")
 	@ResponseBody
@@ -97,7 +107,5 @@ public class EditorController {
 		board_service.first_update_board(dto);
 		return "{\"board_id\":\""+dto.getBoard_id()+"\"}";
 	}
-	
-	
 	
 }
