@@ -105,5 +105,13 @@ public class UserController {
 	public String findPassword() {
 		return "sign/findPw";
 	}
+	
+	@PostMapping("/findpwemail")
+	@ResponseBody
+	public int findpwEmail(String email) {
+		int count = service.findpwEmail(email);
+
+		return count;
+	}
 
 }

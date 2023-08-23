@@ -47,9 +47,7 @@
 					<input type="password" id="password" name="password" maxlength="20"
 						placeholder="비밀번호 입력" />
 				</div>
-				<div class="errorMessage">
-    ${errorMessage}
-</div>
+				<div class="errorMessage">${errorMessage}</div>
 				<button class="signIn_submit" onclick="return checkSignin()">로그인하기</button>
 				<div class="findPassword">
   					  <a href="#" id="findPwbtn">비밀번호 찾기</a>
