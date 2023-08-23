@@ -27,7 +27,7 @@ public class MainController {
 		
 		System.out.println("=========================================== page = "+searchdto.getPage());
 		//글 목록
-		searchdto.setRecordSize(100);
+		searchdto.setRecordSize(50);
 		PagingResponse<BoardDTO> list = service.masonryBoardList(searchdto);
 		
 		//사용자 북마크 목록
