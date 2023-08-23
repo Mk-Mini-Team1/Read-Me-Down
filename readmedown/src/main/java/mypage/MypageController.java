@@ -36,8 +36,8 @@ public class MypageController {
 	    if (session.getAttribute("user_id") != null) {
 	        String user_id = session.getAttribute("user_id").toString();
 
-	        
 	        // 사용자의 템플릿 목록 가져오기
+	        searchDTO.setSearchType1(user_id);
 	        searchDTO.setRecordSize(10);
 	        PagingResponse<BoardDTO> userTemplates = service.allTemplatesList(searchDTO);
 	        MypageDTO my_info = service.userInfo(user_id);
@@ -64,6 +64,7 @@ public class MypageController {
 	    if (session.getAttribute("user_id") != null) {
 	    	String user_id = session.getAttribute("user_id").toString();
 	    	
+	    	searchDTO.setSearchType1(user_id);
 	    	searchDTO.setRecordSize(10);
 	        PagingResponse<BoardDTO> userBookmarks = service.allBookmarksList(searchDTO);
 	    	MypageDTO my_info = service.userInfo(user_id); // service 사용
