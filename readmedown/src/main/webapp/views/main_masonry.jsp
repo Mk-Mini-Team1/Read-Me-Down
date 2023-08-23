@@ -60,8 +60,11 @@ $(document).ready(function() {
 		const bookmarkCss = $(this).parents().siblings(".bookmarked-plus");
 		//alert(boardId);
 		if("${user_id}" == "" || "${user_id}" == null){
-			//alert("로그인이 필요합니다.");
-			openAlertModal("로그인이 필요합니다.");
+			openConfirmModal("로그인 회원 전용 기능입니다.<br>로그인 하시겠습니까?");
+			$("#confirm_modal #confirm_modal_ok_btn").on('click', function() {
+			   $(this).parents(".modal").css("display", "none");
+			   $("#signIn_modal").show();
+			});
 		}
 		else {
 	  		$.ajax({
@@ -91,8 +94,11 @@ $(document).ready(function() {
 		const bookmarkCss2 = $(this).parents(".bookmarked-plus");
 		//alert(boardId2);
 		if("${user_id}" == "" || "${user_id}" == null){
-			//alert("로그인이 필요합니다.");
-			openAlertModal("로그인이 필요합니다.");
+			openConfirmModal("로그인 회원 전용 기능입니다.<br>로그인 하시겠습니까?");
+			$("#confirm_modal #confirm_modal_ok_btn").on('click', function() {
+			   $(this).parents(".modal").css("display", "none");
+			   $("#signIn_modal").show();
+			});
 		}
 		else {
 	  		$.ajax({
@@ -147,6 +153,43 @@ $(document).ready(function() {
 		$("#alert_modal").css("display","flex");
 		$("#alert_modal #modal_alert_text").html(modal_msg);
 	}
+	
+	//Confirm모달함수선언
+	function openConfirmModal(modal_msg) {
+	   $("#confirm_modal").css("display", "flex");
+	   $("#confirm_modal #modal_alert_text").html(modal_msg);
+	   $("#confirm_modal").css("top", $(window).scrollTop() + "px");
+	   $('#confirm_modal').on('scroll touchmove mousewheel', function(event) {
+	      event.preventDefault();
+	      event.stopPropagation();
+	      return false;
+	   });
+	}
+
+	$("#signIn_modal .signIn_submit").click(function(event) {
+	   event.preventDefault(); // 폼 제출 방지
+
+	   var email = $("#email").val();
+	   var password = $("#password").val();
+
+	   $.ajax({
+	      type: "POST",
+	      url: "/signin",
+	      data: {
+	         email: email,
+	         password: password
+	      },
+	      success: function(response) {
+	         if (response.success) {
+	            // 로그인 성공 시 처리
+	            $("#signIn_modal").css("display", "none");
+	            location.reload();
+	         } else {
+	            $(".errorMessage").text(response.errorMessage);
+	         }
+	      }
+	   });
+	});
 
 	//이전페이지로 이동 버튼관련
   	let curruntPageNum = "${searchdto.page}";
@@ -212,9 +255,12 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
-	<div id="prevBtn_div" style="display:none;"><input type="button" id="prevBtn" class="prevBtn" value="이전 페이지 로드하기"></div>
-<%-- <c:if test="${searchdto.page > 1 }">
-</c:if> --%>
+	<div id="prevBtn_div" style="display:none;">
+		<div id="prev_box" class="prevBtn">
+			<img id="prev_img" src="/images/prev_icon.png">
+			<input type="button" id="prev_btn" value="이전 페이지 로드하기">
+		</div>
+	</div>
 	<div id="main_gallery">
 		<div class="grid">
 		<div class="prevLoader"></div>
@@ -268,6 +314,7 @@ $(document).ready(function() {
 </div>
 </div>
 <jsp:include page="editor/modal.jsp"/>
+<jsp:include page="confirm_modal.jsp"/>
 </body>
 <script>
 function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l, prevButton: o, nextLoader: s, prevLoader: c, pushHistory: i, 

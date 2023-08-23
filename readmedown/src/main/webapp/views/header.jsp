@@ -63,7 +63,7 @@
 	            <button id="SignUpbtn" class="openModalButton" data-modal="signUp_modal">Sign Up</button>
 	        </c:when>
 	        <c:otherwise>
-	        	<a href="/mypage?searchType1=${user_id}">
+	        	<a href="/mypage">
 	            <img id="logo" src="${user_profile eq null?'/images/default_profile.svg':user_profile}">
 	            </a>
 	            <button id="logoutbtn">LogOut</button>

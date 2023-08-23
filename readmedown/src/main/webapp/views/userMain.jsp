@@ -23,23 +23,23 @@
 		<div id="main_contents">
 			<div class="container">
 				<div class="userInfo" id="userInfo">
+					<div class="profile-image" style="background-image: url('${otherInfo.profile_image eq null?'/images/default_profile.svg':otherInfo.profile_image}');"></div>
 					<div class="user" id="user">
-						<div class="profile-image" style="background-image: url('${otherInfo.profile_image eq null?'/images/default_profile.svg':otherInfo.profile_image}');"></div>
 						<div class="nick-name">${otherInfo.name}</div>
 						<c:if test="${otherInfo.git_id ne null}">
 							<div class="git-name"><a href="https://github.com/${otherInfo.git_id}"><img src="/images/mypage/git.svg"><span>${otherInfo.git_id}</span></a></div>
 						</c:if>
 						<div class="follow-num">팔로워 ${followerCnt}명</div>
-						<div class="follow_button" id="follow_button">
-							<c:choose>
-								<c:when test="${isfollowing}">
-									<button id="followingbtn"><img src="/images/mypage/check.svg">팔로잉</button>
-								</c:when>
-								<c:otherwise>
-									<button id="followbtn">팔로우</button>
-								</c:otherwise>
-							</c:choose>
-						</div>
+					</div>
+					<div class="follow_button" id="follow_button">
+						<c:choose>
+							<c:when test="${isfollowing ne null && isfollowing}">
+								<button id="followingbtn"><img src="/images/mypage/check.svg">팔로잉</button>
+							</c:when>
+							<c:otherwise>
+								<button id="followbtn">팔로우</button>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 				<div class="categoryWrap">
@@ -92,10 +92,10 @@
 						
 						   <c:forEach begin="${response.pagination.startPage}"
 						      end="${response.pagination.endPage}" varStatus="vs">
-						      <c:if test="${vs.index == param.page}">
+						      <c:if test="${vs.index == (param.page eq null?1:param.page)}">
 						       <input type="button" class="pageNumBtn" value="${vs.index}" style="font-weight: 900; color:var(--point);">
 						      </c:if>
-						      <c:if test="${vs.index != param.page}">
+						      <c:if test="${vs.index != (param.page eq null?1:param.page)}">
 						       <input type="button" class="pageNumBtn" value="${vs.index}" style="font-weight: 300">
 						      </c:if>
 						   </c:forEach>
@@ -118,6 +118,10 @@
 	</div>
 	<input type="hidden" id="user_id" value="${user_id}">
 	<input type="hidden" id="other_id" value="${otherInfo.user_id}">
+	
+	
+	<jsp:include page="confirm_modal.jsp"/>
+	
 	<script src="/js/userMain.js"></script>
 	<script>
 		//페이지 버튼 눌렀을때 해당페이지 보여주기

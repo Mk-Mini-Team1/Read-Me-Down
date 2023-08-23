@@ -11,17 +11,17 @@
 	height: 150px;
 	border-radius: 80px;
 	background-color: var(--sub);
-	margin-bottom: 20px;
-	margin-top: 30px;
     background-size: cover;	
 }
 
 .userInfo {
-	width: 500px;
+	width: 400px;
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	flex-wrap:wrap;
+	gap: 10px 30px;
+	padding-top: 50px;
 }
 
 .userInfo .user {
@@ -89,7 +89,7 @@
   justify-content: center; /* 가로 가운데 정렬 */
   align-items: center; /* 세로 가운데 정렬 */
   border-bottom: 7px solid var(--neon3);
-  margin-top: 50px;
+  margin-top: 30px;
   margin-bottom: 20px;
 }
 
