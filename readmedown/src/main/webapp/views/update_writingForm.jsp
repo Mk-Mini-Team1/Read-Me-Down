@@ -66,12 +66,12 @@ $(document).ready(function() {
 		//enter => <br>
 		let text = $('#board_contents').val();
 		text = text.replace(/(?:\r\n|\r|\n)/g, '<br>');
-		$('#board_contents').val(text);
 		
 		//제목, 이미지첨부, 공개여부 없으면 입력불가
  		if($.trim($("#board_img").val()) !== ""){
 	  		if($.trim($("#board_title").val()) !== ""){
  				if($('input[name="secret"]').is(':checked') == true) {
+					$('#board_contents').val(text);
  					$("#second_update_form").submit();	
  				}
  				else {
@@ -210,5 +210,13 @@ function isSecret(){
 	}
 	
 };
+
+function brToEnter(){
+	//<br> -> enter로 다시 변경
+	let text = $("#board_contents").val();
+	text = text.split('<br>').join("\r\n");
+	 $("#board_contents").val(text);
+}
+brToEnter();
 </script>
 </html>
