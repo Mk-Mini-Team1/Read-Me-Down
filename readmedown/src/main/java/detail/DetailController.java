@@ -92,7 +92,18 @@ public class DetailController {
 			
 		return new ResponseEntity<Integer>(comment_id, HttpStatus.OK);
 			}
-	
+	//댓글 작성
+		@RequestMapping("/updateComment")
+		public ResponseEntity<Integer> updatecomment(HttpSession session, BoardDTO dto, CommentDTO comment, Model model) {
+			if (session.getAttribute("user_id") != null ) {
+				String user_id = session.getAttribute("user_id").toString();
+				dto.setUser_id(user_id);
+			}
+			int comment_id = service.updatecomment(comment);; //
+				
+			return new ResponseEntity<Integer>(comment_id, HttpStatus.OK);
+				}
+		
 	
 	
 	

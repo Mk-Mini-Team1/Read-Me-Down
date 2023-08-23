@@ -33,6 +33,8 @@ int deletecomment(CommentDTO dto);
 public Integer isFollow(FollowDTO dto);
 int addFollow(FollowDTO dto);
 int deleteDFollow(FollowDTO dto);
+int updatecomment(CommentDTO dto);
+
 
 
 	
