@@ -33,8 +33,7 @@ public class DetailController {
 		
 		
 		  String user_id = (String) session.getAttribute("user_id");
-			System.out.println(board_id);
-			System.out.println(user_id);
+			
 			DetailDTO dto = service.detail(board_id);	
 			UserDTO userdto = service.detailuser(user_id);
 			UserDTO boardUser = service.getUserInfoByBoardId(board_id);

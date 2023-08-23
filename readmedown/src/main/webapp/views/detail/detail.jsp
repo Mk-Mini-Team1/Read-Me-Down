@@ -203,7 +203,7 @@ $(document).ready(function() {
             </c:when>
             <c:otherwise>
              <button data-editbtn="editLine${comment.comment_id}"  class="CommentE" onclick="toggleEditcomment(event)">수정</button>
-                <button data-placeid="${comment.comment_id}" onclick="clickCommentModal(event)" style="margin-left: -17px; " class="CommentD">삭제</button>
+                <button data-placeid="${comment.comment_id}" onclick="clickCommentModal(event)" style="margin-left: -0.5px; " class="CommentD">삭제</button>
             </c:otherwise>
         </c:choose>
         
