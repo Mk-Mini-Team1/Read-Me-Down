@@ -45,6 +45,11 @@
   		WHERE user_id = #{user_id} and write_date is null;
   	</delete>
   	
+  	<select id="helpBoardCodes" resultType="String">
+  		SELECT codes
+  		FROM board
+  		WHERE board_id = "Help.md";
+  	</select>
 </mapper>
 
 

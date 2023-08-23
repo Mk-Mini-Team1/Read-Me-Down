@@ -19,14 +19,36 @@ $('body').on('click','#menubar_homebtn',function(){
 
 $('body').on('click','#header a',function(e){
 	if($("#header").hasClass('show')){
-		let href = $(this).attr('href');
+		let hreflink = $(this).attr('href');
 		e.preventDefault();
 		openConfirmModal("작성중이던 정보는 저장되지 않습니다.<br>해당 항목으로 이동하시겠습니까?");
 		$("#confirm_modal #confirm_modal_ok_btn").on('click', function() {
-			$(this).parents(".modal").css("display","none");
-			location.href = href;
+			$.ajax({
+				type: 'post',
+				url: '/deleteNoSaveBoard',
+				dataType: 'json',
+				data: {
+					user_id: $("#user_id").val()
+				},
+				success: function(data) { // 결과 성공 콜백함수
+					$("#confirm_modal").css("display", "none");
+					location.href = hreflink;
+				},
+				error: function(request, status, error) { // 결과 에러 콜백함수
+					console.log(error)
+				}
+			});//ajax end
 		});
 	}
+})
+
+//help 파일
+$('body').on('click', '#helpbtn', function() {
+	openConfirmModal("작성중인 내용은 저장되지 않습니다.<br>Help.md 코드를 보시겠습니까?");
+	$("#confirm_modal #confirm_modal_ok_btn").on('click', function() {
+		$("#confirm_modal").css("display", "none");
+		$(".ProseMirror").html($("#helpCodes").val() + "</div>");
+	});
 })
 
 //Editor
@@ -147,6 +169,7 @@ $("body").on('click', '#savecodebtn', function() {
 			success: function(data) { // 결과 성공 콜백함수
 				$("#save_okay_modal").css("display","flex");
 				$("#save_okay_modal #modal_okay_btn").on('click',function(){
+					$("#save_okay_modal").css("display","none");
 					location.href = "/writingForm?bi=" + data.board_id;
 				});
 			},

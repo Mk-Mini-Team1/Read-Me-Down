@@ -18,4 +18,5 @@ public interface EditorDAO {
 	int deleteNoSaveBoard(String user_id);
 	
 	UserDTO getLoginUser(String user_id);
+	String helpBoardCodes();
 }

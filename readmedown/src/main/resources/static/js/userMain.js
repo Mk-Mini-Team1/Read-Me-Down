@@ -32,6 +32,7 @@ $("#userInfo").on("click", "#followbtn", function() {
 			},
 			success: function(response) { // 결과 성공 콜백함수
 				$("#user").load(window.location.href + " #user");
+				$("#follow_button").load(window.location.href + " #follow_button");
 			},
 			error: function(request, status, error) { // 결과 에러 콜백함수
 				console.log(error)
@@ -59,6 +60,7 @@ $("#userInfo").on("click", "#followingbtn", function() {
 			},
 			success: function(response) { // 결과 성공 콜백함수
 				$("#user").load(window.location.href + " #user");
+				$("#follow_button").load(window.location.href + " #follow_button");
 			},
 			error: function(request, status, error) { // 결과 에러 콜백함수
 				console.log(error)
@@ -183,3 +185,14 @@ $("#templateWrap").on('click', ".templates" ,function(){
 	//alert(bi);
 	location.href = "/detail?bi="+bi;
 });
+
+//모달 취소버튼(공통)
+$("body").on('click', '.modal_cancelbtn', function() {
+	$(this).parents(".modal").css("display", "none");
+});
+
+//모달함수선언
+function openAlertModal(modal_msg) {
+	$("#alert_modal").css("display", "flex");
+	$("#alert_modal #modal_alert_text").html(modal_msg);
+}

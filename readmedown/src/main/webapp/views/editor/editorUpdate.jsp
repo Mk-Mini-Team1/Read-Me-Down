@@ -61,6 +61,7 @@
 		<input type="hidden" id="myBoardID" value="${board.board_id}">
 		<input type="hidden" id="myBoardWritetime" value="${board.write_date}">
 		<textarea id="myCodes" style="display:none;">${board.codes}</textarea>
+		<textarea id="helpCodes" style="display:none;">${helpCode}</textarea>
 	</div>
 	<jsp:include page="modal.jsp" />
 	<jsp:include page="../confirm_modal.jsp" />

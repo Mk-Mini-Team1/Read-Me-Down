@@ -47,6 +47,7 @@
 		</div>
 		<div id="menubar_btns">
 			<button id="themebtn"></button>
+			<button id="helpbtn">Help MD</button>
 			<button id="copybtn">Copy Code</button>
 			<button id="savecodebtn">Save</button>
 		</div>
