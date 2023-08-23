@@ -9,6 +9,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 <!-- <script src="https://cdn.jsdelivr.net/gh/marshallku/infinite-scroll/dist/infiniteScroll.min.js"></script> -->
 <link rel="icon" href="/images/logo-pencil.png" />
 <link rel="apple-touch-icon" href="/images/logo-pencil.png" />
@@ -18,6 +19,40 @@
 <title>Read Me▼</title>
 <script>
 $(document).ready(function() {
+	//이미지 masonry로 배열
+	var msnry = new Masonry( '.grid', {
+		itemSelector: '.grid-item',
+		columnWidth: '.grid-sizer',
+		percentPosition: true,
+		gutter : 20,
+	});
+
+	//msnry.layout()
+
+	infiniteScroll({
+		container: ".grid",
+		item: ".grid-item",
+		next: ".next",
+		prev: ".prev",
+		autoPrev : false,
+		prevButton: ".prevBtn",
+		prevLoader: ".prevLoader", 
+		nextLoader: ".nextLoader", 
+		pushHistory: true,
+		nextCallback: (newElement) => {
+		    msnry.appended(newElement)
+		},
+			prevCallback: (newElement) => {
+		    msnry.prepended(newElement)
+		},
+		onLoadFinish: () => {
+		  msnry.layout();
+		}
+	}),
+	imagesLoaded( '.grid' ).on( 'done', function() {
+		  msnry.layout();
+	});
+	
 	//북마크 추가
 	$(".main_bookmark_btn").on('click', function(e){
 		e.stopPropagation();//클릭 이벤트 버블링 막기
@@ -273,9 +308,13 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
     //다음페이지 불러오는 함수
     function k() {
     	console.log("k() 시작");
-    	pageNum++;
-    	console.log("pageNum = " + pageNum);
     	
+		const totalPage = "${response.pagination.totalPageCount}";
+		const thisPage = "${searchdto.page}";
+		if(thisPage == totalPage){
+	        	return;
+		}
+      
         const e = document.querySelector(t); //다음페이지 a태그
     	
         if (null === e || !0 === g || e.classList.contains("done"))//다음페이지 없으면 그만하도록?
@@ -326,8 +365,6 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
  	// 이전페이지 불러오는 함수 F()
     function F() {
     	console.log("F() 시작");
-    	pageNum == pageNum-1;
-    	console.log("pageNum = " + pageNum);
     	
         const e = document.querySelector(r); //.prev 셀렉터
         if (null === e || !0 === w || e.classList.contains("done"))
@@ -397,43 +434,61 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
             ),
             a || (w = !1,
             c && m.prev.classList.remove(L)))
+            
+     		let searchdtoPage = "${searchdto.page}";
+            let prevHref= $(".prev").attr('href');
+            console.log("searchdtoPage = " + searchdtoPage);
+            console.log("prevHref = " + prevHref);
+             
+            if(searchdtoPage > 1){
+            	if(prevHref == "" || prevHref == null) {
+    	        	$(".prev").remove();  
+    	        	$("#prevBtn_div").hide();
+            	}
+            };
         }
         ).catch(e=>{
             console.log(e)
         }
         )
+      
     }
  	
  	//container 높이 파악하고 조건 따지는 함수 -> 이전페이지 다음페이지 불러오기위해서인듯?
      function O() {
     	console.log("O() 시작");
     	const totalPageCount ="${response.pagination.totalPageCount}";
-     	console.log("totalPageCount = " + totalPageCount);
-    	//console.log("pageNum = " + pageNum);
-    	
-     	//const searchdto ="${searchdto.page}";
-    	//console.log("searchdto = " + searchdto);
-    	//const paramPage ="${param.page}";
-    	//console.log("paramPage = " + paramPage);
-    	//const s_pageNum ="${s_pageNum}";
-    	
-    	
-        const e = p.offsetTop; //container의 top높이?
-        if(p.scrollHeight > 800){
-	        !l && null !== S && "" !== S.getAttribute("href") && !g && A >= e + p.scrollHeight - h - 800 && k(),//다음페이지 정보 없으면
-	        !o && null !== v && "" !== v.getAttribute("href") && !w && A <= e + 800 && F()//이전페이지 정보 없으면 ??         	
-        }
+
+/*         const e = p.offsetTop;
+
+        !l && null !== S && "" !== S.getAttribute("href") && !g && A >= e + p.scrollHeight - h - 800 && k(),
+        !o && null !== v && "" !== v.getAttribute("href") && !w && A <= e + 800 && F()   */  
+        
+        //뒤로가기로 돌아왔을때 마지막페이지면 다음페이지 로드 막기
+/*          window.onpageshow = function(event) {
+            if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+				const totalPage = "${response.pagination.totalPageCount}";
+				const thisPage = "${searchdto.page}";
+				if(thisPage == totalPage){
+					$(".next").remove();
+				}
+            }
+        }; */
         		
-        		
-/*     	if(p.scrollHeight > 800 && pageNum < totalPageCount && searchdtoPage < totalPageCount) {	
-	        !l && null !== S && "" !== S.getAttribute("href") && !g && A >= e + p.scrollHeight - h - 800 && k()//다음페이지 정보 없으면
-       	}
-        if(paramPage != "" && paramPage > 1){
-        	pageNum = searchdtoPage;
-	        !o && null !== v && "" !== v.getAttribute("href") && !w && A <= e + 800 && F()//이전페이지 정보 없으면 ?? 
-        }else if(paramPage == 1){
-        	b();
-        } */
+     	// container의 상단 위치
+        const containerTop = p.offsetTop;
+		
+     	if(p.scrollHeight > 700){//조회된 글 수가 적을땐 실행안되도록     		
+	        // 다음 페이지를 불러올 조건 확인
+	        if (!l && null !== S && "" !== S.getAttribute("href") && !g && A >= containerTop + p.scrollHeight - h - 500) {
+	            k(); // 다음 페이지 불러오는 함수 호출
+	        }
+	        // 이전 페이지를 불러올 조건 확인
+	        if (!o && null !== v && "" !== v.getAttribute("href") && !w && A <= containerTop + 500) {
+	            F(); // 이전 페이지 불러오는 함수 호출
+	        }
+     	}
+    
     }
 
     !function() {
@@ -467,11 +522,11 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
         F()
     }
     )
-}
+}//end infiniteScroll;
 
 </script>
 <script>
-//이미지 masonry로 배열
+/* //이미지 masonry로 배열
 var msnry = new Masonry( '.grid', {
 	itemSelector: '.grid-item',
 	columnWidth: '.grid-sizer',
@@ -487,7 +542,7 @@ infiniteScroll({
 	next: ".next",
 	prev: ".prev",
 	autoPrev : false,
-		prevButton: ".prevBtn",
+	prevButton: ".prevBtn",
 	prevLoader: ".prevLoader", 
 	nextLoader: ".nextLoader", 
 	pushHistory: true,
@@ -500,7 +555,7 @@ infiniteScroll({
 	onLoadFinish: () => {
 	    msnry.layout()
 	}
-});
+}); */
 
 </script>
 </html>

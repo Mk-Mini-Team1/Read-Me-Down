@@ -101,18 +101,9 @@ public class UserController {
         return "redirect:/"; // 루트 경로로 리다이렉트
     }
 
-
-    
-    
-    
-
 	@GetMapping("/findpw")
 	public String findPassword() {
 		return "sign/findPw";
 	}
-	
-	@GetMapping("/usermain")
-	public String userMain() {
-		return "/userMain";
-	}
+
 }
