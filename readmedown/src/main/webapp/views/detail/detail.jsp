@@ -147,11 +147,19 @@ $(document).ready(function() {
 					
 
 <c:set var="tags" value="${dto.board_tag}" /> <!-- 받은 태그들 -->
-<div style="cursor: pointer;" class="tag">
-    <c:forEach items="${fn:split(tags, '#')}" var="tag">
-        <a href="/boardlist?keyword=${tag}">#${tag}</a>
-    </c:forEach>
-</div>
+<c:choose>
+    <c:when test="${not empty tags}">
+        <div style="cursor: pointer;" class="tag">
+            <c:forEach items="${fn:split(tags, '#')}" var="tag">
+                <a href="/boardlist?keyword=${tag}">#${tag}</a>
+            </c:forEach>
+        </div>
+    </c:when>
+    <c:otherwise>
+        <!-- 태그 값이 없을 때 아무 내용도 표시하지 않음 -->
+    </c:otherwise>
+</c:choose>
+
 
 
 				
