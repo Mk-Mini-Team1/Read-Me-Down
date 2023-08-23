@@ -162,12 +162,12 @@ $(document).ready(function() {
 				</div>
 			</div>
 			<div id="wf_right">
-					<div id="board_title_box"><input type=text id="board_title" name="title" placeholder="제목" /></div>
+					<div id="board_title_box"><input type=text id="board_title" name="title" placeholder="제목" autocomplete="off"/></div>
 					<div id="board_contents_box">
 					    <textarea rows=1, id="board_contents" name="contents" placeholder="내용을 입력하세요." ></textarea>
 					</div>
-					<div id="board_tag_box"><input type=text id="board_tag" name="board_tag" placeholder="#을 이용하여 태그를 추가해보세요." /></div>
-					<div id="board_link_box"><input type=text id="board_link" name="board_link" placeholder="링크를 추가하세요." /></div>
+					<div id="board_tag_box"><input type=text id="board_tag" name="board_tag" placeholder="#을 이용하여 태그를 추가해보세요." autocomplete="off"/></div>
+					<div id="board_link_box"><input type=text id="board_link" name="board_link" placeholder="링크를 추가하세요." autocomplete="off"/></div>
 					<input type=hidden id="board_id" name="board_id" value="${board_id}"/>
 					<div id="is_secret_box">
 						<div id="for_gap_box">

@@ -161,12 +161,12 @@ $(document).ready(function() {
 				</div>
 			</div>
 			<div id="wf_right">
-					<div id="board_title_box"><input type=text id="board_title" name="title" placeholder="제목" value="${dto.title }" /></div>
+					<div id="board_title_box"><input type=text id="board_title" name="title" placeholder="제목" autocomplete="off" value="${dto.title }" /></div>
 					<div id="board_contents_box">
 					    <textarea rows=1, id="board_contents" name="contents" placeholder="내용을 입력하세요.">${dto.contents }</textarea>
 					</div>
-					<div id="board_tag_box"><input type=text id="board_tag" name="board_tag" placeholder="#을 이용하여 태그를 추가해보세요." value="${dto.board_tag }"/></div>
-					<div id="board_link_box"><input type=text id="board_link" name="board_link" placeholder="링크를 추가하세요." value="${dto.board_link }"/></div>
+					<div id="board_tag_box"><input type=text id="board_tag" name="board_tag" placeholder="#을 이용하여 태그를 추가해보세요." autocomplete="off" value="${dto.board_tag }"/></div>
+					<div id="board_link_box"><input type=text id="board_link" name="board_link" placeholder="링크를 추가하세요." autocomplete="off" value="${dto.board_link }"/></div>
 					<input type=hidden id="board_id" name="board_id" value="${dto.board_id }"/>
 					<div id="is_secret_box">
 						<div id="for_gap_box">
