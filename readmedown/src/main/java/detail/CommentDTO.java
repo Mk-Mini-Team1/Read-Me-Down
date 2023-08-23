@@ -16,11 +16,11 @@ public class CommentDTO {
 	comment_writer,
 	comment_contents,
 	comment_imgurl,
-
+	comment_write_date,
 	comment_update_date,
 	comment_delete_date;
 	
 	int 	parent_id, comment_id;
-	Date comment_write_date;
+
 	  UserDTO user; // Add UserDTO field
 }

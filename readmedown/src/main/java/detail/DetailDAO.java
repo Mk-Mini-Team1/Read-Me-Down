@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import board.BookmarkDTO;
+import mypage.FollowDTO;
 import user.UserDTO;
 
 @Mapper
@@ -29,6 +30,9 @@ public Integer isDBookmarked(BookmarkDTO dto);
 int insertcomment(CommentDTO dto);
 UserDTO getCommentUserByWriter(String commentWriter);
 int deletecomment(CommentDTO dto);
+public Integer isFollow(FollowDTO dto);
+int addFollow(FollowDTO dto);
+int deleteDFollow(FollowDTO dto);
 
 
 	

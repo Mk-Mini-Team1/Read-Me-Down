@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import board.BookmarkDTO;
+import mypage.FollowDTO;
 import user.UserDTO;
 
 @Service
@@ -49,6 +50,15 @@ public class DetailService {
 	public void deletecomment(CommentDTO dto) {
 		dao.deletecomment(dto);
 		
+	}
+	public int isFollow(FollowDTO dto) {
+		return dao.isFollow(dto);
+	}
+	public int addFollow(FollowDTO dto) {
+		return dao.addFollow(dto);
+	}
+	public int deleteDFollow(FollowDTO dto) {
+		return dao.deleteDFollow(dto);
 	}
 
 

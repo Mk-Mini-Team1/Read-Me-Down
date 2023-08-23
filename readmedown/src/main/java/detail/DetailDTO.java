@@ -14,5 +14,6 @@ public class DetailDTO {
 	int views, bookmarks;
 	Date delete_date;
 	boolean bookmarked;
+	boolean following;
 	  UserDTO user; // Add UserDTO field
 }
