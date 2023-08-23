@@ -17,96 +17,152 @@
 <title>Read Me▼</title>
 </head>
 <body>
-<jsp:include page="header.jsp" />
+	<jsp:include page="header.jsp" />
 
 	<div id="main_box">
 		<div id="main_contents">
 			<div class="container">
-				<div class="contentWrap">
-					<div class="userInfo">
-						<div class="user">
-							<div class="profile-image"></div>
-							<div class="nick-name">
-								<p>
-									템플릿기부천사<span>님</span>
-								</p>
-							</div>
-							<div class="follow-num">
-								<p>팔로워 23명</p>
-							</div>
-							<div class="follow_button">
-								<button onmouseover="showUnfollowText(this)"
-									onclick="removeFollowingUser(this)">팔로잉</button>
-							</div>
-
+				<div class="userInfo" id="userInfo">
+					<div class="user" id="user">
+						<div class="profile-image" style="background-image: url('${otherInfo.profile_image eq null?'/images/default_profile.svg':otherInfo.profile_image}');"></div>
+						<div class="nick-name">${otherInfo.name}</div>
+						<c:if test="${otherInfo.git_id ne null}">
+							<div class="git-name"><a href="https://github.com/${otherInfo.git_id}"><img src="/images/mypage/git.svg"><span>${otherInfo.git_id}</span></a></div>
+						</c:if>
+						<div class="follow-num">팔로워 ${followerCnt}명</div>
+						<div class="follow_button" id="follow_button">
+							<c:choose>
+								<c:when test="${isfollowing}">
+									<button id="followingbtn"><img src="/images/mypage/check.svg">팔로잉</button>
+								</c:when>
+								<c:otherwise>
+									<button id="followbtn">팔로우</button>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 				</div>
 				<div class="categoryWrap">
 					<div class="category">
-						<p>
-							<img src="/images/mypage/my_template.svg">유저 템플릿
-						</p>
+						<p><img src="/images/mypage/my_template.svg">작성 템플릿</p>
 					</div>
 				</div>
-				<div class="infoWrap" id="infoWrap">					
-							<div id="main_gallery">
-								<div class="grid">
-									<div class="grid-sizer"></div>
-									<c:forEach begin="1" end="19" varStatus="vs">
-										<div class="grid-item">
-											<img src='/images/main/readme_ex${vs.count}.png'
-												alt="template">
-											<div class="darkness"></div>
-											<div class="btn-plus">
-												<div class="main_bookmark_box">
-													<img class="main_bookmark_btn"
-														src='/images/main/bookmark_before.svg'>
-												</div>
-											</div>
-											<div class="bookmarked-plus">
-												<div class="main_bookmarked_box">
-													<img class="main_bookmarked_btn"
-														src='/images/main/bookmark_after.svg'>
-												</div>
+				<div class="listWrap" id="listWrap">
+					<div id="templateWrap">
+						<c:forEach items="${response.list}" var="dto" varStatus="status">
+							<div class="templates" id="${dto.board_id}">
+								<img src='${dto.board_img}' onerror="this.src='/images/main/no_img.svg'" alt="template">
+								<div class="darkness"></div>
+								<div class="btn-plus" id="${dto.bookmarked}">
+					               <div class="main_bookmark_box"><img class="main_bookmark_btn" src='/images/main/bookmark_before.svg'></div>
+				               </div>
+								<c:choose>
+									<c:when test="${dto.bookmarked}">
+										<div class="bookmarked-plus" style="display: block;">
+											<div class="main_bookmarked_box">
+												<img class="main_bookmarked_btn" src='/images/main/bookmark_after.svg'>
 											</div>
 										</div>
-									</c:forEach>									
-								</div>
+									</c:when>
+									<c:otherwise>
+										<div class="bookmarked-plus">
+											<div class="main_bookmarked_box">
+												<img class="main_bookmarked_btn" src='/images/main/bookmark_after.svg'>
+											</div>
+										</div>
+									</c:otherwise>
+								</c:choose>
 							</div>
-						</div>
+						</c:forEach>
 					</div>
 				</div>
-			</div>		
+				
+				<!-- pagination -->
+				<div id="below_box">
+					<div id="board_paging_box">
+						<c:if test="${fn:length(response.list) != 0}">
+						   <div class="pagefirst"
+						      <c:if test="${!response.pagination.existPrevPage}"> style="visibility: hidden;" </c:if>>
+						      <input type="button" class="pageBtn" id="boardPageBtnFirst" value="◁◁">
+						   </div>
+						   <div class="prev" id="${response.pagination.startPage-1}"
+						      <c:if test="${!response.pagination.existPrevPage}"> style="visibility: hidden;" </c:if>>
+						      <input type="button" class="pageBtn" id="boardPageBtnPre" value="◁">
+						   </div>
+						
+						   <c:forEach begin="${response.pagination.startPage}"
+						      end="${response.pagination.endPage}" varStatus="vs">
+						      <c:if test="${vs.index == param.page}">
+						       <input type="button" class="pageNumBtn" value="${vs.index}" style="font-weight: 900; color:var(--point);">
+						      </c:if>
+						      <c:if test="${vs.index != param.page}">
+						       <input type="button" class="pageNumBtn" value="${vs.index}" style="font-weight: 300">
+						      </c:if>
+						   </c:forEach>
+						
+						   <div class="next" id="${response.pagination.startPage+10}"
+						      <c:if test="${!response.pagination.existNextPage}"> style="visibility: hidden;" </c:if>>
+						      <input type="button" class="pageBtn" id="boardPageBtnNext" value="▷">
+						   </div>
+						   <div class="pagelast" id="${response.pagination.totalPageCount}"
+						      <c:if test="${!response.pagination.existNextPage}"> style="visibility: hidden;" </c:if>>
+						      <input type="button" class="pageBtn" id="boardPageBtnLast" value="▷▷">
+						   </div>
+						</c:if>
+					</div>
+				</div>
+				<!-- pagination -->
+				
+			</div>
+		</div>
+	</div>
+	<input type="hidden" id="user_id" value="${user_id}">
+	<input type="hidden" id="other_id" value="${otherInfo.user_id}">
+	<script src="/js/userMain.js"></script>
 	<script>
-	// 함수 정의: 팔로우 버튼에 마우스를 가져다 대면 언팔로우로 변경
-	function showUnfollowText(button) {
-	    $(button).text("언팔로우");
-	}
-
-	$(document).ready(function() {
-	    // 팔로우 버튼에 마우스를 가져다 대면 언팔로우로 변경
-	    $(".follow_button button").hover(
-	        function() {
-	            showUnfollowText(this);
-	        },
-	        function() {
-	            // 마우스를 떼었을 때 버튼 텍스트를 팔로잉 또는 언팔로우로 변경
-	            var buttonText = $(this).hasClass("following") ? "언팔로우" : "팔로잉";
-	            $(this).text(buttonText);
-	        }
-	    );
-
-	    // 팔로우 버튼 클릭 시 클래스 토글 및 동작 실행
-	    $(".follow_button button").on('click', function() {
-	        var isFollowing = $(this).hasClass("following");      
-	        // 팔로우 버튼 클래스 토글
-	        $(this).toggleClass("following");
-	    });
-	});
-	
-	
-</script>
+		//페이지 버튼 눌렀을때 해당페이지 보여주기
+	 	$(".pageNumBtn").on('click', function(){
+			const queryparamsPage = {
+				ui: "${otherInfo.user_id}",
+				page: $(this).val()
+			}
+			location.href = location.pathname + '?' + new URLSearchParams(queryparamsPage).toString();
+		});//pageNumBtn클릭
+		
+		//첫페이지
+	 	$("#boardPageBtnFirst").on('click', function(){
+			const queryparamsPage = {
+				ui: "${otherInfo.user_id}",
+				page: 1
+			}
+			location.href = location.pathname + '?' + new URLSearchParams(queryparamsPage).toString();
+		});
+	 	//이전페이지
+	 	$("#boardPageBtnPre").on('click', function(){
+			const queryparamsPage = {
+				ui: "${otherInfo.user_id}",
+				page: "${response.pagination.startPage-1}"
+			}
+			location.href = location.pathname + '?' + new URLSearchParams(queryparamsPage).toString();
+		});
+		//다음페이지
+	 	$("#boardPageBtnNext").on('click', function(){
+			const queryparamsPage = {
+				ui: "${otherInfo.user_id}",
+				page: "${response.pagination.endPage+1}"
+			}
+			location.href = location.pathname + '?' + new URLSearchParams(queryparamsPage).toString();
+		});
+		
+	 	//마지막페이지
+	 	$("#boardPageBtnLast").on('click', function(){
+			const queryparamsPage = {
+				ui: "${otherInfo.user_id}",
+				page: "${response.pagination.totalPageCount}"
+			}
+			location.href = location.pathname + '?' + new URLSearchParams(queryparamsPage).toString();
+		});//pageNumBtn클릭
+	</script>
 </body>
 </html>
 

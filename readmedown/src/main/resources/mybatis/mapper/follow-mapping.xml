@@ -21,7 +21,7 @@
 	</resultMap>
 
 	<select id="getFollowList" parameterType="String" resultMap="FollowMap">
-		Select *
+		select *
 		from `follow` f
 		join `user` u on u.user_id = f.your_id
 		where `my_id`=#{user_id};
@@ -32,5 +32,58 @@
 		from `follow`
 		where `follow_id`=#{follow_id};
 	</delete>
+
+	<delete id="deleteFollowdto" parameterType="mypage.FollowDTO">
+		delete 
+		from `follow`
+		where `my_id`=#{my_id} and `your_id`=#{your_id};
+	</delete>
+
+	<insert id="insertFollowdto" parameterType="mypage.FollowDTO">
+		INSERT INTO follow(`my_id`, `your_id`)
+		VALUES (#{my_id},#{your_id});
+	</insert>
+
+	<select id="getFollowerCnt" parameterType="String" resultType="int">
+		select count(*) 
+		from `follow`
+		where `your_id`=#{user_id};
+	</select>
+
+	<select id="isFollowing" parameterType="mypage.FollowDTO" resultType="boolean">
+		select count(*) 
+		from `follow`
+		where `my_id`=#{my_id} and `your_id`=#{your_id};
+	</select>
+	
+<!-- 유저 정보 불러오기 -->
+	<select id="getOtherUserInfo" parameterType="String" resultType="userdto">
+		select * 
+		from `user`
+		where user_id = #{user_id};
+	</select>
+	
+<!-- 유저 작성글 불러오기 -->
+	<select id="getOtherUserBoards" parameterType="pagination.SearchDTO" resultType="boarddto">
+		select * 
+		from board
+		where delete_date is null and write_date is not null and secret="no"
+		and user_id = #{searchType1}
+		<if test="keyword != null and keyword != ''">
+			and board_tag LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		order by write_date desc
+		limit #{pagination.limitStart}, #{recordSize}
+	</select>
+
+	<select id="getOtherUserBoardsCount" resultType="int" parameterType="pagination.SearchDTO">
+		select count(*) 
+		from board
+		where delete_date is null and write_date is not null and secret="no"
+		and user_id = #{searchType1}
+		<if test="keyword != null and keyword != ''">
+			and board_tag LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+	</select>
 
 </mapper>
