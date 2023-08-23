@@ -131,7 +131,7 @@ $(document).ready(function() {
  	$(".search_keyword").on('click', function(){
 		let keyword = $(this).text();
 		//alert(keyword);
-		location.href="http://localhost:8070?keyword="+keyword;
+		location.href="/?keyword="+keyword;
 	});
 	
 	//사진 누르면 디테일 페이지로 이동
@@ -207,10 +207,10 @@ $(document).ready(function() {
 			let searchWord = $("#search_word_input").val();
 		
 			if(searchWord.trim() !== "") {
-	            location.href="http://localhost:8070?keyword="+searchWord;
+	            location.href="/?keyword="+searchWord;
 			}
 			else {
-	            location.href="http://localhost:8070";
+	            location.href="/";
 				alert("검색어가 없습니다.");
 			}
         }
@@ -295,17 +295,17 @@ $(document).ready(function() {
 <div class="pagenation" style="visibility: hidden;">
 	<c:if test="${fn:length(response.list) != 0}">
  	   <a class="pagefirst"
-	      <c:if test="${!response.pagination.existPrevPage}"> 'http://localhost:8070?page=1&keyword=${param.keyword}'</c:if>>
+	      <c:if test="${!response.pagination.existPrevPage}"> '/?page=1&keyword=${param.keyword}'</c:if>>
 	   </a>   
  	   <a class="prev"
-	      <c:if test="${searchdto.page > 1}"> href= 'http://localhost:8070?page=${searchdto.page-1}&keyword=${param.keyword}' </c:if>>
+	      <c:if test="${searchdto.page > 1}"> href= '/?page=${searchdto.page-1}&keyword=${param.keyword}' </c:if>>
 	   </a>
 	   <a class="next"
-	      <c:if test="${!response.pagination.existNextPage && searchdto.page < response.pagination.totalPageCount}">  href= 'http://localhost:8070?page=${searchdto.page + 1}&keyword=${param.keyword}' </c:if>>
+	      <c:if test="${!response.pagination.existNextPage && searchdto.page < response.pagination.totalPageCount}">  href= '/?page=${searchdto.page + 1}&keyword=${param.keyword}' </c:if>>
 	   </a>
 	   
  	   <a class="pagelast"
-	      <c:if test="${!response.pagination.existNextPage}"> href= 'http://localhost:8070?page=${response.pagination.totalPageCount}&keyword=${param.keyword}' </c:if>>
+	      <c:if test="${!response.pagination.existNextPage}"> href= '/?page=${response.pagination.totalPageCount}&keyword=${param.keyword}' </c:if>>
 	   </a>
 	</c:if>
 </div>
