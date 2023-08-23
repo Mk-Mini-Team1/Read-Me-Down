@@ -16,10 +16,10 @@
 <div id="findPw_modal" class="findPw_modal">
 	<main class="modal_container">
 		<div class="close">
-			<a id="closeFindPwButton"><img src="images/sign/Close.svg"
+			<a id="closeFindPwButton"><img src="/images/sign/Close.svg"
 				alt="창닫기" /></a>
 		</div>
-		<a href="/"> <img src="images/ReadMeD_Mint.svg" alt="로고아이콘" />
+		<a href="/"> <img src="/images/ReadMeD_Mint.svg" alt="로고아이콘" />
 		</a>
 		<p>비밀번호 찾기</p>
 		<form method="post" action="" class="signinForm"
