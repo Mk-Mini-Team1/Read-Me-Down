@@ -116,17 +116,18 @@ $(document).ready(function() {
 						
 	<c:choose>
     <c:when test="${dto.following }">
-        <button onclick="toggleFollow(event)" class="following">∨팔로잉</button>
+        <c:if test="${dto.user_id ne userdto.user_id}">
+            <button onclick="toggleFollow(event)" class="following">∨팔로잉</button>
+        </c:if>
     </c:when>
     <c:otherwise>
-        <button onclick="toggleFollow(event)" class="follow">팔로우</button>
+        <c:if test="${dto.user_id ne userdto.user_id}">
+            <button onclick="toggleFollow(event)" class="follow">팔로우</button>
+        </c:if>
     </c:otherwise>
 </c:choose>
 
 
-					
-					
-					
 					</div>
 					
 							
@@ -454,7 +455,7 @@ function addFollow(yourId) {
         data: { 'your_id': yourId },
         success: function (response) {
             if (response !== -1) {
-            	 alert("팔로우가 추가되었습니다.");
+            	
             	
 
             } else {
@@ -474,7 +475,7 @@ function deleteDFollow(yourId) {
         data: { 'your_id': yourId },
         success: function (response) {
             if (response !== -1) {
-            	 alert("팔로우가 삭제되었습니다.");
+            	
                 
 
             } else {
@@ -527,7 +528,7 @@ function addDBookmark(boardId) {
         data: { 'board_id': boardId },
         success: function (response) {
             if (response !== -1) {
-            	 alert("북마크가 추가되었습니다.");
+            	
             } else {
                 alert("문제가 발생했습니다.");
             }
@@ -546,7 +547,7 @@ function deleteDBookmark(boardId) {
         data: { 'board_id': boardId },
         success: function (response) {
             if (response !== -1) {
-            	 alert("북마크가 삭제되었습니다.");
+            	
             } else {
                 alert("문제가 발생했습니다.");
             }
@@ -559,7 +560,6 @@ function deleteDBookmark(boardId) {
 }
 </script>
 <script>
-
  document.getElementById("shareLink").addEventListener("click", function(event) {
      event.preventDefault(); // 기본 링크 동작 방지
 
@@ -573,11 +573,40 @@ function deleteDBookmark(boardId) {
      document.execCommand("copy");
      document.body.removeChild(textarea);
 
-     alert("URL이 복사되었습니다 " );
+     urlmodal(); // 모달 함수 실행
  });
 
- 
- </script>
+// 모달 함수 정의
+function urlmodal() {
+    const modal = document.getElementById("modal");
+    modal.innerHTML = `
+        <div class="modalBackdrop" onclick="cancel()"></div>
+        <div class="modalContent">
+            <div class="closebox" onclick="cancel()">
+                <img class="modal_cancelbtn" src="/images/sign/Close.svg" alt="창닫기" />
+            </div>
+            <img class="deleteModalImg"  src="/images/ReadMeD_Mint.svg">
+            <p>URL이 복사되었습니다.</p>
+            <br>
+            <div class="buttonWrap">
+                <button class="btn cancel" onclick="Cok()">확인</button>
+            </div>
+        </div>
+    `;
+}
+
+// 모달 함수에서 모달 닫기
+function cancel() {
+    const modal = document.getElementById("modal");
+    modal.innerHTML = ""; // 모달 내용 초기화
+}
+
+// 확인 버튼 클릭 시 모달 닫기
+function Cok() {
+    cancel(); // 모달 닫기
+}
+</script>
+
  <script>
 
  document.addEventListener("DOMContentLoaded", function() {
