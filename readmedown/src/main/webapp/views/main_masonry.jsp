@@ -216,6 +216,14 @@ $(document).ready(function() {
         }
 	});
 	
+	window.onpageshow = function(event) {
+	    if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+	        // Back Forward Cache로 브라우저가 로딩될 경우 혹은 브라우저 뒤로가기 했을 경우
+	        // 이벤트 추가하는 곳
+	        console.log('back button event');
+	        location.reload();
+	    }
+	}
 	
 }); //ready
 </script>
@@ -301,7 +309,7 @@ $(document).ready(function() {
 	      <c:if test="${searchdto.page > 1}"> href= '/?page=${searchdto.page-1}&keyword=${param.keyword}' </c:if>>
 	   </a>
 	   <a class="next"
-	      <c:if test="${!response.pagination.existNextPage && searchdto.page < response.pagination.totalPageCount}">  href= '/?page=${searchdto.page + 1}&keyword=${param.keyword}' </c:if>>
+	      <c:if test="${searchdto.page < response.pagination.totalPageCount}">  href= '/?page=${searchdto.page + 1}&keyword=${param.keyword}' </c:if>>
 	   </a>
 	   
  	   <a class="pagelast"
@@ -505,6 +513,12 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
      function O() {
     	console.log("O() 시작");
     	const totalPageCount ="${response.pagination.totalPageCount}";
+    	const searchdtoPage ="${searchdto.page}";
+    	const paramPage ="${param.page}";
+    	
+    	console.log(totalPageCount);
+    	console.log(searchdtoPage);
+    	console.log(paramPage);
 
 /*         const e = p.offsetTop;
 
@@ -521,11 +535,12 @@ function infiniteScroll({container: e, next: t, prev: r, item: n, nextButton: l,
 				}
             }
         }; */
+        
         		
      	// container의 상단 위치
         const containerTop = p.offsetTop;
 		
-     	if(p.scrollHeight > 700){//조회된 글 수가 적을땐 실행안되도록     		
+     	if(p.scrollHeight > 500){//조회된 글 수가 적을땐 실행안되도록     		
 	        // 다음 페이지를 불러올 조건 확인
 	        if (!l && null !== S && "" !== S.getAttribute("href") && !g && A >= containerTop + p.scrollHeight - h - 500) {
 	            k(); // 다음 페이지 불러오는 함수 호출
