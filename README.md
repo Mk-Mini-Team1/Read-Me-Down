@@ -45,21 +45,21 @@
 > 2. 데이터 유효성 검사
 
 ### 🪄 Main
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/36edb96b-bd2b-42f0-b0ce-ec3256bd3023)
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/5584b847-26ee-4424-9588-e1e0ba2411d9)
 > 1. Masonry Layout + Infinity Scroll
 > 2. 키워드 검색
 > 3. 클릭시 상세페이지 이동
 > 4. (회원 전용) 북마크
 
 ### 🪄 Templates
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/cebd449c-20d8-44f0-a51c-869741eacc62)
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/dc94f0cc-10d2-469c-ad7b-7c32af03e4a5)
 > 1. Template 목록 리스트 조회 및 페이징
 > 2. 키워드 검색
 > 3. 클릭시 상세페이지 이동
 > 4. (회원 전용) 북마크
 
 ### 🪄 Detail
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/8ea0a3e5-ebd4-4baa-b6a6-c9da3a8ba651)
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/5f2396e9-b1ab-4c09-a889-0211a2423a8b)
 > 1. 템플릿 조회
 > 2. 작성자 프로필 클릭시 유저메인 이동
 > 3. (회원 전용) 작성 템플릿 수정, 삭제
@@ -89,6 +89,7 @@
 > 4. (회원 전용) 팔로우한 유저 목록, 팔로우 취소
 
 ### 🪄 UserMain
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/029da97b-f52a-4514-97b5-ed1348624cc8)
 > 1. 해당 유저가 작성한 템플릿 목록 조회 및 페이징
 > 2. (회원 전용) 북마크 및 팔로잉
 <br>
