@@ -64,7 +64,7 @@
 	        </c:when>
 	        <c:otherwise>
 	        	<a href="/mypage">
-	            <img id="logo" src="${user_profile eq null?'/images/default_profile.svg':user_profile}">
+	            <img id="logo" src="${user_profile eq null || user_profile eq ''?'/images/default_profile.svg':user_profile}">
 	            </a>
 	            <button id="logoutbtn">LogOut</button>
 	        </c:otherwise>

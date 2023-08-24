@@ -62,7 +62,7 @@
 									<a href="/usermain?ui=${following.user.user_id}">${following.user.name}</a>
 								</div>
 								<div class="follow_button">
-									<button>팔로잉</button>
+									<button><img src="/images/mypage/check.svg">팔로잉</button>
 									<input type="hidden" value="${following.follow_id}">
 								</div>
 							</div>

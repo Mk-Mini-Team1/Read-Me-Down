@@ -8,34 +8,32 @@
 <head>
 <link rel="stylesheet" href="/css/style.css" />
 <link rel="stylesheet" href="/css/sign/findPw.css" />
-<link rel="stylesheet" href="/css/mypage/modal.css" />
 <script src="/js/jquery-3.6.4.min.js"></script>
 </head>
 <body>
 
-<div id="findPw_modal" class="findPw_modal">
-	<main class="modal_container">
-		<div class="close">
-			<a id="closeFindPwButton"><img src="images/sign/Close.svg"
-				alt="창닫기" /></a>
-		</div>
-		<a href="/"> <img src="images/ReadMeD_Mint.svg" alt="로고아이콘" />
-		</a>
-		<p>비밀번호 찾기</p>
-		<form method="post" action="" class="signinForm"
-			name="signinForm"> 
-			<div class="email">
-				<p>E-mail</p>
-				<div class="checkEmail">
-					<input type="email" id="findPw_email" name="findPw_email" oninput="regEmail()"
-						placeholder="이메일 입력" />
-				</div>
+	<div id="findPw_modal" class="findPw_modal">
+		<main class="modal_container">
+			<div class="close">
+				<a id="closeFindPwButton"><img src="/images/sign/Close.svg"
+					alt="창닫기" /></a>
 			</div>
-			<button class="submit" id="checkEmail">임시비밀번호받기</button> 
-		</form>
-	</main>
-</div> 
-<div id="alert_modal" class="modal">
+			<a href="/"> <img src="/images/ReadMeD_Mint.svg" alt="로고아이콘" />
+			</a>
+			<p>비밀번호 찾기</p>
+			<form method="post" action="" class="signinForm" name="signinForm">
+				<div class="email">
+					<p>E-mail</p>
+					<div class="checkEmail">
+						<input type="email" id="findPw_email" name="findPw_email"
+							oninput="regEmail()" placeholder="이메일 입력" />
+					</div>
+				</div>
+				<button class="submit" id="checkEmail">임시비밀번호받기</button>
+			</form>
+		</main>
+	</div>
+	<!-- <div id="alert_modal" class="modal">
 		<div class="modal_box">
 			<div class="closebox">
 				<img class="modal_cancelbtn" src="/images/sign/Close.svg" alt="창닫기" />
@@ -48,8 +46,8 @@
 				<button class="modal_cancelbtn">확인</button>
 			</div>
 		</div>
-	</div>	
-<script>
+	</div> -->
+	<script>
 $(document).ready(function() {
 	$("#checkEmail").click(function(e) { //버튼 눌렀을때 이메일 존재여부 검사
 		e.preventDefault();		
@@ -71,7 +69,7 @@ $(document).ready(function() {
 						success: function(data) {
 							//그럼 아까 위에서 한거랑 똑같아여 여기도 data 값이 방금 지정한 return
 							if(data > 0) {
-								alert("임시번호 메일이 전송되었습니다.");							
+								alert("임시비밀번호가 해당 메일로 전송되었습니다.");							
 							}
 							else { //업데이트에 문제가있다면
 								alert("문제발생.관리자에게 문의하세요.");
