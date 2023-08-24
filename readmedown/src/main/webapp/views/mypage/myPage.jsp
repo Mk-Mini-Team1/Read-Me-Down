@@ -52,6 +52,9 @@
 				<div class="infoWrap" id="infoWrap">
 					<div class="mypage_list" id="mypage_list">
 						<div class="mypage" id="mypage">
+							<c:if test="${fn:length(response.list)==0}">
+								<div class="no_list">작성한 템플릿이 없습니다.</div>
+							</c:if>
 							<c:forEach items="${response.list}" var="template">
 								<div class="grid-item" id="${template.board_id}">
 									<img src='${template.board_img}' onerror="this.src='/images/main/no_img.svg'" alt="template">

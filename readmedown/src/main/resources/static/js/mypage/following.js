@@ -9,7 +9,7 @@ $("#following_list").on("mouseover","button",function() {
 });
 
 $("#following_list").on("mouseleave","button",function() {
-   $(this).text("팔로잉");
+   $(this).html(`<img src="/images/mypage/check.svg">팔로잉`);
 });
 
 // 언팔로우 클릭
