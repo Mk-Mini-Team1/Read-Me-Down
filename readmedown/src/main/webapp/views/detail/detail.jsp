@@ -109,15 +109,15 @@ $(document).ready(function() {
 <div id="modal" ></div>
 					<div  class="user_nickline">
 					
-					<img style="cursor: pointer;" title="이미지를 클릭하면 해당 유저의 템플릿을 볼 수 있습니다." class="profileimg" onclick="window.location.href='/usermain?ui=${boardUser.user_id}'" src="${boardUser.profile_image}" alt="Profile Image" onerror="this.src='/images/default_profile.svg'">
+					<img style="cursor: pointer;" title="클릭하면 해당 유저의 템플릿을 볼 수 있습니다." class="profileimg" onclick="window.location.href='/usermain?ui=${boardUser.user_id}'" src="${boardUser.profile_image}" alt="Profile Image" onerror="this.src='/images/default_profile.svg'">
 	
-						<div class="user_nickname">${boardUser.name}</div>
+						<div style="cursor: pointer;" title="클릭하면 해당 유저의 템플릿을 볼 수 있습니다." onclick="window.location.href='/usermain?ui=${boardUser.user_id}'" class="user_nickname">${boardUser.name}</div>
 						
 						
 	<c:choose>
     <c:when test="${dto.following }">
         <c:if test="${dto.user_id ne userdto.user_id}">
-            <button onclick="toggleFollow(event)" class="following">∨팔로잉</button>
+            <button onclick="toggleFollow(event)" class="following"><img style="padding-top:3px; width: 12px; height: 12px;" src="/images/mypage/check.svg">팔로잉</button>
         </c:if>
     </c:when>
     <c:otherwise>
@@ -178,12 +178,12 @@ $(document).ready(function() {
 			<c:forEach var="comment" items="${commentdto}">
     <div ${comment.parent_id > 0 ? 'style="margin-left: 60px; width: 473px;"' : ''} class="detailCommentLine">
         <div class="pncline">
-            <img style="margin-top: 10.5px; cursor: pointer;" title="이미지를 클릭하면 해당 유저의 템플릿을 볼 수 있습니다." class="commentProfileImg" 
+            <img style="margin-top: 10.5px; cursor: pointer;" title="클릭하면 해당 유저의 템플릿을 볼 수 있습니다." class="commentProfileImg" 
              onclick="window.location.href='/usermain?ui=${comment.user.user_id}'"
            
             src="${comment.user.profile_image}">
             
-            <div style="margin-top: 10px;" class="commentUser_nickname">${comment.user.name}</div>
+            <div style="cursor: pointer; margin-top: 10px;"title="클릭하면 해당 유저의 템플릿을 볼 수 있습니다." onclick="window.location.href='/usermain?ui=${comment.user.user_id}'" class="commentUser_nickname">${comment.user.name}</div>
             
             
             <div class="commentCreatedat">
@@ -430,18 +430,18 @@ function handleCommentKeyDown(event) {
 
 </script>
 
- <script src="/js/detail/modal.js"></script>
-	<script>
+<script src="/js/detail/modal.js"></script>
+<script>
 function toggleFollow(event) {
     const button = event.currentTarget;
     const yourId = "${dto.user_id}";
-    
+
     if ("${user_id}" === "" || "${user_id}" === null) {
-    	 alert("로그인이 필요합니다.");
-     	$("#signIn_modal").show();
+        alert("로그인이 필요합니다.");
+        $("#signIn_modal").show();
         return; // 로그인이 필요한 경우 함수 종료
     }
-    
+
     if (button.classList.contains("following")) {
         deleteDFollow(yourId);
         button.classList.remove("following");
@@ -451,7 +451,20 @@ function toggleFollow(event) {
         addFollow(yourId);
         button.classList.remove("follow");
         button.classList.add("following");
-        button.textContent = "∨팔로잉"; // 버튼 텍스트 변경
+
+        // 새로운 이미지 요소 생성
+        const image = document.createElement("img");
+        image.src = "/images/mypage/check.svg";
+        image.alt = "팔로잉 아이콘";
+        image.style.paddingTop = "3px";
+             
+        image.style.width = "12px";
+        image.style.height = "12px";
+
+        // 이미지와 텍스트 추가
+        button.innerHTML = ''; // 버튼 내용 초기화
+        button.appendChild(image);
+        button.insertAdjacentText('beforeend', '팔로잉');
     }
 }
 
