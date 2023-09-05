@@ -1,6 +1,10 @@
 #  📝 Project : ReadMe▼
 ![Logo](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/322a006c-4423-4394-a282-2bdcd1bd0981)
 
+## 🏢 진행 기관 : 멀티캠퍼스(Multi-Campus)
+> 멀티캠퍼스 채용연계 풀스택 개발자 취업캠프(Java) 13회차 -- 과정내 Mini Project
+<br>
+
 ## 👯‍♀️👯 Develop Team : 막내온탑🔝
 > 👑팀장 : 안하현 - 마크다운 에디터 구현, 코드 작성 및 저장 구현, 마이페이지 팔로잉목록, 유저메인 구현, git관리<br>
 > ⭐팀원 : 김하영 - 회원가입, 로그인, 회원탈퇴, 비밀번호찾기, 마이페이지 내 템플릿, 북마크 템플릿 구현<br>
@@ -22,12 +26,31 @@
 > #### 📅 2023.08.10 ~ 2023.08.24
 <br>
 
+## 🔗 Link 
+> ##### 🌏 배포 주소(Naver Cloud Platform 배포) : [Read-Me-Down](http://49.50.172.59:8080/) -- 2023.09 서버 운영 종료 <br>
+
+> ##### 🤖 github : [Read-Me-Down github](https://github.com/Mk-Mini-Team1/Read-Me-Down)
+<br>
+
+## 👑 Result
+<div align="center">
+<h3>✨Mini Project 우승✨</h3> 
+</div>
+
+## 🗃️ DataBase - Tool : erdcloud
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/ad03199b-8437-4491-877c-9446757bcece)
+<br>
+
+## 🎨 Design - Tool : Figma
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/66c296d5-4a6a-4135-95e7-db70b4ac24ac)
+<br>
+
 ## 🛠️ Stacks
 > #### FrontEnd
 > ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![jQuery](https://img.shields.io/badge/jquery-%230769AD.svg?style=for-the-badge&logo=jquery&logoColor=white) 
 
 > #### BackEnd
-> ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white) ![Eclipse](https://img.shields.io/badge/Eclipse-2C2255.svg?style=for-the-badge&logo=Eclipse&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) 
+> ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white) ![Eclipse](https://img.shields.io/badge/Eclipse-2C2255.svg?style=for-the-badge&logo=Eclipse&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) 
 
 > #### Cooperation
 > ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white) ![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white) 
@@ -35,31 +58,39 @@
 
 ## 🖥️ 구현기능
 ### 🪄 Login, Find Password
+> 1. 로그인 / 비밀번호 찾기 모달 구현
+> 2. 비밀번호 찾기 기능 - 가입 이메일로 임시비밀번호 발급
+
 ![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/13595c36-1890-4cbd-baf1-640295fc6164)
-> 1. 비밀번호 찾기
-> 2. 가입 이메일로 임시비밀번호 발급
+<p align="center"> 로그인 모달 </p>
+
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/3155ca10-2484-47a7-bacf-71ee30ef2ede)
+<p align="center"> 비밀번호 찾기 - 가입 이메일로 임시비밀번호 발급 </p>
 
 ### 🪄 Sign Up
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/76be8630-5c0a-418d-83ec-7fb9bfd90b37)
 > 1. email 중복검사
 > 2. 데이터 유효성 검사
 
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/76be8630-5c0a-418d-83ec-7fb9bfd90b37)
+
 ### 🪄 Main
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/5584b847-26ee-4424-9588-e1e0ba2411d9)
 > 1. Masonry Layout + Infinity Scroll
 > 2. 키워드 검색
 > 3. 클릭시 상세페이지 이동
 > 4. (회원 전용) 북마크
 
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/5584b847-26ee-4424-9588-e1e0ba2411d9)
+
 ### 🪄 Templates
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/dc94f0cc-10d2-469c-ad7b-7c32af03e4a5)
 > 1. Template 목록 리스트 조회 및 페이징
 > 2. 키워드 검색
 > 3. 클릭시 상세페이지 이동
 > 4. (회원 전용) 북마크
 
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/dc94f0cc-10d2-469c-ad7b-7c32af03e4a5)
+
+
 ### 🪄 Detail
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/5f2396e9-b1ab-4c09-a889-0211a2423a8b)
 > 1. 템플릿 조회
 > 2. 작성자 프로필 클릭시 유저메인 이동
 > 3. (회원 전용) 작성 템플릿 수정, 삭제
@@ -67,33 +98,61 @@
 > 5. (회원 전용) 댓글, 대댓글 CRUD
 > 6. (회원 전용) 북마크, 팔로우
 
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/fc34faa5-bb13-485c-a874-8b9ca743ccf2)
+<p align="center"> 상세페이지 </p>
+
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/f167947f-4001-4b17-96d9-e5da92e2f703)
+<p align="center"> 템플릿 사용하기 클릭시 코드 사용가능 </p>
+
 ### 🪄 Edit.md
-![Editor](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/0c3970cf-b29c-4fb0-8e03-89d8c44c3fab)
-> 1. Markdown 전용 에디터 (Toast editor 사용)
-> 2. git readme 전용 메뉴
-> 3. Editor dark/light 전환
-> 4. 작성 코드 복사
-> 5. (회원 전용) 작성한 코드 저장
-> 6. (회원 전용) 다른 유저의 템플릿 코드 복제 및 작성
+> 1. Markdown 전용 에디터 및 실시간 미리보기 지원 (Toast editor 사용)
+> 2. Help.md 파일을 통한 마크다운 문법 가이드 제공
+> 3. git readme 전용 메뉴
+> 4. Editor dark/light 전환
+> 5. 작성 코드 복사
+> 6. (회원 전용) 작성한 코드 저장
+> 7. (회원 전용) 다른 유저의 템플릿 코드 복제 및 작성
+
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/5dbec010-1110-4f64-b243-2ae90c5af900)
+<p align="center"> Editor - 실시간 미리보기 지원 및 Help.md를 통한 마크다운 문법 가이드 제공 </p>
+
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/066b6e51-990f-48d0-a14b-85668c72029d)
+<p align="center"> Editor - light 모드 전환 가능 </p>
+
+![badges](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/8e7471aa-0ba0-4fdf-b7ee-f9383d6d31ec)
+<p align="center"> Design > Badges </p>
+
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/6312ac77-2224-42a7-8ce0-2683e18f4719)
+<p align="center"> Design > Capsule Render </p>
+
+
+
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/ff49c8f0-559d-4cb5-9130-d8e6150b4925)
+<p align="center"> Profile > Boj Profile (mazacofo.ver) </p>
+
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/36be99e4-6bdb-419e-9466-6fb4abbaad8c)
+<p align="center"> Stats > Activity Gragh </p>
 
 ### 🪄 WritingForm
-![WritingForm](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/193fa998-97dc-481d-88ae-0584ce14172f)
 > 1. (회원 전용) 대표이미지 업로드
 > 2. (회원 전용) 게시글 내용 작성 및 저장
 
+![WritingForm](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/193fa998-97dc-481d-88ae-0584ce14172f)
+
 ### 🪄 Mypage
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/c1b0c0f1-6dc2-4fff-ae98-b75368d6d0ce)
 > 1. (회원 전용) 회원정보 수정
 > 2. (회원 전용) 작성 템플릿 조회 및 페이징, 템플릿 공개여부 수정
 > 3. (회원 전용) 북마크한 템플릿 조회 및 페이징, 템플릿 북마크 취소
 > 4. (회원 전용) 팔로우한 유저 목록, 팔로우 취소
 
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/c1b0c0f1-6dc2-4fff-ae98-b75368d6d0ce)
+
 ### 🪄 UserMain
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/029da97b-f52a-4514-97b5-ed1348624cc8)
 > 1. 해당 유저가 작성한 템플릿 목록 조회 및 페이징
 > 2. (회원 전용) 북마크 및 팔로잉
+
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/029da97b-f52a-4514-97b5-ed1348624cc8)
+
 <br>
 
-## Link
-##### ⬇️ 배포 사이트 : [Read-Me-Down](http://49.50.172.59:8080/)
-##### 🔗 github : [Read-Me-Down github](https://github.com/Mk-Mini-Team1/Read-Me-Down)
+
