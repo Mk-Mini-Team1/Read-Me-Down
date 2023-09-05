@@ -11,8 +11,6 @@
 <link rel="apple-touch-icon" href="/images/logo-pencil.png" />
 <link rel="stylesheet" href="/css/style.css" />
 <link rel="stylesheet" href="/css/mypage/myPage.css" />
-<link rel="stylesheet" href="css/pagination_shop.css" />
-<link rel="stylesheet" href="/css/mypage/followingList.css" />
 <script src="/js/jquery-3.6.4.min.js"></script>
 <title>Read Me▼</title>
 </head>
