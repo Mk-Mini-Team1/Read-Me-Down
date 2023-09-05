@@ -1,4 +1,4 @@
-#  📝 Project : ReadMe▼
+# 📝 Project : ReadMe▼
 ![Logo](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/322a006c-4423-4394-a282-2bdcd1bd0981)
 
 ## 🏢 진행 기관 : 멀티캠퍼스(Multi-Campus)
@@ -42,7 +42,7 @@
 <br>
 
 ## 🎨 Design - Tool : Figma
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/66c296d5-4a6a-4135-95e7-db70b4ac24ac)
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/c9e1e8aa-2768-4eff-a948-b23322486773)
 <br>
 
 ## 🛠️ Stacks
@@ -79,7 +79,8 @@
 > 3. 클릭시 상세페이지 이동
 > 4. (회원 전용) 북마크
 
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/5584b847-26ee-4424-9588-e1e0ba2411d9)
+![main_search](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/39d0b3f5-6f1a-4d0f-b134-f9d3309324f7)
+<p align="center"> Main - 검색 및 추천 키워드 </p>
 
 ### 🪄 Templates
 > 1. Template 목록 리스트 조회 및 페이징
@@ -87,8 +88,7 @@
 > 3. 클릭시 상세페이지 이동
 > 4. (회원 전용) 북마크
 
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/dc94f0cc-10d2-469c-ad7b-7c32af03e4a5)
-
+![templates](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/cc98c4b9-5de3-4f99-8d32-40b90a24e3bb)
 
 ### 🪄 Detail
 > 1. 템플릿 조회
@@ -98,11 +98,8 @@
 > 5. (회원 전용) 댓글, 대댓글 CRUD
 > 6. (회원 전용) 북마크, 팔로우
 
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/fc34faa5-bb13-485c-a874-8b9ca743ccf2)
-<p align="center"> 상세페이지 </p>
-
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/f167947f-4001-4b17-96d9-e5da92e2f703)
-<p align="center"> 템플릿 사용하기 클릭시 코드 사용가능 </p>
+![detail](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/b8f00a70-4ef3-47a2-b13d-0fe02e1de7b4)
+<p align="center"> 상세페이지 댓글, 대댓글, 북마크, 팔로잉 및 템플릿 사용하기 </p>
 
 ### 🪄 Edit.md
 > 1. Markdown 전용 에디터 및 실시간 미리보기 지원 (Toast editor 사용)
@@ -113,31 +110,33 @@
 > 6. (회원 전용) 작성한 코드 저장
 > 7. (회원 전용) 다른 유저의 템플릿 코드 복제 및 작성
 
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/5dbec010-1110-4f64-b243-2ae90c5af900)
-<p align="center"> Editor - 실시간 미리보기 지원 및 Help.md를 통한 마크다운 문법 가이드 제공 </p>
+![editor](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/0ebdd65f-858b-4a8a-926b-649d465677b4)
+<p align="center"> ✒️Editor - 실시간 미리보기 지원 </p>
 
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/066b6e51-990f-48d0-a14b-85668c72029d)
-<p align="center"> Editor - light 모드 전환 가능 </p>
+![editor-light](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/11a39c2e-c98d-4942-8a42-0b7e8454fb2a)
+<p align="center"> ✒️Editor - help.md를 통한 markdown 가이드제공, light 모드 전환 </p>
 
 ![badges](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/8e7471aa-0ba0-4fdf-b7ee-f9383d6d31ec)
-<p align="center"> Design > Badges </p>
+<p align="center"> 🎨Design > Badges </p>
 
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/6312ac77-2224-42a7-8ce0-2683e18f4719)
-<p align="center"> Design > Capsule Render </p>
+![design-header](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/d0cc8b06-dcc5-44a0-ae21-e4e95e905e9a)
+<p align="center"> 🎨Design > Capsule Render </p>
 
+![profile_2](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/ce02744b-e3f4-41ef-b8b0-b43d6265696e)
+<p align="center"> 👤Profile - Backjoon, solved.ac, CodeForce </p>
 
+![stats_1](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/ec816f3a-6fb3-48e0-90d9-fcdc463ca4e5)
+<p align="center"> 📊Stats > Activity Gragh, ReadMe Stats, Top Langs </p>
 
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/ff49c8f0-559d-4cb5-9130-d8e6150b4925)
-<p align="center"> Profile > Boj Profile (mazacofo.ver) </p>
-
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/36be99e4-6bdb-419e-9466-6fb4abbaad8c)
-<p align="center"> Stats > Activity Gragh </p>
+![stats_2](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/b3ed618b-f506-492f-88d1-46980a4ab758)
+<p align="center"> 📊Stats > Hits, Throphy </p>
 
 ### 🪄 WritingForm
 > 1. (회원 전용) 대표이미지 업로드
 > 2. (회원 전용) 게시글 내용 작성 및 저장
 
-![WritingForm](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/193fa998-97dc-481d-88ae-0584ce14172f)
+![filesave](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/514a3922-ec3d-4632-b849-ea22b378006a)
+<p align="center"> 템플릿 저장 과정 (코드작성 -> 게시글 내용 작성 -> 완료) </p>
 
 ### 🪄 Mypage
 > 1. (회원 전용) 회원정보 수정
@@ -145,7 +144,11 @@
 > 3. (회원 전용) 북마크한 템플릿 조회 및 페이징, 템플릿 북마크 취소
 > 4. (회원 전용) 팔로우한 유저 목록, 팔로우 취소
 
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/c1b0c0f1-6dc2-4fff-ae98-b75368d6d0ce)
+![정보수정](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/1258afa0-32f9-4c52-bf63-e78d17ead401)
+<p align="center"> 마이페이지 - 회원정보수정 </p>
+
+![북마크_2](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/b8672290-3403-499a-b1d5-9bed228888d9)
+<p align="center"> 마이페이지 - 북마크템플릿 </p>
 
 ### 🪄 UserMain
 > 1. 해당 유저가 작성한 템플릿 목록 조회 및 페이징
