@@ -147,15 +147,19 @@
 ![정보수정](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/1258afa0-32f9-4c52-bf63-e78d17ead401)
 <p align="center"> 마이페이지 - 회원정보수정 </p>
 
+![내템플릿](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/db425d71-5fed-4978-bec7-fa879633b3dd)
+<p align="center"> 마이페이지 - 내 템플릿 공개여부 설정 </p>
+
 ![북마크_2](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/b8672290-3403-499a-b1d5-9bed228888d9)
 <p align="center"> 마이페이지 - 북마크템플릿 </p>
+
+![팔로잉,유저메인](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/11d224fd-043f-4a2e-b9e1-eb32b6a1e4f4)
+<p align="center"> 마이페이지 - 팔로잉유저 및 다른 유저 프로필 </p>
 
 ### 🪄 UserMain
 > 1. 해당 유저가 작성한 템플릿 목록 조회 및 페이징
 > 2. (회원 전용) 북마크 및 팔로잉
 
 ![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/029da97b-f52a-4514-97b5-ed1348624cc8)
-
-<br>
 
 
