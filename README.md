@@ -140,6 +140,12 @@
 ![stats_2](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/b3ed618b-f506-492f-88d1-46980a4ab758)
 <p align="center"> 📊Stats > Hits, Throphy </p>
 
+![노션_에디터_코드복사](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/cf7398e9-fee3-4e70-a97b-7b2b9dcd924e)
+<p align="center"> 💾 Copy Code 기능을 통해 비회원도 자신의 코드를 복사하여 사용할 수 있는 기능 제공 </p>
+
+![노션_에디터_저장](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/d4844435-f17b-421c-a67d-b4aa19756b79)
+<p align="center"> 💾 로그인 회원 전용 작성 코드 저장 기능 제공 </p>
+
 ### 🪄 WritingForm
 > 1. (회원 전용) 대표이미지 업로드
 > 2. (회원 전용) 게시글 내용 작성 및 저장
