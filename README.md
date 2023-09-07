@@ -29,13 +29,14 @@
 ## 🔗 Link 
 > ##### 🌏 배포 주소(Naver Cloud Platform 배포) : [Read-Me-Down](http://49.50.172.59:8080/) -- 2023.09 서버 운영 종료 <br>
 
-> ##### 🤖 github : [Read-Me-Down github](https://github.com/Mk-Mini-Team1/Read-Me-Down)
+> ##### 🤖 github : [Read-Me-Down github](https://github.com/Mk-Mini-Team1/Read-Me-Down) <br>
 <br>
 
 ## 👑 Result
 <div align="center">
-<h3>✨Mini Project 우승✨</h3> 
+<h3>✨Mini Project 1등✨</h3>
 </div>
+<br>
 
 ## 🗃️ DataBase - Tool : erdcloud
 ![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/ad03199b-8437-4491-877c-9446757bcece)
@@ -65,19 +66,27 @@
 <p align="center"> 로그인 모달 </p>
 
 ![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/3155ca10-2484-47a7-bacf-71ee30ef2ede)
+![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/05da825f-29f5-45a9-a81a-9952bb7ac2f1)
 <p align="center"> 비밀번호 찾기 - 가입 이메일로 임시비밀번호 발급 </p>
 
 ### 🪄 Sign Up
 > 1. email 중복검사
 > 2. 데이터 유효성 검사
 
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/76be8630-5c0a-418d-83ec-7fb9bfd90b37)
+![회원가입](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/a7d16244-a90a-475a-8288-97d0a3ff0552)
+
 
 ### 🪄 Main
 > 1. Masonry Layout + Infinity Scroll
 > 2. 키워드 검색
 > 3. 클릭시 상세페이지 이동
 > 4. (회원 전용) 북마크
+
+![메인_인피니티4](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/4b42e4d9-f9c7-4308-99ec-a66f1a36e6ba)
+<p align="center"> Main - Masonry Layout + Infinity Scroll </p>
+
+![메인_인피니티2_1](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/d9517a96-38b0-4838-b988-2f3b31132ef7)
+<p align="center"> Main - Infinity Scroll + 이전페이지 </p>
 
 ![main_search](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/39d0b3f5-6f1a-4d0f-b134-f9d3309324f7)
 <p align="center"> Main - 검색 및 추천 키워드 </p>
@@ -160,6 +169,6 @@
 > 1. 해당 유저가 작성한 템플릿 목록 조회 및 페이징
 > 2. (회원 전용) 북마크 및 팔로잉
 
-![image](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/029da97b-f52a-4514-97b5-ed1348624cc8)
+![유저메인](https://github.com/Mk-Mini-Team1/Read-Me-Down/assets/132359385/25e65f60-0859-4a41-8708-cd7481f5f12b)
 
 
